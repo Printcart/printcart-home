@@ -123,7 +123,7 @@ const Navbar = () => {
           {/* end of search */}
 
           <AnchorLink href="#trail" offset={84}>
-            <Button className="trail" title="Try for Free" />
+            <Button className="trail" title="Get started for Free" />
           </AnchorLink>
 
           <Button

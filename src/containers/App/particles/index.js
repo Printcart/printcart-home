@@ -1,5 +1,5 @@
 import React from 'react';
-import Particles from 'react-particles-js';
+import Particles from 'react-tsparticles';
 import Img1 from 'common/assets/image/app/img-1.png';
 import Img2 from 'common/assets/image/app/img-3.png';
 import Img3 from 'common/assets/image/app/img-4.png';
