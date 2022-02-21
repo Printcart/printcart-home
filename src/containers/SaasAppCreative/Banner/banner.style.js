@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { themeGet } from '@styled-system/theme-get';
-import titleBg from 'common/assets/image/saasAppCreative/title-bg.png';
+// import titleBg from 'common/assets/image/saasAppCreative/title-bg.png';
 
 const Section = styled.section`
   position: relative;
@@ -56,7 +56,7 @@ export const BannerContent = styled.div`
     span {
       position: relative;
       &::before {
-        background: url(${titleBg?.src}) no-repeat center bottom;
+        /* background: url(${titleBg?.src}) no-repeat center bottom; */
         content: '';
         position: absolute;
         bottom: -7px;
