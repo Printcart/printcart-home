@@ -51,7 +51,7 @@ export const ButtonGroup = styled.div`
 `;
 
 export const PricingArea = styled.div`
-  max-width: 730px;
+  max-width: 1100px;
   width: 100%;
   margin: 0 auto;
   @media only screen and (max-width: 667px) {
@@ -81,8 +81,8 @@ export const InnerWrapper = styled.div`
 
 export const PricingCard = styled.div`
   width: calc(100% / 2 - 25px);
-  max-width: 340px;
-  padding: 20px;
+  max-width: 320px;
+  padding: 10px;
   border-radius: 15px;
   box-shadow: 0 6px 50px ${themeGet('colors.shadow', 'rgba(38, 78, 118, 0.1)')};
   position: relative;

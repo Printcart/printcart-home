@@ -19,6 +19,7 @@ export const ContentWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  text-align: center;
   .image {
     width: calc(100% - 410px);
     @media only screen and (max-width: 991px) {
@@ -30,7 +31,7 @@ export const ContentWrapper = styled.div`
     }
   }
   .content {
-    width: 410px;
+    // width: 410px;
     @media only screen and (max-width: 991px) {
       width: 290px;
     }
@@ -44,7 +45,7 @@ export const ContentWrapper = styled.div`
       font-weight: 700;
       letter-spacing: -1px;
       margin-bottom: 27px;
-      max-width: 400px;
+      // max-width: 400px;
       @media only screen and (max-width: 1366px) {
         font-size: 30px;
         line-height: 42px;

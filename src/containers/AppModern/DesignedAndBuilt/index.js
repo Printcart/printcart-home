@@ -19,9 +19,9 @@ const DesignedAndBuilt = () => {
             <Heading content={title} />
             <Text content={description} />
           </div>
-          <div className="image">
+          {/* <div className="image"> */}
             <NextImage src={image} alt="Built Logo" />
-          </div>
+          {/* </div> */}
         </ContentWrapper>
       </Container>
     </SectionWrapper>
