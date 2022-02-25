@@ -14,7 +14,7 @@ export const navbar = {
     },
     {
       id: 2,
-      label: 'Key Features',
+      label: 'Solutions',
       path: '#features',
       offset: '81',
     },
@@ -26,8 +26,8 @@ export const navbar = {
     },
     {
       id: 4,
-      label: 'Pricing',
-      path: '#pricing',
+      label: 'Dashboard',
+      path: '#banner_section',
       offset: '81',
     },
     {
@@ -79,8 +79,8 @@ import featureIcon3 from 'common/assets/image/appModern/icon3.svg';
 import featureIcon4 from 'common/assets/image/appModern/icon4.svg';
 
 export const features = {
-  slogan: 'About PRINTCART Solutions',
-  title: 'Significantly change the business model of Print business owners',
+  slogan: 'About Our Solutions',
+  title: 'Printing Business 4.0',
   items: [
     {
       id: 1,
@@ -176,10 +176,10 @@ import codingImage from 'common/assets/image/appModern/printcart-code.png';
 
 export const designAndBuilt = {
   image: codingImage,
-  slogan: 'CODE INTEGRATION',
-  title: 'Introducing coding features of our PRINTCART with Customization',
+  slogan: 'INTEGRATION',
+  title: 'Introducing customization solutions',
   description:
-    'Printcart consists of multiple services and API - SDK that can be used for various web-to-print tasks. Whether you are integrating your storefront or looking for ways to extend Printcart, the following guides will help you achieve your goals.',
+    'Printcart consists of multiple services and API - SDK that can be used for various web-to-print tasks. Whether you are integrating your storefront or looking for ways to extend Printcart, the following guides will help you build your workflow business.',
 };
 
 /* ------------------------------------ */
@@ -190,8 +190,8 @@ import slide2 from 'common/assets/image/appModern/printcart-page-2.png';
 import slide3 from 'common/assets/image/appModern/printcart-page-3.png';
 
 export const productData = {
-  slogan: 'PRODUCT SHOWCASE',
-  title: 'Meet Client Satisfaction by using our product',
+  slogan: 'HIGHLIGHT FEATURES',
+  title: 'Meet Client satisfaction by updating the latest features',
   carousel: [
     {
       id: 1,
@@ -243,14 +243,14 @@ export const pricing = {
   monthly: [
     {
       id: 1,
-      title: 'Business Class',
+      title: 'FREE',
       description: 'For Small teams or office',
       suggested: false,
       price: 0,
       features: [
         {
           id: 1,
-          text: 'Drag & Drop Builder',
+          text: 'Online design Tool',
         },
         {
           id: 2,
@@ -268,8 +268,8 @@ export const pricing = {
     },
     {
       id: 2,
-      title: 'Pro Master',
-      description: 'For Best opportunities',
+      title: 'PREMIUM',
+      description: 'For better opportunities',
       suggested: true,
       price: 99,
       trail: 14,
@@ -277,7 +277,7 @@ export const pricing = {
       features: [
         {
           id: 1,
-          text: 'Drag & Drop Builder',
+          text: 'Online design Tool',
         },
         {
           id: 2,
@@ -293,47 +293,18 @@ export const pricing = {
         },
       ],
     },
-  ],
-  annualy: [
     {
-      id: 1,
-      title: 'Pro Master',
-      description: 'For Small teams or office',
-      suggested: true,
-      price: 999,
+      id: 3,
+      title: 'ENTERPRISE',
+      description: 'For Best opportunities',
+      suggested: false,
+      price: 'Contact',
       trail: 14,
       trailLink: '#',
       features: [
         {
           id: 1,
-          text: 'Drag & Drop Builder',
-        },
-        {
-          id: 2,
-          text: "1,000's of Templates",
-        },
-        {
-          id: 3,
-          text: 'Blog Support Tools',
-        },
-        {
-          id: 4,
-          text: 'eCommerce Store ',
-        },
-      ],
-    },
-    {
-      id: 2,
-      title: 'Enterprise',
-      description: 'For Best opportunities',
-      suggested: false,
-      price: 1299,
-      trail: 30,
-      trailLink: '#',
-      features: [
-        {
-          id: 1,
-          text: 'Drag & Drop Builder',
+          text: 'Online design Tool',
         },
         {
           id: 2,
@@ -355,13 +326,13 @@ export const pricing = {
 /* ------------------------------------ */
 // Team Portfolio data section
 /* ------------------------------------ */
-import member1 from 'common/assets/image/appModern/printcart-1.png';
-import member2 from 'common/assets/image/appModern/printcart-2.png';
-import member3 from 'common/assets/image/appModern/printcart-3.png';
-import member4 from 'common/assets/image/appModern/printcart-4.png';
-import member5 from 'common/assets/image/appModern/printcart-5.png';
-import member6 from 'common/assets/image/appModern/printcart-6.png';
-import member7 from 'common/assets/image/appModern/printcart-7.png';
+import member1 from 'common/assets/image/appModern/printcart1.png';
+import member2 from 'common/assets/image/appModern/printcart2.png';
+import member3 from 'common/assets/image/appModern/printcart3.png';
+import member4 from 'common/assets/image/appModern/printcart4.png';
+import member5 from 'common/assets/image/appModern/printcart5.png';
+import member6 from 'common/assets/image/appModern/printcart6.png';
+import member7 from 'common/assets/image/appModern/printcart7.png';
 
 export const teamportfolio = {
   title: 'Meet our awesome team members, work behind the sense',
@@ -418,7 +389,7 @@ export const testimonial = {
       id: 1,
       title: 'Modern look & trending design',
       description:
-        'Get working experience to work with this amazing team & in future want to work together for bright future projects and also make deposit to freelancer.',
+        'Get working experience to work with this amazing team & in future want to work together for bright future projects.',
       avatar:
         'https://pbs.twimg.com/profile_images/974736784906248192/gPZwCbdS.jpg',
       name: 'Jon Doe',
@@ -429,7 +400,7 @@ export const testimonial = {
       id: 2,
       title: 'User friendly & Customizable',
       description:
-        'With what your solutions contributed to the development of our business, you totally deserve this compliment. Besides high-quality, I also highly appreciate the professionalism in the way your developer teamwork and support.',
+        'With what your solutions contributed to the development of our business, you totally deserve this compliment.',
       avatar: 'https://randomuser.me/api/portraits/women/44.jpg',
       name: 'Vanessa Acook',
       designation: 'Asistant Manager',
@@ -439,7 +410,7 @@ export const testimonial = {
       id: 3,
       title: 'User friendly & Customizable',
       description:
-        'I really enjoyed when working with the solution provider. They could understand my requirement and give me suggestions for the solution that suitable for my business. So great!',
+        'Really enjoyed when working with provider. They could understand my requirement and give suggestions.',
       avatar: 'https://randomuser.me/api/portraits/men/44.jpg',
       name: 'Inez T. Hughes',
       designation: 'Leadership Group',

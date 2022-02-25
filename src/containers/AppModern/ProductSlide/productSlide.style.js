@@ -35,7 +35,7 @@ export const Container = styled.div`
   padding: 0 20px;
   display: flex;
   align-items: center;
-  margin-bottom: -65px;
+  margin-bottom: 0px;
   flex-direction: column;
   @media only screen and (max-width: 1600px) {
     ${'' /* padding: 81px; */}
@@ -278,7 +278,7 @@ export const SectionHeader = styled.section`
     color: #c2416e;
   }
   h2 {
-    max-width: 400px;
+    max-width: 600px;
     font-size: 30px;
     line-height: 1.2;
     color: #fff;

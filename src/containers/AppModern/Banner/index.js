@@ -1,15 +1,15 @@
-import React from "react";
-import Fade from "react-reveal/Fade";
-import { Icon } from "react-icons-kit";
-import { playCircle } from "react-icons-kit/fa/playCircle";
-import { openModal, closeModal } from "@redq/reuse-modal";
-import Text from "common/components/Text";
-import Image from "common/components/Image";
-import NextImage from "common/components/NextImage";
-import Button from "common/components/Button";
-import Heading from "common/components/Heading";
-import Rating from "common/components/Rating";
-import Container from "common/components/UI/Container";
+import React from 'react';
+import Fade from 'react-reveal/Fade';
+import { Icon } from 'react-icons-kit';
+import { playCircle } from 'react-icons-kit/fa/playCircle';
+import { openModal, closeModal } from '@redq/reuse-modal';
+import Text from 'common/components/Text';
+import Image from 'common/components/Image';
+import NextImage from 'common/components/NextImage';
+import Button from 'common/components/Button';
+import Heading from 'common/components/Heading';
+import Rating from 'common/components/Rating';
+import Container from 'common/components/UI/Container';
 import BannerWrapper, {
   BannerContent,
   RatingInfo,
@@ -19,15 +19,14 @@ import BannerWrapper, {
   VideoWrapper,
   CustomerWrapper,
   ImageWrapper,
-  ButtonLink,
-} from "./banner.style";
+} from './banner.style';
 
-import { client } from "common/data/AppModern";
+import { client } from 'common/data/AppModern';
 
-import bannerImg from "common/assets/image/appModern/banner6.png";
-import videoBanner1 from "common/assets/image/appModern/printcart-video-1.png";
-import videoBanner2 from "common/assets/image/appModern/printcart-video-2.png";
-import circleBorder from "common/assets/image/appModern/shape.svg";
+import bannerImg from 'common/assets/image/appModern/banner9.png';
+import videoBanner1 from 'common/assets/image/appModern/printcart-video-1.png';
+import videoBanner2 from 'common/assets/image/appModern/printcart-video-2.png';
+import circleBorder from 'common/assets/image/appModern/shape.svg';
 // close button for modal
 const CloseModalButton = () => (
   <Button
@@ -53,11 +52,11 @@ const Banner = () => {
   const handleVideoModal = () => {
     openModal({
       config: {
-        className: "video-modal",
+        className: 'video-modal',
         disableDragging: true,
         default: {
-          width: "auto",
-          height: "auto",
+          width: 'auto',
+          height: 'auto',
           x: 0,
           y: 0,
         },
@@ -73,16 +72,20 @@ const Banner = () => {
       <Container>
         <BannerContent>
           <Fade up delay={100}>
-            <Heading as="h1" content="The most progressive Web to Print Solution" />
+            <Heading
+              as="h1"
+              content="Web to Print Consultancy and Solution"
+            />
           </Fade>
           <Fade up delay={200}>
-            <Text content="We empower the SaaS web to print solutions to connect printing clients with the best printers around the globe." />
+            <Text
+              content="We empower the SaaS web to print solutions to connect printing clients with the best printers around the globe."
+            />
           </Fade>
           <Fade up delay={300}>
             <ButtonGroup>
-              <ButtonLink href="https://dashboard.printcart.com">
-                Get started for free
-              </ButtonLink>
+              <a href="https://dashboard.printcart.com/">
+              <Button className="primary" title="Start Now" /></a>
               <Button
                 className="text"
                 variant="textButton"
@@ -111,6 +114,18 @@ const Banner = () => {
           </Fade>
         </BannerImage>
       </Container>
+      <CustomerWrapper>
+        <Text content="Technology Platform:" />
+        <ImageWrapper>
+          {client.map((item) => (
+            <Image
+              key={`client-key${item.id}`}
+              src={item.image?.src}
+              alt={item.title}
+            />
+          ))}
+        </ImageWrapper>
+      </CustomerWrapper>
       <img
         className="bannerBottomShape"
         src={circleBorder?.src}

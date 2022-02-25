@@ -49,22 +49,7 @@ const PricingPolicy = () => {
           <Heading content={title} />
         </SectionHeader>
 
-        <ButtonGroup>
-          <button
-            className={state.active === 'monthly' ? 'active' : ''}
-            type="button"
-            onClick={() => handlePricingPlan('monthly')}
-          >
-            Monthly Plan
-          </button>
-          <button
-            className={state.active === 'annualy' ? 'active' : ''}
-            type="button"
-            onClick={() => handlePricingPlan('annualy')}
-          >
-            Annual Plan
-          </button>
-        </ButtonGroup>
+        
 
         <PricingArea>
           <InnerWrapper>

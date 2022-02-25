@@ -17,6 +17,7 @@ import ProductSlideWrapper, {
 
 import { productData } from 'common/data/AppModern';
 import SlideMockup from 'common/assets/image/appModern/screen.png';
+import Slideworkflow from 'common/assets/image/appModern/workflow.png';
 const params = {
   slidesPerView: 5,
   centeredSlides: true,
@@ -61,7 +62,8 @@ const ProductSlide = () => {
             <Heading content={title} />
           </Fade>
         </SectionHeader>
-        <CarouselArea>
+        <Image src={Slideworkflow?.src} alt="workflow" />
+        {/* <CarouselArea>
           {loading ? (
             <Fragment>
               <MockupWrapper>
@@ -85,7 +87,7 @@ const ProductSlide = () => {
               <div className="circle"></div>
             </CircleLoader>
           )}
-        </CarouselArea>
+        </CarouselArea> */}
         {/* End of carousel section */}
       </Container>
     </ProductSlideWrapper>

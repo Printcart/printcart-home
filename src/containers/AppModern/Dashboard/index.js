@@ -15,7 +15,7 @@ import DashboardObject1 from 'common/assets/image/appModern/dashboard-printcart.
 const DashboardSection = ({ row, col, title, btnStyle, description }) => {
   const ButtonGroup = () => (
     <Fragment>
-      <Button title="FREE TRAIL" {...btnStyle} />
+      <a href="https://dashboard.printcart.com/signin"><Button title="FREE INSTALL" {...btnStyle} /></a>
     </Fragment>
   );
   return (

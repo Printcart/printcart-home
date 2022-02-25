@@ -25,7 +25,7 @@ const SectionWrapper = styled.div`
 
 export const CarouseWrapper = styled.div`
   width: calc(100% - 428px);
-  background-image: url(${circleBg?.src});
+  // background-image: url(${circleBg?.src});
   background-repeat: no-repeat;
   background-position: center center;
   @media only screen and (max-width: 1366px) {

@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { themeGet } from "@styled-system/theme-get";
+import styled from 'styled-components';
+import { themeGet } from '@styled-system/theme-get';
 
 const BannerWrapper = styled.div`
   padding-top: 100px;
@@ -13,8 +13,8 @@ const BannerWrapper = styled.div`
   );
   background-image: -webkit-linear-gradient(
     139deg,
-    rgb(100, 43, 115) 0%,
-    rgb(66, 77, 198) 100%
+    rgb(146, 207, 198) 0%,
+    rgb(4, 18, 187) 100%
   );
   background-image: -ms-linear-gradient(
     139deg,
@@ -70,7 +70,7 @@ export const BannerContent = styled.div`
     font-size: 46px;
     line-height: 55px;
     font-weight: 700;
-    color: ${themeGet("colors.menu", "#0D233E")};
+    color: ${themeGet('colors.menu', '#0D233E')};
     margin-bottom: 24px;
     @media only screen and (max-width: 1366px) {
       font-size: 32px;
@@ -90,12 +90,12 @@ export const RatingInfo = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 22px;
-  color: ${themeGet("colors.menu", "#0D233E")};
+  color: ${themeGet('colors.menu', '#0D233E')};
 
   .rating {
     margin-right: 10px;
     .star {
-      color: ${themeGet("colors.white", "#fff")};
+      color: ${themeGet('colors.white', '#fff')};
     }
     .star-o {
       color: #e8e8e8;
@@ -131,7 +131,7 @@ export const ButtonGroup = styled.div`
     padding-right: 16px;
 
     &.primary {
-      background-color: ${themeGet("colors.white", "#fff")};
+      background-color: ${themeGet('colors.white', '#fff')};
       color: rgb(15, 33, 55);
       font-size: 16px;
       letter-spacing: -0.1px;
@@ -142,7 +142,7 @@ export const ButtonGroup = styled.div`
 
     &.text {
       font-size: 16px;
-      color: ${themeGet("colors.white", "#fff")};
+      color: ${themeGet('colors.white', '#fff')};
       letter-spacing: -0.1px;
       font-weight: 500;
       .btn-icon {
@@ -173,7 +173,7 @@ export const VideoGroup = styled.div`
     cursor: pointer;
     height: 100%;
     @media only screen and (max-width: 600px) {
-      margin-right: 0;
+      margin-right: 10;
       margin-bottom: 15px;
     }
   }
@@ -183,7 +183,7 @@ export const VideoWrapper = styled.div`
   width: 900px;
   position: relative;
   &:before {
-    content: "";
+    content: '';
     display: block;
     padding-top: 56.25%;
   }
@@ -218,7 +218,7 @@ export const CustomerWrapper = styled.div`
 
   p {
     margin: 0 12px 0 0;
-    color: ${themeGet("colors.menu", "#0D233E")};
+    color: ${themeGet('colors.menu', '#0D233E')};
     @media only screen and (max-width: 991px) {
       display: none;
     }
@@ -240,11 +240,4 @@ export const ImageWrapper = styled.div`
     }
   }
 `;
-
-export const ButtonLink = styled.a`
-  padding: 16px;
-  background-color: #fff;
-  border-radius: 6px;
-`;
-
 export default BannerWrapper;

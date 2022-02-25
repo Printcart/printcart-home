@@ -87,13 +87,13 @@ const Navbar = () => {
     <NavbarWrapper className="navbar">
       <Container>
         <Logo
-          href="/appmodern"
+          href="/"
           logoSrc={LogoImage}
           title="App Modern"
           className="main-logo"
         />
         <Logo
-          href="/appmodern"
+          href="/"
           logoSrc={LogoImageAlt}
           title="App Modern"
           className="logo-alt"
@@ -122,8 +122,8 @@ const Navbar = () => {
           </Search>
           {/* end of search */}
 
-          <AnchorLink href="#trail" offset={84}>
-            <Button className="trail" title="Get started for Free" />
+          <AnchorLink href="#banner_section" offset={84}>
+            <Button className="trail" title="Start Free" />
           </AnchorLink>
 
           <Button
@@ -165,7 +165,7 @@ const Navbar = () => {
               </li>
             ))}
           </Scrollspy>
-          <Button title="Try for Free" />
+          <Button title="It Free" />
         </Container>
       </MobileMenu>
       {/* end of mobile menu */}
