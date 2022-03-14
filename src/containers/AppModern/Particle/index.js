@@ -1,5 +1,5 @@
 import React from 'react';
-import Particles from 'tsparticles';
+import Particles from 'react-tsparticles';
 
 import Particle1 from 'common/assets/image/appModern/particles/particle-1.png';
 import Particle2 from 'common/assets/image/appModern/particles/particle-2.png';
