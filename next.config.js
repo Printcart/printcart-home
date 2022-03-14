@@ -14,7 +14,7 @@ const nextConfig = {
       },
       {
         source: '/5-tips-to-succeed-in-an-online-printing-business',
-        destination: 'https://solution.printcart.com/2019/08/29/5-tips-to-succeed-in-an-online-printing-business',
+        destination: 'https://solution.printcart.com/5-tips-to-succeed-in-an-online-printing-business',
         permanent: false,
       },
       {
