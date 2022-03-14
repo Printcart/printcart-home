@@ -5,6 +5,45 @@ const nextConfig = {
   images: {
     domains: ['pbs.twimg.com'],
   },
+  async redirects() {
+    return [
+      {
+        source: '/top-7-t-shirt-niche-list-and-print-on-demand-product-ideas',
+        destination: 'https://solution.printcart.com/top-7-t-shirt-niche-list-and-print-on-demand-product-ideas',
+        permanent: true,
+      },
+      {
+        source: '/5-tips-to-succeed-in-an-online-printing-business',
+        destination: 'https://solution.printcart.com/2019/08/29/5-tips-to-succeed-in-an-online-printing-business',
+        permanent: true,
+      },
+      {
+        source: '/the-most-popular-print-on-demand-product-2020',
+        destination: 'https://solution.printcart.com/the-most-popular-print-on-demand-product-2020',
+        permanent: true,
+      },
+      {
+        source: '/6-things-you-should-know-about-print-on-demand-pod',
+        destination: 'https://solution.printcart.com/6-things-you-should-know-about-print-on-demand-pod',
+        permanent: true,
+      },
+      {
+        source: '/6-tips-to-increase-dramatically-profits-for-your-t-shirt-business',
+        destination: 'https://solution.printcart.com/6-tips-to-increase-dramatically-profits-for-your-t-shirt-business',
+        permanent: true,
+      },
+      {
+        source: '/promoting-online-printing-designs-on-instagram',
+        destination: 'https://solution.printcart.com/promoting-online-printing-designs-on-instagram',
+        permanent: true,
+      },
+      {
+        source: '/start-a-print-on-demand-t-shirt-business',
+        destination: 'https://solution.printcart.com/start-a-print-on-demand-t-shirt-business',
+        permanent: true,
+      },
+    ]
+  },
 };
 
 module.exports = withPlugins([], nextConfig);
