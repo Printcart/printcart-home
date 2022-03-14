@@ -40,7 +40,7 @@ export const CarouseWrapper = styled.div`
     align-self: flex-start;
   }
   .glide {
-    width: 337px;
+    width: 529px;
     margin: 0 auto;
     position: relative;
     @media only screen and (max-width: 991px) {

@@ -74,12 +74,12 @@ const Banner = () => {
           <Fade up delay={100}>
             <Heading
               as="h1"
-              content="Web to Print Consultancy and Solution"
+              content="Start Recieving Custom Printing Order from your Printshop"
             />
           </Fade>
           <Fade up delay={200}>
             <Text
-              content="We empower the SaaS web to print solutions to connect printing clients with the best printers around the globe."
+              content="Smoothly integrate  Product Designer into any storefonts via our API and SDK, it's free!"
             />
           </Fade>
           <Fade up delay={300}>

@@ -14,28 +14,29 @@ export const navbar = {
     },
     {
       id: 2,
-      label: 'Solutions',
-      path: '#features',
+      label: 'Service',
+      path: '#home',
       offset: '81',
     },
     {
       id: 3,
-      label: 'Testimonial',
-      path: '#testimonial',
+      label: 'Blog',
+      path: '#home',
       offset: '81',
     },
     {
       id: 4,
-      label: 'Dashboard',
-      path: '#banner_section',
+      label: 'Contact',
+      path: '#home',
       offset: '81',
     },
     {
       id: 5,
-      label: 'Team Members',
-      path: '#team',
+      label: 'Resource',
+      path: '#home',
       offset: '81',
     },
+  
   ],
 };
 
@@ -79,8 +80,8 @@ import featureIcon3 from 'common/assets/image/appModern/icon3.svg';
 import featureIcon4 from 'common/assets/image/appModern/icon4.svg';
 
 export const features = {
-  slogan: 'About Our Solutions',
-  title: 'Printing Business 4.0',
+  slogan: 'Cloud Print Commerce Platform',
+  title: 'ENTERPRISE CLOUD PRINTING TECHNOLOGY',
   items: [
     {
       id: 1,
@@ -135,36 +136,36 @@ export const appSlider = {
     {
       id: 2,
       image: appSlide2,
-      title: 'App Slide 1',
+      title: 'App Slide 2',
     },
     {
       id: 3,
       image: appSlide3,
-      title: 'App Slide 1',
+      title: 'App Slide 3',
     },
   ],
-  title: 'A Future for Printing Industry',
+  title: 'The Re-Invention of Printing Industry',
   description:
     "We are proud of applying innovative ideas and technologies in eCommerce to transform the printing industry with lower costs and better operations.",
   features: [
     {
       id: 1,
       icon: appIcon,
-      title: 'Professional Website',
-      description: 'Build web to print quickly with the professional-looking interface.',
+      title: 'Cloud Print API Techology',
+      description: 'Manage entire print job workflow seamlessly from product, project, design on a Dashboard',
     },
     {
       id: 2,
       icon: appIcon,
-      title: 'Easy & powerful dashboard',
+      title: 'Print Ecommerce Storefront',
       description:
-        'Manage everything related to you easily, from product, project, design.',
+        'Sell any printing product via omni- channels with custom designer, pricing matrix or order upload',
     },
     {
       id: 3,
       icon: appIcon,
-      title: 'Customer Support',
-      description: 'A Dedicated support team will be always ready for you.',
+      title: 'Shipping & Fullfillment API',
+      description: 'Simplify the connection between POD partner with designer, marketer and printshop agency',
     },
   ],
 };
@@ -337,7 +338,7 @@ import member7 from 'common/assets/image/appModern/printcart7.png';
 export const teamportfolio = {
   title: 'Meet our awesome team members, work behind the sense',
   description:
-    'Team members commit to using technology to benefit clients',
+    'Printcart is a business domain division of the Netbase teams that have been providing web to print products and services since 2012.',
 
   teammember: [
     {
