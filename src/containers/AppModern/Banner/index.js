@@ -79,7 +79,7 @@ const Banner = () => {
           </Fade>
           <Fade up delay={300}>
             <ButtonGroup>
-              <a href="http://localhost:3001/signup?redirect=step-wizard">
+              <a href="https://dashboard.printcart.com/signup" target="_blank">
                 <Button className="primary" title="Start Now" />
               </a>
               <Button
