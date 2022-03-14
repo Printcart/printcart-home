@@ -101,9 +101,20 @@ const Navbar = () => {
         {/* end of logo */}
 
         <MenuArea className={state.searchToggle ? 'active' : ''}>
-          <ScrollSpyMenu className="menu" menuItems={navMenu} offset={-84} />
+          {/* <ScrollSpyMenu className="menu" menuItems={navMenu} offset={-84} /> */}
           {/* end of main menu */}
-
+          <nav>
+          <div class="nav-wrapper">
+      <ul id="nav-mobile" className="menu" style={navbar}>
+        <li><a href="#" offset={84}>Home</a></li>
+        <li><a href="https://solution.printcart.com/" target="_blank" rel="nofollow" offset={84}>Service</a></li>
+        <li><a href="https://solution.printcart.com/blogs/" target="_blank" rel="nofollow" offset={84}>Blog</a></li>
+        <li><a href="https://discord.gg/sy4RxH35" target="_blank" rel="nofollow" offset={84}>Contact</a></li>
+        <li><a href="https://docs.printcart.com/" target="_blank" offset={84}>Resource</a></li>
+      </ul>
+          </div>
+          </nav>
+          
           <Search className="search" ref={searchRef}>
             <form onSubmit={handleSearchForm}>
               <input
@@ -122,9 +133,9 @@ const Navbar = () => {
           </Search>
           {/* end of search */}
 
-          <AnchorLink href="#banner_section" offset={84}>
-            <Button className="trail" title="Start Free" />
-          </AnchorLink>
+          <a href="https://dashboard.printcart.com/" target="_blank" offset={84}>
+            <Button className="trail" title="Dashboard" />
+          </a>
 
           <Button
             className="menubar"
