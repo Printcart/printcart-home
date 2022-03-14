@@ -55,7 +55,9 @@ const TeamPortfolioSection = () => {
           <div className="content">
             <Heading content={title} />
             <Text content={description} />
-            <Button title="Learn More" />
+            <a href="https://dashboard.printcart.com/" target="_blank" offset={84}>
+            <Button title="Contact Us" />
+            </a>
           </div>
         </ContentWrapper>
       </Container>
