@@ -19,6 +19,7 @@ export const ContentWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  justify-content: center;
   text-align: center;
   .image {
     width: calc(100% - 410px);

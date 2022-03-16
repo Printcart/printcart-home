@@ -45,7 +45,7 @@ const Footer = () => {
             {menu.map((item) => (
               <MenuItem key={`footer-link${item.id}`}>
                 <Link href={item.link}>
-                  <a>{item.text}</a>
+                  <a target="_blank" rel="nofollow">{item.text}</a>
                 </Link>
               </MenuItem>
             ))}
