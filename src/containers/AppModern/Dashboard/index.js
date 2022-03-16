@@ -15,7 +15,7 @@ import DashboardObject1 from 'common/assets/image/appModern/dashboard-printcart.
 const DashboardSection = ({ row, col, title, btnStyle, description }) => {
   const ButtonGroup = () => (
     <Fragment>
-      <a href="https://dashboard.printcart.com"><Button title="Printcart Dashboard" {...btnStyle} /></a>
+      {/* <a href="https://dashboard.printcart.com"><Button title="Printcart Dashboard" {...btnStyle} /></a> */}
     </Fragment>
   );
   return (
@@ -24,17 +24,17 @@ const DashboardSection = ({ row, col, title, btnStyle, description }) => {
       <Container>
         <Box className="row" {...row}>
           <Box className="col" {...col}>
-            <Heading className="subtitle" as="h5" content="PRINTCART DASHBOARD" />
+            <Heading className="subtitle" as="h5" content="CUSTOM DESIGNER" />
             <FeatureBlock
               title={
                 <Heading
-                  content="Meet the dashboard features of our design management."
+                  content="Integrate Product Designer into any storefonts."
                   {...title}
                 />
               }
               description={
                 <Text
-                  content="We help to create SaaS tools that are innovative, differentiated with a superb User Experience, fully accessible through mobile devices. API products are changing the technology world and our PRINTCART is one of them."
+                  content="With our Product Designer API and SDK, your client  can design and customize a product to fit their needs, which will drive customer satisfaction and additional revenue growth on your site."
                   {...description}
                 />
               }

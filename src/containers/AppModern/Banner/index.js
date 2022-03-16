@@ -72,14 +72,14 @@ const Banner = () => {
       <Container>
         <BannerContent>
           <Fade up delay={100}>
-            <Heading as="h1" content="Web to Print Consultancy and Solution" />
+            <Heading as="h1" content="Start Recieving Custom Printing Order from your Printshop" />
           </Fade>
           <Fade up delay={200}>
-            <Text content="We empower the SaaS web to print solutions to connect printing clients with the best printers around the globe." />
+            <Text content="Printcart includes modules that will help you to both promote your print business and sell your design and print services online." />
           </Fade>
           <Fade up delay={300}>
             <ButtonGroup>
-              <a href="http://localhost:3001/signup?redirect=step-wizard">
+              <a href="https://dashboard.printcart.com/signup">
                 <Button className="primary" title="Start Now" />
               </a>
               <Button

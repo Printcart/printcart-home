@@ -25,7 +25,7 @@ const AppModern = () => {
     <ThemeProvider theme={theme}>
       <>
         <Head>
-          <title>App Modern | A next js landing page</title>
+          <title>Printcart | Innovative Print Commerce Partner</title>
           <meta name="Description" content="React next landing page" />
           <meta name="theme-color" content="#2563FF" />
           <meta

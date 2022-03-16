@@ -177,10 +177,10 @@ import codingImage from 'common/assets/image/appModern/printcart-code.png';
 
 export const designAndBuilt = {
   image: codingImage,
-  slogan: 'INTEGRATION',
-  title: 'Introducing customization solutions',
+  slogan: 'PRINTJOB WORKFLOW',
+  title: 'Custom Printjob Workflow Development',
   description:
-    'Printcart consists of multiple services and API - SDK that can be used for various web-to-print tasks. Whether you are integrating your storefront or looking for ways to extend Printcart, the following guides will help you build your workflow business.',
+    'Printcart team is open with any customization and automation workflow project',
 };
 
 /* ------------------------------------ */
@@ -191,8 +191,8 @@ import slide2 from 'common/assets/image/appModern/printcart-page-2.png';
 import slide3 from 'common/assets/image/appModern/printcart-page-3.png';
 
 export const productData = {
-  slogan: 'HIGHLIGHT FEATURES',
-  title: 'Meet Client satisfaction by updating the latest features',
+  slogan: 'PRINTING READY',
+  title: 'Start receiving custom orders with print-ready files',
   carousel: [
     {
       id: 1,
@@ -336,7 +336,7 @@ import member6 from 'common/assets/image/appModern/printcart6.png';
 import member7 from 'common/assets/image/appModern/printcart7.png';
 
 export const teamportfolio = {
-  title: 'Meet our awesome team members, work behind the sense',
+  title: 'Our core team is Print Commerce Expert',
   description:
     'Printcart is a business domain division of the Netbase teams that have been providing web to print products and services since 2012.',
 
@@ -383,8 +383,8 @@ export const teamportfolio = {
 // Testimonial data section
 /* ------------------------------------ */
 export const testimonial = {
-  slogan: 'TESTIMONIAL',
-  title: 'Meet Client Satisfaction by using product',
+  slogan: 'PARTNER TESTIMONIAL',
+  title: '10k+ partners during 10 years of services',
   reviews: [
     {
       id: 1,
@@ -436,6 +436,7 @@ export const footer = {
       title: 'Visit our user guide documents',
       description:
         'You will find out everything you need to start Printing Business with PRINTCART Technology Solution',
+      link: 'https://docs.printcart.com/',
     },
     {
       id: 2,
@@ -461,23 +462,23 @@ export const footer = {
     },
     {
       id: 2,
-      text: 'Adversite',
-      link: '#',
+      text: 'Documentation',
+      link: 'https://docs.printcart.com/',
     },
     {
       id: 3,
-      text: 'Supports',
-      link: '#',
+      text: 'Github',
+      link: 'https://github.com/printcart',
     },
     {
       id: 4,
-      text: 'Marketing',
-      link: '#',
+      text: 'Linkedin',
+      link: 'https://www.linkedin.com/company/printcart/',
     },
     {
       id: 5,
-      text: 'Contact',
-      link: '#',
+      text: 'Discord',
+      link: 'https://discord.gg/sy4RxH35',
     },
   ],
 };
