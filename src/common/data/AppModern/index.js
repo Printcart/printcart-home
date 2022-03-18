@@ -184,6 +184,17 @@ export const designAndBuilt = {
 };
 
 /* ------------------------------------ */
+// Design and built before data section
+/* ------------------------------------ */
+export const designAndBuiltBefore = {
+  image: codingImage,
+  slogan: 'PRINTJOB WOasdasdRKFLOW',
+  title: 'Custom Printjob Wosadrkflow Development',
+  description:
+    'Printcart team is open with any customization and automation workflow project',
+};
+
+/* ------------------------------------ */
 // Product  Slide  section
 /* ------------------------------------ */
 import slide1 from 'common/assets/image/appModern/printcart-page-1.png';
@@ -426,6 +437,9 @@ export const testimonial = {
 import chat from 'common/assets/image/appModern/chat.svg';
 import group from 'common/assets/image/appModern/group.svg';
 import github from 'common/assets/image/appModern/github.svg';
+import linkedin from 'common/assets/image/appModern/linkedin.svg';
+import discord from 'common/assets/image/appModern/discord.svg';
+import support from 'common/assets/image/appModern/support.svg';
 import footerLogo from 'common/assets/image/appModern/Logo-printcart-white.png';
 
 export const footer = {
@@ -436,7 +450,7 @@ export const footer = {
       title: 'Visit our user guide documents',
       description:
         'You will find out everything you need to start Printing Business with PRINTCART Technology Solution',
-      link: 'https://docs.printcart.com/',
+      url: 'https://docs.printcart.com/',
     },
     {
       id: 2,
@@ -444,6 +458,7 @@ export const footer = {
       title: 'Join in Chat Community',
       description:
         'Join our social networking community to discuss the best solution for your printing business.',
+      url: 'https://docs.printcart.com/',
     },
     {
       id: 3,
@@ -451,6 +466,31 @@ export const footer = {
       title: 'Github Access',
       description:
         'Join discuss, build and develop technology to bring the best solution for the printing business.',
+      url: 'https://docs.printcart.com/',
+    },
+    {
+      id: 4,
+      icon: linkedin,
+      title: 'Visit our user guide documents',
+      description:
+        'You will find out everything you need to start Printing Business with PRINTCART Technology Solution',
+      url: 'https://docs.printcart.com/',
+    },
+    {
+      id: 5,
+      icon: discord,
+      title: 'Join in Chat Community',
+      description:
+        'Join our social networking community to discuss the best solution for your printing business.',
+      url: 'https://docs.printcart.com/',
+    },
+    {
+      id: 6,
+      icon: support,
+      title: 'Github Access',
+      description:
+        'Join discuss, build and develop technology to bring the best solution for the printing business.',
+      url: 'https://docs.printcart.com/',
     },
   ],
   logo: footerLogo,

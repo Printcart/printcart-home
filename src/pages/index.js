@@ -10,6 +10,7 @@ import Features from 'containers/AppModern/Features';
 import DashboardFeatures from 'containers/AppModern/Dashboard';
 import ProductSlide from 'containers/AppModern/ProductSlide';
 import DesignedAndBuilt from 'containers/AppModern/DesignedAndBuilt';
+import DesignedAndBuiltBefore from 'containers/AppModern/DesignedAndBuiltBefore';
 // import PricingPolicy from 'containers/AppModern/PricingPolicy';
 import TeamPortfolio from 'containers/AppModern/TeamPortfoilo';
 import Testimonial from 'containers/AppModern/Testimonial';
@@ -56,6 +57,7 @@ const AppModern = () => {
             <Testimonial />
             <ProductSlide />
             <DesignedAndBuilt />
+            <DesignedAndBuiltBefore />
             {/* <PricingPolicy /> */}
             <TeamPortfolio />
             <Newsletter />

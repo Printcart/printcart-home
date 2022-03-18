@@ -10,7 +10,7 @@ import Container from 'common/components/UI/Container';
 import Particles from '../Particle';
 import DashboardWrapper, { DashboardObject } from './dashboard.style';
 
-import DashboardObject1 from 'common/assets/image/appModern/dashboard-printcart.png';
+import DashboardObject1 from 'common/assets/image/appModern/banner9.png';
 
 const DashboardSection = ({ row, col, title, btnStyle, description }) => {
   const ButtonGroup = () => (
