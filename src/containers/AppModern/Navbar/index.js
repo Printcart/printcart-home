@@ -109,7 +109,7 @@ const Navbar = () => {
         <li><a href="#" offset={84}>Home</a></li>
         <li><a href="https://solution.printcart.com/" target="_blank" rel="nofollow" offset={84}>Service</a></li>
         <li><a href="https://solution.printcart.com/blogs/" target="_blank" rel="nofollow" offset={84}>Blog</a></li>
-        <li><a href="https://discord.gg/sy4RxH35" target="_blank" rel="nofollow" offset={84}>Contact</a></li>
+        <li><a href="https://solution.printcart.com/contact/" target="_blank" rel="nofollow" offset={84}>Support</a></li>
         <li><a href="https://docs.printcart.com/" target="_blank" offset={84}>Resource</a></li>
       </ul>
           </div>

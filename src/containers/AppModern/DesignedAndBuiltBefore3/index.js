@@ -5,11 +5,10 @@ import NextImage from 'common/components/NextImage';
 import Container from 'common/components/UI/Container';
 import SectionWrapper, { ContentWrapper } from './designedAndBuilt.style';
 
-import { designAndBuilt } from 'common/data/AppModern';
-// import DesignedAndBuilt from '../DesignedAndBuilt';
+import { designAndBuiltBefore3 } from 'common/data/AppModern';
 
-const DesignedAndBuilt= () => {
-  const { image, title, slogan, description } = designAndBuilt;
+const DesignedAndBuiltBefore3 = () => {
+  const { image, title, slogan, description } = designAndBuiltBefore3;
 
   return (
     <SectionWrapper>
@@ -29,4 +28,4 @@ const DesignedAndBuilt= () => {
   );
 };
 
-export default DesignedAndBuilt;
+export default DesignedAndBuiltBefore3;

@@ -11,6 +11,7 @@ import DashboardFeatures from 'containers/AppModern/Dashboard';
 import ProductSlide from 'containers/AppModern/ProductSlide';
 import DesignedAndBuilt from 'containers/AppModern/DesignedAndBuilt';
 import DesignedAndBuiltBefore from 'containers/AppModern/DesignedAndBuiltBefore';
+import DesignedAndBuiltBefore3 from 'containers/AppModern/DesignedAndBuiltBefore3';
 // import PricingPolicy from 'containers/AppModern/PricingPolicy';
 import TeamPortfolio from 'containers/AppModern/TeamPortfoilo';
 import Testimonial from 'containers/AppModern/Testimonial';
@@ -20,6 +21,7 @@ import GlobalStyle, {
   AppWrapper,
   ContentWrapper,
 } from 'containers/AppModern/appModern.style';
+
 
 const AppModern = () => {
   return (
@@ -58,6 +60,7 @@ const AppModern = () => {
             <ProductSlide />
             <DesignedAndBuilt />
             <DesignedAndBuiltBefore />
+            <DesignedAndBuiltBefore3 />
             {/* <PricingPolicy /> */}
             <TeamPortfolio />
             <Newsletter />
