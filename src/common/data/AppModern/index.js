@@ -488,7 +488,7 @@ export const footer = {
       icon: linkedin,
       title: 'Shop Owners Support',
       description:
-        'You will find out everything you need to start Printing Business with PRINTCART Technology Solution',
+        'You can contact and require support everything you need to start Printing Business with Printcart Solution',
       url: 'https://www.linkedin.com/groups/14069135/',
     },
     {
@@ -496,16 +496,16 @@ export const footer = {
       icon: discord,
       title: 'Developers Support',
       description:
-        'Join our social networking community to discuss the best solution for your printing business.',
+        'Join our Discord Social to discuss the Technology solution for printing business with Printcart API',
       url: 'https://discord.gg/sjMcm5N6',
     },
     {
       id: 6,
       icon: support,
-      title: 'Support',
+      title: 'Investment',
       description:
-        'Join discuss, build and develop technology to bring the best solution for the printing business.',
-      url: 'https://solution.printcart.com/contact/',
+        'Read Our Pitch Desk to Understand Vision and Mision of Printcart. Let develop online printing business community with us.',
+      url: 'https://www.linkedin.com/feed/update/urn:li:activity:6896778333812604928/',
     },
   ],
   logo: footerLogo,
@@ -520,20 +520,20 @@ export const footer = {
       text: 'Documentation',
       link: 'https://docs.printcart.com/',
     },
-    {
-      id: 3,
-      text: 'Github',
-      link: 'https://github.com/printcart',
-    },
-    {
-      id: 4,
-      text: 'Linkedin',
-      link: 'https://www.linkedin.com/company/printcart/',
-    },
-    {
-      id: 5,
-      text: 'Discord',
-      link: 'https://discord.gg/sy4RxH35',
-    },
+    // {
+    //   id: 3,
+    //   text: 'Github',
+    //   link: 'https://github.com/printcart',
+    // },
+    // {
+    //   id: 4,
+    //   text: 'Linkedin',
+    //   link: 'https://www.linkedin.com/company/printcart/',
+    // },
+    // {
+    //   id: 5,
+    //   text: 'Discord',
+    //   link: 'https://discord.gg/sy4RxH35',
+    // },
   ],
 };
