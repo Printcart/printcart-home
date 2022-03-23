@@ -173,7 +173,8 @@ export const appSlider = {
 /* ------------------------------------ */
 // Design and built data section
 /* ------------------------------------ */
-import codingImage from 'common/assets/image/appModern/printcart-code.png';
+import codingImage from 'common/assets/image/appModern/printcart-workflow.png';
+
 
 export const designAndBuilt = {
   image: codingImage,
@@ -183,6 +184,31 @@ export const designAndBuilt = {
     'Printcart team is open with any customization and automation workflow project',
 };
 
+/* ------------------------------------ */
+// Design and built before data section
+/* ------------------------------------ */
+import codingImage2 from 'common/assets/image/appModern/printcart-workflow-2.png';
+
+export const designAndBuiltBefore = {
+  image: codingImage2,
+  slogan: 'PRINTSHOP STOREFRONT SOLUTION',
+  title: 'Supply a ready Storefront Website for Printer',
+  description:
+    'The Complete Web 2 Print Management System. Ready To Streamline Your Business.',
+};
+
+/* ------------------------------------ */
+// Design and built before3 data section
+/* ------------------------------------ */
+import codingImage3 from 'common/assets/image/appModern/printcart-workflow3-product.gif';
+
+export const designAndBuiltBefore3 = {
+  image: codingImage3,
+  slogan: 'COMMERCIAL PRINTING PRODUCTS',
+  title: 'Personalize Any Product and send them to printing',
+  description:
+    'Allows your users to design the products as per their needs and purchase them in your Printshop.',
+};
 /* ------------------------------------ */
 // Product  Slide  section
 /* ------------------------------------ */
@@ -426,6 +452,9 @@ export const testimonial = {
 import chat from 'common/assets/image/appModern/chat.svg';
 import group from 'common/assets/image/appModern/group.svg';
 import github from 'common/assets/image/appModern/github.svg';
+import linkedin from 'common/assets/image/appModern/linkedin.svg';
+import discord from 'common/assets/image/appModern/discord.svg';
+import support from 'common/assets/image/appModern/support.svg';
 import footerLogo from 'common/assets/image/appModern/Logo-printcart-white.png';
 
 export const footer = {
@@ -436,7 +465,7 @@ export const footer = {
       title: 'Visit our user guide documents',
       description:
         'You will find out everything you need to start Printing Business with PRINTCART Technology Solution',
-      link: 'https://docs.printcart.com/',
+      url: 'https://docs.printcart.com/',
     },
     {
       id: 2,
@@ -444,6 +473,7 @@ export const footer = {
       title: 'Join in Chat Community',
       description:
         'Join our social networking community to discuss the best solution for your printing business.',
+      url: 'https://t.me/printcart',
     },
     {
       id: 3,
@@ -451,6 +481,31 @@ export const footer = {
       title: 'Github Access',
       description:
         'Join discuss, build and develop technology to bring the best solution for the printing business.',
+      url: 'https://github.com/printcart',
+    },
+    {
+      id: 4,
+      icon: linkedin,
+      title: 'Shop Owners Support',
+      description:
+        'You can contact and require support everything you need to start Printing Business with Printcart Solution',
+      url: 'https://www.linkedin.com/groups/14069135/',
+    },
+    {
+      id: 5,
+      icon: discord,
+      title: 'Developers Support',
+      description:
+        'Join our Discord Social to discuss the Technology solution for printing business with Printcart API',
+      url: 'https://discord.gg/sjMcm5N6',
+    },
+    {
+      id: 6,
+      icon: support,
+      title: 'Investment',
+      description:
+        'Read Our Pitch Desk to Understand Vision and Mision of Printcart. Let develop online printing business community with us.',
+      url: 'https://www.linkedin.com/feed/update/urn:li:activity:6896778333812604928/',
     },
   ],
   logo: footerLogo,
@@ -465,20 +520,20 @@ export const footer = {
       text: 'Documentation',
       link: 'https://docs.printcart.com/',
     },
-    {
-      id: 3,
-      text: 'Github',
-      link: 'https://github.com/printcart',
-    },
-    {
-      id: 4,
-      text: 'Linkedin',
-      link: 'https://www.linkedin.com/company/printcart/',
-    },
-    {
-      id: 5,
-      text: 'Discord',
-      link: 'https://discord.gg/sy4RxH35',
-    },
+    // {
+    //   id: 3,
+    //   text: 'Github',
+    //   link: 'https://github.com/printcart',
+    // },
+    // {
+    //   id: 4,
+    //   text: 'Linkedin',
+    //   link: 'https://www.linkedin.com/company/printcart/',
+    // },
+    // {
+    //   id: 5,
+    //   text: 'Discord',
+    //   link: 'https://discord.gg/sy4RxH35',
+    // },
   ],
 };

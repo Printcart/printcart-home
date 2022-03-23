@@ -23,7 +23,7 @@ import BannerWrapper, {
 
 import { client } from "common/data/AppModern";
 
-import bannerImg from "common/assets/image/appModern/banner9.png";
+import bannerImg from "common/assets/image/appModern/dashboard-printcart.png";
 import videoBanner1 from "common/assets/image/appModern/printcart-video-1.png";
 import videoBanner2 from "common/assets/image/appModern/printcart-video-2.png";
 import circleBorder from "common/assets/image/appModern/shape.svg";

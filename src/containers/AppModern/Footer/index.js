@@ -27,7 +27,7 @@ const Footer = () => {
         <WidgetArea>
           {widgets.map((item) => (
             <Box className="col" key={`footer-widget--key${item.id}`}>
-              <Image src={item.icon?.src} alt={item.title} />
+              <a href={item.url} target="_blank" rel="nofollow"><Image src={item.icon?.src} alt={item.title} /></a>
               <Heading as="h3" content={item.title} />
               <Text content={item.description} />
             </Box>
@@ -41,7 +41,7 @@ const Footer = () => {
             logoSrc={logo}
             title="App Classic"
           />
-          <Menu>
+          {/* <Menu>
             {menu.map((item) => (
               <MenuItem key={`footer-link${item.id}`}>
                 <Link href={item.link}>
@@ -49,7 +49,7 @@ const Footer = () => {
                 </Link>
               </MenuItem>
             ))}
-          </Menu>
+          </Menu> */}
           <CopyrightText>Copyright {year} By PRINTCART</CopyrightText>
         </MenuArea>
         {/* End of footer menu area */}
