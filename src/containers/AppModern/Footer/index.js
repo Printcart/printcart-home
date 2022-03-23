@@ -41,7 +41,7 @@ const Footer = () => {
             logoSrc={logo}
             title="App Classic"
           />
-          <Menu>
+          {/* <Menu>
             {menu.map((item) => (
               <MenuItem key={`footer-link${item.id}`}>
                 <Link href={item.link}>
@@ -49,7 +49,7 @@ const Footer = () => {
                 </Link>
               </MenuItem>
             ))}
-          </Menu>
+          </Menu> */}
           <CopyrightText>Copyright {year} By PRINTCART</CopyrightText>
         </MenuArea>
         {/* End of footer menu area */}
