@@ -209,6 +209,33 @@ export const designAndBuiltBefore3 = {
   description:
     'Allows your users to design the products as per their needs and purchase them in your Printshop.',
 };
+
+/* ------------------------------------ */
+// Design and built before4 data section
+/* ------------------------------------ */
+import codingImage4 from 'common/assets/image/appModern/ecommerce.png';
+
+export const designAndBuiltBefore4 = {
+  image: codingImage4,
+  slogan: 'API FIRST COMMERCE',
+  title: '',
+  description:
+    'You can build applications to manage the commerce features of a merchant site',
+};
+
+/* ------------------------------------ */
+// Code data section
+/* ------------------------------------ */
+import codeImage from 'common/assets/image/appModern/code-3.png';
+
+export const designAndBuiltcode = {
+  image: codeImage,
+  slogan: 'PRINTCART REST API',
+  title: 'Interact with data from your Printcart account.',
+  description:
+    'The Printcart API uses predictable resource-oriented URLs, standard HTTP verbs, and response codes, and accepts and returns JSON-encoded request and response bodies.',
+};
+
 /* ------------------------------------ */
 // Product  Slide  section
 /* ------------------------------------ */
