@@ -41,12 +41,20 @@ const ModalContent = () => (
   <VideoWrapper>
     <iframe
       title="Video"
-      src="https://www.youtube.com/embed/Vbf6AfVwqOM"
+      src="https://www.youtube.com/embed/-IQCCE_JJsA"
       frameBorder="0"
     />
   </VideoWrapper>
 );
-
+const ModalContent2 = () => (
+  <VideoWrapper>
+    <iframe
+      title="Video"
+      src="https://www.youtube.com/embed/Pm3tVMvqvIU"
+      frameBorder="0"
+    />
+  </VideoWrapper>
+);
 const Banner = () => {
   // modal handler
   const handleVideoModal = () => {
@@ -67,12 +75,30 @@ const Banner = () => {
       closeOnClickOutside: true,
     });
   };
+  const handleVideoModal2 = () => {
+    openModal({
+      config: {
+        className: "video-modal",
+        disableDragging: true,
+        default: {
+          width: "auto",
+          height: "auto",
+          x: 0,
+          y: 0,
+        },
+      },
+      component: ModalContent2,
+      componentProps: {},
+      closeComponent: CloseModalButton,
+      closeOnClickOutside: true,
+    });
+  };
   return (
     <BannerWrapper id="home">
       <Container>
         <BannerContent>
           <Fade up delay={100}>
-            <Heading as="h1" content="Start receiving custom printing order from your Printshop" />
+            <Heading as="h1" content="Start receiving custom printing order" />
           </Fade>
           <Fade up delay={200}>
             <Text content="Printcart includes modules that will help you to both promote your print business and sell your design and print services online." />
@@ -99,7 +125,7 @@ const Banner = () => {
             />
             <NextImage
               src={videoBanner2}
-              onClick={handleVideoModal}
+              onClick={handleVideoModal2}
               alt="Microsoft"
             />
           </VideoGroup>

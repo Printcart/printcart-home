@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { themeGet } from '@styled-system/theme-get';
 
 const SectionWrapper = styled.div`
-  padding: 55px 0 25px;
+  padding: 125px 0 25px;
   overflow: hidden;
   @media (max-width: 1600px) {
     padding: 25px 0 0px;
@@ -19,8 +19,6 @@ export const ContentWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
-  text-align: center;
   .image {
     width: calc(100% - 410px);
     @media only screen and (max-width: 991px) {
@@ -32,7 +30,7 @@ export const ContentWrapper = styled.div`
     }
   }
   .content {
-    // width: 410px;
+    width: 410px;
     @media only screen and (max-width: 991px) {
       width: 290px;
     }
@@ -46,7 +44,7 @@ export const ContentWrapper = styled.div`
       font-weight: 700;
       letter-spacing: -1px;
       margin-bottom: 27px;
-      // max-width: 400px;
+      max-width: 400px;
       @media only screen and (max-width: 1366px) {
         font-size: 30px;
         line-height: 42px;

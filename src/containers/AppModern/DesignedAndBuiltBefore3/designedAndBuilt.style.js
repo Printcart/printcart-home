@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { themeGet } from '@styled-system/theme-get';
 
 const SectionWrapper = styled.div`
-  padding: 75px 0 25px;
+  padding: 125px 0 50px;
   overflow: hidden;
   background-color: ${themeGet('colors.banner', 'rgb(29, 35, 54)')};
   @media (max-width: 1600px) {
