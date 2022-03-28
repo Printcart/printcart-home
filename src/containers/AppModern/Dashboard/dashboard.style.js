@@ -24,8 +24,8 @@ const DashboardWrapper = styled.section`
     padding-bottom: 160px;
   }
   @media (max-width: 1440px) {
-    padding-top: 30px;
-    padding-bottom: 30px;
+    padding-top: 60px;
+    padding-bottom: 60px;
   }
   @media (max-width: 1024px) {
     padding-top: 30px;
