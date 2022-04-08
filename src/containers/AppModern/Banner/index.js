@@ -105,16 +105,18 @@ const Banner = () => {
           </Fade>
           <Fade up delay={300}>
             <ButtonGroup>
-              <a href="https://dashboard.printcart.com/signup?get-started=true" target="_blank">
+              <a href="https://dashboard.printcart.com/signup?get-started=true" target="_blank" rel="nofollow">
                 <Button className="primary" title="Start Now" />
               </a>
+              <a href="https://dev01.netbaseteam.com/designtool/" target="_blank" rel="nofollow">
               <Button
                 className="text"
                 variant="textButton"
-                icon={<Icon icon={playCircle} />}
+                // icon={<Icon icon={playCircle} />}
                 iconPosition="left"
-                title="Watch Video"
+                title="Design Tool Demo"
               />
+              </a>
             </ButtonGroup>
           </Fade>
           <VideoGroup>
