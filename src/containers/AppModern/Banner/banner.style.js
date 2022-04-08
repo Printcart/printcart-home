@@ -129,6 +129,7 @@ export const ButtonGroup = styled.div`
     border-radius: 5px;
     padding-left: 16px;
     padding-right: 16px;
+    margin-left:10px;
 
     &.primary {
       background-color: ${themeGet('colors.white', '#fff')};
@@ -141,19 +142,26 @@ export const ButtonGroup = styled.div`
     }
 
     &.text {
+      background-color: ${themeGet('colors.white', '#fff')};
+      color: rgb(15, 33, 55);
       font-size: 16px;
-      color: ${themeGet('colors.white', '#fff')};
       letter-spacing: -0.1px;
-      font-weight: 500;
-      .btn-icon {
-        i {
-          color: #fff;
-        }
-        svg {
-          width: auto;
-          height: 25px;
-        }
+      &:hover {
+        box-shadow: #1e2a4a 0px 12px 24px -10px;
       }
+      // font-size: 16px;
+      // color: ${themeGet('colors.white', '#fff')};
+      // letter-spacing: -0.1px;
+      // font-weight: 500;
+      // .btn-icon {
+      //   i {
+      //     color: #fff;
+      //   }
+      //   svg {
+      //     width: auto;
+      //     height: 25px;
+      //   }
+      // }
     }
   }
 `;
