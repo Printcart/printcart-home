@@ -132,8 +132,9 @@ export const ButtonGroup = styled.div`
     margin-left:10px;
 
     &.primary {
-      background-color: ${themeGet('colors.white', '#fff')};
-      color: rgb(15, 33, 55);
+      background-color: ${themeGet('colors.orange', '#d1651a')};
+      background-image: -webkit-linear-gradient(180deg, #d1651a, #c1282a);
+      color: rgb(255, 255, 255);
       font-size: 16px;
       letter-spacing: -0.1px;
       &:hover {
