@@ -147,7 +147,6 @@ export const ButtonGroup = styled.div`
       color: rgb(15, 33, 55);
       font-size: 16px;
       letter-spacing: -0.1px;
-      border: 3px solid #d1651a;
       &:hover {
         box-shadow: #1e2a4a 0px 12px 24px -10px;
       }
