@@ -524,7 +524,7 @@ export const footer = {
       title: 'Developers Support',
       description:
         'Join our Discord Social to discuss the Technology solution for printing business with Printcart API',
-      url: 'https://discord.gg/sjMcm5N6',
+      url: 'https://discord.gg/YFxK4AQ6bF',
     },
     {
       id: 6,
