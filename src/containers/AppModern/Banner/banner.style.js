@@ -133,6 +133,7 @@ export const ButtonGroup = styled.div`
 
     &.primary {
       background-color: ${themeGet('colors.orange', '#d1651a')};
+      background-image: linear-gradient(340deg, #d1651a 0%, #c1282a 100%);
       color: rgb(255, 255, 255);
       font-size: 16px;
       letter-spacing: -0.1px;
@@ -146,7 +147,6 @@ export const ButtonGroup = styled.div`
       color: rgb(15, 33, 55);
       font-size: 16px;
       letter-spacing: -0.1px;
-      border: 3px solid #d1651a;
       &:hover {
         box-shadow: #1e2a4a 0px 12px 24px -10px;
       }
