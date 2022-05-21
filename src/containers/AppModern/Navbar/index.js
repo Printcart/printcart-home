@@ -108,8 +108,8 @@ const Navbar = () => {
       <ul id="nav-mobile" className="menu" style={navbar}>
         <li><a href="#" offset={84}>Home</a></li>
         <li><a href="https://solution.printcart.com/" target="_blank" rel="nofollow" offset={84}>Service</a></li>
-        <li><a href="https://solution.printcart.com/blogs/" target="_blank" rel="nofollow" offset={84}>Blog</a></li>
-        <li><a href="https://solution.printcart.com/contact/" target="_blank" rel="nofollow" offset={84}>Support</a></li>
+        <li><a href="https://solution.printcart.com/ecommerce-tutorials" target="_blank" rel="nofollow" offset={84}>Blog</a></li>
+        <li><a href="https://m.me/Printcart.Web2Print.Consultancy.Solution" target="_blank" rel="nofollow" offset={84}>Support</a></li>
         <li><a href="https://docs.printcart.com/" target="_blank" offset={84}>Resource</a></li>
       </ul>
           </div>
