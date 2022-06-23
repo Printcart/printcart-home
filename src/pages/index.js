@@ -14,7 +14,7 @@ import DesignedAndBuiltBefore from 'containers/AppModern/DesignedAndBuiltBefore'
 import DesignedAndBuiltBefore3 from 'containers/AppModern/DesignedAndBuiltBefore3';
 import DesignedAndBuiltBefore4 from 'containers/AppModern/DesignedAndBuilteBefore4';
 // import PricingPolicy from 'containers/AppModern/PricingPolicy';
-import TeamPortfolio from 'containers/AppModern/TeamPortfoilo';
+// import TeamPortfolio from 'containers/AppModern/TeamPortfoilo';
 import Testimonial from 'containers/AppModern/Testimonial';
 import Newsletter from 'containers/AppModern/Newsletter';
 import Footer from 'containers/AppModern/Footer';
@@ -65,7 +65,7 @@ const AppModern = () => {
             <DesignedAndBuiltBefore4 />
             <DesignedAndBuiltcode />
             {/* <PricingPolicy /> */}
-            <TeamPortfolio />
+            {/* <TeamPortfolio /> */}
             <Testimonial />
             <Newsletter />
           </ContentWrapper>
