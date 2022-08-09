@@ -35,7 +35,7 @@ const AppModern = () => {
           <meta name="theme-color" content="#2563FF" />
           <meta
             name="keywords"
-            content="product customizer, product designer, web2print, printing solution, print-on-demand, POD, web to print"
+            content="product customizer, product customization, product designer, web2print, printing solution, print-on-demand, POD, web to print"
           />
           <link
             href="https://fonts.googleapis.com/css?family=Heebo:300,400,500,700&display=swap"
