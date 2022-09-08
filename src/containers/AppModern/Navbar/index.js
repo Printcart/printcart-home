@@ -104,7 +104,7 @@ const Navbar = () => {
           {/* <ScrollSpyMenu className="menu" menuItems={navMenu} offset={-84} /> */}
           {/* end of main menu */}
           <nav>
-          <div class="nav-wrapper">
+          <div className="nav-wrapper">
       <ul id="nav-mobile" className="menu" style={navbar}>
         <li><a href="#" offset={84}>Home</a></li>
         <li><a href="https://solution.printcart.com/" target="_blank" rel="nofollow" offset={84}>Solution</a></li>
