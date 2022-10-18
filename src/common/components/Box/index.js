@@ -5,6 +5,7 @@ import {
   flexWrap,
   flexDirection,
   alignItems,
+  textAlign,
   justifyContent,
 } from 'styled-system';
 import { base, themed } from '../base';
@@ -19,6 +20,7 @@ const BoxWrapper = styled('div')(
       flexWrap,
       flexDirection,
       alignItems,
+      textAlign,
       justifyContent,
       themed('FlexBox')
     )
