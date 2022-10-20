@@ -16,7 +16,7 @@ import GlobalStyle, {
 import Footer from "containers/AppModern/Footer";
 
 const Services = (props) => {
-  const { serviceList } = props;
+  const { serviceList, total } = props;
   return (
     <ThemeProvider theme={theme}>
       <>
@@ -34,7 +34,7 @@ const Services = (props) => {
             <Navbar />
           </Sticky>
           <Banner />
-          <InfoServices serviceList={serviceList} />
+          <InfoServices serviceList={serviceList} total={total} />
           <Footer />
         </AppWrapper>
         {/* end of app classic landing */}

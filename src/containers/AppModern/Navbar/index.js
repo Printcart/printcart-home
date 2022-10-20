@@ -107,7 +107,7 @@ const Navbar = () => {
             <div className="nav-wrapper">
               <ul id="nav-mobile" className="menu" style={navbar}>
                 <li>
-                  <a href="#" offset={84}>
+                  <a href="/" offset={84}>
                     Home
                   </a>
                 </li>
@@ -163,7 +163,7 @@ const Navbar = () => {
                 </li>
                 <li>
                   <a href="/services" rel="nofollow" offset={84}>
-                    Service
+                    Services
                   </a>
                 </li>
               </ul>
