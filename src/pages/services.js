@@ -22,10 +22,16 @@ const Services = (props) => {
       <>
         <Head>
           <title>Printcart | Services</title>
+          <meta name="theme-color" content="#2563FF" />
+          <link
+            href="https://fonts.googleapis.com/css?family=Heebo:300,400,500,700&display=swap"
+            rel="stylesheet"
+          />
         </Head>
         {/* end of head */}
 
         <ResetCSS />
+        <GlobalStyle />
         {/* end of global and reset style */}
 
         {/* start app classic landing */}

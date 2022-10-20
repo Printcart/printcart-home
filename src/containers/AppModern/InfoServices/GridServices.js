@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { themeGet } from "@styled-system/theme-get";
 
 const SectionWrapperServices = styled.section`
@@ -64,7 +64,6 @@ export const GridServices = styled.div`
   }
   .cardItem {
     border-radius: 5;
-    box-shadow: 0 0px 10px 0 rgb(0 0 50 / 22%);
     &:hover {
       box-shadow: 5px 10px 10px 2px rgb(0 0 50 / 25%);
       transform: translate(0,-7px);
@@ -78,6 +77,7 @@ export const GridServices = styled.div`
     .content {
       padding: 20px;
      > h3.title {
+        margin-top: 5px;
         height: 52px;
         font-size: 22px;
         font-weight: 600;
@@ -89,11 +89,13 @@ export const GridServices = styled.div`
         display: -webkit-box;
         webkit-box-orient: vertical;
         webkit-line-clamp: 2px;
+        cursor: pointer;
       }
       .text {
         > h2{
           font-size:18px;
         }
+        margin-top: 5px;
         height: 96px;
         font-size: 16px;
         line-height: 1.3;
@@ -123,3 +125,45 @@ export const GridServices = styled.div`
 `;
 
 export default SectionWrapperServices;
+
+export const ContainerServices = styled.div`
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  ${(props) =>
+    props.fullWidth &&
+    css`
+      width: 100%;
+      max-width: none !important;
+    `};
+  ${(props) =>
+    (props.noGutter &&
+      css`
+        padding-left: 0;
+        padding-right: 0;
+      `) ||
+    css`
+      padding-left: 30px;
+      padding-right: 30px;
+    `};
+  @media (min-width: 768px) {
+    max-width: 750px;
+    width: 100%;
+  }
+  @media (min-width: 992px) {
+    max-width: 970px;
+    width: 100%;
+  }
+  @media (min-width: 1220px) {
+    max-width: ${(props) => props.width || "1170px"};
+    width: 100%;
+  }
+  @media (max-width: 768px) {
+    ${(props) =>
+      props.mobileGutter &&
+      css`
+        padding-left: 30px;
+        padding-right: 30px;
+      `};
+  }
+`;
