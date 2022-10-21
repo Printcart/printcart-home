@@ -46,16 +46,18 @@ const InfoServices = (props) => {
             </Fade>
           </SectionHeader>
           <ContainerServices>
-            <div className="">
-              {filterServices.map((item, index) => (
-                <CheckBoxServices
-                  p={4}
-                  key={index}
-                  labelText={item.name}
-                  background={item.color}
-                />
-              ))}
-            </div>
+            <Fade up>
+              <div className="">
+                {filterServices.map((item, index) => (
+                  <CheckBoxServices
+                    p={4}
+                    key={index}
+                    labelText={item.name}
+                    background={item.color}
+                  />
+                ))}
+              </div>
+            </Fade>
           </ContainerServices>
           <ServicesList serviceList={serviceList} total={total} />
         </SectionWrapperServices>

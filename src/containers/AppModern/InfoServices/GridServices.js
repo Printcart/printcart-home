@@ -36,14 +36,13 @@ const SectionWrapperServices = styled.section`
 `;
 
 export const GridServices = styled.div`
-  padding: 30px;
+  padding: 20px;
   display: flex;
   flex-wrap: wrap;
 
   > div {
     width: calc(100% / 5 - 34px);
-    margin: 38px 17px 30px;
-    justify-content: space-between;
+    margin: 30px 17px 10px;
 
     @media only screen and (max-width: 1466px) {
       width: calc(100% / 4 - 34px);
@@ -63,65 +62,75 @@ export const GridServices = styled.div`
     }
   }
   .cardItem {
-    border-radius: 5;
+    border-radius: 5px;
+    box-shadow: 0 0 5px 0 rgb(0 0 50 / 25%);
     &:hover {
       box-shadow: 5px 10px 10px 2px rgb(0 0 50 / 25%);
-      transform: translate(0,-7px);
-      transition: box-shadow .3s ease-out, transform .3s ease-out;
+      transform: translate(0, -7px);
+      transition: box-shadow 0.3s ease-out, transform 0.3s ease-out;
     }
     @media only screen and (max-width: 480px) {
       padding: 25px 25px 30px;
     }
+  }
 
+  .content {
+    padding: 20px;
+  }
 
-    .content {
-      padding: 20px;
-     > h3.title {
-        margin-top: 5px;
-        height: 52px;
-        font-size: 22px;
-        font-weight: 600;
-        margin-bottom: 10px;
-        color: '#444';
-        line-height: 1.2;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        display: -webkit-box;
-        webkit-box-orient: vertical;
-        webkit-line-clamp: 2px;
-        cursor: pointer;
-      }
-      .text {
-        > h2{
-          font-size:18px;
-        }
-        margin-top: 5px;
-        height: 96px;
-        font-size: 16px;
-        line-height: 1.3;
-        color: #5c5c5c;
-        margin-bottom: 10px;
-        text-overflow: ellipsis;
-        overflow: hidden;
-        webkit-box-orient: vertical;
-        webkit-line-clamp: 3px;
-      }
-      .info {
-        display: flex;
-        align-items: center;
-        color: #5c5c5c;
-        & strong {
-          font-size: 16px;
-          font-weight: 500px;
-        }
-      }
-      .boxBtn {
-        text-align: end;
-        border-top: 1px dashed #cdcdcd;
-        margin-top: 15px;
-        padding-top: 20px;
-      }
+  .title {
+    margin-top: 0px;
+    height: 52px;
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    color: #444;
+    line-height: 1.2;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    cursor: pointer;
+  }
+  .text {
+    > h2 {
+      font-size: 17px;
+      margin-bottom: -15px;
     }
+    height: 90px;
+    margin: 5px;
+    font-size: 15px;
+    line-height: 1.3;
+    color: #5c5c5c;
+    margin-bottom: 10px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+  }
+  .info {
+    display: flex;
+    align-items: center;
+    color: #5c5c5c;
+    & strong {
+      font-size: 16px;
+      font-weight: 500;
+      margin-right: 5px;
+      padding-bottom: 1px;
+    }
+  }
+  .boxBtn {
+    text-align: end;
+    border-top: 1px dashed #cdcdcd;
+    margin-top: 15px;
+    padding-top: 20px;
+  }
+  button {
+    padding: 5px 10px;
+    border: 1px solid #2d58af;
+  }
 `;
 
 export default SectionWrapperServices;

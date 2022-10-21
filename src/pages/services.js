@@ -1,17 +1,15 @@
-import React from "react";
 import ResetCSS from "common/assets/css/style";
 import { theme } from "common/theme/appModern";
 import Banner from "containers/AppModern/Banner";
 import Navbar from "containers/AppModern/Navbar";
 import Head from "next/head";
-import InfoServices from "../containers/AppModern/InfoServices";
 import Sticky from "react-stickynode";
 import { ThemeProvider } from "styled-components";
+import InfoServices from "../containers/AppModern/InfoServices";
 // import PricingPolicy from 'containers/AppModern/PricingPolicy';
 // import TeamPortfolio from 'containers/AppModern/TeamPortfoilo';
 import GlobalStyle, {
-  AppWrapper,
-  ContentWrapper,
+  AppWrapper
 } from "containers/AppModern/appModern.style";
 import Footer from "containers/AppModern/Footer";
 

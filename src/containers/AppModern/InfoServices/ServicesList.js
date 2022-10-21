@@ -33,13 +33,13 @@ const ServicesList = (props) => {
         (item, index) =>
           index > start &&
           index < end && (
-            <Card key={index}>
-              <Box className="cardItem">
+            <Card key={index} className="cardItem">
+              <Box>
                 <Link
                   prefetch={false}
                   href={`https://cloodo.com/service/${item.attributes.alias}`}
                 >
-                  <a title={`View to ${item.attributes.title}`}>
+                  <a>
                     <img
                       style={{
                         width: "100%",
@@ -53,10 +53,13 @@ const ServicesList = (props) => {
                 </Link>
                 <Box className="content">
                   <Link
+                    title={`View to ${item.attributes.title}`}
                     prefetch={false}
                     href={`https://cloodo.com/service/${item.attributes.alias}`}
                   >
-                    <h3 className="title">{item.attributes.title}</h3>
+                    <a title={`View to ${item.attributes.title}`}>
+                      <h3 className="title">{item.attributes.title}</h3>
+                    </a>
                   </Link>
                   <Box className="text">
                     {ReactHtmlParser(item.attributes.description)}
@@ -80,7 +83,7 @@ const ServicesList = (props) => {
                     >
                       <a title={`View to ${item.attributes.title}`}>
                         <Button
-                          style={{ ouline: "0", borderRadius: "5px" }}
+                          style={{ borderRadius: "5px" }}
                           className="buttonRequest"
                           sx={{ color: "#2d58af" }}
                           disableTouchRipple
