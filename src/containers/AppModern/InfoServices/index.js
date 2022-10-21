@@ -1,5 +1,4 @@
 import ResetCSS from "common/assets/css/style";
-import Heading from "common/components/Heading";
 import { filterServices } from "common/data/AppModern";
 import { theme } from "common/theme/appModern";
 import Fade from "react-reveal/Fade";
