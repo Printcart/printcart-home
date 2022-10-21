@@ -112,6 +112,11 @@ const Navbar = () => {
                   </a>
                 </li>
                 <li>
+                  <a href="/services" rel="nofollow" offset={84}>
+                    Services
+                  </a>
+                </li>
+                <li>
                   <a
                     href="https://solution.printcart.com/"
                     target="_blank"
@@ -159,11 +164,6 @@ const Navbar = () => {
                     offset={84}
                   >
                     Documentation
-                  </a>
-                </li>
-                <li>
-                  <a href="/services" rel="nofollow" offset={84}>
-                    Services
                   </a>
                 </li>
               </ul>
