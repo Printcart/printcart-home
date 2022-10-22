@@ -3,7 +3,11 @@ const withPlugins = require("next-compose-plugins");
 const nextConfig = {
   // distDir: '../../dist/functions/next'
   images: {
-    domains: ["pbs.twimg.com"],
+    domains: [
+      "pbs.twimg.com",
+      "media-cloodo.s3.amazonaws.com",
+      "play.google.com",
+    ],
   },
   async redirects() {
     return [

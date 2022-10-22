@@ -27,7 +27,8 @@ const Footer = () => {
         <WidgetArea>
           {widgets.map((item) => (
             <Box className="col" key={`footer-widget--key${item.id}`}>
-              <a href={item.url} target="_blank" rel="nofollow"><Image src={item.icon?.src} alt={item.title} />
+              <a href={item.url} target="_blank" rel="nofollow">
+                <Image src={item.icon?.src} alt={item.title} />
               <Heading as="h3" content={item.title} />
               <Text content={item.description} /></a>
             </Box>
