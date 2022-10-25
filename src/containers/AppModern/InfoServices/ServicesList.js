@@ -37,7 +37,7 @@ const ServicesList = (props) => {
               <Box>
                 <Link
                   prefetch={false}
-                  href={`https://cloodo.com/service/${item.attributes.alias}`}
+                  href={`service/${item.attributes.alias}`}
                 >
                   <a>
                     <img
@@ -55,7 +55,7 @@ const ServicesList = (props) => {
                   <Link
                     title={`View to ${item.attributes.title}`}
                     prefetch={false}
-                    href={`https://cloodo.com/service/${item.attributes.alias}`}
+                    href={`service/${item.attributes.alias}`}
                   >
                     <a title={`View to ${item.attributes.title}`}>
                       <h3 className="title">{item.attributes.title}</h3>
@@ -79,7 +79,7 @@ const ServicesList = (props) => {
                   <Box className="boxBtn">
                     <Link
                       prefetch={false}
-                      href={`https://cloodo.com/service/${item.attributes.alias}`}
+                      href={`service/${item.attributes.alias}`}
                     >
                       <a title={`View to ${item.attributes.title}`}>
                         <Button
