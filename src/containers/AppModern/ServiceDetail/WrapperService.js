@@ -72,8 +72,7 @@ export const GridServicesDT = styled.div`
   display: flex;
 
   > div {
-    width: calc(100% / 2 - 98px);
-    margin: 30px 100px 10px;
+    width: calc(100% / 2 + 205px);
 
     @media only screen and (max-width: 1466px) {
       width: calc(100% / 2 - 34px);
@@ -170,8 +169,53 @@ export const GridServicesDT = styled.div`
     padding-top: 20px;
   }
   button {
-    padding: 5px 10px;
-    border: 1px solid #2d58af;
+    padding: 10px 10px;
+    display: flex;
+    font-size: 14px;
+    background: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    margin-right: 18px;
+    border-radius: 5px;
+    text-transform: capitalize;
+  }
+  .boxImage {
+    position: relative;
+    background: #fff;
+    box-shadow: 0 0 20px rgb(0 0 0 / 5%);
+    border-radius: 4px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    &:hover {
+      & button {
+        display: block;
+      },
+      & img {
+        padding: 5px 10px;
+        transition: padding .5s ease-out;
+      },
+    },
+    & img {
+      padding: 10px 20px;
+      object-fit: cover;
+    },
+    & div {
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+      padding: 5px 10px;
+      border-radius: 5px;
+      margin-right: 8px;
+      textTransform: capitalize;
+    }
+  }
+  .btnFull {
+    display: none;
+    position: absolute;
+    right: 0%;
+    top: 0%;
+    color: #fff;
+    cursor: pointer
+
   }
 `;
 
@@ -179,7 +223,6 @@ export default WrapperServices;
 
 export const ContainerServicesDT = styled.div`
   margin-top: -390px;
-  text-align: center;
   margin-left: auto;
   margin-right: auto;
 
