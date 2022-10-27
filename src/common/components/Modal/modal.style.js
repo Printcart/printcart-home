@@ -17,7 +17,7 @@ export const StyleModalBody = styled.div`
   }
   .boxModal {
     position: absolute;
-    top: 171px;
+    top: 211px;
     left: 1461px;
     transform: translate(-50%, -50%);
     &:focus-visible {

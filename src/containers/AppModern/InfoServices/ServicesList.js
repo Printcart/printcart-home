@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 import ReactHtmlParser from "react-html-parser";
 import { GridServices } from "./GridServices";
 
-const NewDate = (number) => {
+export const NewDate = (number) => {
   const options = { month: "long", day: "numeric", year: "numeric" };
   const date = new Date(number);
   const newDate = new Intl.DateTimeFormat("en-US", options).format(date);
@@ -84,9 +84,6 @@ const ServicesList = (props) => {
                       <a title={`View to ${item.attributes.title}`}>
                         <Button
                           style={{ borderRadius: "5px" }}
-                          className="buttonRequest"
-                          sx={{ color: "#2d58af" }}
-                          disableTouchRipple
                           title="Request Support"
                         />
                       </a>

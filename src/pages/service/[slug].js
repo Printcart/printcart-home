@@ -12,8 +12,6 @@ import ServiceDetail from "containers/AppModern/ServiceDetail";
 
 const Service = (props) => {
   const { character, related } = props;
-  console.log(character);
-  console.log(related);
 
   return (
     <ThemeProvider theme={theme}>
@@ -37,7 +35,11 @@ const Service = (props) => {
           <div top={0} innerZ={9999} className="sticky-active">
             <Navbar />
           </div>
-          <ServiceDetail character={character.attributes} related={related} />
+          <ServiceDetail
+            character={character.attributes}
+            service_id={character.id}
+            related={related}
+          />
           <Footer />
         </AppWrapper>
         {/* end of app classic landing */}

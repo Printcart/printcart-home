@@ -1,22 +1,28 @@
 import ResetCSS from "common/assets/css/style";
 import Box from "common/components/Box";
 import Button from "common/components/Button";
+import Modal from "common/components/Modal";
 import Link from "next/link";
 import { useState } from "react";
+import ReactHtmlParser from "react-html-parser";
+import Icon from "react-icons-kit";
+import { ic_close_outline } from "react-icons-kit/md/ic_close_outline";
+import { ic_date_range_outline } from "react-icons-kit/md/ic_date_range_outline";
+import { ic_groups_outline } from "react-icons-kit/md/ic_groups_outline";
+import { ic_star_rate_outline } from "react-icons-kit/md/ic_star_rate_outline";
+import { ic_work_outline } from "react-icons-kit/md/ic_work_outline";
+import { ic_zoom_out_map } from "react-icons-kit/md/ic_zoom_out_map";
 import Fade from "react-reveal/Fade";
 import GlobalStyle from "../appModern.style";
+import { NewDate } from "../InfoServices/ServicesList";
 import TitlePath from "./TitlePath";
 import WrapperServices, {
   ContainerServicesDT,
   GridServicesDT,
 } from "./WrapperService";
-import { ic_zoom_out_map } from "react-icons-kit/md/ic_zoom_out_map";
-import { ic_close_outline } from "react-icons-kit/md/ic_close_outline";
-import Icon from "react-icons-kit";
-import Modal from "common/components/Modal";
 
 const ServiceDetail = (props) => {
-  const { character, related } = props;
+  const { character, related, service_id } = props;
   const [iSrc, setSrc] = useState("");
   const [open, setOpen] = useState(false);
 
@@ -48,7 +54,8 @@ const ServiceDetail = (props) => {
             <Box className="container">
               <ContainerServicesDT>
                 <GridServicesDT>
-                  <Box>
+                  {/* Start Box Left */}
+                  <Box className="boxLeft">
                     <h1 className="title">{character.title}</h1>
                     <Box className="boxInfo">
                       <img
@@ -69,7 +76,7 @@ const ServiceDetail = (props) => {
                       </p>
                     </Box>
                     {/* Image */}
-                    <Box>
+                    <Box className="container-image">
                       <Box className="boxImage">
                         <button
                           className="btnFull"
@@ -103,9 +110,66 @@ const ServiceDetail = (props) => {
                     {/* End iMAGE */}
                     {/* Description */}
                     <Box className="ItemCard">
-                      <Box></Box>
+                      <Box>
+                        <h2 className="titleDes">About This Service</h2>
+                        <Box className="description">
+                          {ReactHtmlParser(character.description)}
+                        </Box>
+                      </Box>
+                    </Box>
+                    {/* End Description */}
+                  </Box>
+                  {/* End Box */}
+                  {/* ********************************************** */}
+                  {/* Start Box Right */}
+                  <Box className="boxRight">
+                    <Box className="ItemCard">
+                      <Box>
+                        <h2 className="sumReviews">Printcart Support</h2>
+                        <Box className="containerReviews">
+                          {/* Service Added */}
+                          <Box className="infoReview">
+                            <Icon icon={ic_date_range_outline} />
+                            <Box className="contentReview">
+                              <h4>Service Added</h4>
+                              <span>{NewDate(character.createdAt)}</span>
+                            </Box>
+                          </Box>
+                          {/*number of team */}
+                          <Box className="infoReview">
+                            <Icon icon={ic_groups_outline} />
+                            <Box className="contentReview">
+                              <h4> Number Of Team</h4>
+                              <span>10 Team Member</span>
+                            </Box>
+                          </Box>
+                          {/* Processed tasks */}
+                          <Box className="infoReview">
+                            <Icon icon={ic_star_rate_outline} />
+                            <Box className="contentReview">
+                              <h4>Processed Tasks</h4>
+                              <span>284 Tasks</span>
+                            </Box>
+                          </Box>
+                          {/* Processing tasks */}
+                          <Box className="infoReview">
+                            <Icon icon={ic_work_outline} />
+                            <Box className="contentReview">
+                              <h4>Processing Tasks</h4>
+                              <span>220 Tasks</span>
+                            </Box>
+                          </Box>
+                        </Box>
+                      </Box>
+                      {/* Button Request */}
+                      <Button
+                        style={{ borderRadius: "5px" }}
+                        className="buttonRequest"
+                        title="Request Support"
+                      />
                     </Box>
                   </Box>
+                  {/* End Box */}
                 </GridServicesDT>
               </ContainerServicesDT>
             </Box>

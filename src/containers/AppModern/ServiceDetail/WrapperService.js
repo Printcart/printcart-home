@@ -75,8 +75,6 @@ export const GridServicesDT = styled.div`
   display: flex;
 
   > div {
-    width: calc(100% / 2 + 205px);
-
     @media only screen and (max-width: 1466px) {
       width: calc(100% / 2 + 205px);
     }
@@ -93,6 +91,56 @@ export const GridServicesDT = styled.div`
       width: 100%;
       margin-top: 15px;
     }
+  }
+  .boxLeft {
+    width: 80%;
+  }
+  .boxRight {
+    padding-top: 30px;
+    width: 42%;
+    padding-left: 30px;
+  }
+
+  .sumReviews {
+    margin-top: -10px;
+    font-size: 25px;
+    font-weight: 500;
+    color: #444;
+    margin-bottom: 20px;
+  }
+  .containerReviews {
+    border: 1px solid #f2f2f2;
+    border-radius: 5px;
+    padding: 5px 25px;
+  }
+  .infoReview {
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    & svg {
+      width: 30px;
+      height: 25px;
+      color: #cdcdcd;
+    }
+  }
+  .contentReview {
+    padding-left: 10px;
+    & h4 {
+      font-size: 16px;
+      font-weight: 500;
+      color: #5c5c5c;
+    },
+    & span {
+      line-height: 0.2;
+      color: #777;
+      font-size: 16px;
+    }
+  }
+  .buttonRequest {
+    width: 100%;
+    margin-top: 35px;
+    background-color: #424dc6;
   }
   .cardItem {
     border-radius: 5px;
@@ -198,7 +246,7 @@ export const GridServicesDT = styled.div`
       },
     },
     & img {
-      padding: 10px 20px;
+      padding: 10px 15px;
       object-fit: cover;
     },
     & div {
@@ -207,7 +255,6 @@ export const GridServicesDT = styled.div`
       font-size: 14px;
       padding: 5px 10px;
       border-radius: 5px;
-      margin-right: 8px;
       textTransform: capitalize;
     }
   }
@@ -225,6 +272,31 @@ export const GridServicesDT = styled.div`
     box-shadow: 0 0 20px rgb(0 0 0 / 5%);
     border-radius: 4px;
     margin-bottom: 20px;
+    .titleDes {
+      font-size: 24px;
+      font-weight: 500;
+      color: #444;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #f2f2f2;
+      margin-bottom: 30px;
+    }
+    .description {
+      line-height: 1.5;
+      color: #5c5c5c;
+      & h1, h2 {
+        font-size: 24px;
+        font-weight: 500;
+        line-height: 1.3;
+        text-transform: capitalize;
+        margin: 20px 0;
+      }
+      & strong {
+        line-height: 1.4;
+        font-size: 16px;
+        font-weight: 500;
+        color: #5c5c5c;
+      }
+    }
   }
  
 `;
