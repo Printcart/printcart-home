@@ -10,8 +10,11 @@ const WrapperServices = styled.div`
   @media only screen and (max-width: 667px) {
     padding: 45px 0;
   }
-
+  #wrapper-modal {
+    position: relative;
+  }
   .contentMain {
+    position: relative;
     padding: 50px 0;
     background: #f5f5f5;
   }
@@ -75,13 +78,13 @@ export const GridServicesDT = styled.div`
     width: calc(100% / 2 + 205px);
 
     @media only screen and (max-width: 1466px) {
-      width: calc(100% / 2 - 34px);
+      width: calc(100% / 2 + 205px);
     }
     @media only screen and (max-width: 1200px) {
-      width: calc(100% / 2 - 34px);
+      width: calc(100% / 2 + 205px);
     }
     @media only screen and (max-width: 991px) {
-      width: calc(100% / 2 - 34px);
+      100%;
     }
     @media only screen and (max-width: 767px) {
       width: calc(100% / 2 - 34px);
@@ -215,8 +218,15 @@ export const GridServicesDT = styled.div`
     top: 0%;
     color: #fff;
     cursor: pointer
-
   }
+  .ItemCard {
+    background: #fff;
+    padding: 30px;
+    box-shadow: 0 0 20px rgb(0 0 0 / 5%);
+    border-radius: 4px;
+    margin-bottom: 20px;
+  }
+ 
 `;
 
 export default WrapperServices;
