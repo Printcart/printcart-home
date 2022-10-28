@@ -142,6 +142,98 @@ export const GridServicesDT = styled.div`
     margin-top: 35px;
     background-color: #424dc6;
   }
+  .mainPA {
+    display: flex;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #f2f2f2;
+  }
+  .imagePA {
+    width: 80px;
+    height: 80px;
+    margin-right: 20px;
+    border-radius: 5px;
+  }
+  .boxTopPA {
+    & a {
+      font-size: 18px;
+      font-weight: 600;
+      color: #444;
+    },
+    & p {
+      font-size: 16px;
+      font-weight: 500;
+    },
+    & span {
+      font-size: 14px;
+      margin-left: 5px;
+      font-weight: 400;
+    },
+  }
+  .boxSkills {
+    display: flex;
+    margin-top: 30px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    border-top: 1px solid #f2f2f2;
+    & button {
+      cursor: pointer;
+      border: none;
+      padding: 8px 12px;
+      font-size: 13px;
+      border-radius: 3px;
+      text-transform: capitalize;
+      color: #5c5c5c;
+      background: #e9e9e9;
+      margin: 0 5px 5px 0;
+      &:hover {
+        background: #2d58af;
+        color: #fff;
+      }
+    }
+  }
+
+  .boxAssistant {
+    line-height: 0.8;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    border-top: 1px solid #f2f2f2;
+    border-bottom: 1px solid #f2f2f2;
+  }
+  .titleAssistant {
+    font-size: 20px;
+    font-weight: 600;
+    color: #444;
+  }
+  .verified {
+    display: flex;
+    align-items: center;
+    margin: 20px 0 5px 0;
+    & p {
+      margin-left: 5px;
+      font-size: 18px;
+      color: #444;
+    },
+  }
+  .review {
+    margin-top: -10px;
+    margin-bottom: 25px;
+    font-size: 16px;
+    color: #888;
+  }
+  .intro {
+    margin-top: 15px;
+    & p {
+      font-size: 15px;
+      color: #5c5c5c;
+    }
+  }
+  .buttomSendMes {
+    width: 100%;
+    margin-top: 35px;
+    
+  }
+  
+  
   .cardItem {
     border-radius: 5px;
     box-shadow: 0 0 5px 0 rgb(0 0 50 / 25%);
@@ -344,4 +436,42 @@ export const ContainerServicesDT = styled.div`
         padding-right: 30px;
       `};
   }
+  .ItemCard {
+    background: #fff;
+    padding: 30px;
+    box-shadow: 0 0 20px rgb(0 0 0 / 5%);
+    border-radius: 4px;
+    margin-bottom: 20px;
+  }
+  .titlerelated {
+    font-size: 24px;
+    font-weight: 500;
+    color: #444;
+    padding-bottom: 20;
+  }
 `;
+export const GridServicesRelated = styled.div`
+  padding: 20px;
+  display: flex;
+
+  > div {
+    @media only screen and (max-width: 1466px) {
+      width: calc(100% / 4 + 34px);
+      margin: 30px 17px 10px;
+
+    }
+    @media only screen and (max-width: 1200px) {
+      width: calc(100% / 2 + 205px);
+    }
+    @media only screen and (max-width: 991px) {
+      100%;
+    }
+    @media only screen and (max-width: 767px) {
+      width: calc(100% / 2 - 34px);
+    }
+    @media only screen and (max-width: 594px) {
+      width: 100%;
+      margin-top: 15px;
+    }
+  }
+  `;
