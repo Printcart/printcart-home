@@ -395,6 +395,7 @@ export const GridServicesDT = styled.div`
 export default WrapperServices;
 
 export const ContainerServicesDT = styled.div`
+  padding-bottom: 30px;
   margin-top: -390px;
   margin-left: auto;
   margin-right: auto;
