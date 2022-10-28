@@ -14,7 +14,7 @@ import { ic_work_outline } from "react-icons-kit/md/ic_work_outline";
 import { ic_zoom_out_map } from "react-icons-kit/md/ic_zoom_out_map";
 import Fade from "react-reveal/Fade";
 import GlobalStyle from "../appModern.style";
-import { NewDate } from "../InfoServices/ServicesList";
+import ServicesList, { NewDate } from "../InfoServices/ServicesList";
 import TitlePath from "./TitlePath";
 import WrapperServices, {
   ContainerServicesDT,
@@ -256,10 +256,20 @@ const ServiceDetail = (props) => {
                 </GridServicesDT>
                 {/* RELATED SERVICES */}
                 {related.length > 0 && (
-                  <Box className="ItemCard">
-                    <Box>
+                  <Box className="ItemCardRelated">
+                    <Box style={{ marginBottom: "16px" }}>
                       <h2 className="titlerelated">Other Services</h2>
-                      <GridServicesRelated></GridServicesRelated>
+                      <GridServicesRelated>
+                        {related.map(
+                          (service, index) =>
+                            index < 4 && (
+                              <ServicesList
+                                key={service.id}
+                                serviceList={service}
+                              />
+                            )
+                        )}
+                      </GridServicesRelated>
                     </Box>
                   </Box>
                 )}
