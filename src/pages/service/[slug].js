@@ -1,14 +1,11 @@
 import ResetCSS from "common/assets/css/style";
-import Container from "common/components/UI/Container";
 import { theme } from "common/theme/appModern";
 import GlobalStyle, { AppWrapper } from "containers/AppModern/appModern.style";
-import Banner from "containers/AppModern/Banner";
 import Footer from "containers/AppModern/Footer";
 import Navbar from "containers/AppModern/Navbar";
-import Head from "next/head";
-import Sticky from "react-stickynode";
-import { ThemeProvider } from "styled-components";
 import ServiceDetail from "containers/AppModern/ServiceDetail";
+import Head from "next/head";
+import { ThemeProvider } from "styled-components";
 
 const Service = (props) => {
   const { character, related } = props;
@@ -24,13 +21,8 @@ const Service = (props) => {
             rel="stylesheet"
           />
         </Head>
-        {/* end of head */}
-
         <ResetCSS />
         <GlobalStyle />
-        {/* end of global and reset style */}
-
-        {/* start app classic landing */}
         <AppWrapper>
           <div top={0} innerZ={9999} className="sticky-active">
             <Navbar />
@@ -42,7 +34,6 @@ const Service = (props) => {
           />
           <Footer />
         </AppWrapper>
-        {/* end of app classic landing */}
       </>
     </ThemeProvider>
   );

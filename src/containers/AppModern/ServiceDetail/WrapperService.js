@@ -170,6 +170,7 @@ export const GridServicesDT = styled.div`
   }
   .boxSkills {
     display: flex;
+    justify-content: center;
     margin-top: 30px;
     padding-top: 30px;
     padding-bottom: 30px;
@@ -512,12 +513,28 @@ export const GridServicesRelated = styled.div`
     cursor: pointer;
   }
   .text {
-    > h2 {
+    & h2 {
       font-size: 17px;
       margin-bottom: -15px;
     }
-    height: 90px;
-    font-size: 15px;
+    & strong {
+      line-height: 1.2;
+      font-size: 17px;
+      margin-bottom: -15px;
+    }
+    & p {
+      line-height: 1.2;
+      font-size: 17px;
+      margin-bottom: -15px;
+    }
+    & ul {
+      line-height: 1.2;
+      font-size: 17px;
+      padding: 16px;
+      margin-left: -16px;
+    }
+    height: 80px;
+    font-size: 17px;
     line-height: 1.3;
     color: #5c5c5c;
     margin-bottom: 10px;
@@ -525,7 +542,7 @@ export const GridServicesRelated = styled.div`
     overflow: hidden;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 4;
+    -webkit-line-clamp: 3;
   }
   .info {
     display: flex;

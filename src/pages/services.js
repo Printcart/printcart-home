@@ -8,9 +8,7 @@ import { ThemeProvider } from "styled-components";
 import InfoServices from "../containers/AppModern/InfoServices";
 // import PricingPolicy from 'containers/AppModern/PricingPolicy';
 // import TeamPortfolio from 'containers/AppModern/TeamPortfoilo';
-import GlobalStyle, {
-  AppWrapper
-} from "containers/AppModern/appModern.style";
+import GlobalStyle, { AppWrapper } from "containers/AppModern/appModern.style";
 import Footer from "containers/AppModern/Footer";
 
 const Services = (props) => {
@@ -26,13 +24,8 @@ const Services = (props) => {
             rel="stylesheet"
           />
         </Head>
-        {/* end of head */}
-
         <ResetCSS />
         <GlobalStyle />
-        {/* end of global and reset style */}
-
-        {/* start app classic landing */}
         <AppWrapper>
           <Sticky top={0} innerZ={9999} activeClass="sticky-active">
             <Navbar />
@@ -41,7 +34,6 @@ const Services = (props) => {
           <InfoServices serviceList={serviceList} total={total} />
           <Footer />
         </AppWrapper>
-        {/* end of app classic landing */}
       </>
     </ThemeProvider>
   );

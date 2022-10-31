@@ -9,7 +9,7 @@ import { SectionHeader } from "../appModern.style";
 import CheckBoxServices from "./CheckBox";
 import SectionWrapperServices, {
   ContainerServices,
-  GridServices,
+  GridServices
 } from "./GridServices";
 import ServicesList from "./ServicesList";
 
