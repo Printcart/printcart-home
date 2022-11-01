@@ -24,7 +24,7 @@ const Service = (props) => {
         <ResetCSS />
         <GlobalStyle />
         <AppWrapper>
-          <div top={0} innerZ={9999} className="sticky-active">
+          <div className="sticky-active">
             <Navbar />
           </div>
           <ServiceDetail

@@ -34,6 +34,12 @@ const WrapperServices = styled.div`
     & a:hover {
       color: #2d58af;
     }
+    @media only screen and (max-width: 1440px) {
+      margin-top: 38px;
+    }
+    @media only screen and (max-width: 1366px) {
+      margin-top: 28px;
+    }
   }
   .container-text {
     max-width: 1024px;
@@ -72,32 +78,47 @@ const WrapperServices = styled.div`
 
 export const GridServicesDT = styled.div`
   display: flex;
+  flex-wrap: wrap;
 
-  > div {
-    @media only screen and (max-width: 1466px) {
-      width: calc(100% / 2 + 205px);
-    }
-    @media only screen and (max-width: 1200px) {
-      width: calc(100% / 2 + 205px);
-    }
-    @media only screen and (max-width: 991px) {
-      100%;
-    }
-    @media only screen and (max-width: 767px) {
-      width: calc(100% / 2 - 34px);
-    }
-    @media only screen and (max-width: 594px) {
-      width: 100%;
-      margin-top: 15px;
-    }
-  }
   .boxLeft {
-    width: 80%;
+    width: 66%;
+    @media only screen and (max-width: 1466px) {
+      width: 68%;
+    }
+    @media only screen and (max-width: 1220px) {
+      width: 66%;
+    }
+    @media only screen and (max-width: 992px) {
+      width: 58%;
+    }
+    @media only screen and (max-width: 773px) {
+      width: 50%;
+    }
+    @media only screen and (max-width: 667px) {
+      width: 100%;
+    }
   }
   .boxRight {
+    width: 34%;
     padding-top: 30px;
-    width: 42%;
     padding-left: 30px;
+    @media only screen and (max-width: 1466px) {
+      width: 32%;
+    }
+    @media only screen and (max-width: 1220px) {
+      width: 34%;
+    }
+    @media only screen and (max-width: 992px) {
+      width: 42%;
+    }
+    @media only screen and (max-width: 773px) {
+      width: 50%;
+    }
+    @media only screen and (max-width: 667px) {
+      width: 100%;
+      padding-left: 0px;
+
+    }
   }
 
   .sumReviews {
@@ -275,6 +296,22 @@ export const GridServicesDT = styled.div`
     & a {
       color: #ff9800;
     }
+    @media only screen and (max-width: 1466px) {
+      width: calc(100% / 2 - 34px);
+    }
+    @media only screen and (max-width: 1200px) {
+      width: calc(100% / 2 - 34px);
+    }
+    @media only screen and (max-width: 991px) {
+      width: calc(100% / 2 - 34px);
+    }
+    @media only screen and (max-width: 767px) {
+      width: calc(100% / 2 - 34px);
+    }
+    @media only screen and (max-width: 594px) {
+      width: 100%;
+      margin-top: 15px;
+    }
   }
 
   .text {
@@ -417,28 +454,10 @@ export const ContainerServicesDT = styled.div`
       padding-left: 0px;
       padding-right: 0px;
     `};
-  @media (min-width: 768px) {
-    max-width: 750px;
-    width: 100%;
-  }
-  @media (min-width: 992px) {
-    max-width: 970px;
-    width: 100%;
-  }
-  @media (min-width: 1220px) {
-    max-width: ${(props) => props.width || "1324px"};
-    width: 100%;
-  }
-  @media (max-width: 768px) {
-    ${(props) =>
-      props.mobileGutter &&
-      css`
-        padding-left: 30px;
-        padding-right: 30px;
-      `};
-  }
+
   .ItemCardRelated {
     background: #fff;
+    margin-top: 40px;
     padding: 10px;
     box-shadow: 0 0 20px rgb(0 0 0 / 5%);
     border-radius: 4px;
