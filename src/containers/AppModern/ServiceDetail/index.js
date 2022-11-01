@@ -39,7 +39,7 @@ const ServiceDetail = (props) => {
                 {/* RELATED SERVICES */}
                 {related.length > 0 && (
                   <Box className="ItemCardRelated">
-                    <Box style={{ marginBottom: "16px" }}>
+                    <Box>
                       <h2 className="titlerelated">Other Services</h2>
                       <GridServicesRelated>
                         {related.map(

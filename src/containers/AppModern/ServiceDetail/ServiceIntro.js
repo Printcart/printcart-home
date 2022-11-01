@@ -45,7 +45,6 @@ const ServiceIntro = (props) => {
         <Box className="boxImage">
           <button
             className="btnFull"
-            disableTouchRipple
             onClick={() => {
               handleOpen(character);
             }}
