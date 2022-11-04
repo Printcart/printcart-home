@@ -1,15 +1,30 @@
 import ResetCSS from "common/assets/css/style";
+import Pagination from "common/components/Pagination";
 import { filterServices } from "common/data/AppModern";
 import { theme } from "common/theme/appModern";
+import { useRouter } from "next/router";
 import Fade from "react-reveal/Fade";
 import { ThemeProvider } from "styled-components";
 import { SectionHeader } from "../appModern.style";
 import CheckBoxServices from "./CheckBox";
-import SectionWrapperServices, { ContainerServices } from "./GridServices";
+import SectionWrapperServices, {
+  ContainerServices,
+  GridServices
+} from "./GridServices";
 import ServicesList from "./ServicesList";
 
 const InfoServices = (props) => {
   const { serviceList, total } = props;
+  const router = useRouter();
+  const query = router.query;
+
+  const page = total.pagination.total / 40;
+  let start = -1;
+  let end = 40;
+  if (query.page) {
+    start = (query.page - 1) * end - 1;
+    end = query.page * end;
+  }
 
   return (
     <ThemeProvider theme={theme}>
@@ -58,7 +73,16 @@ const InfoServices = (props) => {
               </div>
             </Fade>
           </ContainerServices>
-          <ServicesList serviceList={serviceList} total={total} />
+          <GridServices>
+            {serviceList.map(
+              (item, index) =>
+                index > start &&
+                index < end && (
+                  <ServicesList key={index} serviceList={item} total={total} />
+                )
+            )}
+            <Pagination page={page} />
+          </GridServices>
         </SectionWrapperServices>
       </>
     </ThemeProvider>
