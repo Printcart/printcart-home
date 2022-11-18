@@ -3,18 +3,43 @@ import Pagination from "common/components/Pagination";
 import { filterServices } from "common/data/AppModern";
 import { theme } from "common/theme/appModern";
 import { useRouter } from "next/router";
+import { element } from "prop-types";
+import React from "react";
 import Fade from "react-reveal/Fade";
 import { ThemeProvider } from "styled-components";
 import { SectionHeader } from "../appModern.style";
 import CheckBoxServices from "./CheckBox";
 import SectionWrapperServices, {
   ContainerServices,
-  GridServices
+  GridServices,
 } from "./GridServices";
 import ServicesList from "./ServicesList";
 
 const InfoServices = (props) => {
-  const { serviceList, total } = props;
+  const { serviceList, total, servicesCategory } = props;
+
+  const uniqueValue = [];
+  const unique = servicesCategory.filter((element) => {
+    const isDuplicate = uniqueValue.includes(element.value);
+    if (!isDuplicate) {
+      uniqueValue.push(element.value);
+      return true;
+    }
+    return false;
+  });
+  console.log(unique);
+  // console.log(servicesCategory);
+  // const array = [
+  //   { id: 1, name: "1john" },
+  //   { id: 1, name: "jossshn" },
+  //   { id: 1, name: "john" },
+  //   { id: 2, name: "john" },
+  //   { id: 3, name: "josshn" },
+  //   { id: 2, name: "john" },
+  //   { id: 4, name: "john" },
+  //   { id: 5, name: "john" },
+  //   { id: 3, name: "john" },
+  // ];
   const router = useRouter();
   const query = router.query;
 
@@ -62,13 +87,17 @@ const InfoServices = (props) => {
           <ContainerServices>
             <Fade up>
               <div className="">
-                {filterServices.map((item, index) => (
-                  <CheckBoxServices
-                    p={4}
-                    key={index}
-                    labelText={item.name}
-                    background={item.color}
-                  />
+                <span>All category </span>
+                {servicesCategory.map((items, index) => (
+                  <React.Fragment key={index}>
+                    {items.attributes.project_cat.map((item, index) => (
+                      <CheckBoxServices
+                        p={4}
+                        key={index}
+                        labelText={item.label}
+                      />
+                    ))}
+                  </React.Fragment>
                 ))}
               </div>
             </Fade>

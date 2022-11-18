@@ -10,9 +10,20 @@ import InfoServices from "../containers/AppModern/InfoServices";
 // import TeamPortfolio from 'containers/AppModern/TeamPortfoilo';
 import GlobalStyle, { AppWrapper } from "containers/AppModern/appModern.style";
 import Footer from "containers/AppModern/Footer";
+import React from "react";
 
 const Services = (props) => {
-  const { serviceList, total } = props;
+  const { serviceList, total, servicesCategory } = props;
+  console.log(servicesCategory);
+  // {
+  //   servicesCategory.map((items, index) => (
+  //     <React.Fragment>
+  //       {items.attributes.project_cat((item, index) =>
+  //         console.log(...new Set(item.value))
+  //       )}
+  //     </React.Fragment>
+  //   ));
+  // }
   return (
     <ThemeProvider theme={theme}>
       <>
@@ -31,7 +42,11 @@ const Services = (props) => {
             <Navbar />
           </Sticky>
           <Banner />
-          <InfoServices serviceList={serviceList} total={total} />
+          <InfoServices
+            serviceList={serviceList}
+            total={total}
+            servicesCategory={servicesCategory}
+          />
           <Footer />
         </AppWrapper>
       </>
@@ -46,12 +61,16 @@ export async function getStaticProps() {
   const serviceList = await fetch(
     `${process.env.STRAPI_2_API_URL}services?populate=image` + limit + time
   ).then((res) => res.json());
+  const servicesCategory = await fetch(
+    `${process.env.STRAPI_2_API_URL}services?pagination[pageSize]=100&fields[0]=project_cat&filters[$and][0][service_agency][$contains]=568427`
+  ).then((res) => res.json());
 
   if (serviceList.data.length > 0) {
     return {
       props: {
         serviceList: serviceList["data"],
         total: serviceList["meta"],
+        servicesCategory: servicesCategory["data"],
       },
     };
   }
