@@ -150,9 +150,6 @@ export const GridServices = styled.div`
 export default SectionWrapperServices;
 
 export const ContainerServices = styled.div`
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
   ${(props) =>
     props.fullWidth &&
     css`
@@ -178,7 +175,7 @@ export const ContainerServices = styled.div`
     width: 100%;
   }
   @media (min-width: 1220px) {
-    max-width: ${(props) => props.width || "1170px"};
+    max-width: ${(props) => props.width || "100%"};
     width: 100%;
   }
   @media (max-width: 768px) {
@@ -188,5 +185,33 @@ export const ContainerServices = styled.div`
         padding-left: 30px;
         padding-right: 30px;
       `};
+  }
+  .containerServices {
+    margin: 0 aut;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .btncategory {
+    border: 1px solid #cdcdcd;
+    height: 27px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    padding: 0 10px;
+    font-size: 16px;
+    color: #5c5c5c;
+    font-weight: 500;
+    text-transform: capitalize;
+    &:hover {
+      color: #fff;
+      background: #2d58af;
+      border: 1px solid #2d58af;
+    }
+  }
+  .space {
+    background: #cdcdcd;
+    width: 2px;
+    height: 27px;
+    margin-right: 15px;
+    margin-left: 5px;
   }
 `;

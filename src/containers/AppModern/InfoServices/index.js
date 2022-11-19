@@ -1,7 +1,9 @@
 import ResetCSS from "common/assets/css/style";
+import Box from "common/components/Box";
 import Pagination from "common/components/Pagination";
 import { filterServices } from "common/data/AppModern";
 import { theme } from "common/theme/appModern";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { element } from "prop-types";
 import React from "react";
@@ -17,29 +19,23 @@ import ServicesList from "./ServicesList";
 
 const InfoServices = (props) => {
   const { serviceList, total, servicesCategory } = props;
-
   const uniqueValue = [];
-  const unique = servicesCategory.filter((element) => {
-    const isDuplicate = uniqueValue.includes(element.value);
+  const mergearray = uniqueValue.concat(
+    servicesCategory.map((items) =>
+      items.attributes.project_cat.map((item) => item)
+    )
+  );
+  const delDuplicate = [...new Set(mergearray.flat())];
+
+  const data = delDuplicate.filter((element) => {
+    const isDuplicate = delDuplicate.includes(element.value);
     if (!isDuplicate) {
-      uniqueValue.push(element.value);
+      delDuplicate.push(element.value);
       return true;
     }
     return false;
   });
-  console.log(unique);
-  // console.log(servicesCategory);
-  // const array = [
-  //   { id: 1, name: "1john" },
-  //   { id: 1, name: "jossshn" },
-  //   { id: 1, name: "john" },
-  //   { id: 2, name: "john" },
-  //   { id: 3, name: "josshn" },
-  //   { id: 2, name: "john" },
-  //   { id: 4, name: "john" },
-  //   { id: 5, name: "john" },
-  //   { id: 3, name: "john" },
-  // ];
+
   const router = useRouter();
   const query = router.query;
 
@@ -86,20 +82,17 @@ const InfoServices = (props) => {
           </SectionHeader>
           <ContainerServices>
             <Fade up>
-              <div className="">
-                <span>All category </span>
-                {servicesCategory.map((items, index) => (
-                  <React.Fragment key={index}>
-                    {items.attributes.project_cat.map((item, index) => (
-                      <CheckBoxServices
-                        p={4}
-                        key={index}
-                        labelText={item.label}
-                      />
-                    ))}
-                  </React.Fragment>
+              <Box className="containerServices">
+                <Link href={`/services`}>
+                  <a className="btncategory">All</a>
+                </Link>
+                {data.length > 0 && <Box className="space" />}
+                {data.map((items, index) => (
+                  <Link key={index} href={`/services`}>
+                    <a className="btncategory">{items?.label}</a>
+                  </Link>
                 ))}
-              </div>
+              </Box>
             </Fade>
           </ContainerServices>
           <GridServices>

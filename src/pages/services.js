@@ -14,16 +14,7 @@ import React from "react";
 
 const Services = (props) => {
   const { serviceList, total, servicesCategory } = props;
-  console.log(servicesCategory);
-  // {
-  //   servicesCategory.map((items, index) => (
-  //     <React.Fragment>
-  //       {items.attributes.project_cat((item, index) =>
-  //         console.log(...new Set(item.value))
-  //       )}
-  //     </React.Fragment>
-  //   ));
-  // }
+
   return (
     <ThemeProvider theme={theme}>
       <>
@@ -38,10 +29,9 @@ const Services = (props) => {
         <ResetCSS />
         <GlobalStyle />
         <AppWrapper>
-          <Sticky top={0} innerZ={9999} activeClass="sticky-active">
+          <div className="sticky-active">
             <Navbar />
-          </Sticky>
-          <Banner />
+          </div>
           <InfoServices
             serviceList={serviceList}
             total={total}
