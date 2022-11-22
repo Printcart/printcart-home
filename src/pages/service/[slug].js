@@ -9,7 +9,6 @@ import { ThemeProvider } from "styled-components";
 
 const Service = (props) => {
   const { character, related } = props;
-
   return (
     <ThemeProvider theme={theme}>
       <>
@@ -41,16 +40,18 @@ const Service = (props) => {
 export default Service;
 
 export async function getStaticProps({ params }) {
-  const time = `&time=${Date.now()}`;
+  // const time = `&time=${Date.now()}`
+  const time = ``;
+
   const results = await fetch(
-    `${process.env.STRAPI_2_API_URL}services?populate=image&filters[alias][$eq]=${params.slug}` +
+    `${process.env.STRAPI_2_API_URL}services?populate=image&populate=users_permissions_user.avatar&filters[alias][$eq]=${params.slug}` +
       time
   ).then((res) => res.json());
 
   if (results.data.length > 0) {
-    const type = results.data[0].attributes.type;
+    const type = results.data[0].attributes.project_cat[0]?.label;
     const related = await fetch(
-      `${process.env.STRAPI_2_API_URL}services?populate=image&filters[type][$eq]=${type}&filters[alias][$notIn]=${params.slug}&pagination[limit]=10` +
+      `${process.env.STRAPI_2_API_URL}services?populate=image&filters[project_cat][$containsi]=${type}&filters[alias][$notIn]=${params.slug}&pagination[limit]=10&sort=createdAt:DESC` +
         time
     ).then((res) => res.json());
 

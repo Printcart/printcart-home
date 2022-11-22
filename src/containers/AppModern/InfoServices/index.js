@@ -73,7 +73,7 @@ const InfoServices = (props) => {
                 {dataNew.map((items, index) => (
                   <Link
                     key={index}
-                    href={`/services/` + items.attributes.alias + "/"}
+                    href={`/services/${items.attributes.alias}`}
                   >
                     <a className="btncategory">{items?.attributes.name}</a>
                   </Link>
