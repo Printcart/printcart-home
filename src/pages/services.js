@@ -1,19 +1,48 @@
 import ResetCSS from "common/assets/css/style";
 import { theme } from "common/theme/appModern";
-import Banner from "containers/AppModern/Banner";
 import Navbar from "containers/AppModern/Navbar";
 import Head from "next/head";
-import Sticky from "react-stickynode";
 import { ThemeProvider } from "styled-components";
 import InfoServices from "../containers/AppModern/InfoServices";
 // import PricingPolicy from 'containers/AppModern/PricingPolicy';
 // import TeamPortfolio from 'containers/AppModern/TeamPortfoilo';
 import GlobalStyle, { AppWrapper } from "containers/AppModern/appModern.style";
 import Footer from "containers/AppModern/Footer";
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
 
 const Services = (props) => {
   const { serviceList, total, servicesCategory } = props;
+  const [dataCat, setDataCat] = useState([]);
+  const uniqueValue = [];
+  const mergearray = uniqueValue.concat(
+    servicesCategory.map((items) =>
+      items.attributes.project_cat.map((item) => item)
+    )
+  );
+  const delDuplicate = mergearray.flat();
+
+  const data = delDuplicate.filter((element) => {
+    const isDuplicate = delDuplicate.includes(element.value);
+    if (!isDuplicate) {
+      delDuplicate.push(element.value);
+      return true;
+    }
+    return false;
+  });
+  const valueData = data.map((items) => items.value);
+  const mergeValue = valueData.join("&filters[id]=");
+
+  React.useEffect(() => {
+    axios
+      .get(
+        `https://strapi4.cloodo.com/api/project-categories?pagination[pageSize]=100&filters[id]=${mergeValue}`
+      )
+      .then((res) => {
+        const todoItems = res.data.data;
+        setDataCat(todoItems);
+      });
+  }, data);
 
   return (
     <ThemeProvider theme={theme}>
@@ -35,7 +64,8 @@ const Services = (props) => {
           <InfoServices
             serviceList={serviceList}
             total={total}
-            servicesCategory={servicesCategory}
+            servicesCategory={data}
+            dataNew={dataCat}
           />
           <Footer />
         </AppWrapper>

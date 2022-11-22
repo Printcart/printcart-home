@@ -18,24 +18,7 @@ import SectionWrapperServices, {
 import ServicesList from "./ServicesList";
 
 const InfoServices = (props) => {
-  const { serviceList, total, servicesCategory } = props;
-  const uniqueValue = [];
-  const mergearray = uniqueValue.concat(
-    servicesCategory.map((items) =>
-      items.attributes.project_cat.map((item) => item)
-    )
-  );
-  const delDuplicate = [...new Set(mergearray.flat())];
-
-  const data = delDuplicate.filter((element) => {
-    const isDuplicate = delDuplicate.includes(element.value);
-    if (!isDuplicate) {
-      delDuplicate.push(element.value);
-      return true;
-    }
-    return false;
-  });
-
+  const { serviceList, total, servicesCategory, dataNew } = props;
   const router = useRouter();
   const query = router.query;
 
@@ -86,10 +69,13 @@ const InfoServices = (props) => {
                 <Link href={`/services`}>
                   <a className="btncategory">All</a>
                 </Link>
-                {data.length > 0 && <Box className="space" />}
-                {data.map((items, index) => (
-                  <Link key={index} href={`/services`}>
-                    <a className="btncategory">{items?.label}</a>
+                {servicesCategory.length > 0 && <Box className="space" />}
+                {dataNew.map((items, index) => (
+                  <Link
+                    key={index}
+                    href={`/services/` + items.attributes.alias + "/"}
+                  >
+                    <a className="btncategory">{items?.attributes.name}</a>
                   </Link>
                 ))}
               </Box>
