@@ -48,16 +48,18 @@ export async function getStaticProps() {
   const time = `&time=${Date.now()}`;
   const limit = `&pagination[pageSize]=100`;
   const filProjectCat = `&fields[0]=project_cat`;
-  const serAgency = `&filters[$and][0][service_agency][$contains]=568427`;
-  console.log(time);
+  const filAgency = `&filters[$and][0][service_agency][$contains]=568427`;
 
   const serviceList = await fetch(
-    `${process.env.STRAPI_2_API_URL}services?populate=image` + limit + time
+    `${process.env.STRAPI_2_API_URL}services?populate=image` +
+      limit +
+      time +
+      filAgency
   ).then((res) => res.json());
   const servicesCategory = await fetch(
     `${process.env.STRAPI_2_API_URL}services?pagination[pageSize]=100` +
       filProjectCat +
-      serAgency
+      filAgency
   ).then((res) => res.json());
 
   if (serviceList.data.length > 0) {
