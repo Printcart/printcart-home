@@ -3,13 +3,11 @@ import { theme } from "common/theme/appModern";
 import Navbar from "containers/AppModern/Navbar";
 import Head from "next/head";
 import { ThemeProvider } from "styled-components";
-// import PricingPolicy from 'containers/AppModern/PricingPolicy';
-// import TeamPortfolio from 'containers/AppModern/TeamPortfoilo';
+import axios from "axios";
 import GlobalStyle, { AppWrapper } from "containers/AppModern/appModern.style";
 import Footer from "containers/AppModern/Footer";
-import React, { useState } from "react";
-import axios from "axios";
 import InfoServices from "containers/AppModern/InfoServices";
+import React, { useState } from "react";
 
 const ServicesCategory = (props) => {
   const { total, listService, servicesCategory, characters, choice } = props;
