@@ -226,4 +226,37 @@ export const ContainerServices = styled.div`
     margin-right: 15px;
     margin-left: 5px;
   }
+  .mainbred {
+    display: flex;
+    font-size: 18px;
+    margin-bottom: 30px;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .breadcome {
+    display: flex;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    .text {
+      color: #5c5c5c;
+    }
+    & a,
+    & span {
+      display: flex;
+      align-items: flex-end;
+      white-space: nowrap;
+      font-size: 16;
+      text-transform: capitalize;
+      margin: 0 5px;
+    }
+    & a:hover {
+      color: #2d58af;
+      text-decoration: underline;
+    }
+    & svg {
+      margin: 0 5px 0 0;
+      width: 30px;
+      height: 35px;
+    }
+  }
 `;

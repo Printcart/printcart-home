@@ -10,7 +10,7 @@ import React from "react";
 import Fade from "react-reveal/Fade";
 import { ThemeProvider } from "styled-components";
 import { SectionHeader } from "../appModern.style";
-import CheckBoxServices from "./CheckBox";
+import Breadcrumb from "./Breadcrumb";
 import SectionWrapperServices, {
   ContainerServices,
   GridServices,
@@ -66,6 +66,7 @@ const InfoServices = (props) => {
             </Fade>
           </SectionHeader>
           <ContainerServices>
+            <Breadcrumb characters={characters} />
             <Fade up>
               <Box className="containerServices">
                 <Link href={`/services`}>
