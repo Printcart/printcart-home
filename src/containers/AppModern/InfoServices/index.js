@@ -18,7 +18,8 @@ import SectionWrapperServices, {
 import ServicesList from "./ServicesList";
 
 const InfoServices = (props) => {
-  const { serviceList, total, servicesCategory, dataNew } = props;
+  const { serviceList, total, dataNew, characters, choice } = props;
+  const nameService = characters?.attributes?.name;
   const router = useRouter();
   const query = router.query;
 
@@ -37,7 +38,6 @@ const InfoServices = (props) => {
         <SectionWrapperServices>
           <SectionHeader>
             <Fade up>
-              {/* <Heading as="h1" content="BPO Services Marketplace" /> */}
               <h1
                 style={{
                   color: "#5c5c5c",
@@ -48,7 +48,9 @@ const InfoServices = (props) => {
                 }}
                 className="titleSlogan"
               >
-                BPO Services Marketplace
+                {characters
+                  ? `Services For The ${nameService} Category`
+                  : `BPO Services Marketplace`}
               </h1>
               <p
                 style={{
@@ -69,13 +71,21 @@ const InfoServices = (props) => {
                 <Link href={`/services`}>
                   <a className="btncategory">All</a>
                 </Link>
-                {servicesCategory.length > 0 && <Box className="space" />}
+                {dataNew.length > 0 && <Box className="space" />}
                 {dataNew.map((items, index) => (
                   <Link
                     key={index}
                     href={`/services/${items.attributes.alias}`}
                   >
-                    <a className="btncategory">{items?.attributes.name}</a>
+                    <a
+                      className={
+                        choice === items.attributes.alias
+                          ? "choice"
+                          : "btncategory"
+                      }
+                    >
+                      {items?.attributes.name}
+                    </a>
                   </Link>
                 ))}
               </Box>

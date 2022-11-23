@@ -167,11 +167,11 @@ export const ContainerServices = styled.div`
       padding-right: 30px;
     `};
   @media (min-width: 768px) {
-    max-width: 750px;
+    max-width: 900px;
     width: 100%;
   }
   @media (min-width: 992px) {
-    max-width: 970px;
+    max-width: 1220px;
     width: 100%;
   }
   @media (min-width: 1220px) {
@@ -190,6 +190,18 @@ export const ContainerServices = styled.div`
     margin: 0 aut;
     display: flex;
     flex-wrap: wrap;
+  }
+  .choice {
+    display: flex;
+    background: #2d58af;
+    border: 1px solid #2d58af;
+    color: #fff;
+    height: 27px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    padding: 0 10px;
+    font-size: 16px;
+    text-transform: capitalize;
   }
   .btncategory {
     border: 1px solid #cdcdcd;

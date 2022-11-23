@@ -119,6 +119,9 @@ export const SectionHeader = styled.header`
   width: 100%;
   margin: 0 auto 58px;
   text-align: center;
+  @media only screen and (max-width: 1440px) {
+    padding-top: 57px;
+  }
   @media only screen and (max-width: 991px) {
     margin-bottom: 50px;
   }
