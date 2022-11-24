@@ -37,60 +37,53 @@ const InfoServices = (props) => {
         <ResetCSS />
         <SectionWrapperServices>
           <SectionHeader>
-            <Fade up>
-              <h1
-                style={{
-                  color: "#5c5c5c",
-                  fontSize: "36px",
-                  fontWeight: "500",
-                  lineHeight: "36px",
-                  textAlign: "center",
-                }}
-                className="titleSlogan"
-              >
-                {characters
-                  ? `Services For The ${nameService} Category`
-                  : `BPO Services Marketplace`}
-              </h1>
-              <p
-                style={{
-                  color: "#5c5c5c",
-                  fontSize: "18px",
-                  lineHeight: "24px",
-                  textAlign: "center",
-                  margin: "20px 0 50px",
-                }}
-              >
-                For trusted agency and freelancer
-              </p>
-            </Fade>
+            <h1
+              style={{
+                color: "#5c5c5c",
+                fontSize: "36px",
+                fontWeight: "500",
+                lineHeight: "36px",
+                textAlign: "center",
+              }}
+              className="titleSlogan"
+            >
+              {characters
+                ? `Services For The ${nameService} Category`
+                : `BPO Services Marketplace`}
+            </h1>
+            <p
+              style={{
+                color: "#5c5c5c",
+                fontSize: "18px",
+                lineHeight: "24px",
+                textAlign: "center",
+                margin: "20px 0 50px",
+              }}
+            >
+              For trusted agency and freelancer
+            </p>
           </SectionHeader>
           <ContainerServices>
             <Breadcrumb characters={characters} />
-            <Fade up>
-              <Box className="containerServices">
-                <Link href={`/services`}>
-                  <a className="btncategory">All</a>
-                </Link>
-                {dataNew.length > 0 && <Box className="space" />}
-                {dataNew.map((items, index) => (
-                  <Link
-                    key={index}
-                    href={`/services/${items.attributes.alias}`}
+            <Box className="containerServices">
+              <Link href={`/services`}>
+                <a className="btncategory">All</a>
+              </Link>
+              {dataNew.length > 0 && <Box className="space" />}
+              {dataNew.map((items, index) => (
+                <Link key={index} href={`/services/${items.attributes.alias}`}>
+                  <a
+                    className={
+                      choice === items.attributes.alias
+                        ? "choice"
+                        : "btncategory"
+                    }
                   >
-                    <a
-                      className={
-                        choice === items.attributes.alias
-                          ? "choice"
-                          : "btncategory"
-                      }
-                    >
-                      {items?.attributes.name}
-                    </a>
-                  </Link>
-                ))}
-              </Box>
-            </Fade>
+                    {items?.attributes.name}
+                  </a>
+                </Link>
+              ))}
+            </Box>
           </ContainerServices>
           <GridServices>
             {serviceList.map(

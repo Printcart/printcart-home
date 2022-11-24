@@ -259,4 +259,23 @@ export const ContainerServices = styled.div`
       height: 35px;
     }
   }
+  .boxButton {
+    display: flex;
+    align-items: center;
+    & div {
+      margin: unset;
+    }
+  }
+  .shareone {
+    display: flex;
+    justify-content: space-between;
+    width: 210px;
+    margin-top: 10px;
+    & button,
+    & svg {
+      width: 30px;
+      height: 35px;
+      border-radius: 7px;
+    }
+  }
 `;
