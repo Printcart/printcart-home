@@ -43,7 +43,7 @@ const ServiceIntro = (props) => {
       {/* Image */}
       <Box className="container-image">
         <Box className="boxImage">
-          <button
+          {/* <button
             className="btnFull"
             onClick={() => {
               handleOpen(character);
@@ -52,7 +52,7 @@ const ServiceIntro = (props) => {
             <Box>
               <Icon icon={ic_zoom_out_map} /> Full Screen
             </Box>
-          </button>
+          </button> */}
           <img
             width="100%"
             height={450}
