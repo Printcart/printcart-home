@@ -8,41 +8,9 @@ import InfoServices from "../containers/AppModern/InfoServices";
 // import TeamPortfolio from 'containers/AppModern/TeamPortfoilo';
 import GlobalStyle, { AppWrapper } from "containers/AppModern/appModern.style";
 import Footer from "containers/AppModern/Footer";
-import React, { useState } from "react";
-import axios from "axios";
 
 const Services = (props) => {
-  const { serviceList, total, servicesCategory } = props;
-  const [dataCat, setDataCat] = useState([]);
-  const uniqueValue = [];
-  const mergearray = uniqueValue.concat(
-    servicesCategory.map((items) =>
-      items.attributes.project_cat.map((item) => item)
-    )
-  );
-  const delDuplicate = mergearray.flat();
-
-  const data = delDuplicate.filter((element) => {
-    const isDuplicate = delDuplicate.includes(element.value);
-    if (!isDuplicate) {
-      delDuplicate.push(element.value);
-      return true;
-    }
-    return false;
-  });
-  const valueData = data.map((items) => items.value);
-  const mergeValue = valueData.join("&filters[id]=");
-
-  React.useEffect(() => {
-    axios
-      .get(
-        `https://strapi4.cloodo.com/api/project-categories?pagination[pageSize]=100&filters[id]=${mergeValue}`
-      )
-      .then((res) => {
-        const todoItems = res.data.data;
-        setDataCat(todoItems);
-      });
-  }, data);
+  const { serviceList, total, dataServices } = props;
 
   return (
     <ThemeProvider theme={theme}>
@@ -64,8 +32,7 @@ const Services = (props) => {
           <InfoServices
             serviceList={serviceList}
             total={total}
-            servicesCategory={data}
-            dataNew={dataCat}
+            dataNew={dataServices}
           />
           <Footer />
         </AppWrapper>
@@ -76,6 +43,7 @@ const Services = (props) => {
 export default Services;
 export async function getStaticProps() {
   const time = `&time=${Date.now()}`;
+  const uniqueValue = [];
   const limit = `&pagination[pageSize]=100`;
   const filProjectCat = `&fields[0]=project_cat`;
   const filAgency = `&filters[$and][0][service_agency][$contains]=568427`;
@@ -86,10 +54,33 @@ export async function getStaticProps() {
       time +
       filAgency
   ).then((res) => res.json());
+
   const servicesCategory = await fetch(
     `${process.env.STRAPI_2_API_URL}services?pagination[pageSize]=100` +
       filProjectCat +
       filAgency
+  ).then((res) => res.json());
+
+  const mergearray = uniqueValue.concat(
+    servicesCategory.data.map((items) =>
+      items.attributes.project_cat.map((item) => item)
+    )
+  );
+  
+  const delDuplicate = mergearray.flat();
+  const data = delDuplicate.filter((element) => {
+    const isDuplicate = delDuplicate.includes(element.value);
+    if (!isDuplicate) {
+      delDuplicate.push(element.value);
+      return true;
+    }
+    return false;
+  });
+  const valueData = data.map((item) => item.value);
+  const mergeValue = valueData.join("&filters[id]=");
+
+  const dataServices = await fetch(
+    `${process.env.STRAPI_API_URL}project-categories?pagination[pageSize]=100&filters[id]=${mergeValue}`
   ).then((res) => res.json());
 
   if (serviceList.data.length > 0) {
@@ -97,7 +88,7 @@ export async function getStaticProps() {
       props: {
         serviceList: serviceList["data"],
         total: serviceList["meta"],
-        servicesCategory: servicesCategory["data"],
+        dataServices: dataServices["data"],
       },
     };
   }

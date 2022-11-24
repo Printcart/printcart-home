@@ -37,31 +37,12 @@ const InfoServices = (props) => {
         <ResetCSS />
         <SectionWrapperServices>
           <SectionHeader>
-            <h1
-              style={{
-                color: "#5c5c5c",
-                fontSize: "36px",
-                fontWeight: "500",
-                lineHeight: "36px",
-                textAlign: "center",
-              }}
-              className="titleSlogan"
-            >
+            <h1 className="titleSlogan">
               {characters
                 ? `Services For The ${nameService} Category`
                 : `BPO Services Marketplace`}
             </h1>
-            <p
-              style={{
-                color: "#5c5c5c",
-                fontSize: "18px",
-                lineHeight: "24px",
-                textAlign: "center",
-                margin: "20px 0 50px",
-              }}
-            >
-              For trusted agency and freelancer
-            </p>
+            <p>For trusted agency and freelancer</p>
           </SectionHeader>
           <ContainerServices>
             <Breadcrumb characters={characters} />
@@ -93,7 +74,7 @@ const InfoServices = (props) => {
                   <ServicesList key={index} serviceList={item} total={total} />
                 )
             )}
-            <Pagination page={page} />
+            {serviceList.length > 40 && <Pagination page={page} />}
           </GridServices>
         </SectionWrapperServices>
       </>

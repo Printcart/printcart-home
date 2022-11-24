@@ -154,6 +154,20 @@ export const SectionHeader = styled.header`
       letter-spacing: -0.5px;
     }
   }
+  .titleSlogan {
+    color: #5c5c5c;
+    font-size: 36px;
+    font-weight: 500;
+    line-height: 36px;
+    text-align: center;
+  }
+  & p {
+    color: #5c5c5c;
+    font-size: 19px;
+    line-height: 24px;
+    text-align: center;
+    margin: 20px 0 50px;
+  }
 `;
 
 export default GlobalStyle;

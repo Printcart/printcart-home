@@ -20,8 +20,8 @@ import {
 const Breadcrumb = (props) => {
   const { characters } = props;
   const router = useRouter();
-  const asPath = router.asPath;
-  const url = asPath;
+  const url = { asPath: router };
+
   return (
     <Box className="mainbred">
       <Box className="breadcome">

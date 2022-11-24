@@ -1,46 +1,15 @@
 import ResetCSS from "common/assets/css/style";
 import { theme } from "common/theme/appModern";
-import Navbar from "containers/AppModern/Navbar";
-import Head from "next/head";
-import { ThemeProvider } from "styled-components";
-import axios from "axios";
 import GlobalStyle, { AppWrapper } from "containers/AppModern/appModern.style";
 import Footer from "containers/AppModern/Footer";
 import InfoServices from "containers/AppModern/InfoServices";
-import React, { useState } from "react";
+import Navbar from "containers/AppModern/Navbar";
+import Head from "next/head";
+import { ThemeProvider } from "styled-components";
 
 const ServicesCategory = (props) => {
-  const { total, listService, servicesCategory, characters, choice } = props;
-  const [dataCat, setDataCat] = useState([]);
-  const uniqueValue = [];
-  const mergearray = uniqueValue.concat(
-    servicesCategory.map((items) =>
-      items.attributes.project_cat.map((item) => item)
-    )
-  );
-  const delDuplicate = mergearray.flat();
+  const { total, listService, characters, choice, dataServices } = props;
 
-  const data = delDuplicate.filter((element) => {
-    const isDuplicate = delDuplicate.includes(element.value);
-    if (!isDuplicate) {
-      delDuplicate.push(element.value);
-      return true;
-    }
-    return false;
-  });
-  const valueData = data.map((items) => items.value);
-  const mergeValue = valueData.join("&filters[id]=");
-
-  React.useEffect(() => {
-    axios
-      .get(
-        `https://strapi4.cloodo.com/api/project-categories?pagination[pageSize]=100&filters[id]=${mergeValue}`
-      )
-      .then((res) => {
-        const todoItems = res.data.data;
-        setDataCat(todoItems);
-      });
-  }, []);
   return (
     <ThemeProvider theme={theme}>
       <>
@@ -61,7 +30,7 @@ const ServicesCategory = (props) => {
           <InfoServices
             serviceList={listService}
             total={total}
-            dataNew={dataCat}
+            dataNew={dataServices}
             characters={characters}
             choice={choice}
           />
@@ -73,23 +42,51 @@ const ServicesCategory = (props) => {
 };
 export default ServicesCategory;
 
-export async function getStaticProps({ params }) {
-  const alias = params.category;
+export async function getServerSideProps({ query }) {
+  const alias = query.category;
+  const uniqueValue = [];
+  const paramStrapi = `${process.env.STRAPI_API_URL}project-categories`;
+  const paramString = `${process.env.STRAPI_2_API_URL}services`;
+  const setUrl = new URL("?populate=image&populate=users_permissions_user.avatar&filters[project_cat][$containsi]", paramString );
+  const newUrl = setUrl.href;
   const filProjectCat = `&fields[0]=project_cat`;
   const filAgency = `&filters[$and][0][service_agency][$contains]=568427`;
+  const filSort = `&sort=createdAt:DESC`;
 
   const results = await fetch(
-    `${process.env.STRAPI_API_URL}project-categories?sort=updatedAt:DESC&filters[$and][0][alias][$eq]=${alias}`
+    `${paramStrapi}?sort=updatedAt:DESC&filters[$and][0][alias][$eq]=${alias}`
   ).then((res) => res.json());
+
   if (results.data.length > 0) {
     const name_cat = results.data[0].attributes.name;
+
     const listService = await fetch(
-      `${process.env.STRAPI_2_API_URL}services?populate=image&populate=users_permissions_user.avatar&filters[project_cat][$containsi]=${name_cat}&filters[$and][0][service_agency][$contains]=568427&sort=createdAt:DESC`
+      `${newUrl}=${name_cat}` + filAgency + filSort
     ).then((res) => res.json());
+
     const servicesCategory = await fetch(
-      `${process.env.STRAPI_2_API_URL}services?pagination[pageSize]=100` +
-        filProjectCat +
-        filAgency
+      `${paramString}?pagination[pageSize]=100` + filProjectCat + filAgency
+    ).then((res) => res.json());
+
+    const mergearray = uniqueValue.concat(
+      servicesCategory.data.map((items) =>
+        items.attributes.project_cat.map((item) => item)
+      )
+    );
+    const delDuplicate = mergearray.flat();
+    const data = delDuplicate.filter((element) => {
+      const isDuplicate = delDuplicate.includes(element.value);
+      if (!isDuplicate) {
+        delDuplicate.push(element.value);
+        return true;
+      }
+      return false;
+    });
+    const valueData = data.map((item) => item.value);
+    const mergeValue = valueData.join("&filters[id]=");
+
+    const dataServices = await fetch(
+      `${paramStrapi}?pagination[pageSize]=100&filters[id]=${mergeValue}`
     ).then((res) => res.json());
 
     return {
@@ -97,28 +94,13 @@ export async function getStaticProps({ params }) {
         characters: results.data[0],
         listService: listService.data,
         total: listService["meta"],
-        servicesCategory: servicesCategory["data"],
+        dataServices: dataServices["data"],
         choice: alias,
       },
-      revalidate: 604800,
     };
   }
+
   return {
     notFound: true,
   };
-}
-export async function getStaticPaths() {
-  const characters = await fetch(
-    `${process.env.STRAPI_API_URL}project-categories?filters[parent][alias][$null]=true&pagination[limit]=1`
-  ).then((res) => res.json());
-  if (characters.data) {
-    return {
-      paths: characters.data.map((_item) => ({
-        params: {
-          category: _item.attributes.alias,
-        },
-      })),
-      fallback: "blocking",
-    };
-  }
 }
