@@ -9,12 +9,15 @@ import { ThemeProvider } from "styled-components";
 
 const ServicesCategory = (props) => {
   const { total, listService, characters, choice, dataServices } = props;
+  const title = characters.attributes.name;
 
   return (
     <ThemeProvider theme={theme}>
       <>
         <Head>
-          <title>Printcart | Services</title>
+          <title>
+            {title && `Services for the ${title} category on Cloodo`}
+          </title>
           <meta name="theme-color" content="#2563FF" />
           <link
             href="https://fonts.googleapis.com/css?family=Heebo:300,400,500,700&display=swap"
@@ -47,7 +50,10 @@ export async function getServerSideProps({ query }) {
   const uniqueValue = [];
   const paramStrapi = `${process.env.STRAPI_API_URL}project-categories`;
   const paramString = `${process.env.STRAPI_2_API_URL}services`;
-  const setUrl = new URL("?populate=image&populate=users_permissions_user.avatar&filters[project_cat][$containsi]", paramString );
+  const setUrl = new URL(
+    "?populate=image&populate=users_permissions_user.avatar&filters[project_cat][$containsi]",
+    paramString
+  );
   const newUrl = setUrl.href;
   const filProjectCat = `&fields[0]=project_cat`;
   const filAgency = `&filters[$and][0][service_agency][$contains]=568427`;
