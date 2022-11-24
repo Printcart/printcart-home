@@ -1,20 +1,25 @@
 import ResetCSS from "common/assets/css/style";
+import Box from "common/components/Box";
 import Pagination from "common/components/Pagination";
 import { filterServices } from "common/data/AppModern";
 import { theme } from "common/theme/appModern";
+import Link from "next/link";
 import { useRouter } from "next/router";
+import { element } from "prop-types";
+import React from "react";
 import Fade from "react-reveal/Fade";
 import { ThemeProvider } from "styled-components";
 import { SectionHeader } from "../appModern.style";
-import CheckBoxServices from "./CheckBox";
+import Breadcrumb from "./Breadcrumb";
 import SectionWrapperServices, {
   ContainerServices,
-  GridServices
+  GridServices,
 } from "./GridServices";
 import ServicesList from "./ServicesList";
 
 const InfoServices = (props) => {
-  const { serviceList, total } = props;
+  const { serviceList, total, dataNew, characters, choice } = props;
+  const nameService = characters?.attributes?.name;
   const router = useRouter();
   const query = router.query;
 
@@ -32,46 +37,53 @@ const InfoServices = (props) => {
         <ResetCSS />
         <SectionWrapperServices>
           <SectionHeader>
-            <Fade up>
-              {/* <Heading as="h1" content="BPO Services Marketplace" /> */}
-              <h1
-                style={{
-                  color: "#5c5c5c",
-                  fontSize: "36px",
-                  fontWeight: "500",
-                  lineHeight: "36px",
-                  textAlign: "center",
-                }}
-                className="titleSlogan"
-              >
-                BPO Services Marketplace
-              </h1>
-              <p
-                style={{
-                  color: "#5c5c5c",
-                  fontSize: "18px",
-                  lineHeight: "24px",
-                  textAlign: "center",
-                  margin: "20px 0 50px",
-                }}
-              >
-                For trusted agency and freelancer
-              </p>
-            </Fade>
+            <h1
+              style={{
+                color: "#5c5c5c",
+                fontSize: "36px",
+                fontWeight: "500",
+                lineHeight: "36px",
+                textAlign: "center",
+              }}
+              className="titleSlogan"
+            >
+              {characters
+                ? `Services For The ${nameService} Category`
+                : `BPO Services Marketplace`}
+            </h1>
+            <p
+              style={{
+                color: "#5c5c5c",
+                fontSize: "18px",
+                lineHeight: "24px",
+                textAlign: "center",
+                margin: "20px 0 50px",
+              }}
+            >
+              For trusted agency and freelancer
+            </p>
           </SectionHeader>
           <ContainerServices>
-            <Fade up>
-              <div className="">
-                {filterServices.map((item, index) => (
-                  <CheckBoxServices
-                    p={4}
-                    key={index}
-                    labelText={item.name}
-                    background={item.color}
-                  />
-                ))}
-              </div>
-            </Fade>
+            <Breadcrumb characters={characters} />
+            <Box className="containerServices">
+              <Link href={`/services`}>
+                <a className="btncategory">All</a>
+              </Link>
+              {dataNew.length > 0 && <Box className="space" />}
+              {dataNew.map((items, index) => (
+                <Link key={index} href={`/services/${items.attributes.alias}`}>
+                  <a
+                    className={
+                      choice === items.attributes.alias
+                        ? "choice"
+                        : "btncategory"
+                    }
+                  >
+                    {items?.attributes.name}
+                  </a>
+                </Link>
+              ))}
+            </Box>
           </ContainerServices>
           <GridServices>
             {serviceList.map(

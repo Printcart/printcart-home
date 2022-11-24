@@ -150,9 +150,6 @@ export const GridServices = styled.div`
 export default SectionWrapperServices;
 
 export const ContainerServices = styled.div`
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
   ${(props) =>
     props.fullWidth &&
     css`
@@ -170,15 +167,15 @@ export const ContainerServices = styled.div`
       padding-right: 30px;
     `};
   @media (min-width: 768px) {
-    max-width: 750px;
+    max-width: 900px;
     width: 100%;
   }
   @media (min-width: 992px) {
-    max-width: 970px;
+    max-width: 1220px;
     width: 100%;
   }
   @media (min-width: 1220px) {
-    max-width: ${(props) => props.width || "1170px"};
+    max-width: ${(props) => props.width || "100%"};
     width: 100%;
   }
   @media (max-width: 768px) {
@@ -188,5 +185,97 @@ export const ContainerServices = styled.div`
         padding-left: 30px;
         padding-right: 30px;
       `};
+  }
+  .containerServices {
+    margin: 0 aut;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .choice {
+    display: flex;
+    background: #2d58af;
+    border: 1px solid #2d58af;
+    color: #fff;
+    height: 27px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    padding: 0 10px;
+    font-size: 16px;
+    text-transform: capitalize;
+  }
+  .btncategory {
+    border: 1px solid #cdcdcd;
+    height: 27px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    padding: 0 10px;
+    font-size: 16px;
+    color: #5c5c5c;
+    font-weight: 500;
+    text-transform: capitalize;
+    &:hover {
+      color: #fff;
+      background: #2d58af;
+      border: 1px solid #2d58af;
+    }
+  }
+  .space {
+    background: #cdcdcd;
+    width: 2px;
+    height: 27px;
+    margin-right: 15px;
+    margin-left: 5px;
+  }
+  .mainbred {
+    display: flex;
+    font-size: 18px;
+    margin-bottom: 30px;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .breadcome {
+    display: flex;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    .text {
+      color: #5c5c5c;
+    }
+    & a,
+    & span {
+      display: flex;
+      align-items: flex-end;
+      white-space: nowrap;
+      font-size: 16;
+      text-transform: capitalize;
+      margin: 0 5px;
+    }
+    & a:hover {
+      color: #2d58af;
+      text-decoration: underline;
+    }
+    & svg {
+      margin: 0 5px 0 0;
+      width: 30px;
+      height: 35px;
+    }
+  }
+  .boxButton {
+    display: flex;
+    align-items: center;
+    & div {
+      margin: unset;
+    }
+  }
+  .shareone {
+    display: flex;
+    justify-content: space-between;
+    width: 210px;
+    margin-top: 10px;
+    & button,
+    & svg {
+      width: 30px;
+      height: 35px;
+      border-radius: 7px;
+    }
   }
 `;

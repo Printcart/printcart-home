@@ -552,7 +552,7 @@ export const GridServicesRelated = styled.div`
       padding: 16px;
       margin-left: -16px;
     }
-    height: 80px;
+    height: 68px;
     font-size: 17px;
     line-height: 1.3;
     color: #5c5c5c;

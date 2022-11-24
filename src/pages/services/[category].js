@@ -3,16 +3,14 @@ import { theme } from "common/theme/appModern";
 import Navbar from "containers/AppModern/Navbar";
 import Head from "next/head";
 import { ThemeProvider } from "styled-components";
-import InfoServices from "../containers/AppModern/InfoServices";
-// import PricingPolicy from 'containers/AppModern/PricingPolicy';
-// import TeamPortfolio from 'containers/AppModern/TeamPortfoilo';
+import axios from "axios";
 import GlobalStyle, { AppWrapper } from "containers/AppModern/appModern.style";
 import Footer from "containers/AppModern/Footer";
+import InfoServices from "containers/AppModern/InfoServices";
 import React, { useState } from "react";
-import axios from "axios";
 
-const Services = (props) => {
-  const { serviceList, total, servicesCategory } = props;
+const ServicesCategory = (props) => {
+  const { total, listService, servicesCategory, characters, choice } = props;
   const [dataCat, setDataCat] = useState([]);
   const uniqueValue = [];
   const mergearray = uniqueValue.concat(
@@ -42,8 +40,7 @@ const Services = (props) => {
         const todoItems = res.data.data;
         setDataCat(todoItems);
       });
-  }, data);
-
+  }, []);
   return (
     <ThemeProvider theme={theme}>
       <>
@@ -62,10 +59,11 @@ const Services = (props) => {
             <Navbar />
           </div>
           <InfoServices
-            serviceList={serviceList}
+            serviceList={listService}
             total={total}
-            servicesCategory={data}
             dataNew={dataCat}
+            characters={characters}
+            choice={choice}
           />
           <Footer />
         </AppWrapper>
@@ -73,36 +71,54 @@ const Services = (props) => {
     </ThemeProvider>
   );
 };
-export default Services;
-export async function getStaticProps() {
-  const time = `&time=${Date.now()}`;
-  const limit = `&pagination[pageSize]=100`;
+export default ServicesCategory;
+
+export async function getStaticProps({ params }) {
+  const alias = params.category;
   const filProjectCat = `&fields[0]=project_cat`;
   const filAgency = `&filters[$and][0][service_agency][$contains]=568427`;
 
-  const serviceList = await fetch(
-    `${process.env.STRAPI_2_API_URL}services?populate=image` +
-      limit +
-      time +
-      filAgency
+  const results = await fetch(
+    `${process.env.STRAPI_API_URL}project-categories?sort=updatedAt:DESC&filters[$and][0][alias][$eq]=${alias}`
   ).then((res) => res.json());
-  const servicesCategory = await fetch(
-    `${process.env.STRAPI_2_API_URL}services?pagination[pageSize]=100` +
-      filProjectCat +
-      filAgency
-  ).then((res) => res.json());
+  if (results.data.length > 0) {
+    const name_cat = results.data[0].attributes.name;
+    const listService = await fetch(
+      `${process.env.STRAPI_2_API_URL}services?populate=image&populate=users_permissions_user.avatar&filters[project_cat][$containsi]=${name_cat}&filters[$and][0][service_agency][$contains]=568427&sort=createdAt:DESC`
+    ).then((res) => res.json());
+    const servicesCategory = await fetch(
+      `${process.env.STRAPI_2_API_URL}services?pagination[pageSize]=100` +
+        filProjectCat +
+        filAgency
+    ).then((res) => res.json());
 
-  if (serviceList.data.length > 0) {
     return {
       props: {
-        serviceList: serviceList["data"],
-        total: serviceList["meta"],
+        characters: results.data[0],
+        listService: listService.data,
+        total: listService["meta"],
         servicesCategory: servicesCategory["data"],
+        choice: alias,
       },
+      revalidate: 604800,
     };
   }
-
   return {
     notFound: true,
   };
+}
+export async function getStaticPaths() {
+  const characters = await fetch(
+    `${process.env.STRAPI_API_URL}project-categories?filters[parent][alias][$null]=true&pagination[limit]=1`
+  ).then((res) => res.json());
+  if (characters.data) {
+    return {
+      paths: characters.data.map((_item) => ({
+        params: {
+          category: _item.attributes.alias,
+        },
+      })),
+      fallback: "blocking",
+    };
+  }
 }

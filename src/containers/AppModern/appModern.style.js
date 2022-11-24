@@ -115,10 +115,12 @@ export const ContentWrapper = styled.div`
 `;
 
 export const SectionHeader = styled.header`
-  max-width: 704px;
   width: 100%;
   margin: 0 auto 58px;
   text-align: center;
+  @media only screen and (max-width: 1440px) {
+    padding-top: 57px;
+  }
   @media only screen and (max-width: 991px) {
     margin-bottom: 50px;
   }
