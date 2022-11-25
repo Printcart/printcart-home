@@ -64,12 +64,18 @@ const SupportDetail = (props) => {
         <Box className="mainPA">
           <img
             className="imagePA"
-            src={character.logo ?? "/avatar-default.png"}
+            src={
+              character?.users_permissions_user?.data?.attributes?.avatar?.data
+                ?.attributes.url ?? "/avatar-default.png"
+            }
             alt="Logo Service"
           />
           <Box className="boxTopPA">
             <Link prefetch={false} href="#">
-              <a>{character.name ?? "Printcart"}</a>
+              <a>
+                {character.users_permissions_user?.data?.attributes?.name ??
+                  "Printcart"}
+              </a>
             </Link>
             <p>Developer</p>
             <Box

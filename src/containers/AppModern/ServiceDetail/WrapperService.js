@@ -563,6 +563,17 @@ export const GridServicesRelated = styled.div`
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3;
   }
+  .avataruser {
+    display: flex;
+    align-items: center;
+    & img {
+      border-radius: 5px;
+      margin-right: 10px;
+      border: 1px solid #cdcdcd;
+      width: 40px;
+      height: 40px;
+    }
+  }
   .info {
     display: flex;
     align-items: center;
@@ -570,8 +581,26 @@ export const GridServicesRelated = styled.div`
     & strong {
       font-size: 16px;
       font-weight: 500;
-      margin-right: 5px;
+      margin-right: 3px;
       padding-bottom: 1px;
+    }
+    & p {
+      font-size: 16px;
+    }
+  }
+  .infodate {
+    display: flex;
+    align-items: center;
+    color: #5c5c5c;
+    display: -webkit-box;
+    & strong {
+      font-size: 16px;
+      font-weight: 500;
+      margin-right: 3px;
+      padding-bottom: 1px;
+    }
+    & p {
+      font-size: 16px;
     }
   }
   .boxBtn {

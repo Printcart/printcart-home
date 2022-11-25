@@ -8,7 +8,14 @@ import Head from "next/head";
 import { ThemeProvider } from "styled-components";
 
 const ServicesCategory = (props) => {
-  const { total, listService, characters, choice, dataServices } = props;
+  const {
+    total,
+    listService,
+    characters,
+    choice,
+    dataServices,
+    serviceRealted,
+  } = props;
   const title = characters.attributes.name;
 
   return (
@@ -36,6 +43,7 @@ const ServicesCategory = (props) => {
             dataNew={dataServices}
             characters={characters}
             choice={choice}
+            serviceRealted={serviceRealted}
           />
           <Footer />
         </AppWrapper>
@@ -95,6 +103,11 @@ export async function getServerSideProps({ query }) {
       `${paramStrapi}?pagination[pageSize]=100&filters[id]=${mergeValue}`
     ).then((res) => res.json());
 
+    const serviceRealted = await fetch(
+      `${process.env.STRAPI_2_API_URL}services?populate=image&populate=users_permissions_user.avatar&filters[project_cat][$notContainsi]=${name_cat}&pagination[limit]=8` +
+        filSort
+    ).then((res) => res.json());
+
     return {
       props: {
         characters: results.data[0],
@@ -102,6 +115,7 @@ export async function getServerSideProps({ query }) {
         total: listService["meta"],
         dataServices: dataServices["data"],
         choice: alias,
+        serviceRealted: serviceRealted["data"],
       },
     };
   }

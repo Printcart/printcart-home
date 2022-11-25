@@ -16,9 +16,11 @@ import SectionWrapperServices, {
   GridServices,
 } from "./GridServices";
 import ServicesList from "./ServicesList";
+import ServicesOther from "./ServicesOther";
 
 const InfoServices = (props) => {
-  const { serviceList, total, dataNew, characters, choice } = props;
+  const { serviceList, total, dataNew, characters, choice, serviceRealted } =
+    props;
   const nameService = characters?.attributes?.name;
   const router = useRouter();
   const query = router.query;
@@ -76,6 +78,7 @@ const InfoServices = (props) => {
             )}
             {serviceList.length > 40 && <Pagination page={page} />}
           </GridServices>
+          {serviceRealted && <ServicesOther serviceRealted={serviceRealted} />}
         </SectionWrapperServices>
       </>
     </ThemeProvider>

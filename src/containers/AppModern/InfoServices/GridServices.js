@@ -33,6 +33,12 @@ const SectionWrapperServices = styled.section`
       }
     }
   }
+  .title-related {
+    font-weight: 500;
+    color: #5c5c5c;
+    margin: 0 40px;
+    padding-top: 20px;
+  }
 `;
 
 export const GridServices = styled.div`
@@ -124,15 +130,47 @@ export const GridServices = styled.div`
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3;
   }
+  .avataruser {
+    display: flex;
+    align-items: center;
+    & img {
+      border-radius: 5px;
+      margin-right: 10px;
+      border: 1px solid #cdcdcd;
+      width: 40px;
+      height: 40px;
+    }
+  }
   .info {
     display: flex;
     align-items: center;
     color: #5c5c5c;
+    display: -webkit-box;
+
     & strong {
       font-size: 16px;
       font-weight: 500;
-      margin-right: 5px;
+      margin-right: 3px;
       padding-bottom: 1px;
+    }
+    & p {
+      font-size: 16px;
+    }
+  }
+  .infodate {
+    display: flex;
+    align-items: center;
+    color: #5c5c5c;
+    display: -webkit-box;
+
+    & strong {
+      font-size: 16px;
+      font-weight: 500;
+      margin-right: 3px;
+      padding-bottom: 1px;
+    }
+    & p {
+      font-size: 16px;
     }
   }
   .boxBtn {

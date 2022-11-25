@@ -11,7 +11,6 @@ import Footer from "containers/AppModern/Footer";
 
 const Services = (props) => {
   const { serviceList, total, dataServices } = props;
-
   return (
     <ThemeProvider theme={theme}>
       <>
@@ -47,9 +46,11 @@ export async function getStaticProps() {
   const limit = `&pagination[pageSize]=100`;
   const filProjectCat = `&fields[0]=project_cat`;
   const filAgency = `&filters[$and][0][service_agency][$contains]=568427`;
+  const user = `&populate=users_permissions_user.avatar`;
 
   const serviceList = await fetch(
     `${process.env.STRAPI_2_API_URL}services?populate=image` +
+      user +
       limit +
       time +
       filAgency
@@ -66,7 +67,7 @@ export async function getStaticProps() {
       items.attributes.project_cat.map((item) => item)
     )
   );
-  
+
   const delDuplicate = mergearray.flat();
   const data = delDuplicate.filter((element) => {
     const isDuplicate = delDuplicate.includes(element.value);

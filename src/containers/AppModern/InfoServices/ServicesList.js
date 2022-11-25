@@ -17,7 +17,10 @@ const ServicesList = (props) => {
   return (
     <Card className="cardItem">
       <Box>
-        <Link prefetch={false} href={`/service/${serviceList.attributes.alias}`}>
+        <Link
+          prefetch={false}
+          href={`/service/${serviceList.attributes.alias}`}
+        >
           <a>
             <img
               style={{
@@ -26,7 +29,7 @@ const ServicesList = (props) => {
                 borderTopLeftRadius: "5px",
                 borderTopRightRadius: "5px",
               }}
-              src={`${serviceList.attributes.image.data[0].attributes.url}`}
+              src={`${serviceList?.attributes?.image?.data[0]?.attributes?.url}`}
             />
           </a>
         </Link>
@@ -43,17 +46,28 @@ const ServicesList = (props) => {
           <Box className="text">
             {ReactHtmlParser(serviceList.attributes.description)}
           </Box>
-          <Box className="info">
-            <strong>Category: </strong>
-            {serviceList.attributes.package}
-          </Box>
-          <Box className="info">
-            <strong>Service Type: </strong>
-            {serviceList.attributes.type}
-          </Box>
-          <Box className="info">
-            <strong>Updated: </strong>
-            {NewDate(serviceList.attributes.updatedAt)}
+          <Box className="avataruser">
+            <img
+              src={`${
+                serviceList?.attributes?.users_permissions_user?.data
+                  ?.attributes?.avatar?.data?.attributes.url ??
+                "/avatar-default.png"
+              }`}
+              alt="Avatar User"
+            />
+            <Box>
+              <Box className="info">
+                <strong>Project Assistant: </strong>
+                {`${
+                  serviceList.attributes.users_permissions_user?.data
+                    ?.attributes.name ?? "Printcart"
+                }`}
+              </Box>
+              <Box className="infodate">
+                <strong>Updated: </strong>
+                {NewDate(serviceList.attributes.updatedAt)}
+              </Box>
+            </Box>
           </Box>
           <Box className="boxBtn">
             <Link
