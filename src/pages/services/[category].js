@@ -104,7 +104,7 @@ export async function getServerSideProps({ query }) {
     ).then((res) => res.json());
 
     const serviceRealted = await fetch(
-      `${process.env.STRAPI_2_API_URL}services?populate=image&populate=users_permissions_user.avatar&filters[project_cat][$notContainsi]=${name_cat}&pagination[limit]=8` +
+      `${paramString}?populate=image&populate=users_permissions_user.avatar&filters[project_cat][$notContainsi]=${name_cat}&pagination[limit]=8` +
         filSort
     ).then((res) => res.json());
 
