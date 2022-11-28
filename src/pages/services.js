@@ -10,7 +10,7 @@ import GlobalStyle, { AppWrapper } from "containers/AppModern/appModern.style";
 import Footer from "containers/AppModern/Footer";
 
 const Services = (props) => {
-  const { serviceList, total, dataServices } = props;
+  const { serviceList, total, dataCategory } = props;
   return (
     <ThemeProvider theme={theme}>
       <>
@@ -31,7 +31,7 @@ const Services = (props) => {
           <InfoServices
             serviceList={serviceList}
             total={total}
-            dataNew={dataServices}
+            dataNew={dataCategory}
           />
           <Footer />
         </AppWrapper>
@@ -47,14 +47,6 @@ export async function getStaticProps() {
   const filProjectCat = `&fields[0]=project_cat`;
   const filAgency = `&filters[$and][0][service_agency][$contains]=568427`;
   const user = `&populate=users_permissions_user.avatar`;
-
-  const serviceList = await fetch(
-    `${process.env.STRAPI_2_API_URL}services?populate=image` +
-      user +
-      limit +
-      time +
-      filAgency
-  ).then((res) => res.json());
 
   const servicesCategory = await fetch(
     `${process.env.STRAPI_2_API_URL}services?pagination[pageSize]=100` +
@@ -80,16 +72,18 @@ export async function getStaticProps() {
   const valueData = data.map((item) => item.value);
   const mergeValue = valueData.join("&filters[id]=");
 
-  const dataServices = await fetch(
-    `${process.env.STRAPI_API_URL}project-categories?pagination[pageSize]=100&filters[id]=${mergeValue}`
-  ).then((res) => res.json());
+  const dataServices = fetch(`${process.env.STRAPI_API_URL}project-categories?pagination[pageSize]=100&filters[id]=${mergeValue}`);
+  const serviceList = fetch(`${process.env.STRAPI_2_API_URL}services?populate=image` + user + limit + time + filAgency);
+  
+  const [listPromise, servicesPromise] = await Promise.all([serviceList,dataServices]);
+  const [dataListSer, dataCategory] = await Promise.all([listPromise.json(),servicesPromise.json()]);
 
-  if (serviceList.data.length > 0) {
+  if (dataListSer.data.length > 0) {
     return {
       props: {
-        serviceList: serviceList["data"],
-        total: serviceList["meta"],
-        dataServices: dataServices["data"],
+        serviceList: dataListSer["data"],
+        total: dataListSer["meta"],
+        dataCategory: dataCategory["data"],
       },
     };
   }

@@ -10,11 +10,11 @@ import { ThemeProvider } from "styled-components";
 const ServicesCategory = (props) => {
   const {
     total,
-    listService,
+    listServices,
     characters,
     choice,
-    dataServices,
-    serviceRealted,
+    dataCategory,
+    servicesRealted,
   } = props;
   const title = characters.attributes.name;
 
@@ -38,12 +38,12 @@ const ServicesCategory = (props) => {
             <Navbar />
           </div>
           <InfoServices
-            serviceList={listService}
+            serviceList={listServices}
             total={total}
-            dataNew={dataServices}
+            dataNew={dataCategory}
             characters={characters}
             choice={choice}
-            serviceRealted={serviceRealted}
+            serviceRealted={servicesRealted}
           />
           <Footer />
         </AppWrapper>
@@ -58,10 +58,7 @@ export async function getServerSideProps({ query }) {
   const uniqueValue = [];
   const paramStrapi = `${process.env.STRAPI_API_URL}project-categories`;
   const paramString = `${process.env.STRAPI_2_API_URL}services`;
-  const setUrl = new URL(
-    "?populate=image&populate=users_permissions_user.avatar&filters[project_cat][$containsi]",
-    paramString
-  );
+  const setUrl = new URL("?populate=image&populate=users_permissions_user.avatar&filters[project_cat][$containsi]",paramString);
   const newUrl = setUrl.href;
   const filProjectCat = `&fields[0]=project_cat`;
   const filAgency = `&filters[$and][0][service_agency][$contains]=568427`;
@@ -73,10 +70,6 @@ export async function getServerSideProps({ query }) {
 
   if (results.data.length > 0) {
     const name_cat = results.data[0].attributes.name;
-
-    const listService = await fetch(
-      `${newUrl}=${name_cat}` + filAgency + filSort
-    ).then((res) => res.json());
 
     const servicesCategory = await fetch(
       `${paramString}?pagination[pageSize]=100` + filProjectCat + filAgency
@@ -99,23 +92,30 @@ export async function getServerSideProps({ query }) {
     const valueData = data.map((item) => item.value);
     const mergeValue = valueData.join("&filters[id]=");
 
-    const dataServices = await fetch(
-      `${paramStrapi}?pagination[pageSize]=100&filters[id]=${mergeValue}`
-    ).then((res) => res.json());
+    const fetchDataCategory = fetch(`${paramStrapi}?pagination[pageSize]=100&filters[id]=${mergeValue}`);
+    const fetchListService = fetch(`${newUrl}=${name_cat}` + filAgency + filSort);
+    const fetchServiceRealted = fetch(`${paramString}?populate=image&populate=users_permissions_user.avatar&filters[project_cat][$notContainsi]=${name_cat}&pagination[limit]=8` + filSort);
 
-    const serviceRealted = await fetch(
-      `${paramString}?populate=image&populate=users_permissions_user.avatar&filters[project_cat][$notContainsi]=${name_cat}&pagination[limit]=8` +
-        filSort
-    ).then((res) => res.json());
+    const [promiseDataDatacategory, promiseListServices, promiseServicesRealted] =
+      await Promise.all([
+        fetchDataCategory,
+        fetchListService,
+        fetchServiceRealted,
+      ]);
+    const [dataCategory, listServices, servicesRealted] = await Promise.all([
+      promiseDataDatacategory.json(),
+      promiseListServices.json(),
+      promiseServicesRealted.json(),
+    ]);
 
     return {
       props: {
         characters: results.data[0],
-        listService: listService.data,
-        total: listService["meta"],
-        dataServices: dataServices["data"],
+        listServices: listServices["data"],
+        total: listServices["meta"],
+        dataCategory: dataCategory["data"],
         choice: alias,
-        serviceRealted: serviceRealted["data"],
+        servicesRealted: servicesRealted["data"],
       },
     };
   }
