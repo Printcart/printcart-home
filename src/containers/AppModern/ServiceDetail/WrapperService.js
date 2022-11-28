@@ -4,10 +4,10 @@ import { themeGet } from "@styled-system/theme-get";
 const WrapperServices = styled.div`
   padding: 86px 0 0;
   overflow: hidden;
-  @media only screen and (max-width: 1440px) {
+  @media only screen and (max-width: 1400px) {
     padding: 50px 0;
   }
-  @media only screen and (max-width: 667px) {
+  @media only screen and (max-width: 768px) {
     padding: 45px 0;
   }
   #wrapper-modal {
@@ -21,9 +21,10 @@ const WrapperServices = styled.div`
   .container {
     max-width: 1324px;
     margin: 0 auto;
+    padding: 0 25px;
   }
   .breadcrumb {
-    padding: 15px 0;
+    padding: 20px 0;
     background-color: #f5f5f5;
     & a,
     & span {
@@ -34,16 +35,22 @@ const WrapperServices = styled.div`
     & a:hover {
       color: #2d58af;
     }
-    @media only screen and (max-width: 1440px) {
-      margin-top: 38px;
+    @media only screen and (max-width: 1400px) {
+      margin-top: 28px;
     }
-    @media only screen and (max-width: 1366px) {
+    @media only screen and (max-width: 1200px) {
       margin-top: 28px;
     }
   }
   .container-text {
     max-width: 1024px;
     margin: 0 auto;
+    @media only screen and (max-width: 1400px) {
+      margin-left: 60px;
+    }
+    @media only screen and (max-width: 1200px) {
+      margin-left: 60px;
+    }
   }
   .banner {
     height: 400px;
@@ -82,19 +89,19 @@ export const GridServicesDT = styled.div`
 
   .boxLeft {
     width: 66%;
-    @media only screen and (max-width: 1466px) {
+    @media only screen and (max-width: 1400px) {
       width: 68%;
     }
-    @media only screen and (max-width: 1220px) {
+    @media only screen and (max-width: 1200px) {
       width: 66%;
     }
     @media only screen and (max-width: 992px) {
-      width: 58%;
+      width: 100%;
     }
-    @media only screen and (max-width: 773px) {
-      width: 50%;
+    @media only screen and (max-width: 768px) {
+      width: 100%;
     }
-    @media only screen and (max-width: 667px) {
+    @media only screen and (max-width: 576px) {
       width: 100%;
     }
   }
@@ -102,19 +109,19 @@ export const GridServicesDT = styled.div`
     width: 34%;
     padding-top: 30px;
     padding-left: 30px;
-    @media only screen and (max-width: 1466px) {
+    @media only screen and (max-width: 1400px) {
       width: 32%;
     }
-    @media only screen and (max-width: 1220px) {
+    @media only screen and (max-width: 1200px) {
       width: 34%;
     }
     @media only screen and (max-width: 992px) {
-      width: 42%;
+      width: 100%;
     }
-    @media only screen and (max-width: 773px) {
-      width: 50%;
+    @media only screen and (max-width: 768px) {
+      width: 100%;
     }
-    @media only screen and (max-width: 667px) {
+    @media only screen and (max-width: 576px) {
       width: 100%;
       padding-left: 0px;
 
@@ -482,19 +489,19 @@ export const GridServicesRelated = styled.div`
     width: calc(100% / 4 - 34px);
     margin: 20px 17px 10px;
 
-    @media only screen and (max-width: 1466px) {
+    @media only screen and (max-width: 1400px) {
       width: calc(100% / 4 - 34px);
     }
     @media only screen and (max-width: 1200px) {
       width: calc(100% / 3 - 34px);
     }
-    @media only screen and (max-width: 991px) {
+    @media only screen and (max-width: 992px) {
       width: calc(100% / 2 - 34px);
     }
-    @media only screen and (max-width: 767px) {
+    @media only screen and (max-width: 768px) {
       width: calc(100% / 2 - 34px);
     }
-    @media only screen and (max-width: 594px) {
+    @media only screen and (max-width: 576px) {
       width: 100%;
       margin-top: 15px;
     }
@@ -578,6 +585,7 @@ export const GridServicesRelated = styled.div`
     display: flex;
     align-items: center;
     color: #5c5c5c;
+    display: -webkit-box;
     & strong {
       font-size: 16px;
       font-weight: 500;

@@ -25,7 +25,10 @@ const ServiceIntro = (props) => {
       <Box className="boxInfo">
         <img
           alt="Avatar"
-          src={character.avatar ?? "/avatar-default.png"}
+          src={
+            character?.users_permissions_user?.data?.attributes?.avatar?.data
+              ?.attributes?.url ?? "/avatar-default.png"
+          }
           style={{
             width: "50px",
             height: "50px",
@@ -35,7 +38,10 @@ const ServiceIntro = (props) => {
         <p>
           created by{" "}
           <Link prefetch={false} href={character.url ?? "/"}>
-            <a>{character.name ?? "Printcart"}</a>
+            <a>
+              {character?.users_permissions_user?.data?.attributes?.name ??
+                "Printcart"}
+            </a>
           </Link>
           , a part of Corporate Printcart
         </p>

@@ -8,7 +8,7 @@ import TitlePath from "./TitlePath";
 import WrapperServices, {
   ContainerServicesDT,
   GridServicesDT,
-  GridServicesRelated
+  GridServicesRelated,
 } from "./WrapperService";
 
 const ServiceDetail = (props) => {
@@ -24,39 +24,37 @@ const ServiceDetail = (props) => {
       <ResetCSS />
       <GlobalStyle />
       <WrapperServices>
-        <Box id="wrapper-modal">
-          <TitlePath character={character} data={data} />
-          <Box className="banner" />
-          <Box className="contentMain">
-            <Box className="container">
-              <ContainerServicesDT>
-                <GridServicesDT>
-                  {/* Start Box Left */}
-                  <ServiceIntro character={character} />
-                  {/* Start Box Right */}
-                  <SupportDetail character={character} />
-                </GridServicesDT>
-                {/* RELATED SERVICES */}
-                {related.length > 0 && (
-                  <Box className="ItemCardRelated">
-                    <Box>
-                      <h2 className="titlerelated">Other Services</h2>
-                      <GridServicesRelated>
-                        {related.map(
-                          (service, index) =>
-                            index < 4 && (
-                              <ServicesList
-                                key={service.id}
-                                serviceList={service}
-                              />
-                            )
-                        )}
-                      </GridServicesRelated>
-                    </Box>
+        <TitlePath character={character} data={data} />
+        <Box className="banner" />
+        <Box className="contentMain">
+          <Box className="container">
+            <ContainerServicesDT>
+              <GridServicesDT>
+                {/* Start Box Left */}
+                <ServiceIntro character={character} />
+                {/* Start Box Right */}
+                <SupportDetail character={character} />
+              </GridServicesDT>
+              {/* RELATED SERVICES */}
+              {related.length > 0 && (
+                <Box className="ItemCardRelated">
+                  <Box>
+                    <h2 className="titlerelated">Other Services</h2>
+                    <GridServicesRelated>
+                      {related.map(
+                        (service, index) =>
+                          index < 4 && (
+                            <ServicesList
+                              key={service.id}
+                              serviceList={service}
+                            />
+                          )
+                      )}
+                    </GridServicesRelated>
                   </Box>
-                )}
-              </ContainerServicesDT>
-            </Box>
+                </Box>
+              )}
+            </ContainerServicesDT>
           </Box>
         </Box>
       </WrapperServices>
