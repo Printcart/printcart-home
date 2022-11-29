@@ -18,7 +18,7 @@ import {
 } from "react-share";
 
 const Breadcrumb = (props) => {
-  const { characters } = props;
+  const { current_cat } = props;
   const router = useRouter();
   const url = { asPath: router };
 
@@ -35,11 +35,37 @@ const Breadcrumb = (props) => {
         <Link href="/services">
           <a className="text">Services Listing</a>
         </Link>
-        {characters ? (
+        {current_cat?.name_cat ? (
           <>
-            -{" "}
-            <Link href={`/services/${characters.attributes.alias}`}>
-              <a className="text">{characters.attributes.name}</a>
+            -
+            <Link prefetch={false} href={`/services/${current_cat.alias_cat}`}>
+              <a className="text">{current_cat.name_cat}</a>
+            </Link>
+          </>
+        ) : (
+          ""
+        )}
+        {current_cat?.name_subcat ? (
+          <>
+            -
+            <Link
+              prefetch={false}
+              href={`/services/${current_cat.alias_cat}/${current_cat.alias_subcat}`}
+            >
+              <a className="text">{current_cat.name_subcat}</a>
+            </Link>
+          </>
+        ) : (
+          ""
+        )}
+        {current_cat?.name_sub ? (
+          <>
+            -
+            <Link
+              prefetch={false}
+              href={`/projects/${current_cat.alias_cat}/${current_cat.alias_subcat}/${current_cat.alias_sub}`}
+            >
+              <a className="text">{current_cat.name_sub}</a>
             </Link>
           </>
         ) : (

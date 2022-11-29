@@ -19,8 +19,15 @@ import ServicesList from "./ServicesList";
 import ServicesOther from "./ServicesOther";
 
 const InfoServices = (props) => {
-  const { serviceList, total, dataNew, characters, choice, serviceRealted } =
-    props;
+  const {
+    serviceList,
+    total,
+    dataNew,
+    characters,
+    choice,
+    serviceRealted,
+    current_cat,
+  } = props;
   const nameService = characters?.attributes?.name;
   const router = useRouter();
   const query = router.query;
@@ -47,14 +54,27 @@ const InfoServices = (props) => {
             <p>For trusted agency and freelancer</p>
           </SectionHeader>
           <ContainerServices>
-            <Breadcrumb characters={characters} />
+            <Breadcrumb current_cat={current_cat} />
             <Box className="containerServices">
               <Link href={`/services`}>
                 <a className="btncategory">All</a>
               </Link>
               {dataNew.length > 0 && <Box className="space" />}
               {dataNew.map((items, index) => (
-                <Link key={index} href={`/services/${items.attributes.alias}`}>
+                <Link
+                  key={index}
+                  href={
+                    `/services/` +
+                    (items.attributes.parent?.data.attributes.parent?.data
+                      ? items.attributes.parent.data.attributes.parent.data
+                          .attributes.alias + "/"
+                      : "") +
+                    (items.attributes.parent?.data
+                      ? items.attributes.parent.data.attributes.alias + "/"
+                      : "") +
+                    items.attributes.alias
+                  }
+                >
                   <a
                     className={
                       choice === items.attributes.alias
