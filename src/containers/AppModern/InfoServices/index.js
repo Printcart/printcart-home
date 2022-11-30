@@ -17,18 +17,12 @@ import SectionWrapperServices, {
 } from "./GridServices";
 import ServicesList from "./ServicesList";
 import ServicesOther from "./ServicesOther";
+import { ic_close } from "react-icons-kit/md/ic_close";
+import Icon from "react-icons-kit";
 
 const InfoServices = (props) => {
-  const {
-    serviceList,
-    total,
-    dataNew,
-    characters,
-    choice,
-    serviceRealted,
-    current_cat,
-  } = props;
-  const nameService = characters?.attributes?.name;
+  const { serviceList, total, dataNew, choice, serviceRealted, current_cat } =
+    props;
   const router = useRouter();
   const query = router.query;
 
@@ -47,8 +41,8 @@ const InfoServices = (props) => {
         <SectionWrapperServices>
           <SectionHeader>
             <h1 className="titleSlogan">
-              {characters
-                ? `Services For The ${nameService} Category`
+              {current_cat
+                ? `Services For The ${current_cat.name_cat} Category`
                 : `BPO Services Marketplace`}
             </h1>
             <p>For trusted agency and freelancer</p>
@@ -87,7 +81,15 @@ const InfoServices = (props) => {
                 </Link>
               ))}
             </Box>
+            {serviceList.length === 0 && (
+              <p className="notify">
+                <Icon icon={ic_close} />
+                The service you were looking for was not found, see more related
+                services below!
+              </p>
+            )}
           </ContainerServices>
+
           <GridServices>
             {serviceList.map(
               (item, index) =>

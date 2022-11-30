@@ -316,4 +316,14 @@ export const ContainerServices = styled.div`
       border-radius: 7px;
     }
   }
+  .notify {
+    display: flex;
+    font-size: 18px;
+    color: #5c5c5c;
+    margin-top: 10px;
+    & svg {
+      width: 20px;
+      height: 25px;
+      color: red;
+  }
 `;

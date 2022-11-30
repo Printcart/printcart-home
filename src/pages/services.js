@@ -48,18 +48,13 @@ export async function getStaticProps() {
   const filAgency = `&filters[$and][0][service_agency][$contains]=568427`;
   const user = `&populate=users_permissions_user.avatar`;
 
-  const servicesCategory = await fetch(
-    `${process.env.STRAPI_2_API_URL}services?pagination[pageSize]=100` +
-      filProjectCat +
-      filAgency
-  ).then((res) => res.json());
+  const servicesCategory = await fetch(`${process.env.STRAPI_2_API_URL}services?pagination[pageSize]=100` + filProjectCat + filAgency).then((res) => res.json());
 
   const mergearray = uniqueValue.concat(
     servicesCategory.data.map((items) =>
       items.attributes.project_cat.map((item) => item)
     )
   );
-
   const delDuplicate = mergearray.flat();
   const data = delDuplicate.filter((element) => {
     const isDuplicate = delDuplicate.includes(element.value);
@@ -72,17 +67,17 @@ export async function getStaticProps() {
   const valueData = data.map((item) => item.value);
   const mergeValue = valueData.join("&filters[id]=");
 
-  const dataServices = fetch(`${process.env.STRAPI_API_URL}project-categories?pagination[pageSize]=100&filters[id]=${mergeValue}`);
-  const serviceList = fetch(`${process.env.STRAPI_2_API_URL}services?populate=image` + user + limit + time + filAgency);
+  const fetchCategory = fetch(`${process.env.STRAPI_API_URL}project-categories?pagination[pageSize]=100&filters[id]=${mergeValue}`);
+  const fetchServices = fetch(`${process.env.STRAPI_2_API_URL}services?populate=image` + user + limit + time + filAgency);
   
-  const [listPromise, servicesPromise] = await Promise.all([serviceList,dataServices]);
-  const [dataListSer, dataCategory] = await Promise.all([listPromise.json(),servicesPromise.json()]);
+  const [promiseCategory, promiseServices] = await Promise.all([fetchServices,fetchCategory]);
+  const [dataServices, dataCategory] = await Promise.all([promiseCategory.json(),promiseServices.json()]);
 
-  if (dataListSer.data.length > 0) {
+  if (dataServices.data.length > 0) {
     return {
       props: {
-        serviceList: dataListSer["data"],
-        total: dataListSer["meta"],
+        serviceList: dataServices["data"],
+        total: dataServices["meta"],
         dataCategory: dataCategory["data"],
       },
     };
