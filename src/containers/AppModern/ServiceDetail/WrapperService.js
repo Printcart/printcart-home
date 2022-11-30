@@ -559,9 +559,8 @@ export const GridServicesRelated = styled.div`
       padding: 16px;
       margin-left: -16px;
     }
-    height: 68px;
+    height: 80px;
     font-size: 17px;
-    line-height: 1.3;
     color: #5c5c5c;
     margin-bottom: 10px;
     text-overflow: ellipsis;
@@ -586,6 +585,7 @@ export const GridServicesRelated = styled.div`
     align-items: center;
     color: #5c5c5c;
     display: -webkit-box;
+
     & strong {
       font-size: 16px;
       font-weight: 500;
@@ -601,6 +601,7 @@ export const GridServicesRelated = styled.div`
     align-items: center;
     color: #5c5c5c;
     display: -webkit-box;
+
     & strong {
       font-size: 16px;
       font-weight: 500;
