@@ -29,9 +29,13 @@ const ServicesList = (props) => {
                 borderTopLeftRadius: "5px",
                 borderTopRightRadius: "5px",
               }}
-              src={`${serviceList?.attributes?.image?.data?.map(
-                (items) => items.attributes.url
-              )}`}
+              src={
+                `${serviceList?.attributes?.image?.data?.map(
+                  (items) => items?.attributes?.url
+                )}`
+                  ? `${serviceList?.attributes?.image?.data[0]?.attributes?.url}`
+                  : ""
+              }
             />
           </a>
         </Link>

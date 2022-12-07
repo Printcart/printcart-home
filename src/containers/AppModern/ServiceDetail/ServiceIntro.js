@@ -4,6 +4,7 @@ import { useState } from "react";
 import ReactHtmlParser from "react-html-parser";
 import Icon from "react-icons-kit";
 import { ic_zoom_out_map } from "react-icons-kit/md/ic_zoom_out_map";
+import ReactMarkdown from "react-markdown";
 
 const ServiceIntro = (props) => {
   const { character } = props;
@@ -83,7 +84,7 @@ const ServiceIntro = (props) => {
         <Box>
           <h2 className="titleDes">About This Service</h2>
           <Box className="description">
-            {ReactHtmlParser(character.description)}
+            <ReactMarkdown>{character.description}</ReactMarkdown>
           </Box>
         </Box>
       </Box>
