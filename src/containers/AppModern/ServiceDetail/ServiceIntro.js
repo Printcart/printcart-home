@@ -1,9 +1,6 @@
 import Box from "common/components/Box";
 import Link from "next/link";
 import { useState } from "react";
-import ReactHtmlParser from "react-html-parser";
-import Icon from "react-icons-kit";
-import { ic_zoom_out_map } from "react-icons-kit/md/ic_zoom_out_map";
 import ReactMarkdown from "react-markdown";
 
 const ServiceIntro = (props) => {

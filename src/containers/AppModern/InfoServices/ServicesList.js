@@ -3,6 +3,7 @@ import Button from "common/components/Button";
 import Card from "common/components/Card";
 import Link from "next/link";
 import ReactHtmlParser from "react-html-parser";
+import ReactMarkdown from "react-markdown";
 
 export const NewDate = (number) => {
   const options = { month: "long", day: "numeric", year: "numeric" };
@@ -50,6 +51,7 @@ const ServicesList = (props) => {
             </a>
           </Link>
           <Box className="text">
+            <ReactMarkdown>{serviceList.attributes.description}</ReactMarkdown>
             {ReactHtmlParser(serviceList.attributes.description)}
           </Box>
           <Box className="avataruser">
