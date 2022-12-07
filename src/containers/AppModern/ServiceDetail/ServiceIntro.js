@@ -71,13 +71,6 @@ const ServiceIntro = (props) => {
             }}
           />
         </Box>
-        {/* <Modal show={open} onClose={handleClose} Image={iSrc}>
-                <Box className="boxModal">
-                    <button className="boxClose" onClick={handleClose}>
-                    <Icon icon={ic_close_outline} />
-                    </button>
-                </Box>
-            </Modal> */}
       </Box>
       {/* End iMAGE */}
       {/* Description */}
