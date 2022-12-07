@@ -31,11 +31,11 @@ const ServicesList = (props) => {
                 borderTopRightRadius: "5px",
               }}
               src={
-                `${serviceList?.attributes?.image?.data?.map(
-                  (items) => items?.attributes?.url
-                )}`
+                serviceList.attributes.image.data?.length > 0
                   ? `${serviceList?.attributes?.image?.data[0]?.attributes?.url}`
-                  : ""
+                  : `${serviceList?.attributes?.image?.data?.map(
+                      (items) => items?.attributes?.url
+                    )}`
               }
             />
           </a>
