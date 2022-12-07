@@ -80,10 +80,7 @@ export async function getStaticProps() {
         total: dataServices["meta"],
         dataCategory: dataCategory["data"],
       },
+      revalidate: 1,
     };
   }
-
-  return {
-    notFound: true,
-  };
 }
