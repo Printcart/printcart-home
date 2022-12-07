@@ -60,7 +60,11 @@ const ServiceIntro = (props) => {
           <img
             width="100%"
             height={450}
-            src={`${character.image.data[0].attributes.url}`}
+            src={
+              character.image.data?.length > 0
+                ? `${character.image.data[0].attributes.url}`
+                : ""
+            }
             alt="Logo service"
             onClick={() => {
               handleOpen(character);
