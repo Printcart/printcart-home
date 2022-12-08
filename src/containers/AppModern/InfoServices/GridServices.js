@@ -257,6 +257,25 @@ export const ContainerServices = styled.div`
       border: 1px solid #2d58af;
     }
   }
+  .btnShow {
+    border: 1px solid #cdcdcd;
+    height: 27px;
+    background: #424dc6;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    padding: 0 10px;
+    font-size: 16px;
+    text-transform: capitalize;
+    color: #fff;
+    cursor: pointer;
+    font-weight: 500;
+    text-transform: capitalize;
+    &:hover {
+      color: #fff;
+      background: #2d58af;
+      border: 1px solid #2d58af;
+    }
+  }
   .space {
     background: #cdcdcd;
     width: 2px;

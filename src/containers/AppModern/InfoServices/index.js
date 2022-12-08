@@ -15,6 +15,7 @@ import SectionWrapperServices, {
   ContainerServices,
   GridServices,
 } from "./GridServices";
+import ServiceCategory from "./ServiceCategory";
 import ServicesList from "./ServicesList";
 import ServicesOther from "./ServicesOther";
 import { ic_close } from "react-icons-kit/md/ic_close";
@@ -49,38 +50,7 @@ const InfoServices = (props) => {
           </SectionHeader>
           <ContainerServices>
             <Breadcrumb current_cat={current_cat} />
-            <Box className="containerServices">
-              <Link href={`/services`}>
-                <a className="btncategory">All</a>
-              </Link>
-              {dataNew.length > 0 && <Box className="space" />}
-              {dataNew.map((items, index) => (
-                <Link
-                  key={index}
-                  href={
-                    `/services/` +
-                    (items.attributes.parent?.data.attributes.parent?.data
-                      ? items.attributes.parent.data.attributes.parent.data
-                          .attributes.alias + "/"
-                      : "") +
-                    (items.attributes.parent?.data
-                      ? items.attributes.parent.data.attributes.alias + "/"
-                      : "") +
-                    items.attributes.alias
-                  }
-                >
-                  <a
-                    className={
-                      choice === items.attributes.alias
-                        ? "choice"
-                        : "btncategory"
-                    }
-                  >
-                    {items?.attributes.name}
-                  </a>
-                </Link>
-              ))}
-            </Box>
+            <ServiceCategory dataNew={dataNew} choice={choice}/>
             {serviceList.length === 0 && (
               <p className="notify">
                 <Icon icon={ic_close} />
