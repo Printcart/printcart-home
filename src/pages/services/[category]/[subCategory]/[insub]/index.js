@@ -11,7 +11,6 @@ const ServicesCategory = (props) => {
   const {
     total,
     listServices,
-    characters,
     choice,
     servicesRealted,
     current_cat,

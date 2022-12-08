@@ -11,7 +11,6 @@ const ServicesCategory = (props) => {
   const {
     total,
     listServices,
-    choice,
     servicesRealted,
     dataSubCat,
     current_cat,
@@ -40,7 +39,6 @@ const ServicesCategory = (props) => {
             total={total}
             dataNew={dataSubCat}
             current_cat={current_cat}
-            choice={choice}
             serviceRealted={servicesRealted}
           />
           <Footer />
@@ -78,7 +76,6 @@ export async function getServerSideProps({ query }) {
       props: {
         listServices: listServices["data"],
         total: listServices["meta"],
-        choice: alias,
         current_cat,
         servicesRealted: servicesRealted["data"],
         dataSubCat: dataSubCat["data"],

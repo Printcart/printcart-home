@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from "styled-components";
 
 const ContainerWrapper = styled.div`
   margin-left: auto;
@@ -16,27 +16,29 @@ const ContainerWrapper = styled.div`
         padding-right: 0;
       `) ||
     css`
-      padding-left: 30px;
-      padding-right: 30px;
+      padding-left: 90px;
+      padding-right: 90px;
     `};
   @media (min-width: 768px) {
-    max-width: 750px;
+    max-width: 991px;
     width: 100%;
   }
   @media (min-width: 992px) {
-    max-width: 970px;
+    max-width: 1192px;
     width: 100%;
   }
   @media (min-width: 1200px) {
-    max-width: ${(props) => props.width || '1234px'};
+    max-width: ${(props) => props.width || "1366px"};
     width: 100%;
   }
   @media (max-width: 768px) {
+    max-width: 750px;
+    width: 100%;
     ${(props) =>
       props.mobileGutter &&
       css`
-        padding-left: 30px;
-        padding-right: 30px;
+        padding-left: 90px;
+        padding-right: 90px;
       `};
   }
 `;

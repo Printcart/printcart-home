@@ -10,18 +10,9 @@ const WrapperServices = styled.div`
   @media only screen and (max-width: 768px) {
     padding: 45px 0;
   }
-  #wrapper-modal {
-    position: relative;
-  }
   .contentMain {
     position: relative;
     padding: 50px 0;
-    background: #f5f5f5;
-  }
-  .container {
-    max-width: 1324px;
-    margin: 0 auto;
-    padding: 0 25px;
   }
   .breadcrumb {
     padding: 20px 0;
@@ -90,10 +81,10 @@ export const GridServicesDT = styled.div`
   .boxLeft {
     width: 66%;
     @media only screen and (max-width: 1400px) {
-      width: 68%;
+      width: 65%;
     }
     @media only screen and (max-width: 1200px) {
-      width: 66%;
+      width: 60%;
     }
     @media only screen and (max-width: 992px) {
       width: 100%;
@@ -110,16 +101,18 @@ export const GridServicesDT = styled.div`
     padding-top: 30px;
     padding-left: 30px;
     @media only screen and (max-width: 1400px) {
-      width: 32%;
+      width: 35%;
     }
     @media only screen and (max-width: 1200px) {
-      width: 34%;
+      width: 40%;
     }
     @media only screen and (max-width: 992px) {
       width: 100%;
+      padding-left: 0px;
     }
     @media only screen and (max-width: 768px) {
       width: 100%;
+      padding-left: 0px;
     }
     @media only screen and (max-width: 576px) {
       width: 100%;
@@ -408,6 +401,11 @@ export const GridServicesDT = styled.div`
     box-shadow: 0 0 20px rgb(0 0 0 / 5%);
     border-radius: 4px;
     margin-bottom: 20px;
+    &:hover {
+      box-shadow: 5px 10px 10px 2px rgb(0 0 50 / 25%);
+      transform: translate(0, -7px);
+      transition: box-shadow 0.3s ease-out, transform 0.3s ease-out;
+    }
     .titleDes {
       font-size: 24px;
       font-weight: 500;

@@ -33,8 +33,8 @@ const GlobalStyle = createGlobalStyle`
   }
   @media only screen and (max-width: 667px) {
     .container {
-      padding-left: 20px;
-      padding-right: 20px;
+      padding-left: 30px;
+      padding-right: 30px;
     }
   }
   @media only screen and (width: 320px) {

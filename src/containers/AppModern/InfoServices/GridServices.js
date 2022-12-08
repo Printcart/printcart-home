@@ -42,16 +42,15 @@ const SectionWrapperServices = styled.section`
 `;
 
 export const GridServices = styled.div`
-  padding: 20px;
   display: flex;
   flex-wrap: wrap;
 
   > div {
-    width: calc(100% / 5 - 34px);
+    width: calc(100% / 3 - 34px);
     margin: 30px 17px 10px;
 
-    @media only screen and (max-width: 1466px) {
-      width: calc(100% / 4 - 34px);
+    @media only screen and (max-width: 1400px) {
+      width: calc(100% / 3 - 34px);
     }
     @media only screen and (max-width: 1200px) {
       width: calc(100% / 3 - 34px);
@@ -289,6 +288,9 @@ export const ContainerServices = styled.div`
     margin-bottom: 30px;
     align-items: center;
     justify-content: space-between;
+    @media only screen and (max-width: 768px) {
+      display: inline-block;
+    }
   }
   .breadcome {
     display: flex;
