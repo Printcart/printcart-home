@@ -1,32 +1,25 @@
-import ResetCSS from "common/assets/css/style";
-import Box from "common/components/Box";
 import Pagination from "common/components/Pagination";
-import { filterServices } from "common/data/AppModern";
-import { theme } from "common/theme/appModern";
-import Link from "next/link";
+import Container from "common/components/UI/Container";
 import { useRouter } from "next/router";
-import { element } from "prop-types";
-import React from "react";
-import Fade from "react-reveal/Fade";
-import { ThemeProvider } from "styled-components";
+import Icon from "react-icons-kit";
+import { ic_close } from "react-icons-kit/md/ic_close";
 import { SectionHeader } from "../appModern.style";
 import Breadcrumb from "./Breadcrumb";
 import SectionWrapperServices, {
   ContainerServices,
-  GridServices,
+  GridServices
 } from "./GridServices";
 import ServiceCategory from "./ServiceCategory";
 import ServicesList from "./ServicesList";
 import ServicesOther from "./ServicesOther";
-import { ic_close } from "react-icons-kit/md/ic_close";
-import Icon from "react-icons-kit";
-import Container from "common/components/UI/Container";
 
 const InfoServices = (props) => {
   const { serviceList, total, dataNew, choice, serviceRealted, current_cat } =
     props;
   const router = useRouter();
   const query = router.query;
+  const title =
+    current_cat?.name_sub ?? current_cat?.name_subcat ?? current_cat?.name_cat;
 
   const page = total.pagination.total / 40;
   let start = -1;
@@ -38,15 +31,19 @@ const InfoServices = (props) => {
 
   return (
     <SectionWrapperServices>
+      <SectionHeader>
+        <h1 className="titleSlogan">
+          {title
+            ? `Services For The ${title} Category`
+            : `ECOMMERCE DEVELOPMENT SERVICES`}
+        </h1>
+        <p>
+          PRINTCART is the trusted digital commerce agency building eCommerce
+          website, mobile app, PWA and Page builder solution for B2C and B2B
+          industries as well as multi-vendor marketplaces
+        </p>
+      </SectionHeader>
       <Container>
-        <SectionHeader>
-          <h1 className="titleSlogan">
-            {current_cat
-              ? `Services For The ${current_cat.name_cat} Category`
-              : `BPO Services Marketplace`}
-          </h1>
-          <p>For trusted agency and freelancer</p>
-        </SectionHeader>
         <ContainerServices>
           <Breadcrumb current_cat={current_cat} />
           <ServiceCategory dataNew={dataNew} choice={choice} />
@@ -58,7 +55,6 @@ const InfoServices = (props) => {
             </p>
           )}
         </ContainerServices>
-
         <GridServices>
           {serviceList.map(
             (item, index) =>

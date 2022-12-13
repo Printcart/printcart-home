@@ -1,5 +1,4 @@
 import styled, { css } from "styled-components";
-import { themeGet } from "@styled-system/theme-get";
 
 const WrapperServices = styled.div`
   padding: 86px 0 0;
@@ -295,22 +294,6 @@ export const GridServicesDT = styled.div`
     ,
     & a {
       color: #ff9800;
-    }
-    @media only screen and (max-width: 1466px) {
-      width: calc(100% / 2 - 34px);
-    }
-    @media only screen and (max-width: 1200px) {
-      width: calc(100% / 2 - 34px);
-    }
-    @media only screen and (max-width: 991px) {
-      width: calc(100% / 2 - 34px);
-    }
-    @media only screen and (max-width: 767px) {
-      width: calc(100% / 2 - 34px);
-    }
-    @media only screen and (max-width: 594px) {
-      width: 100%;
-      margin-top: 15px;
     }
   }
 

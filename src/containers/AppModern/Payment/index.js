@@ -3,8 +3,8 @@ import SectionWrapper from "containers/AppModern/Features/features.style";
 import React from "react";
 import Icon from "react-icons-kit";
 import { check } from "react-icons-kit/fa/check";
-import Container from "../UI/Container";
-import { CustomTable } from "./styleTable";
+import { Table } from "../../../common/components/Table/styleTable";
+import Container from "../../../common/components/UI/Container";
 // import styles from "./styleTable.js";
 
 const contact = "https://solution.printcart.com/home/teams/#contact";
@@ -200,7 +200,7 @@ const Payment = () => {
         </p>
       </SectionHeader>
       <Container>
-        <CustomTable>
+        <Table>
           <thead>
             <tr>
               <th className="setWidth">
@@ -241,8 +241,7 @@ const Payment = () => {
                           value.value !== "Contact" && (
                             <div className="text-value">{value.value}</div>
                           )}
-                        {(value.value === "Contact" ||
-                          value.value === "contact") && (
+                        {value.value === "Contact" && (
                           <a className="btnContact" href={contact}>
                             {value.value}
                           </a>
@@ -254,7 +253,7 @@ const Payment = () => {
               </React.Fragment>
             ))}
           </tbody>
-        </CustomTable>
+        </Table>
       </Container>
     </SectionWrapper>
   );

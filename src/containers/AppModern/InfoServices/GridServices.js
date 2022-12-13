@@ -1,5 +1,4 @@
 import styled, { css } from "styled-components";
-import { themeGet } from "@styled-system/theme-get";
 
 const SectionWrapperServices = styled.section`
   padding: 105px 0 75px;
@@ -32,12 +31,6 @@ const SectionWrapperServices = styled.section`
         border: 1px solid #2d58af !important;
       }
     }
-  }
-  .title-related {
-    font-weight: 500;
-    color: #5c5c5c;
-    margin: 0 40px;
-    padding-top: 20px;
   }
 `;
 
