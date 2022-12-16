@@ -1,11 +1,8 @@
 import styled, { css } from "styled-components";
 
 const SectionWrapperServices = styled.section`
-  padding: 50px 0 75px;
+  padding: 50px 0;
   overflow: hidden;
-  @media only screen and (max-width: 1440px) {
-    padding: 50px 0;
-  }
   @media only screen and (max-width: 667px) {
     padding: 45px 0;
   }

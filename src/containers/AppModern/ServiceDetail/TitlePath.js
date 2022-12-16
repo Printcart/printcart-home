@@ -19,10 +19,10 @@ const TitlePath = (props) => {
       color: #2d58af;
     }
     @media only screen and (max-width: 1400px) {
-      margin-top: 38px;
+      margin-top: 27px;
     }
     @media only screen and (max-width: 1200px) {
-      margin-top: 31px;
+      margin-top: 25px;
     }
     .container-text {
       max-width: 1024px;
