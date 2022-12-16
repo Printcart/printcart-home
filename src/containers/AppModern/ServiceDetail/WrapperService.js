@@ -13,35 +13,6 @@ const WrapperServices = styled.div`
     position: relative;
     padding: 50px 0;
   }
-  .breadcrumb {
-    padding: 20px 0;
-    background-color: #f5f5f5;
-    & a,
-    & span {
-      font-size: 16px;
-      color: #5c5c5c;
-      text-transform: capitalize;
-    }
-    & a:hover {
-      color: #2d58af;
-    }
-    @media only screen and (max-width: 1400px) {
-      margin-top: 28px;
-    }
-    @media only screen and (max-width: 1200px) {
-      margin-top: 28px;
-    }
-  }
-  .container-text {
-    max-width: 1024px;
-    margin: 0 auto;
-    @media only screen and (max-width: 1400px) {
-      margin-left: 60px;
-    }
-    @media only screen and (max-width: 1200px) {
-      margin-left: 60px;
-    }
-  }
   .banner {
     height: 400px;
     background-image: url("/product_image.jpg");

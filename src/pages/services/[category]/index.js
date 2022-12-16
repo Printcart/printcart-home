@@ -8,7 +8,7 @@ import Head from "next/head";
 import { ThemeProvider } from "styled-components";
 
 const ServicesCategory = (props) => {
-  const { total, listServices, servicesRealted, dataSubCat, current_cat } = props;
+  const { total, listServices, servicesRealted, dataSubCat, current_cat,dataFAQ } = props;
   return (
     <ThemeProvider theme={theme}>
       <>
@@ -35,6 +35,7 @@ const ServicesCategory = (props) => {
             dataNew={dataSubCat}
             current_cat={current_cat}
             serviceRealted={servicesRealted}
+            dataFAQ={dataFAQ}
           />
           <Footer />
         </AppWrapper>
@@ -76,13 +77,17 @@ export async function getServerSideProps({ query }) {
       `${paramStrapi}project-categories?populate=parent.parent&filters[parent][alias][$eq]=${alias}&sort=service_count:DESC` +
         limit
     );
+    const fetchFAQ = fetch(
+      `${process.env.STRAPI_API_URL}faqs?filters[$and][0][project_cat][$contains]="20956"`
+    );
 
-    const [promiseListServices, promiseServicesRealted, promiseSubcat] =
-      await Promise.all([fetchListService, fetchServiceRealted, fetchSubCat]);
-    const [listServices, servicesRealted, dataSubCat] = await Promise.all([
+    const [promiseListServices, promiseServicesRealted, promiseSubcat,promiseFAQ] =
+      await Promise.all([fetchListService, fetchServiceRealted, fetchSubCat,fetchFAQ]);
+    const [listServices, servicesRealted, dataSubCat, dataFAQ] = await Promise.all([
       promiseListServices.json(),
       promiseServicesRealted.json(),
       promiseSubcat.json(),
+      promiseFAQ.json(),
     ]);
 
     return {
@@ -92,6 +97,7 @@ export async function getServerSideProps({ query }) {
         current_cat,
         servicesRealted: servicesRealted["data"],
         dataSubCat: dataSubCat["data"],
+        dataFAQ: dataFAQ["data"],
       },
     };
   }

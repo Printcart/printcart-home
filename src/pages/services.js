@@ -6,11 +6,14 @@ import { ThemeProvider } from "styled-components";
 import InfoServices from "../containers/AppModern/InfoServices";
 // import PricingPolicy from 'containers/AppModern/PricingPolicy';
 // import TeamPortfolio from 'containers/AppModern/TeamPortfoilo';
-import GlobalStyle, { AppWrapper } from "containers/AppModern/appModern.style";
+import GlobalStyle, {
+  AppWrapper,
+  ContentWrapper,
+} from "containers/AppModern/appModern.style";
 import Footer from "containers/AppModern/Footer";
 
 const Services = (props) => {
-  const { serviceList, total, dataCategory } = props;
+  const { serviceList, total, dataCategory, dataFAQ } = props;
   return (
     <ThemeProvider theme={theme}>
       <>
@@ -28,11 +31,14 @@ const Services = (props) => {
           <div className="sticky-active">
             <Navbar />
           </div>
-          <InfoServices
-            serviceList={serviceList}
-            total={total}
-            dataNew={dataCategory}
-          />
+          <ContentWrapper>
+            <InfoServices
+              serviceList={serviceList}
+              total={total}
+              dataNew={dataCategory}
+              dataFAQ={dataFAQ}
+            />
+          </ContentWrapper>
           <Footer />
         </AppWrapper>
       </>
@@ -48,7 +54,11 @@ export async function getStaticProps() {
   const filAgency = `&filters[$and][0][service_agency][$contains]=568427`;
   const user = `&populate=users_permissions_user.avatar`;
 
-  const servicesCategory = await fetch(`${process.env.STRAPI_2_API_URL}services?pagination[pageSize]=100` + filProjectCat + filAgency).then((res) => res.json());
+  const servicesCategory = await fetch(
+    `${process.env.STRAPI_2_API_URL}services?pagination[pageSize]=100` +
+      filProjectCat +
+      filAgency
+  ).then((res) => res.json());
 
   const mergearray = uniqueValue.concat(
     servicesCategory.data.map((items) =>
@@ -67,11 +77,30 @@ export async function getStaticProps() {
   const valueData = data.map((item) => item.value);
   const mergeValue = valueData.join("&filters[id]=");
 
-  const fetchCategory = fetch(`${process.env.STRAPI_API_URL}project-categories?pagination[pageSize]=100&filters[id]=${mergeValue}`);
-  const fetchServices = fetch(`${process.env.STRAPI_2_API_URL}services?populate=image` + user + limit + time + filAgency);
-  
-  const [promiseCategory, promiseServices] = await Promise.all([fetchServices,fetchCategory]);
-  const [dataServices, dataCategory] = await Promise.all([promiseCategory.json(),promiseServices.json()]);
+  const fetchCategory = fetch(
+    `${process.env.STRAPI_API_URL}project-categories?pagination[pageSize]=100&filters[id]=${mergeValue}`
+  );
+  const fetchServices = fetch(
+    `${process.env.STRAPI_2_API_URL}services?populate=image` +
+      user +
+      limit +
+      time +
+      filAgency
+  );
+  const fetchFAQ = fetch(
+    `${process.env.STRAPI_API_URL}faqs?filters[$and][0][project_cat][$contains]="20956"`
+  );
+
+  const [promiseCategory, promiseServices, promiseFAQ] = await Promise.all([
+    fetchServices,
+    fetchCategory,
+    fetchFAQ,
+  ]);
+  const [dataServices, dataCategory, dataFAQ] = await Promise.all([
+    promiseCategory.json(),
+    promiseServices.json(),
+    promiseFAQ.json(),
+  ]);
 
   if (dataServices.data.length > 0) {
     return {
@@ -79,6 +108,7 @@ export async function getStaticProps() {
         serviceList: dataServices["data"],
         total: dataServices["meta"],
         dataCategory: dataCategory["data"],
+        dataFAQ: dataFAQ["data"],
       },
       revalidate: 1,
     };

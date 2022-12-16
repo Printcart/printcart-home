@@ -116,14 +116,10 @@ export const ContentWrapper = styled.div`
 
 export const SectionHeader = styled.header`
   width: 100%;
-  margin: 0 auto 58px;
+  margin: 0 auto 65px;
   text-align: center;
-  @media only screen and (max-width: 1440px) {
-    padding-top: 57px;
-  }
-  @media only screen and (max-width: 991px) {
-    margin-bottom: 50px;
-  }
+  overflow: hidden;
+
   h5 {
     font-size: 14px;
     font-weight: 700;
@@ -154,16 +150,20 @@ export const SectionHeader = styled.header`
       letter-spacing: -0.5px;
     }
   }
+  .containerSlogan {
+    padding: 40px 70px;
+    background-color: #002e47;
+  }
   .titleSlogan {
-    color: #5c5c5c;
-    font-size: 36px;
+    color: #ddd;
+    font-size: 32px;
     font-weight: 500;
     line-height: 36px;
     text-align: center;
   }
   & p {
-    color: #5c5c5c;
-    font-size: 19px;
+    color: #ddd;
+    font-size: 18px;
     line-height: 24px;
     text-align: center;
     margin: 20px 0 50px;

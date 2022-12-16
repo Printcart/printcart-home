@@ -14,7 +14,7 @@ import WrapperServices, {
 
 const ServiceDetail = (props) => {
   const { character, related, service_id } = props;
-
+  const title = character.name ?? character.title;
   const data = {
     name: "service",
     alias: "services",
@@ -22,7 +22,7 @@ const ServiceDetail = (props) => {
 
   return (
     <WrapperServices>
-      <TitlePath character={character} data={data} />
+      <TitlePath character={title} data={data} />
       <Box className="banner" />
       <Container>
         <Box className="contentMain">

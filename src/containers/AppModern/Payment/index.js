@@ -5,7 +5,6 @@ import Icon from "react-icons-kit";
 import { check } from "react-icons-kit/fa/check";
 import { Table } from "../../../common/components/Table/styleTable";
 import Container from "../../../common/components/UI/Container";
-// import styles from "./styleTable.js";
 
 const contact = "https://solution.printcart.com/home/teams/#contact";
 const tiers = [
