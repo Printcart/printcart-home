@@ -6,7 +6,7 @@ import styled from "styled-components";
 const TitlePath = (props) => {
   const { character, data } = props;
   const Breadcrumb = styled.div`
-    margin-top: 38px;
+    margin-top: 0;
     padding: 10px 0;
     background-color: #f5f5f5;
     & a,
@@ -18,14 +18,9 @@ const TitlePath = (props) => {
     & a:hover {
       color: #2d58af;
     }
-    @media only screen and (max-width: 1400px) {
-      margin-top: 27px;
-    }
-    @media only screen and (max-width: 1200px) {
-      margin-top: 25px;
-    }
+   
     .container-text {
-      max-width: 1024px;
+      max-width: 1168px;
       margin: 0 auto;
       @media only screen and (max-width: 1400px) {
         margin-left: 60px;

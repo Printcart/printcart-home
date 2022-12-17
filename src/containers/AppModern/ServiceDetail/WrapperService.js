@@ -1,13 +1,13 @@
 import styled, { css } from "styled-components";
 
-const WrapperServices = styled.div`
-  padding: 86px 0 0;
+const WrapperServices = styled.section`
+  padding: 87px 0 0;
   overflow: hidden;
   @media only screen and (max-width: 1400px) {
-    padding: 50px 0;
+    padding: 78px 0;
   }
   @media only screen and (max-width: 768px) {
-    padding: 45px 0;
+    padding: 76px 0;
   }
   .contentMain {
     position: relative;

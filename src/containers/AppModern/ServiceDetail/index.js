@@ -1,8 +1,10 @@
 import ResetCSS from "common/assets/css/style";
 import Box from "common/components/Box";
 import Container from "common/components/UI/Container";
-import GlobalStyle from "../appModern.style";
+import GlobalStyle, { ContentWrapper } from "../appModern.style";
 import ServicesList from "../InfoServices/ServicesList";
+import Reviews from "../Review";
+import UserObject from "../UserObject";
 import ServiceIntro from "./ServiceIntro";
 import SupportDetail from "./SupportDetail";
 import TitlePath from "./TitlePath";
@@ -21,41 +23,45 @@ const ServiceDetail = (props) => {
   };
 
   return (
-    <WrapperServices>
-      <TitlePath character={title} data={data} />
-      <Box className="banner" />
-      <Container>
-        <Box className="contentMain">
-          <ContainerServicesDT>
-            <GridServicesDT>
-              {/* Start Box Left */}
-              <ServiceIntro character={character} />
-              {/* Start Box Right */}
-              <SupportDetail character={character} />
-            </GridServicesDT>
-            {/* RELATED SERVICES */}
-            {related.length > 0 && (
-              <Box className="ItemCardRelated">
-                <Box>
-                  <h2 className="titlerelated">Other Services</h2>
-                  <GridServicesRelated>
-                    {related.map(
-                      (service, index) =>
-                        index < 4 && (
-                          <ServicesList
-                            key={service.id}
-                            serviceList={service}
-                          />
-                        )
-                    )}
-                  </GridServicesRelated>
+    <ContentWrapper>
+      <WrapperServices>
+        <TitlePath character={title} data={data} />
+        <Box className="banner" />
+        <Container>
+          <Box className="contentMain">
+            <ContainerServicesDT>
+              <GridServicesDT>
+                {/* Start Box Left */}
+                <ServiceIntro character={character} />
+                {/* Start Box Right */}
+                <SupportDetail character={character} />
+                <UserObject />
+              </GridServicesDT>
+              {/* RELATED SERVICES */}
+              {related.length > 0 && (
+                <Box className="ItemCardRelated">
+                  <Box>
+                    <h2 className="titlerelated">Other Services</h2>
+                    <GridServicesRelated>
+                      {related.map(
+                        (service, index) =>
+                          index < 4 && (
+                            <ServicesList
+                              key={service.id}
+                              serviceList={service}
+                            />
+                          )
+                      )}
+                    </GridServicesRelated>
+                  </Box>
                 </Box>
-              </Box>
-            )}
-          </ContainerServicesDT>
-        </Box>
-      </Container>
-    </WrapperServices>
+              )}
+            </ContainerServicesDT>
+          </Box>
+        </Container>
+        <Reviews />
+      </WrapperServices>
+    </ContentWrapper>
   );
 };
 export default ServiceDetail;
