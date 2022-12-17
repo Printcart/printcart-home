@@ -15,7 +15,7 @@ import WrapperServices, {
 } from "./WrapperService";
 
 const ServiceDetail = (props) => {
-  const { character, related, service_id } = props;
+  const { character, related, service_id, fetchAlias } = props;
   const title = character.name ?? character.title;
   const data = {
     name: "service",
@@ -34,7 +34,7 @@ const ServiceDetail = (props) => {
                 {/* Start Box Left */}
                 <ServiceIntro character={character} />
                 {/* Start Box Right */}
-                <SupportDetail character={character} />
+                <SupportDetail character={character} fetchAlias={fetchAlias} />
                 <UserObject />
               </GridServicesDT>
               {/* RELATED SERVICES */}

@@ -9,46 +9,54 @@ import { ic_work_outline } from "react-icons-kit/md/ic_work_outline";
 import { NewDate } from "../InfoServices/ServicesList";
 
 const SupportDetail = (props) => {
-  const { character } = props;
-
+  const { character, fetchAlias } = props;
   return (
     <Box className="boxRight">
       {/* P1 */}
       <Box className="ItemCard">
         <Box>
           <h2 className="sumReviews">Printcart Support</h2>
-          <Box className="containerReviews">
-            {/* Service Added */}
-            <Box className="infoReview">
-              <Icon icon={ic_date_range_outline} />
-              <Box className="contentReview">
-                <h4>Service Added</h4>
-                <span>{NewDate(character.createdAt)}</span>
-              </Box>
+          <Box className="totalreviews">
+            <a>
+              <img
+                src="https://cmsmart.net/templates/cmsmart/images/ratting-start_5.png"
+                alt="Total Revies"
+              />
+            </a>
+            <p className="total">1878 reviews</p>
+          </Box>
+        </Box>
+        <Box className="containerReviews">
+          {/* Service Added */}
+          <Box className="infoReview">
+            <Icon icon={ic_date_range_outline} />
+            <Box className="contentReview">
+              <h4>Service Added</h4>
+              <span>{NewDate(character.createdAt)}</span>
             </Box>
-            {/*number of team */}
-            <Box className="infoReview">
-              <Icon icon={ic_groups_outline} />
-              <Box className="contentReview">
-                <h4> Number Of Team</h4>
-                <span>10 Team Member</span>
-              </Box>
+          </Box>
+          {/*number of team */}
+          <Box className="infoReview">
+            <Icon icon={ic_groups_outline} />
+            <Box className="contentReview">
+              <h4> Number Of Team</h4>
+              <span>10 Team Member</span>
             </Box>
-            {/* Processed tasks */}
-            <Box className="infoReview">
-              <Icon icon={ic_star_rate_outline} />
-              <Box className="contentReview">
-                <h4>Processed Tasks</h4>
-                <span>284 Tasks</span>
-              </Box>
+          </Box>
+          {/* Processed tasks */}
+          <Box className="infoReview">
+            <Icon icon={ic_star_rate_outline} />
+            <Box className="contentReview">
+              <h4>Processed Tasks</h4>
+              <span>284 Tasks</span>
             </Box>
-            {/* Processing tasks */}
-            <Box className="infoReview">
-              <Icon icon={ic_work_outline} />
-              <Box className="contentReview">
-                <h4>Processing Tasks</h4>
-                <span>220 Tasks</span>
-              </Box>
+          </Box>
+          {/* Processing tasks */}
+          <Box className="infoReview">
+            <Icon icon={ic_work_outline} />
+            <Box className="contentReview">
+              <h4>Processing Tasks</h4>
+              <span>220 Tasks</span>
             </Box>
           </Box>
         </Box>
@@ -96,11 +104,11 @@ const SupportDetail = (props) => {
           </Box>
         </Box>
         {/* Skills */}
-        <Box className="boxSkills">
+        {/* <Box className="boxSkills">
           <button>Icon Design</button>
           <button>Narrative Design</button>
           <button>Yearbook Design</button>
-        </Box>
+        </Box> */}
         {/* Assistant */}
         <Box className="boxAssistant">
           <h4 className="titleAssistant">About Project Assistant</h4>
@@ -114,13 +122,25 @@ const SupportDetail = (props) => {
             <p>Payment method verified</p>
           </Box>
           <p className="review">(0 review)</p>
-          <Box className="intro">
+          <Box className="boxSkills">
+            {fetchAlias?.map((items, index) => (
+              <Box key={index}>
+                <Link href={`/services/` + items?.attributes?.alias + "/"}>
+                  <a>
+                    <button>{items?.attributes?.name}</button>
+                  </a>
+                </Link>
+              </Box>
+            ))}
+          </Box>
+
+          {/* <Box className="intro">
             <p>Viet Nam</p>
             <p>13 Jobs Posted</p>
             <p>$0 Total Spent</p>
             <p>Viet Nam</p>
             <p>$0/hr Avg Hourly Rate Paid</p>
-          </Box>
+          </Box> */}
         </Box>
         {/* Send Messenger */}
         <Box>

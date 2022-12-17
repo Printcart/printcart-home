@@ -96,7 +96,17 @@ export const GridServicesDT = styled.div`
     font-size: 25px;
     font-weight: 500;
     color: #444;
-    margin-bottom: 20px;
+    margin-bottom: 0px;
+  }
+  .totalreviews {
+    display: flex;
+    align-items: center;
+     & p {
+      display: inline-block;
+      padding-left: 10px;
+      font-weight: 500;
+      color: #444;
+     }
   }
   .containerReviews {
     border: 1px solid #f2f2f2;
@@ -111,7 +121,7 @@ export const GridServicesDT = styled.div`
     & svg {
       width: 30px;
       height: 25px;
-      color: #cdcdcd;
+      color: #f7941e;
     }
   }
   .contentReview {
@@ -161,15 +171,12 @@ export const GridServicesDT = styled.div`
   }
   .boxSkills {
     display: flex;
-    justify-content: center;
-    margin-top: 30px;
-    padding-top: 30px;
-    padding-bottom: 30px;
-    border-top: 1px solid #f2f2f2;
+    overflow: hidden;
+    flex-wrap: wrap;
     & button {
       cursor: pointer;
       border: none;
-      padding: 8px 12px;
+      padding: 5px 10px;
       font-size: 13px;
       border-radius: 3px;
       text-transform: capitalize;
@@ -185,7 +192,6 @@ export const GridServicesDT = styled.div`
 
   .boxAssistant {
     line-height: 0.8;
-    padding-top: 30px;
     padding-bottom: 30px;
     border-top: 1px solid #f2f2f2;
     border-bottom: 1px solid #f2f2f2;

@@ -119,6 +119,12 @@ export const SectionHeader = styled.header`
   margin: 0 auto 65px;
   text-align: center;
   overflow: hidden;
+  @media only screen and (max-width: 1440px) {
+    padding-top: 57px;
+  }
+  @media only screen and (max-width: 991px) {
+    margin-bottom: 50px;
+  }
 
   h5 {
     font-size: 14px;

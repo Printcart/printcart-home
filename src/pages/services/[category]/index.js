@@ -1,4 +1,5 @@
 import ResetCSS from "common/assets/css/style";
+import Box from "common/components/Box";
 import { theme } from "common/theme/appModern";
 import GlobalStyle, { AppWrapper } from "containers/AppModern/appModern.style";
 import Footer from "containers/AppModern/Footer";
@@ -9,6 +10,7 @@ import { ThemeProvider } from "styled-components";
 
 const ServicesCategory = (props) => {
   const { total, listServices, servicesRealted, dataSubCat, current_cat,dataFAQ } = props;
+  console.log(dataSubCat)
   return (
     <ThemeProvider theme={theme}>
       <>
@@ -37,6 +39,7 @@ const ServicesCategory = (props) => {
             serviceRealted={servicesRealted}
             dataFAQ={dataFAQ}
           />
+          <Box>ssssssssss</Box>
           <Footer />
         </AppWrapper>
       </>

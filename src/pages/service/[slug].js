@@ -8,7 +8,7 @@ import Head from "next/head";
 import { ThemeProvider } from "styled-components";
 
 const Service = (props) => {
-  const { character, related } = props;
+  const { character, related, fetchAlias } = props;
   return (
     <ThemeProvider theme={theme}>
       <>
@@ -30,6 +30,7 @@ const Service = (props) => {
             character={character.attributes}
             service_id={character.id}
             related={related}
+            fetchAlias={fetchAlias}
           />
           <Footer />
         </AppWrapper>
@@ -43,22 +44,24 @@ export async function getStaticProps({ params }) {
   // const time = `&time=${Date.now()}`
   const time = ``;
 
-  const results = await fetch(
-    `${process.env.STRAPI_2_API_URL}services?populate=image&populate=users_permissions_user.avatar&filters[alias][$eq]=${params.slug}` +
-      time
-  ).then((res) => res.json());
+  const results = await fetch(`${process.env.STRAPI_2_API_URL}services?populate=image&populate=users_permissions_user.avatar&filters[alias][$eq]=${params.slug}` + time).then((res) => res.json());
+
+  const getValue = results?.data[0]?.attributes?.project_cat.map(
+    (items) => items.value);
+  const filterValue = getValue && getValue.join("&filters[id]=");
+
+  const fetchAlias = await fetch(`${process.env.STRAPI_API_URL}project-categories?pagination[pageSize]=100&filters[id]=${filterValue}`).then((res) => res.json());
 
   if (results.data.length > 0) {
-    const type = results.data[0].attributes.project_cat[0]?.label;
-    const related = await fetch(
-      `${process.env.STRAPI_2_API_URL}services?populate=image&filters[project_cat][$containsi]=${type}&filters[alias][$notIn]=${params.slug}&pagination[limit]=10&sort=createdAt:DESC` +
-        time
-    ).then((res) => res.json());
+    const type = results?.data[0]?.attributes?.project_cat[0]?.label;
+    const related = await fetch(`${process.env.STRAPI_2_API_URL}services?populate=image&filters[project_cat][$containsi]=${type}&filters[alias][$notIn]=${params.slug}&pagination[limit]=10&sort=createdAt:DESC` + time).then((res) => res.json());
 
     return {
       props: {
         character: results.data[0],
         related: related.data,
+        fetchAlias: fetchAlias["data"],
+        results: results,
       },
       revalidate: 604800,
     };

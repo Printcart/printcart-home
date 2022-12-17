@@ -5,6 +5,7 @@ import Icon from "react-icons-kit";
 import { check } from "react-icons-kit/fa/check";
 import { Table } from "../../../common/components/Table/styleTable";
 import Container from "../../../common/components/UI/Container";
+import HeaderPayment from "./payment.style";
 
 const contact = "https://solution.printcart.com/home/teams/#contact";
 const tiers = [
@@ -191,13 +192,13 @@ const pricings = [
 const Payment = () => {
   return (
     <SectionWrapper id="features">
-      <SectionHeader>
+      <HeaderPayment>
         <h1 className="titleSlogan">Easy to try. Fair pricing to upgrade.</h1>
         <p>
           Please choose the appropriate predefined subscription package for your
           cloud printing or contact us for custom pricing.
         </p>
-      </SectionHeader>
+      </HeaderPayment>
       <Container>
         <Table>
           <thead>
