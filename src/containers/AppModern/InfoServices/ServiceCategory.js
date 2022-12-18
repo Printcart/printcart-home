@@ -5,19 +5,12 @@ import Link from "next/link";
 const ServiceCategory = (props) => {
   const { dataNew, choice } = props;
   const [qty, setQty] = useState(18);
-  const [show, setShow] = useState(true);
 
-  const handleMore = () => {
+  const handleShowMore = () => {
     setQty((e) => e + 18);
-    if (qty > dataNew.length || qty === 100) {
-      setShow(false);
-    }
   };
-  const handleLess = () => {
+  const handleShowLess = () => {
     setQty((e) => e - qty + 18);
-    if (qty === 18) {
-      setShow(true);
-    }
   };
   return (
     <Box className="containerServices">
@@ -52,14 +45,14 @@ const ServiceCategory = (props) => {
             </Link>
           )
       )}
-      {dataNew.length >= 18 && (
+      {dataNew.length > 18 && (
         <>
-          {qty < dataNew.length && show === true ? (
-            <button className="btnShow" onClick={() => handleMore()}>
+          {dataNew.length > qty ? (
+            <button className="btnShow" onClick={() => handleShowMore()}>
               Show more
             </button>
           ) : (
-            <button className="btnShow" onClick={() => handleLess()}>
+            <button className="btnShow" onClick={() => handleShowLess()}>
               Show Less
             </button>
           )}

@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import bgImage from "../../../common/assets/image/bg-faq.jpg";
 
 const ContainerFAQ = styled.section`
   padding: 80px 0;
@@ -7,7 +8,7 @@ const ContainerFAQ = styled.section`
   background-position: center;
   background-repeat: no-repeat;
   position: relative;
-  background-image: url(https://cmsmart.net/components/com_cmsmart/views/solution/images/bg-faq.jpg);
+  background-image: url(${bgImage?.src});
   background-size: cover;
 `;
 export default ContainerFAQ;

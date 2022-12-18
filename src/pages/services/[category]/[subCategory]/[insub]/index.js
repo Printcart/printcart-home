@@ -13,7 +13,7 @@ const ServicesCategory = (props) => {
     listServices,
     choice,
     servicesRealted,
-    current_cat,
+    currentCat,
     dataSubCat,
     dataFAQ,
   } = props;
@@ -22,8 +22,8 @@ const ServicesCategory = (props) => {
       <>
         <Head>
           <title>
-            {current_cat &&
-              `Services for the ${current_cat.name_sub} category on Printcart`}
+            {currentCat &&
+              `Services for the ${currentCat.name_sub} category on Printcart`}
           </title>
           <meta name="theme-color" content="#2563FF" />
           <link
@@ -42,7 +42,7 @@ const ServicesCategory = (props) => {
             total={total}
             dataNew={dataSubCat}
             choice={choice}
-            current_cat={current_cat}
+            currentCat={currentCat}
             serviceRealted={servicesRealted}
             dataFAQ={dataFAQ}
           />
@@ -95,7 +95,7 @@ export async function getServerSideProps({ query }) {
       results.data[0].attributes.parent.data.attributes.parent.data.attributes
         .alias;
 
-    const current_cat = {
+    const currentCat = {
       name_sub,
       alias_sub,
       name_subcat,
@@ -133,7 +133,7 @@ export async function getServerSideProps({ query }) {
         listServices: listServices["data"],
         total: listServices["meta"],
         choice: insub,
-        current_cat,
+        currentCat,
         servicesRealted: servicesRealted["data"],
         dataSubCat: dataSubCat["data"],
         dataFAQ: dataFAQ["data"],

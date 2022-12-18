@@ -8,15 +8,15 @@ import Head from "next/head";
 import { ThemeProvider } from "styled-components";
 
 const ServicesCategory = (props) => {
-  const { total, listServices, servicesRealted, current_cat, dataSubCat,dataFAQ } =
+  const { total, listServices, servicesRealted, currentCat, dataSubCat,dataFAQ } =
     props;
   return (
     <ThemeProvider theme={theme}>
       <>
         <Head>
           <title>
-            {current_cat &&
-              `Services for the ${current_cat.name_cat} category on Printcart`}
+            {currentCat &&
+              `Services for the ${currentCat.name_subcat} category on Printcart`}
           </title>
           <meta name="theme-color" content="#2563FF" />
           <link
@@ -34,7 +34,7 @@ const ServicesCategory = (props) => {
             serviceList={listServices}
             total={total}
             dataNew={dataSubCat}
-            current_cat={current_cat}
+            currentCat={currentCat}
             serviceRealted={servicesRealted}
             dataFAQ={dataFAQ}
           />
@@ -68,7 +68,7 @@ export async function getServerSideProps({ query }) {
     const name_cat = results.data[0].attributes.parent.data.attributes.name;
     const alias_subcat = results.data[0].attributes.alias;
     const alias_cat = results.data[0].attributes.parent.data.attributes.alias;
-    const current_cat = { name_subcat, alias_subcat, name_cat, alias_cat };
+    const currentCat = { name_subcat, alias_subcat, name_cat, alias_cat };
 
     const fetchListService = fetch(
       `${newUrl}=${name_subcat}` + filAgency + filSort
@@ -98,7 +98,7 @@ export async function getServerSideProps({ query }) {
       props: {
         listServices: listServices["data"],
         total: listServices["meta"],
-        current_cat,
+        currentCat,
         servicesRealted: servicesRealted["data"],
         dataSubCat: dataSubCat["data"],
         dataFAQ: dataFAQ["data"],

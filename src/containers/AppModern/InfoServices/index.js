@@ -27,13 +27,13 @@ const InfoServices = (props) => {
     dataNew,
     choice,
     serviceRealted,
-    current_cat,
+    currentCat,
     dataFAQ,
   } = props;
   const router = useRouter();
   const query = router.query;
   const title =
-    current_cat?.name_sub ?? current_cat?.name_subcat ?? current_cat?.name_cat;
+    currentCat?.name_sub ?? currentCat?.name_subcat ?? currentCat?.name_cat;
 
   const data = {
     name: "Service",
@@ -49,7 +49,7 @@ const InfoServices = (props) => {
 
   return (
     <SectionWrapperServices>
-      <TitlePath character={title} data={data} />
+      <TitlePath currentCat={currentCat} data={data} />
       <SectionHeader>
         <Box className="containerSlogan">
           <h1 className="titleSlogan">
@@ -66,7 +66,7 @@ const InfoServices = (props) => {
       </SectionHeader>
       <Container>
         <ContainerServices>
-          {/* <Breadcrumb current_cat={current_cat} /> */}
+          {/* <Breadcrumb currentCat={currentCat} /> */}
           <ServiceCategory dataNew={dataNew} choice={choice} />
           {serviceList.length === 0 && (
             <p className="notify">

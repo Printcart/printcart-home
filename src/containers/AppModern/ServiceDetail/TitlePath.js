@@ -2,9 +2,10 @@ import React from "react";
 import Box from "common/components/Box";
 import Link from "next/link";
 import styled from "styled-components";
+import Icon from "react-icons-kit";
 
 const TitlePath = (props) => {
-  const { character, data } = props;
+  const { currentCat, data } = props;
   const Breadcrumb = styled.div`
     margin-top: 0;
     padding: 10px 0;
@@ -18,7 +19,7 @@ const TitlePath = (props) => {
     & a:hover {
       color: #2d58af;
     }
-   
+
     .container-text {
       max-width: 1168px;
       margin: 0 auto;
@@ -33,14 +34,49 @@ const TitlePath = (props) => {
   return (
     <Breadcrumb>
       <Box className="container-text">
-        <Link prefetch={false} href="/">
-          <a>Printcart</a>
-        </Link>{" "}
-        -{" "}
-        <Link prefetch={false} href={`/${data.alias}`}>
-          <a>{data.name} Listing</a>
-        </Link>{" "}
-        {character && <span>{`- ${character}`}</span>}
+        <Link href="/">
+          <a className="text">Printcart</a>
+        </Link>
+        {" - "}
+        <Link href="/services">
+          <a className="text">Services Listing</a>
+        </Link>
+        {currentCat?.name_cat ? (
+          <>
+            {" - "}
+            <Link prefetch={false} href={`/services/${currentCat.alias_cat}`}>
+              <a className="text">{currentCat.name_cat}</a>
+            </Link>
+          </>
+        ) : (
+          ""
+        )}
+        {currentCat?.name_subcat ? (
+          <>
+            {" - "}
+            <Link
+              prefetch={false}
+              href={`/services/${currentCat.alias_cat}/${currentCat.alias_subcat}`}
+            >
+              <a className="text">{currentCat.name_subcat}</a>
+            </Link>
+          </>
+        ) : (
+          ""
+        )}
+        {currentCat?.name_sub ? (
+          <>
+            {" - "}
+            <Link
+              prefetch={false}
+              href={`/services/${currentCat.alias_cat}/${currentCat.alias_subcat}/${currentCat.alias_sub}`}
+            >
+              <a className="text">{currentCat.name_sub}</a>
+            </Link>
+          </>
+        ) : (
+          ""
+        )}
       </Box>
     </Breadcrumb>
   );
