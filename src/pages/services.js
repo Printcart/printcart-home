@@ -54,14 +54,11 @@ export async function getStaticProps() {
   const filAgency = `&filters[$and][0][service_agency][$contains]=568427`;
   const user = `&populate=users_permissions_user.avatar`;
 
-  const servicesCategory = await fetch(
-    `${process.env.STRAPI_2_API_URL}services?pagination[pageSize]=100` +
-      filProjectCat +
-      filAgency
-  ).then((res) => res.json());
+  const res = await fetch(`${process.env.STRAPI_2_API_URL}services?pagination[pageSize]=100` + filProjectCat + filAgency);
+  const result = await res.json();
 
   const mergearray = uniqueValue.concat(
-    servicesCategory.data.map((items) =>
+    result.data.map((items) =>
       items.attributes.project_cat.map((item) => item)
     )
   );
@@ -77,30 +74,12 @@ export async function getStaticProps() {
   const valueData = data.map((item) => item.value);
   const mergeValue = valueData.join("&filters[id]=");
 
-  const fetchCategory = fetch(
-    `${process.env.STRAPI_API_URL}project-categories?pagination[pageSize]=100&filters[id]=${mergeValue}`
-  );
-  const fetchServices = fetch(
-    `${process.env.STRAPI_2_API_URL}services?populate=image` +
-      user +
-      limit +
-      time +
-      filAgency
-  );
-  const fetchFAQ = fetch(
-    `${process.env.STRAPI_API_URL}faqs?filters[$and][0][project_cat][$contains]="20956"`
-  );
+  const fetchCategory = fetch(`${process.env.STRAPI_API_URL}project-categories?pagination[pageSize]=100&filters[id]=${mergeValue}`);
+  const fetchServices = fetch(`${process.env.STRAPI_2_API_URL}services?populate=image` + user + limit + time + filAgency);
+  const fetchFAQ = fetch(`${process.env.STRAPI_API_URL}faqs?filters[$and][0][project_cat][$contains]="20956"`);
 
-  const [promiseCategory, promiseServices, promiseFAQ] = await Promise.all([
-    fetchServices,
-    fetchCategory,
-    fetchFAQ,
-  ]);
-  const [dataServices, dataCategory, dataFAQ] = await Promise.all([
-    promiseCategory.json(),
-    promiseServices.json(),
-    promiseFAQ.json(),
-  ]);
+  const [promiseCategory, promiseServices, promiseFAQ] = await Promise.all([fetchServices, fetchCategory, fetchFAQ,]);
+  const [dataServices, dataCategory, dataFAQ] = await Promise.all([ promiseCategory.json(), promiseServices.json(), promiseFAQ.json(),]);
 
   if (dataServices.data.length > 0) {
     return {

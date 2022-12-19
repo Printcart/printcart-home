@@ -60,23 +60,17 @@ export async function getServerSideProps({ query }) {
   const alias = query.category;
   const paramStrapi = `${process.env.STRAPI_API_URL}`;
   const paramString = `${process.env.STRAPI_2_API_URL}`;
-  const setUrl = new URL(
-    "services?populate=image&populate=users_permissions_user.avatar&filters[project_cat][$containsi]",
-    paramString
-  );
+  const setUrl = new URL("services?populate=image&populate=users_permissions_user.avatar&filters[project_cat][$containsi]", paramString);
   const newUrl = setUrl.href;
   const filAgency = `&filters[$and][0][service_agency][$contains]=568427`;
   const filSort = `&sort=createdAt:DESC`;
   const limit = `&pagination[pageSize]=100`;
 
-  const results = await fetch(
-    `${paramStrapi}project-categories?populate=parent.parent&filters[parent][parent][alias][$notNull]=true&filters[parent][alias][$notNull]=true&filters[alias][$eq]=${insub}`
-  ).then((res) => res.json());
-  const checkCategory =
-    results.data[0]?.attributes.parent.data?.attributes.parent.data?.attributes
-      .alias;
-  const checkSubcategory =
-    results.data[0]?.attributes.parent.data?.attributes.alias;
+  const res = await fetch(`${paramStrapi}project-categories?populate=parent.parent&filters[parent][parent][alias][$notNull]=true&filters[parent][alias][$notNull]=true&filters[alias][$eq]=${insub}`);
+  const results = await res.json();
+  
+  const checkCategory = results.data[0]?.attributes.parent.data?.attributes.parent.data?.attributes.alias;
+  const checkSubcategory = results.data[0]?.attributes.parent.data?.attributes.alias;
 
   if (
     results.data.length > 0 &&
@@ -86,15 +80,9 @@ export async function getServerSideProps({ query }) {
     const name_sub = results.data[0].attributes.name;
     const alias_sub = results.data[0].attributes.alias;
     const name_subcat = results.data[0].attributes.parent.data.attributes.name;
-    const alias_subcat =
-      results.data[0].attributes.parent.data.attributes.alias;
-    const name_cat =
-      results.data[0].attributes.parent.data.attributes.parent.data.attributes
-        .name;
-    const alias_cat =
-      results.data[0].attributes.parent.data.attributes.parent.data.attributes
-        .alias;
-
+    const alias_subcat = results.data[0].attributes.parent.data.attributes.alias;
+    const name_cat = results.data[0].attributes.parent.data.attributes.parent.data.attributes.name;
+    const alias_cat = results.data[0].attributes.parent.data.attributes.parent.data.attributes.alias;
     const currentCat = {
       name_sub,
       alias_sub,
@@ -104,20 +92,10 @@ export async function getServerSideProps({ query }) {
       alias_cat,
     };
 
-    const fetchListService = fetch(
-      `${newUrl}=${name_subcat}` + filAgency + filSort
-    );
-    const fetchServiceRealted = fetch(
-      `${paramString}services?populate=image&populate=users_permissions_user.avatar&filters[project_cat][$notContainsi]=${name_sub}&filters[project_cat][$containsi]=${name_subcat}` +
-        filSort
-    );
-    const fetchSubCat = fetch(
-      `${paramStrapi}project-categories?populate=parent.parent&filters[parent][alias][$eq]=${insub}&sort=service_count:DESC` +
-        limit
-    );
-    const fetchFAQ = fetch(
-      `${process.env.STRAPI_API_URL}faqs?filters[$and][0][project_cat][$contains]="20956"`
-    );
+    const fetchListService = fetch(`${newUrl}=${name_subcat}` + filAgency + filSort);
+    const fetchServiceRealted = fetch(`${paramString}services?populate=image&populate=users_permissions_user.avatar&filters[project_cat][$notContainsi]=${name_sub}&filters[project_cat][$containsi]=${name_subcat}` + filSort);
+    const fetchSubCat = fetch(`${paramStrapi}project-categories?populate=parent.parent&filters[parent][alias][$eq]=${insub}&sort=service_count:DESC` + limit);
+    const fetchFAQ = fetch(`${process.env.STRAPI_API_URL}faqs?filters[$and][0][project_cat][$contains]="20956"`);
 
     const [promiseListServices, promiseServicesRealted, promiseSubcat,promiseFAQ ] =
       await Promise.all([fetchListService, fetchServiceRealted, fetchSubCat,fetchFAQ]);

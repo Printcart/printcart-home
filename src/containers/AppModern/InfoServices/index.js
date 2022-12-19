@@ -86,10 +86,10 @@ const InfoServices = (props) => {
           )}
           {serviceList.length > 18 && <Pagination page={page} />}
         </GridServices>
+        {serviceRealted && <ServicesOther serviceRealted={serviceRealted} />}
         <SectionStep>
           <StepWork />
         </SectionStep>
-        {/* {serviceRealted && <ServicesOther serviceRealted={serviceRealted} />} */}
       </Container>
       <FAQfeature dataFAQ={dataFAQ} />
       <UserObject />

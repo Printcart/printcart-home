@@ -6,6 +6,7 @@ import ReactMarkdown from "react-markdown";
 import Icon from "react-icons-kit";
 import { useState } from "react";
 import Container from "common/components/UI/Container";
+import { Disclosure } from "@headlessui/react";
 
 const FAQfeature = (props) => {
   const { dataFAQ } = props;
@@ -13,18 +14,7 @@ const FAQfeature = (props) => {
   const [showAnswer1, setShowAnswer1] = useState(false);
 
   const handleShow = () => {
-    {
-      dataFAQ.map(
-        (item) =>
-          (
-            <Box
-              dangerouslySetInnerHTML={{
-                __html: item.attributes.answer,
-              }}
-            />
-          ) && setShowAnswer(!showAnswer)
-      );
-    }
+    setShowAnswer(!showAnswer);
   };
   const handleShow1 = () => {
     setShowAnswer1(!showAnswer1);
@@ -45,8 +35,8 @@ const FAQfeature = (props) => {
                   (items, index) =>
                     index < 4 && (
                       <Box key={index} className="panel-default">
-                        <Box className="titlequestion">
-                          <h3 className="panel-title">
+                        <Disclosure>
+                          <Disclosure.Button className="panel-title">
                             <a
                               className="collapsed"
                               onClick={() => handleShow()}
@@ -54,14 +44,21 @@ const FAQfeature = (props) => {
                               {items.attributes.question}
                               <Box className="iconcustom">
                                 {showAnswer ? (
-                                  <Icon icon={chevronUp} />
-                                ) : (
                                   <Icon icon={chevronDown} />
-                                )}
+                                  ) : (
+                                    <Icon icon={chevronUp} />
+                                  )}
                               </Box>
                             </a>
-                          </h3>
-                        </Box>
+                          </Disclosure.Button>
+                          <Disclosure.Panel className="text-gray-500">
+                            <Box className="answer"
+                              dangerouslySetInnerHTML={{
+                                __html: items.attributes.answer,
+                              }}
+                            />
+                          </Disclosure.Panel>
+                        </Disclosure>
                       </Box>
                     )
                 )}
@@ -73,21 +70,30 @@ const FAQfeature = (props) => {
                     index < 8 && (
                       <Box key={index} className="panel-default">
                         <Box className="titlequestion">
-                          <h3 className="panel-title">
-                            <a
-                              className="collapsed"
-                              onClick={() => handleShow1()}
-                            >
-                              {items.attributes.question}
-                              <Box className="iconcustom">
-                                {showAnswer1 ? (
-                                  <Icon icon={chevronUp} />
-                                ) : (
-                                  <Icon icon={chevronDown} />
-                                )}
-                              </Box>
-                            </a>
-                          </h3>
+                          <Disclosure>
+                            <Disclosure.Button className="panel-title">
+                              <a
+                                className="collapsed"
+                                onClick={() => handleShow1()}
+                              >
+                                {items.attributes.question}
+                                <Box className="iconcustom">
+                                  {showAnswer1 ? (
+                                    <Icon icon={chevronDown} />
+                                  ) : (
+                                    <Icon icon={chevronUp} />
+                                  )}
+                                </Box>
+                              </a>
+                            </Disclosure.Button>
+                            <Disclosure.Panel className="text-gray-500">
+                              <Box className="answer"
+                                dangerouslySetInnerHTML={{
+                                  __html: items.attributes.answer,
+                                }}
+                              />
+                            </Disclosure.Panel>
+                          </Disclosure>
                         </Box>
                         {/* <Box
                       dangerouslySetInnerHTML={{

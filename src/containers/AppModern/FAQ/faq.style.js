@@ -52,45 +52,57 @@ export const FAQHeader = styled.div`
     float: left;
     position: relative;
     min-height: 1px;
-    padding-right: 20px;
+    padding-right: 30px;
   }
   .questionRight {
     width: 50%;
     float: left;
     position: relative;
     min-height: 1px;
-    padding-left: 20px;
+    padding-left: 30px;
   }
   & p {
     color: #ddd;
-    font-size: 18px;
     font-weight: 400;
   }
-
+  .panel-default {
+    margin-bottom: 20px;
+  }
   .titlequestion {
     margin: 0;
     color: #fff;
-    border-bottom: 1px dashed #707070;
+
     & > i {
       right: 0;
       color: #fff;
     }
   }
   .panel-title {
+    background: transparent;
+    border: aliceblue;
+    width: 100%;
     font-size: 16px;
+    padding: 0;
     font-weight: 400;
+    border-bottom: 1px dashed #707070;
   }
   .collapsed {
     display: flex;
+    align-items: end;
     cursor: pointer;
     line-height: 22px;
     text-decoration: none;
     position: relative;
     color: #fff;
     justify-content: space-between;
-    padding-right: 20px;
     &:hover {
       color: #f7931e;
     }
+  }
+
+  & span {
+    color: #ddd !important;
+    background: transparent !important;
+    font-weight: 400;
   }
 `;
