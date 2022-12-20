@@ -40,11 +40,18 @@ const TitlePath = (props) => {
         <Link href="/services">
           <a className="text">Services Listing</a>
         </Link>
-        {currentCat?.name_cat ? (
+        {currentCat ? (
           <>
             {" - "}
-            <Link prefetch={false} href={`/services/${currentCat.alias_cat}`}>
-              <a className="text">{currentCat.name_cat}</a>
+            <Link
+              prefetch={false}
+              href={
+                currentCat.alias_cat
+                  ? `/services/${currentCat.alias_cat}`
+                  : `/service/${currentCat.alias}`
+              }
+            >
+              <a className="text">{currentCat.name_cat || currentCat.title}</a>
             </Link>
           </>
         ) : (

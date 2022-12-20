@@ -25,7 +25,7 @@ const ServiceDetail = (props) => {
   return (
     <ContentWrapper>
       <WrapperServices>
-        <TitlePath character={title} data={data} />
+        <TitlePath currentCat={character} data={data} />
         <Box className="banner" />
         <Container>
           <Box className="contentMain">
