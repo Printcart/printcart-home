@@ -58,15 +58,18 @@ export async function getServerSideProps({ query }) {
   const insub = query.insub;
   const subcategory = query.subCategory;
   const alias = query.category;
-  const paramStrapi = `${process.env.STRAPI_API_URL}`;
-  const paramString = `${process.env.STRAPI_2_API_URL}`;
-  const setUrl = new URL("services?populate=image&populate=users_permissions_user.avatar&filters[project_cat][$containsi]", paramString);
-  const newUrl = setUrl.href;
+  const urlStrapi = `${process.env.STRAPI_API_URL}`;
+  const urlData2 = `${process.env.STRAPI_2_API_URL}services`;
+  const params = new URLSearchParams({
+    populate: 'image'
+  })
+  params.append('populate','users_permissions_user.avatar')
+  const newUrl = `${urlData2}?${params.toString()}`;
   const filAgency = `&filters[$and][0][service_agency][$contains]=568427`;
   const filSort = `&sort=createdAt:DESC`;
   const limit = `&pagination[pageSize]=100`;
 
-  const res = await fetch(`${paramStrapi}project-categories?populate=parent.parent&filters[parent][parent][alias][$notNull]=true&filters[parent][alias][$notNull]=true&filters[alias][$eq]=${insub}`);
+  const res = await fetch(`${urlStrapi}project-categories?populate=parent.parent&filters[parent][parent][alias][$notNull]=true&filters[parent][alias][$notNull]=true&filters[alias][$eq]=${insub}`);
   const results = await res.json();
   
   const checkCategory = results.data[0]?.attributes.parent.data?.attributes.parent.data?.attributes.alias;
@@ -92,10 +95,10 @@ export async function getServerSideProps({ query }) {
       alias_cat,
     };
 
-    const fetchListService = fetch(`${newUrl}=${name_subcat}` + filAgency + filSort);
-    const fetchServiceRealted = fetch(`${paramString}services?populate=image&populate=users_permissions_user.avatar&filters[project_cat][$notContainsi]=${name_sub}&filters[project_cat][$containsi]=${name_subcat}` + filSort);
-    const fetchSubCat = fetch(`${paramStrapi}project-categories?populate=parent.parent&filters[parent][alias][$eq]=${insub}&sort=service_count:DESC` + limit);
-    const fetchFAQ = fetch(`${process.env.STRAPI_API_URL}faqs?filters[$and][0][project_cat][$contains]="20956"`);
+    const fetchListService = fetch(`${newUrl}&filters[project_cat][$containsi]=${name_subcat}` + filAgency + filSort);
+    const fetchServiceRealted = fetch(`${newUrl}&filters[project_cat][$notContainsi]=${name_sub}&filters[project_cat][$containsi]=${name_subcat}` + filSort);
+    const fetchSubCat = fetch(`${urlStrapi}project-categories?populate=parent.parent&filters[parent][alias][$eq]=${insub}&sort=service_count:DESC` + limit);
+    const fetchFAQ = fetch(`${urlStrapi}faqs?filters[$and][0][project_cat][$contains]="20956"`);
 
     const [promiseListServices, promiseServicesRealted, promiseSubcat,promiseFAQ ] =
       await Promise.all([fetchListService, fetchServiceRealted, fetchSubCat,fetchFAQ]);
