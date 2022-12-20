@@ -41,12 +41,6 @@ const ContainerWrapper = styled.div`
         padding-right: 90px;
       `};
   }
-  .title-related {
-    font-weight: 500;
-    color: #5c5c5c;
-    margin: 0 40px;
-    padding-top: 20px;
-  }
 `;
 
 export default ContainerWrapper;

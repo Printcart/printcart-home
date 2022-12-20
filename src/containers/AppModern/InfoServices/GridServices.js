@@ -1,13 +1,13 @@
 import styled, { css } from "styled-components";
 
 const SectionWrapperServices = styled.section`
-  padding: 87px 0 0;
+  padding: 88px 0 0;
   overflow: hidden;
-  @media only screen and (max-width: 1400px) {
-    padding: 78px 0;
+  @media only screen and (max-width: 1366px) {
+    padding: 76px 0 0;
   }
   @media only screen and (max-width: 768px) {
-    padding: 76px 0;
+    padding: 76px 0 0;
   }
 
   .paginateWrap {
@@ -142,7 +142,6 @@ export const GridServices = styled.div`
     & strong {
       font-size: 16px;
       font-weight: 500;
-      margin-right: 3px;
       padding-bottom: 1px;
     }
     & p {

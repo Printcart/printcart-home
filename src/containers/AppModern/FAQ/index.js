@@ -10,15 +10,7 @@ import { Disclosure } from "@headlessui/react";
 
 const FAQfeature = (props) => {
   const { dataFAQ } = props;
-  const [showAnswer, setShowAnswer] = useState(false);
-  const [showAnswer1, setShowAnswer1] = useState(false);
 
-  const handleShow = () => {
-    setShowAnswer(!showAnswer);
-  };
-  const handleShow1 = () => {
-    setShowAnswer1(!showAnswer1);
-  };
   return (
     <ContainerFAQ>
       <Container>
@@ -29,84 +21,72 @@ const FAQfeature = (props) => {
               GET THEIR ONLINE STORE IDEAS
             </h2>
             <p className="faq">Frequently Asked Questions</p>
-            <Box className="FAQquestion">
-              <Box className="questionLeft">
-                {dataFAQ.map(
-                  (items, index) =>
-                    index < 4 && (
-                      <Box key={index} className="panel-default">
-                        <Disclosure>
-                          <Disclosure.Button className="panel-title">
-                            <a
-                              className="collapsed"
-                              onClick={() => handleShow()}
-                            >
-                              {items.attributes.question}
-                              <Box className="iconcustom">
-                                {showAnswer ? (
-                                  <Icon icon={chevronDown} />
-                                  ) : (
-                                    <Icon icon={chevronUp} />
-                                  )}
-                              </Box>
-                            </a>
-                          </Disclosure.Button>
-                          <Disclosure.Panel className="text-gray-500">
-                            <Box className="answer"
-                              dangerouslySetInnerHTML={{
-                                __html: items.attributes.answer,
-                              }}
-                            />
-                          </Disclosure.Panel>
-                        </Disclosure>
-                      </Box>
-                    )
-                )}
-              </Box>
-              <Box className="questionRight">
-                {dataFAQ.map(
-                  (items, index) =>
-                    index > 3 &&
-                    index < 8 && (
-                      <Box key={index} className="panel-default">
-                        <Box className="titlequestion">
-                          <Disclosure>
-                            <Disclosure.Button className="panel-title">
-                              <a
-                                className="collapsed"
-                                onClick={() => handleShow1()}
-                              >
-                                {items.attributes.question}
-                                <Box className="iconcustom">
-                                  {showAnswer1 ? (
-                                    <Icon icon={chevronDown} />
-                                  ) : (
-                                    <Icon icon={chevronUp} />
-                                  )}
-                                </Box>
-                              </a>
-                            </Disclosure.Button>
-                            <Disclosure.Panel className="text-gray-500">
-                              <Box className="answer"
-                                dangerouslySetInnerHTML={{
-                                  __html: items.attributes.answer,
-                                }}
-                              />
-                            </Disclosure.Panel>
-                          </Disclosure>
-                        </Box>
-                        {/* <Box
+          </Box>
+        </FAQHeader>
+        <Box className="FAQquestion">
+          <Box className="questionLeft">
+            {dataFAQ.map(
+              (items, index) =>
+                index < 4 && (
+                  <Box key={index} className="panel-default">
+                    <Disclosure>
+                      <Disclosure.Button className="panel-title">
+                        <a className="collapsed">
+                          {items.attributes.question}
+                          <Box className="iconcustom">
+                            <Icon icon={chevronDown} />
+                          </Box>
+                        </a>
+                      </Disclosure.Button>
+                      <Disclosure.Panel className="text-gray-500">
+                        <Box
+                          className="answer"
+                          dangerouslySetInnerHTML={{
+                            __html: items.attributes.answer,
+                          }}
+                        />
+                      </Disclosure.Panel>
+                    </Disclosure>
+                  </Box>
+                )
+            )}
+          </Box>
+          <Box className="questionRight">
+            {dataFAQ.map(
+              (items, index) =>
+                index > 3 &&
+                index < 8 && (
+                  <Box key={index} className="panel-default">
+                    <Box className="titlequestion">
+                      <Disclosure>
+                        <Disclosure.Button className="panel-title">
+                          <a className="collapsed">
+                            {items.attributes.question}
+                            <Box className="iconcustom">
+                              <Icon icon={chevronDown} />
+                            </Box>
+                          </a>
+                        </Disclosure.Button>
+                        <Disclosure.Panel className="text-gray-500">
+                          <Box
+                            className="answer"
+                            dangerouslySetInnerHTML={{
+                              __html: items.attributes.answer,
+                            }}
+                          />
+                        </Disclosure.Panel>
+                      </Disclosure>
+                    </Box>
+                    {/* <Box
                       dangerouslySetInnerHTML={{
                         __html: items.attributes.answer,
                       }}
                     /> */}
-                      </Box>
-                    )
-                )}
-              </Box>
-            </Box>
+                  </Box>
+                )
+            )}
           </Box>
-        </FAQHeader>
+        </Box>
       </Container>
     </ContainerFAQ>
   );

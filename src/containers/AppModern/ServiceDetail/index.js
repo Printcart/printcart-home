@@ -45,7 +45,7 @@ const ServiceDetail = (props) => {
                     <GridServicesRelated>
                       {related.map(
                         (service, index) =>
-                          index < 4 && (
+                          index < 3 && (
                             <ServicesList
                               key={service.id}
                               serviceList={service}

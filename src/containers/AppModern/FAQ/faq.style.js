@@ -10,49 +10,28 @@ const ContainerFAQ = styled.section`
   position: relative;
   background-image: url(${bgImage?.src});
   background-size: cover;
-`;
-export default ContainerFAQ;
-
-export const FAQHeader = styled.div`
-  width: 100%;
-  max-width: 1130px;
-  margin-left: auto;
-  margin-right: auto;
-  overflow: hidden;
-  @media only screen and (max-width: 1440px) {
-    padding-top: 57px;
-  }
-  @media only screen and (max-width: 991px) {
-    margin-bottom: 50px;
-  }
-  .containerSlogan {
-    max-width: 1130px;
+  .FAQquestion {
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
+    overflow: hidden;
+    @media only screen and (max-width: 1440px) {
+      padding-top: 57px;
+    }
+    @media only screen and (max-width: 991px) {
+      margin-bottom: 50px;
+    }
   }
-  .titleSlogan {
-    color: #ddd;
-    font-size: 30px;
-    text-transform: uppercase;
-    margin: 0 auto 15px;
-    text-align: center;
-    font-weight: 700;
-    max-width: 750px;
-  }
-  .faq {
-    color: #ddd;
-    font-size: 18px;
-    line-height: 24px;
-    text-align: center;
-    margin: 20px 0 50px;
-  }
-
   .questionLeft {
     width: 50%;
     float: left;
     position: relative;
     min-height: 1px;
     padding-right: 30px;
+    @media (max-width: 992px) {
+      width: 100%;
+      padding: 16px 0;
+    }
   }
   .questionRight {
     width: 50%;
@@ -60,6 +39,10 @@ export const FAQHeader = styled.div`
     position: relative;
     min-height: 1px;
     padding-left: 30px;
+    @media (max-width: 992px) {
+      width: 100%;
+      padding: 16px 0;
+    }
   }
   & p {
     color: #ddd;
@@ -104,5 +87,41 @@ export const FAQHeader = styled.div`
     color: #ddd !important;
     background: transparent !important;
     font-weight: 400;
+  }
+`;
+export default ContainerFAQ;
+
+export const FAQHeader = styled.div`
+  width: 100%;
+  max-width: 1130px;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+  @media only screen and (max-width: 1440px) {
+    padding-top: 57px;
+  }
+  @media only screen and (max-width: 991px) {
+    margin-bottom: 50px;
+  }
+  .containerSlogan {
+    max-width: 1130px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .titleSlogan {
+    color: #ddd;
+    font-size: 30px;
+    text-transform: uppercase;
+    margin: 0 auto 15px;
+    text-align: center;
+    font-weight: 700;
+    max-width: 750px;
+  }
+  .faq {
+    color: #ddd;
+    font-size: 18px;
+    line-height: 24px;
+    text-align: center;
+    margin: 20px 0 50px;
   }
 `;

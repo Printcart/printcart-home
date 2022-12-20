@@ -49,9 +49,12 @@ export default ServicesCategory;
 export async function getServerSideProps({ query }) {
   const aliasSub = query.subCategory;
   const paramStrapi = `${process.env.STRAPI_API_URL}`;
-  const paramString = `${process.env.STRAPI_2_API_URL}`;
-  const setUrl = new URL("services?populate=image&populate=users_permissions_user.avatar&filters[project_cat][$containsi]", paramString);
-  const newUrl = setUrl.href;
+  const paramString = `${process.env.STRAPI_2_API_URL}services`;
+  const params = new URLSearchParams({
+    populate: 'image',
+  })
+  params.append('populate','users_permissions_user.avatar');
+  const newUrl = `${paramString}?${params.toString()}`;
   const filAgency = `&filters[$and][0][service_agency][$contains]=568427`;
   const filSort = `&sort=createdAt:DESC`;
   const limit = `&pagination[pageSize]=100`;

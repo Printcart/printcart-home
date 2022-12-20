@@ -2,7 +2,6 @@ import React from "react";
 import Box from "common/components/Box";
 import Link from "next/link";
 import styled from "styled-components";
-import Icon from "react-icons-kit";
 
 const TitlePath = (props) => {
   const { currentCat, data } = props;
@@ -24,10 +23,10 @@ const TitlePath = (props) => {
       max-width: 1168px;
       margin: 0 auto;
       @media only screen and (max-width: 1400px) {
-        margin-left: 60px;
+        margin-left: 100px;
       }
       @media only screen and (max-width: 1200px) {
-        margin-left: 60px;
+        margin-left: 100px;
       }
     }
   `;

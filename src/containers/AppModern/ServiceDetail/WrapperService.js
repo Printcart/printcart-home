@@ -1,13 +1,13 @@
 import styled, { css } from "styled-components";
 
 const WrapperServices = styled.section`
-  padding: 87px 0 0;
+  padding: 88px 0 0;
   overflow: hidden;
-  @media only screen and (max-width: 1400px) {
-    padding: 78px 0;
+  @media only screen and (max-width: 1366px) {
+    padding: 76px 0 0;
   }
   @media only screen and (max-width: 768px) {
-    padding: 76px 0;
+    padding: 76px 0 0;
   }
   .contentMain {
     position: relative;
@@ -444,11 +444,11 @@ export const GridServicesRelated = styled.div`
   flex-wrap: wrap;
 
   > div {
-    width: calc(100% / 4 - 34px);
+    width: calc(100% / 3 - 34px);
     margin: 20px 17px 10px;
 
     @media only screen and (max-width: 1400px) {
-      width: calc(100% / 4 - 34px);
+      width: calc(100% / 3 - 34px);
     }
     @media only screen and (max-width: 1200px) {
       width: calc(100% / 3 - 34px);
@@ -457,7 +457,7 @@ export const GridServicesRelated = styled.div`
       width: calc(100% / 2 - 34px);
     }
     @media only screen and (max-width: 768px) {
-      width: calc(100% / 2 - 34px);
+      width: 100%;
     }
     @media only screen and (max-width: 576px) {
       width: 100%;

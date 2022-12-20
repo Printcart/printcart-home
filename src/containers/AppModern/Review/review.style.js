@@ -12,9 +12,7 @@ export default ContainerReview;
 export const ContainerChild = styled.div`
   margin-right: auto;
   margin-left: auto;
-  @media only screen and (min-width: 1400px) {
-    width: 1294px;
-  }
+  padding: 0 30px;
   h2 {
     font-style: normal;
     font-weight: 400;
