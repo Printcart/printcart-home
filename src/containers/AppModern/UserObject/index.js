@@ -32,7 +32,7 @@ const UserObject = () => {
   return (
     <ContainerUO>
       <Box className="container">
-        <h2 className="title">
+        <h2 className="titleuser">
           Our Ecommerce Service is for all ecommerce partners that wants to
         </h2>
         <StepworkWrapper>

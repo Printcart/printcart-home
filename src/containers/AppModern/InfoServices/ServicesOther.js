@@ -14,12 +14,16 @@ const ServicesOther = (props) => {
   `;
   return (
     <Box className="container-related">
-      <TitleOther>Other Related Services</TitleOther>
-      <GridServices>
-        {serviceRealted.map((items, index) => (
-          <ServicesList key={index} serviceList={items} />
-        ))}
-      </GridServices>
+      {serviceRealted.length > 0 && (
+        <>
+          <TitleOther>Other Related Services</TitleOther>
+          <GridServices>
+            {serviceRealted.map((items, index) => (
+              <ServicesList key={index} serviceList={items} />
+            ))}
+          </GridServices>
+        </>
+      )}
     </Box>
   );
 };

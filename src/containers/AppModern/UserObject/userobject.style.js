@@ -9,7 +9,7 @@ const ContainerUO = styled.section`
   @media only screen and (min-width: 1400px) {
     width: 1294px;
   }
-  .title {
+  .titleuser {
     color: #fff;
     background: #4385f2;
     padding-bottom: 30px;
