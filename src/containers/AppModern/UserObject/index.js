@@ -1,19 +1,9 @@
 import Box from "common/components/Box";
 import React from "react";
-import styled from "styled-components";
 import StepworkWrapper from "../StepWork/stepwork.style";
 import ContainerUO from "./userobject.style";
+import { StepProject } from "./userobject.style";
 
-const StepProject = styled.div`
-  padding-left: 25px;
-  border-left: 4px solid #999;
-  color: #999;
-  font-weight: 600;
-  & p {
-    line-height: 25px;
-    font-size: 20px;
-  }
-`;
 const userObject = [
   {
     title: 1,

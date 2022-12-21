@@ -1,9 +1,4 @@
 import Box from "common/components/Box";
-import ListGrid from "common/components/ListGrid";
-import React from "react";
-import { Grid } from "swiper";
-import { GridServices } from "../InfoServices/GridServices";
-import { GridServicesDT } from "../ServiceDetail/WrapperService";
 import ContainerReview, { ContainerChild, GridReviews } from "./review.style";
 
 const logoReviews = [
@@ -17,11 +12,11 @@ const logoReviews = [
   },
   {
     path: "https://cmsmart.net/images/brand/TrustPilot.png",
-    alt: "TrustPilot",
+    alt: "Trust Pilot",
   },
   {
     path: "https://cmsmart.net/images/brand/ReviewIo.png",
-    alt: "ReviewIo",
+    alt: "Review Io",
   },
   {
     path: "https://cmsmart.net/images/brand/Facebook.png",
@@ -29,7 +24,7 @@ const logoReviews = [
   },
   {
     path: "https://cmsmart.net/images/brand/crowdreviews.png",
-    alt: "crowdreviews",
+    alt: "crowd reviews",
   },
 ];
 const Reviews = () => {

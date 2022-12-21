@@ -4,14 +4,14 @@ import styled from "styled-components";
 import { GridServices } from "./GridServices";
 import ServicesList from "./ServicesList";
 
+const TitleOther = styled.h1`
+  font-weight: 500;
+  color: #5c5c5c;
+  margin: 0 40px;
+  padding-top: 20px;
+`;
 const ServicesOther = (props) => {
   const { serviceRealted } = props;
-  const TitleOther = styled.h1`
-    font-weight: 500;
-    color: #5c5c5c;
-    margin: 0 40px;
-    padding-top: 20px;
-  `;
   return (
     <Box className="container-related">
       {serviceRealted.length > 0 && (

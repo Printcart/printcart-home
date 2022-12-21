@@ -3,33 +3,34 @@ import Box from "common/components/Box";
 import Link from "next/link";
 import styled from "styled-components";
 
+const Breadcrumb = styled.div`
+  margin-top: 0;
+  padding: 10px 0;
+  background-color: #f5f5f5;
+  & a,
+  & span {
+    font-size: 16px;
+    color: #5c5c5c;
+    text-transform: capitalize;
+  }
+  & a:hover {
+    color: #2d58af;
+  }
+
+  .container-text {
+    max-width: 1168px;
+    margin: 0 auto;
+    @media only screen and (max-width: 1400px) {
+      margin-left: 100px;
+    }
+    @media only screen and (max-width: 1200px) {
+      margin-left: 100px;
+    }
+  }
+`;
 const TitlePath = (props) => {
   const { currentCat, data } = props;
-  const Breadcrumb = styled.div`
-    margin-top: 0;
-    padding: 10px 0;
-    background-color: #f5f5f5;
-    & a,
-    & span {
-      font-size: 16px;
-      color: #5c5c5c;
-      text-transform: capitalize;
-    }
-    & a:hover {
-      color: #2d58af;
-    }
 
-    .container-text {
-      max-width: 1168px;
-      margin: 0 auto;
-      @media only screen and (max-width: 1400px) {
-        margin-left: 100px;
-      }
-      @media only screen and (max-width: 1200px) {
-        margin-left: 100px;
-      }
-    }
-  `;
   return (
     <Breadcrumb>
       <Box className="container-text">
