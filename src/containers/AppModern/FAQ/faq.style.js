@@ -15,12 +15,6 @@ const ContainerFAQ = styled.section`
     margin-left: auto;
     margin-right: auto;
     overflow: hidden;
-    @media only screen and (max-width: 1440px) {
-      padding-top: 57px;
-    }
-    @media only screen and (max-width: 991px) {
-      margin-bottom: 50px;
-    }
   }
   .questionLeft {
     width: 50%;
@@ -97,12 +91,6 @@ export const FAQHeader = styled.div`
   margin-left: auto;
   margin-right: auto;
   overflow: hidden;
-  @media only screen and (max-width: 1440px) {
-    padding-top: 57px;
-  }
-  @media only screen and (max-width: 991px) {
-    margin-bottom: 50px;
-  }
   .containerSlogan {
     max-width: 1130px;
     margin-left: auto;

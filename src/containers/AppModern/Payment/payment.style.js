@@ -6,10 +6,10 @@ const HeaderPayment = styled.header`
   margin: 0 auto 65px;
   text-align: center;
   overflow: hidden;
-  @media only screen and (max-width: 1440px) {
+  @media only screen and (max-width: 1400px) {
     padding: 60px 100px 0px;
   }
-  @media only screen and (max-width: 991px) {
+  @media only screen and (max-width: 992px) {
     margin-bottom: 50px;
   }
 
@@ -21,7 +21,7 @@ const HeaderPayment = styled.header`
     letter-spacing: 1.5px;
     color: ${themeGet("colors.primary", "#2563FF")};
     text-transform: uppercase;
-    @media only screen and (max-width: 991px) {
+    @media only screen and (max-width: 992px) {
       font-size: 13px;
       margin-bottom: 10px;
     }
@@ -37,7 +37,7 @@ const HeaderPayment = styled.header`
       font-size: 28px;
       letter-spacing: -0.7px;
     }
-    @media only screen and (max-width: 991px) {
+    @media only screen and (max-width: 992px) {
       font-size: 26px;
       line-height: 38px;
       letter-spacing: -0.5px;

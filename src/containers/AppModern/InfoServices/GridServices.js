@@ -335,8 +335,8 @@ export const ContainerServices = styled.div`
     color: #5c5c5c;
     margin-top: 10px;
     & svg {
-      width: 20px;
-      height: 25px;
+      width: 24px;
+      height: 24px;
       color: red;
   }
 `;
