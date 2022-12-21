@@ -18,7 +18,7 @@ import {
 } from "react-share";
 
 const Breadcrumb = (props) => {
-  const { current_cat } = props;
+  const { currentCat } = props;
   const router = useRouter();
   const url = { asPath: router };
 
@@ -35,37 +35,37 @@ const Breadcrumb = (props) => {
         <Link href="/services">
           <a className="text">Services Listing</a>
         </Link>
-        {current_cat?.name_cat ? (
+        {currentCat?.name_cat ? (
           <>
             -
-            <Link prefetch={false} href={`/services/${current_cat.alias_cat}`}>
-              <a className="text">{current_cat.name_cat}</a>
+            <Link prefetch={false} href={`/services/${currentCat.alias_cat}`}>
+              <a className="text">{currentCat.name_cat}</a>
             </Link>
           </>
         ) : (
           ""
         )}
-        {current_cat?.name_subcat ? (
+        {currentCat?.name_subcat ? (
           <>
             -
             <Link
               prefetch={false}
-              href={`/services/${current_cat.alias_cat}/${current_cat.alias_subcat}`}
+              href={`/services/${currentCat.alias_cat}/${currentCat.alias_subcat}`}
             >
-              <a className="text">{current_cat.name_subcat}</a>
+              <a className="text">{currentCat.name_subcat}</a>
             </Link>
           </>
         ) : (
           ""
         )}
-        {current_cat?.name_sub ? (
+        {currentCat?.name_sub ? (
           <>
             -
             <Link
               prefetch={false}
-              href={`/services/${current_cat.alias_cat}/${current_cat.alias_subcat}/${current_cat.alias_sub}`}
+              href={`/services/${currentCat.alias_cat}/${currentCat.alias_subcat}/${currentCat.alias_sub}`}
             >
-              <a className="text">{current_cat.name_sub}</a>
+              <a className="text">{currentCat.name_sub}</a>
             </Link>
           </>
         ) : (
