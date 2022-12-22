@@ -5,6 +5,7 @@ const StepworkWrapper = styled.div`
   width: 100%;
   display: flex;
   flex-wrap: wrap;
+  margin-bottom: 16px;
   > div {
     width: calc(100% / 3 - 34px);
     margin: 30px 17px 10px;

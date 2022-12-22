@@ -157,7 +157,6 @@ export const GridServices = styled.div`
     & strong {
       font-size: 16px;
       font-weight: 500;
-      margin-right: 3px;
       padding-bottom: 1px;
     }
     & p {

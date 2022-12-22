@@ -27,7 +27,7 @@ const Service = (props) => {
             <Navbar />
           </div>
           <ServiceDetail
-            character={character.attributes}
+            character={character}
             service_id={character.id}
             related={related}
             fetchAlias={fetchAlias}
@@ -44,18 +44,28 @@ export async function getStaticProps({ params }) {
   // const time = `&time=${Date.now()}`
   const time = ``;
 
-  const res = await fetch(`${process.env.STRAPI_2_API_URL}services?populate=image&populate=users_permissions_user.avatar&filters[alias][$eq]=${params.slug}` + time);
+  const res = await fetch(
+    `${process.env.STRAPI_2_API_URL}services?populate=image&populate=users_permissions_user.avatar&filters[alias][$eq]=${params.slug}` +
+      time
+  );
   const result = await res.json();
 
-  const getValue = result?.data[0]?.attributes?.project_cat.map((items) => items.value);
+  const getValue = result?.data[0]?.attributes?.project_cat.map(
+    (items) => items.value
+  );
   const filterValue = getValue && getValue.join("&filters[id]=");
 
-  const resAlias = await fetch(`${process.env.STRAPI_API_URL}project-categories?pagination[pageSize]=100&filters[id]=${filterValue}`);
+  const resAlias = await fetch(
+    `${process.env.STRAPI_API_URL}project-categories?pagination[pageSize]=100&filters[id]=${filterValue}`
+  );
   const fetchAlias = await resAlias.json();
 
   if (result.data.length > 0) {
     const type = result?.data[0]?.attributes?.project_cat[0]?.label;
-    const resRelated = await fetch(`${process.env.STRAPI_2_API_URL}services?populate=image&filters[project_cat][$containsi]=${type}&filters[alias][$notIn]=${params.slug}&pagination[limit]=10&sort=createdAt:DESC` + time);
+    const resRelated = await fetch(
+      `${process.env.STRAPI_2_API_URL}services?populate=image&filters[project_cat][$containsi]=${type}&filters[alias][$notIn]=${params.slug}&pagination[limit]=10&sort=createdAt:DESC` +
+        time
+    );
     const related = await resRelated.json();
 
     return {

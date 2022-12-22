@@ -50,6 +50,7 @@ export const GridServicesDT = styled.div`
 
   .boxLeft {
     width: 66%;
+    margin-bottom: 30px;
     @media only screen and (max-width: 1400px) {
       width: 65%;
     }
@@ -140,7 +141,10 @@ export const GridServicesDT = styled.div`
   .buttonRequest {
     width: 100%;
     margin-top: 35px;
-    background-color: #424dc6;
+    background-color: #f90;
+    &:hover {
+      box-shadow: #f90 0px 12px 24px -10px;
+    }
   }
   .mainPA {
     display: flex;
@@ -422,7 +426,7 @@ export const ContainerServicesDT = styled.div`
 
   .ItemCardRelated {
     background: #fff;
-    margin-top: 40px;
+    margin-top: 50px;
     padding: 10px;
     box-shadow: 0 0 20px rgb(0 0 0 / 5%);
     border-radius: 4px;

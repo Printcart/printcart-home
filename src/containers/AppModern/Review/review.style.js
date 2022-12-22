@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 
 const ContainerReview = styled.section`
-  padding: 60px 0;
+  padding: 50px 0;
   background: #edf2f1;
   overflow: hidden;
   display: block;
@@ -10,16 +10,11 @@ const ContainerReview = styled.section`
 export default ContainerReview;
 
 export const ContainerChild = styled.div`
-  margin-right: auto;
-  margin-left: auto;
-  padding: 0 30px;
+  
   h2 {
-    font-style: normal;
     font-weight: 400;
     font-size: 30px;
-    line-height: 130%;
     text-align: center;
-    letter-spacing: -0.03em;
     color: #3342aa;
     display: block;
     margin-bottom: 20px;
@@ -31,7 +26,7 @@ export const ContainerChild = styled.div`
     line-height: 140%;
     text-align: center;
     color: #555;
-    margin: 0 auto 80px;
+    margin: 0 auto 48px;
   }
 `;
 export const GridReviews = styled.div`

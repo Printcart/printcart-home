@@ -154,12 +154,13 @@ export const SectionHeader = styled.header`
     }
   }
   .containerSlogan {
-    padding: 40px 70px;
+    padding: 48px 0;
     background-color: #002e47;
   }
   .titleSlogan {
     color: #ddd;
     font-size: 32px;
+    margin-bottom: 48px;
     font-weight: 500;
     line-height: 36px;
     text-align: center;

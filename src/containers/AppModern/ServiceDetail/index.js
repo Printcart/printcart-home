@@ -16,7 +16,7 @@ import WrapperServices, {
 
 const ServiceDetail = (props) => {
   const { character, related, service_id, fetchAlias } = props;
-  const title = character.name ?? character.title;
+  const title = character.attributes.name ?? character.attributes.title;
   const data = {
     name: "service",
     alias: "services",
@@ -25,14 +25,14 @@ const ServiceDetail = (props) => {
   return (
     <ContentWrapper>
       <WrapperServices>
-        <TitlePath currentCat={character} data={data} />
+        <TitlePath currentCat={character.attributes} data={data} />
         <Box className="banner" />
         <Container>
           <Box className="contentMain">
             <ContainerServicesDT>
               <GridServicesDT>
                 {/* Start Box Left */}
-                <ServiceIntro character={character} />
+                <ServiceIntro character={character.attributes} />
                 {/* Start Box Right */}
                 <SupportDetail character={character} fetchAlias={fetchAlias} />
                 <UserObject />

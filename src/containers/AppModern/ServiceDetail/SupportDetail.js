@@ -32,7 +32,7 @@ const SupportDetail = (props) => {
             <Icon icon={ic_date_range_outline} />
             <Box className="contentReview">
               <h4>Service Added</h4>
-              <span>{NewDate(character.createdAt)}</span>
+              <span>{NewDate(character.attributes.createdAt)}</span>
             </Box>
           </Box>
           {/*number of team */}
@@ -61,11 +61,11 @@ const SupportDetail = (props) => {
           </Box>
         </Box>
         {/* Button Request */}
-        <Button
-          style={{ borderRadius: "5px" }}
-          className="buttonRequest"
-          title="Request Support"
-        />
+        <a
+          href={`https://solution.printcart.com/support_ticket/?idsv=${character.id}`}
+        >
+          <Button className="buttonRequest" title="REQUEST SUPPORT" />
+        </a>
       </Box>
       {/* P2 */}
       <Box className="ItemCard">
@@ -73,7 +73,7 @@ const SupportDetail = (props) => {
           <img
             className="imagePA"
             src={
-              character?.users_permissions_user?.data?.attributes?.avatar?.data
+              character.attributes?.users_permissions_user?.data?.attributes?.avatar?.data
                 ?.attributes.url ?? "/avatar-default.png"
             }
             alt="Logo Service"
@@ -81,7 +81,7 @@ const SupportDetail = (props) => {
           <Box className="boxTopPA">
             <Link prefetch={false} href="#">
               <a>
-                {character.users_permissions_user?.data?.attributes?.name ??
+                {character.attributes.users_permissions_user?.data?.attributes?.name ??
                   "Printcart"}
               </a>
             </Link>

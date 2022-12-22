@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 const ContainerUO = styled.section`
   margin-right: auto;
   margin-left: auto;
-  padding: 60px 50px;
+  padding: 48px 32px;
   border-bottom: 1px solid #e3e3e3;
   background: #f4f7f8;
   @media only screen and (min-width: 1400px) {

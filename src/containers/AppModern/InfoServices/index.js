@@ -52,16 +52,18 @@ const InfoServices = (props) => {
       <TitlePath currentCat={currentCat} data={data} />
       <SectionHeader>
         <Box className="containerSlogan">
-          <h1 className="titleSlogan">
-            {title
-              ? `Services For The ${title} Category`
-              : `ECOMMERCE DEVELOPMENT SERVICES`}
-          </h1>
-          <p>
-            PRINTCART is the trusted digital commerce agency building eCommerce
-            website, mobile app, PWA and Page builder solution for B2C and B2B
-            industries as well as multi-vendor marketplaces
-          </p>
+          <Container>
+            <h1 className="titleSlogan">
+              {title
+                ? `Services For The ${title} Category`
+                : `ECOMMERCE DEVELOPMENT SERVICES`}
+            </h1>
+            <p>
+              PRINTCART is the trusted digital commerce agency building
+              eCommerce website, mobile app, PWA and Page builder solution for
+              B2C and B2B industries as well as multi-vendor marketplaces
+            </p>
+          </Container>
         </Box>
       </SectionHeader>
       <Container>
