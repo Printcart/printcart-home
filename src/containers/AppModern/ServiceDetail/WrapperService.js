@@ -1,49 +1,17 @@
 import styled, { css } from "styled-components";
-import { themeGet } from "@styled-system/theme-get";
 
-const WrapperServices = styled.div`
-  padding: 86px 0 0;
+const WrapperServices = styled.section`
+  padding: 88px 0 0;
   overflow: hidden;
-  @media only screen and (max-width: 1440px) {
-    padding: 50px 0;
+  @media only screen and (max-width: 1366px) {
+    padding: 76px 0 0;
   }
-  @media only screen and (max-width: 667px) {
-    padding: 45px 0;
-  }
-  #wrapper-modal {
-    position: relative;
+  @media only screen and (max-width: 768px) {
+    padding: 76px 0 0;
   }
   .contentMain {
     position: relative;
     padding: 50px 0;
-    background: #f5f5f5;
-  }
-  .container {
-    max-width: 1324px;
-    margin: 0 auto;
-  }
-  .breadcrumb {
-    padding: 15px 0;
-    background-color: #f5f5f5;
-    & a,
-    & span {
-      font-size: 16px;
-      color: #5c5c5c;
-      text-transform: capitalize;
-    }
-    & a:hover {
-      color: #2d58af;
-    }
-    @media only screen and (max-width: 1440px) {
-      margin-top: 38px;
-    }
-    @media only screen and (max-width: 1366px) {
-      margin-top: 28px;
-    }
-  }
-  .container-text {
-    max-width: 1024px;
-    margin: 0 auto;
   }
   .banner {
     height: 400px;
@@ -82,19 +50,20 @@ export const GridServicesDT = styled.div`
 
   .boxLeft {
     width: 66%;
-    @media only screen and (max-width: 1466px) {
-      width: 68%;
+    margin-bottom: 30px;
+    @media only screen and (max-width: 1400px) {
+      width: 65%;
     }
-    @media only screen and (max-width: 1220px) {
-      width: 66%;
+    @media only screen and (max-width: 1200px) {
+      width: 60%;
     }
     @media only screen and (max-width: 992px) {
-      width: 58%;
+      width: 100%;
     }
-    @media only screen and (max-width: 773px) {
-      width: 50%;
+    @media only screen and (max-width: 768px) {
+      width: 100%;
     }
-    @media only screen and (max-width: 667px) {
+    @media only screen and (max-width: 576px) {
       width: 100%;
     }
   }
@@ -102,19 +71,21 @@ export const GridServicesDT = styled.div`
     width: 34%;
     padding-top: 30px;
     padding-left: 30px;
-    @media only screen and (max-width: 1466px) {
-      width: 32%;
+    @media only screen and (max-width: 1400px) {
+      width: 35%;
     }
-    @media only screen and (max-width: 1220px) {
-      width: 34%;
+    @media only screen and (max-width: 1200px) {
+      width: 40%;
     }
     @media only screen and (max-width: 992px) {
-      width: 42%;
+      width: 100%;
+      padding-left: 0px;
     }
-    @media only screen and (max-width: 773px) {
-      width: 50%;
+    @media only screen and (max-width: 768px) {
+      width: 100%;
+      padding-left: 0px;
     }
-    @media only screen and (max-width: 667px) {
+    @media only screen and (max-width: 576px) {
       width: 100%;
       padding-left: 0px;
 
@@ -126,7 +97,17 @@ export const GridServicesDT = styled.div`
     font-size: 25px;
     font-weight: 500;
     color: #444;
-    margin-bottom: 20px;
+    margin-bottom: 0px;
+  }
+  .totalreviews {
+    display: flex;
+    align-items: center;
+     & p {
+      display: inline-block;
+      padding-left: 10px;
+      font-weight: 500;
+      color: #444;
+     }
   }
   .containerReviews {
     border: 1px solid #f2f2f2;
@@ -141,7 +122,7 @@ export const GridServicesDT = styled.div`
     & svg {
       width: 30px;
       height: 25px;
-      color: #cdcdcd;
+      color: #f7941e;
     }
   }
   .contentReview {
@@ -160,7 +141,10 @@ export const GridServicesDT = styled.div`
   .buttonRequest {
     width: 100%;
     margin-top: 35px;
-    background-color: #424dc6;
+    background-color: #f90;
+    &:hover {
+      box-shadow: #f90 0px 12px 24px -10px;
+    }
   }
   .mainPA {
     display: flex;
@@ -191,15 +175,12 @@ export const GridServicesDT = styled.div`
   }
   .boxSkills {
     display: flex;
-    justify-content: center;
-    margin-top: 30px;
-    padding-top: 30px;
-    padding-bottom: 30px;
-    border-top: 1px solid #f2f2f2;
+    overflow: hidden;
+    flex-wrap: wrap;
     & button {
       cursor: pointer;
       border: none;
-      padding: 8px 12px;
+      padding: 5px 10px;
       font-size: 13px;
       border-radius: 3px;
       text-transform: capitalize;
@@ -215,7 +196,6 @@ export const GridServicesDT = styled.div`
 
   .boxAssistant {
     line-height: 0.8;
-    padding-top: 30px;
     padding-bottom: 30px;
     border-top: 1px solid #f2f2f2;
     border-bottom: 1px solid #f2f2f2;
@@ -295,22 +275,6 @@ export const GridServicesDT = styled.div`
     ,
     & a {
       color: #ff9800;
-    }
-    @media only screen and (max-width: 1466px) {
-      width: calc(100% / 2 - 34px);
-    }
-    @media only screen and (max-width: 1200px) {
-      width: calc(100% / 2 - 34px);
-    }
-    @media only screen and (max-width: 991px) {
-      width: calc(100% / 2 - 34px);
-    }
-    @media only screen and (max-width: 767px) {
-      width: calc(100% / 2 - 34px);
-    }
-    @media only screen and (max-width: 594px) {
-      width: 100%;
-      margin-top: 15px;
     }
   }
 
@@ -401,6 +365,11 @@ export const GridServicesDT = styled.div`
     box-shadow: 0 0 20px rgb(0 0 0 / 5%);
     border-radius: 4px;
     margin-bottom: 20px;
+    &:hover {
+      box-shadow: 5px 10px 10px 2px rgb(0 0 50 / 25%);
+      transform: translate(0, -7px);
+      transition: box-shadow 0.3s ease-out, transform 0.3s ease-out;
+    }
     .titleDes {
       font-size: 24px;
       font-weight: 500;
@@ -457,11 +426,10 @@ export const ContainerServicesDT = styled.div`
 
   .ItemCardRelated {
     background: #fff;
-    margin-top: 40px;
+    margin-top: 50px;
     padding: 10px;
     box-shadow: 0 0 20px rgb(0 0 0 / 5%);
-    border-radius: 4px;
-    padding-bottom: 20px;
+    padding-bottom: 40px;
   }
   .titlerelated {
     font-size: 24px;
@@ -479,22 +447,22 @@ export const GridServicesRelated = styled.div`
   flex-wrap: wrap;
 
   > div {
-    width: calc(100% / 4 - 34px);
+    width: calc(100% / 3 - 34px);
     margin: 20px 17px 10px;
 
-    @media only screen and (max-width: 1466px) {
-      width: calc(100% / 4 - 34px);
+    @media only screen and (max-width: 1400px) {
+      width: calc(100% / 3 - 34px);
     }
     @media only screen and (max-width: 1200px) {
       width: calc(100% / 3 - 34px);
     }
-    @media only screen and (max-width: 991px) {
+    @media only screen and (max-width: 992px) {
       width: calc(100% / 2 - 34px);
     }
-    @media only screen and (max-width: 767px) {
-      width: calc(100% / 2 - 34px);
+    @media only screen and (max-width: 768px) {
+      width: 100%;
     }
-    @media only screen and (max-width: 594px) {
+    @media only screen and (max-width: 576px) {
       width: 100%;
       margin-top: 15px;
     }
@@ -552,9 +520,8 @@ export const GridServicesRelated = styled.div`
       padding: 16px;
       margin-left: -16px;
     }
-    height: 68px;
+    height: 80px;
     font-size: 17px;
-    line-height: 1.3;
     color: #5c5c5c;
     margin-bottom: 10px;
     text-overflow: ellipsis;
@@ -563,15 +530,47 @@ export const GridServicesRelated = styled.div`
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3;
   }
+  .avataruser {
+    display: flex;
+    align-items: center;
+    & img {
+      border-radius: 5px;
+      margin-right: 10px;
+      border: 1px solid #cdcdcd;
+      width: 40px;
+      height: 40px;
+    }
+  }
   .info {
     display: flex;
     align-items: center;
     color: #5c5c5c;
+    display: -webkit-box;
+
     & strong {
       font-size: 16px;
       font-weight: 500;
-      margin-right: 5px;
+      margin-right: 3px;
       padding-bottom: 1px;
+    }
+    & p {
+      font-size: 16px;
+    }
+  }
+  .infodate {
+    display: flex;
+    align-items: center;
+    color: #5c5c5c;
+    display: -webkit-box;
+
+    & strong {
+      font-size: 16px;
+      font-weight: 500;
+      margin-right: 3px;
+      padding-bottom: 1px;
+    }
+    & p {
+      font-size: 16px;
     }
   }
   .boxBtn {

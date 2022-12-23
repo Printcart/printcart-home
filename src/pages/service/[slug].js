@@ -8,7 +8,7 @@ import Head from "next/head";
 import { ThemeProvider } from "styled-components";
 
 const Service = (props) => {
-  const { character, related } = props;
+  const { character, related, fetchAlias } = props;
   return (
     <ThemeProvider theme={theme}>
       <>
@@ -27,9 +27,10 @@ const Service = (props) => {
             <Navbar />
           </div>
           <ServiceDetail
-            character={character.attributes}
+            character={character}
             service_id={character.id}
             related={related}
+            fetchAlias={fetchAlias}
           />
           <Footer />
         </AppWrapper>
@@ -43,22 +44,36 @@ export async function getStaticProps({ params }) {
   // const time = `&time=${Date.now()}`
   const time = ``;
 
-  const results = await fetch(
+  const res = await fetch(
     `${process.env.STRAPI_2_API_URL}services?populate=image&populate=users_permissions_user.avatar&filters[alias][$eq]=${params.slug}` +
       time
-  ).then((res) => res.json());
+  );
+  const result = await res.json();
 
-  if (results.data.length > 0) {
-    const type = results.data[0].attributes.project_cat[0]?.label;
-    const related = await fetch(
+  const getValue = result?.data[0]?.attributes?.project_cat.map(
+    (items) => items.value
+  );
+  const filterValue = getValue && getValue.join("&filters[id]=");
+
+  const resAlias = await fetch(
+    `${process.env.STRAPI_API_URL}project-categories?pagination[pageSize]=100&filters[id]=${filterValue}`
+  );
+  const fetchAlias = await resAlias.json();
+
+  if (result.data.length > 0) {
+    const type = result?.data[0]?.attributes?.project_cat[0]?.label;
+    const resRelated = await fetch(
       `${process.env.STRAPI_2_API_URL}services?populate=image&filters[project_cat][$containsi]=${type}&filters[alias][$notIn]=${params.slug}&pagination[limit]=10&sort=createdAt:DESC` +
         time
-    ).then((res) => res.json());
+    );
+    const related = await resRelated.json();
 
     return {
       props: {
-        character: results.data[0],
+        character: result.data[0],
         related: related.data,
+        fetchAlias: fetchAlias["data"],
+        result: result,
       },
       revalidate: 604800,
     };
@@ -70,13 +85,14 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-  const characters = await fetch(
+  const res = await fetch(
     `${process.env.STRAPI_2_API_URL}services?pagination[limit]=1`
-  ).then((res) => res.json());
+  );
+  const result = await res.json();
 
-  if (characters.data) {
+  if (result.data) {
     return {
-      paths: characters.data.map((_service) => {
+      paths: result.data.map((_service) => {
         return {
           params: { slug: _service.attributes.alias },
         };

@@ -33,8 +33,8 @@ const GlobalStyle = createGlobalStyle`
   }
   @media only screen and (max-width: 667px) {
     .container {
-      padding-left: 20px;
-      padding-right: 20px;
+      padding-left: 30px;
+      padding-right: 30px;
     }
   }
   @media only screen and (width: 320px) {
@@ -116,14 +116,13 @@ export const ContentWrapper = styled.div`
 
 export const SectionHeader = styled.header`
   width: 100%;
-  margin: 0 auto 58px;
+  margin: 0 auto 65px;
   text-align: center;
-  @media only screen and (max-width: 1440px) {
-    padding-top: 57px;
-  }
+  overflow: hidden;
   @media only screen and (max-width: 991px) {
     margin-bottom: 50px;
   }
+
   h5 {
     font-size: 14px;
     font-weight: 700;
@@ -153,6 +152,25 @@ export const SectionHeader = styled.header`
       line-height: 38px;
       letter-spacing: -0.5px;
     }
+  }
+  .containerSlogan {
+    padding: 48px 0;
+    background-color: #002e47;
+  }
+  .titleSlogan {
+    color: #ddd;
+    font-size: 32px;
+    margin-bottom: 48px;
+    font-weight: 500;
+    line-height: 36px;
+    text-align: center;
+  }
+  & p {
+    color: #ddd;
+    font-size: 18px;
+    line-height: 24px;
+    text-align: center;
+    margin: 20px 0 50px;
   }
 `;
 

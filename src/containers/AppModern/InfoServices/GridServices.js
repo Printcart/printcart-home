@@ -1,14 +1,13 @@
 import styled, { css } from "styled-components";
-import { themeGet } from "@styled-system/theme-get";
 
 const SectionWrapperServices = styled.section`
-  padding: 105px 0 75px;
+  padding: 88px 0 0;
   overflow: hidden;
-  @media only screen and (max-width: 1440px) {
-    padding: 50px 0;
+  @media only screen and (max-width: 1366px) {
+    padding: 76px 0 0;
   }
-  @media only screen and (max-width: 667px) {
-    padding: 45px 0;
+  @media only screen and (max-width: 768px) {
+    padding: 76px 0 0;
   }
 
   .paginateWrap {
@@ -36,16 +35,15 @@ const SectionWrapperServices = styled.section`
 `;
 
 export const GridServices = styled.div`
-  padding: 20px;
   display: flex;
   flex-wrap: wrap;
 
   > div {
-    width: calc(100% / 5 - 34px);
+    width: calc(100% / 3 - 34px);
     margin: 30px 17px 10px;
 
-    @media only screen and (max-width: 1466px) {
-      width: calc(100% / 4 - 34px);
+    @media only screen and (max-width: 1400px) {
+      width: calc(100% / 3 - 34px);
     }
     @media only screen and (max-width: 1200px) {
       width: calc(100% / 3 - 34px);
@@ -124,15 +122,45 @@ export const GridServices = styled.div`
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3;
   }
+  .avataruser {
+    display: flex;
+    align-items: center;
+    & img {
+      border-radius: 5px;
+      margin-right: 10px;
+      border: 1px solid #cdcdcd;
+      width: 40px;
+      height: 40px;
+    }
+  }
   .info {
     display: flex;
     align-items: center;
     color: #5c5c5c;
+    display: -webkit-box;
+
     & strong {
       font-size: 16px;
       font-weight: 500;
-      margin-right: 5px;
       padding-bottom: 1px;
+    }
+    & p {
+      font-size: 16px;
+    }
+  }
+  .infodate {
+    display: flex;
+    align-items: center;
+    color: #5c5c5c;
+    display: -webkit-box;
+
+    & strong {
+      font-size: 16px;
+      font-weight: 500;
+      padding-bottom: 1px;
+    }
+    & p {
+      font-size: 16px;
     }
   }
   .boxBtn {
@@ -219,6 +247,25 @@ export const ContainerServices = styled.div`
       border: 1px solid #2d58af;
     }
   }
+  .btnShow {
+    border: 1px solid #cdcdcd;
+    height: 27px;
+    background: #424dc6;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    padding: 0 10px;
+    font-size: 16px;
+    text-transform: capitalize;
+    color: #fff;
+    cursor: pointer;
+    font-weight: 500;
+    text-transform: capitalize;
+    &:hover {
+      color: #fff;
+      background: #2d58af;
+      border: 1px solid #2d58af;
+    }
+  }
   .space {
     background: #cdcdcd;
     width: 2px;
@@ -232,6 +279,9 @@ export const ContainerServices = styled.div`
     margin-bottom: 30px;
     align-items: center;
     justify-content: space-between;
+    @media only screen and (max-width: 768px) {
+      display: inline-block;
+    }
   }
   .breadcome {
     display: flex;
@@ -278,4 +328,18 @@ export const ContainerServices = styled.div`
       border-radius: 7px;
     }
   }
+  .notify {
+    display: flex;
+    font-size: 18px;
+    color: #5c5c5c;
+    margin-top: 10px;
+    & svg {
+      width: 24px;
+      height: 24px;
+      color: red;
+  }
+`;
+export const SectionStep = styled.section`
+  padding: 50px 0;
+  overflow: hidden;
 `;

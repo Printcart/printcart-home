@@ -1,103 +1,102 @@
-import ResetCSS from "common/assets/css/style";
 import Box from "common/components/Box";
 import Pagination from "common/components/Pagination";
-import { filterServices } from "common/data/AppModern";
-import { theme } from "common/theme/appModern";
-import Link from "next/link";
+import Container from "common/components/UI/Container";
 import { useRouter } from "next/router";
-import { element } from "prop-types";
-import React from "react";
-import Fade from "react-reveal/Fade";
-import { ThemeProvider } from "styled-components";
+import Icon from "react-icons-kit";
+import { ic_close } from "react-icons-kit/md/ic_close";
 import { SectionHeader } from "../appModern.style";
+import FAQfeature from "../FAQ";
+import Reviews from "../Review";
+import TitlePath from "../ServiceDetail/TitlePath";
+import StepWork from "../StepWork";
+import UserObject from "../UserObject";
 import Breadcrumb from "./Breadcrumb";
 import SectionWrapperServices, {
   ContainerServices,
   GridServices,
+  SectionStep,
 } from "./GridServices";
+import ServiceCategory from "./ServiceCategory";
 import ServicesList from "./ServicesList";
+import ServicesOther from "./ServicesOther";
 
 const InfoServices = (props) => {
-  const { serviceList, total, dataNew, characters, choice } = props;
-  const nameService = characters?.attributes?.name;
+  const {
+    serviceList,
+    total,
+    dataNew,
+    choice,
+    serviceRealted,
+    currentCat,
+    dataFAQ,
+  } = props;
   const router = useRouter();
   const query = router.query;
+  const title =
+    currentCat?.name_sub ?? currentCat?.name_subcat ?? currentCat?.name_cat;
 
-  const page = total.pagination.total / 40;
+  const data = {
+    name: "Service",
+    alias: "services",
+  };
+  const page = total.pagination.total / 18;
   let start = -1;
-  let end = 40;
+  let end = 18;
   if (query.page) {
     start = (query.page - 1) * end - 1;
     end = query.page * end;
   }
 
   return (
-    <ThemeProvider theme={theme}>
-      <>
-        <ResetCSS />
-        <SectionWrapperServices>
-          <SectionHeader>
-            <h1
-              style={{
-                color: "#5c5c5c",
-                fontSize: "36px",
-                fontWeight: "500",
-                lineHeight: "36px",
-                textAlign: "center",
-              }}
-              className="titleSlogan"
-            >
-              {characters
-                ? `Services For The ${nameService} Category`
-                : `BPO Services Marketplace`}
+    <SectionWrapperServices>
+      <TitlePath currentCat={currentCat} data={data} />
+      <SectionHeader>
+        <Box className="containerSlogan">
+          <Container>
+            <h1 className="titleSlogan">
+              {title
+                ? `Services For The ${title} Category`
+                : `ECOMMERCE DEVELOPMENT SERVICES`}
             </h1>
-            <p
-              style={{
-                color: "#5c5c5c",
-                fontSize: "18px",
-                lineHeight: "24px",
-                textAlign: "center",
-                margin: "20px 0 50px",
-              }}
-            >
-              For trusted agency and freelancer
+            <p>
+              PRINTCART is the trusted digital commerce agency building
+              eCommerce website, mobile app, PWA and Page builder solution for
+              B2C and B2B industries as well as multi-vendor marketplaces
             </p>
-          </SectionHeader>
-          <ContainerServices>
-            <Breadcrumb characters={characters} />
-            <Box className="containerServices">
-              <Link href={`/services`}>
-                <a className="btncategory">All</a>
-              </Link>
-              {dataNew.length > 0 && <Box className="space" />}
-              {dataNew.map((items, index) => (
-                <Link key={index} href={`/services/${items.attributes.alias}`}>
-                  <a
-                    className={
-                      choice === items.attributes.alias
-                        ? "choice"
-                        : "btncategory"
-                    }
-                  >
-                    {items?.attributes.name}
-                  </a>
-                </Link>
-              ))}
-            </Box>
-          </ContainerServices>
-          <GridServices>
-            {serviceList.map(
-              (item, index) =>
-                index > start &&
-                index < end && (
-                  <ServicesList key={index} serviceList={item} total={total} />
-                )
-            )}
-            <Pagination page={page} />
-          </GridServices>
-        </SectionWrapperServices>
-      </>
-    </ThemeProvider>
+          </Container>
+        </Box>
+      </SectionHeader>
+      <Container>
+        <ContainerServices>
+          {/* <Breadcrumb currentCat={currentCat} /> */}
+          <ServiceCategory dataNew={dataNew} choice={choice} />
+          {serviceList.length === 0 && (
+            <p className="notify">
+              <Icon icon={ic_close} />
+              The service you were looking for was not found, see more related
+              services below!
+            </p>
+          )}
+        </ContainerServices>
+        <GridServices>
+          {serviceList.map(
+            (item, index) =>
+              index > start &&
+              index < end && (
+                <ServicesList key={index} serviceList={item} total={total} />
+              )
+          )}
+          {serviceList.length > 18 && <Pagination page={page} />}
+        </GridServices>
+        {serviceRealted && <ServicesOther serviceRealted={serviceRealted} />}
+        <SectionStep>
+          <StepWork />
+        </SectionStep>
+      </Container>
+      <FAQfeature dataFAQ={dataFAQ} />
+      <UserObject />
+      <Reviews />
+    </SectionWrapperServices>
   );
 };
 export default InfoServices;

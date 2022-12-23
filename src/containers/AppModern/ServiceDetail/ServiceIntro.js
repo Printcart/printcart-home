@@ -1,9 +1,7 @@
 import Box from "common/components/Box";
 import Link from "next/link";
 import { useState } from "react";
-import ReactHtmlParser from "react-html-parser";
-import Icon from "react-icons-kit";
-import { ic_zoom_out_map } from "react-icons-kit/md/ic_zoom_out_map";
+import ReactMarkdown from "react-markdown";
 
 const ServiceIntro = (props) => {
   const { character } = props;
@@ -25,7 +23,10 @@ const ServiceIntro = (props) => {
       <Box className="boxInfo">
         <img
           alt="Avatar"
-          src={character.avatar ?? "/avatar-default.png"}
+          src={
+            character?.users_permissions_user?.data?.attributes?.avatar?.data
+              ?.attributes?.url ?? "/avatar-default.png"
+          }
           style={{
             width: "50px",
             height: "50px",
@@ -35,7 +36,10 @@ const ServiceIntro = (props) => {
         <p>
           created by{" "}
           <Link prefetch={false} href={character.url ?? "/"}>
-            <a>{character.name ?? "Printcart"}</a>
+            <a>
+              {character?.users_permissions_user?.data?.attributes?.name ??
+                "Printcart"}
+            </a>
           </Link>
           , a part of Corporate Printcart
         </p>
@@ -56,20 +60,17 @@ const ServiceIntro = (props) => {
           <img
             width="100%"
             height={450}
-            src={`${character.image.data[0].attributes.url}`}
+            src={
+              character.image.data?.length > 0
+                ? `${character.image.data[0].attributes.url}`
+                : ""
+            }
             alt="Logo service"
             onClick={() => {
               handleOpen(character);
             }}
           />
         </Box>
-        {/* <Modal show={open} onClose={handleClose} Image={iSrc}>
-                <Box className="boxModal">
-                    <button className="boxClose" onClick={handleClose}>
-                    <Icon icon={ic_close_outline} />
-                    </button>
-                </Box>
-            </Modal> */}
       </Box>
       {/* End iMAGE */}
       {/* Description */}
@@ -77,7 +78,7 @@ const ServiceIntro = (props) => {
         <Box>
           <h2 className="titleDes">About This Service</h2>
           <Box className="description">
-            {ReactHtmlParser(character.description)}
+            <ReactMarkdown>{character.description}</ReactMarkdown>
           </Box>
         </Box>
       </Box>

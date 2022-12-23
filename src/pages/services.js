@@ -6,44 +6,14 @@ import { ThemeProvider } from "styled-components";
 import InfoServices from "../containers/AppModern/InfoServices";
 // import PricingPolicy from 'containers/AppModern/PricingPolicy';
 // import TeamPortfolio from 'containers/AppModern/TeamPortfoilo';
-import GlobalStyle, { AppWrapper } from "containers/AppModern/appModern.style";
+import GlobalStyle, {
+  AppWrapper,
+  ContentWrapper,
+} from "containers/AppModern/appModern.style";
 import Footer from "containers/AppModern/Footer";
-import React, { useState } from "react";
-import axios from "axios";
 
 const Services = (props) => {
-  const { serviceList, total, servicesCategory } = props;
-  const [dataCat, setDataCat] = useState([]);
-  const uniqueValue = [];
-  const mergearray = uniqueValue.concat(
-    servicesCategory.map((items) =>
-      items.attributes.project_cat.map((item) => item)
-    )
-  );
-  const delDuplicate = mergearray.flat();
-
-  const data = delDuplicate.filter((element) => {
-    const isDuplicate = delDuplicate.includes(element.value);
-    if (!isDuplicate) {
-      delDuplicate.push(element.value);
-      return true;
-    }
-    return false;
-  });
-  const valueData = data.map((items) => items.value);
-  const mergeValue = valueData.join("&filters[id]=");
-
-  React.useEffect(() => {
-    axios
-      .get(
-        `https://strapi4.cloodo.com/api/project-categories?pagination[pageSize]=100&filters[id]=${mergeValue}`
-      )
-      .then((res) => {
-        const todoItems = res.data.data;
-        setDataCat(todoItems);
-      });
-  }, data);
-
+  const { serviceList, total, dataCategory, dataFAQ } = props;
   return (
     <ThemeProvider theme={theme}>
       <>
@@ -61,12 +31,14 @@ const Services = (props) => {
           <div className="sticky-active">
             <Navbar />
           </div>
-          <InfoServices
-            serviceList={serviceList}
-            total={total}
-            servicesCategory={data}
-            dataNew={dataCat}
-          />
+          <ContentWrapper>
+            <InfoServices
+              serviceList={serviceList}
+              total={total}
+              dataNew={dataCategory}
+              dataFAQ={dataFAQ}
+            />
+          </ContentWrapper>
           <Footer />
         </AppWrapper>
       </>
@@ -76,33 +48,48 @@ const Services = (props) => {
 export default Services;
 export async function getStaticProps() {
   const time = `&time=${Date.now()}`;
+  const uniqueValue = [];
   const limit = `&pagination[pageSize]=100`;
   const filProjectCat = `&fields[0]=project_cat`;
   const filAgency = `&filters[$and][0][service_agency][$contains]=568427`;
+  const user = `&populate=users_permissions_user.avatar`;
 
-  const serviceList = await fetch(
-    `${process.env.STRAPI_2_API_URL}services?populate=image` +
-      limit +
-      time +
-      filAgency
-  ).then((res) => res.json());
-  const servicesCategory = await fetch(
-    `${process.env.STRAPI_2_API_URL}services?pagination[pageSize]=100` +
-      filProjectCat +
-      filAgency
-  ).then((res) => res.json());
+  const res = await fetch(`${process.env.STRAPI_2_API_URL}services?pagination[pageSize]=100` + filProjectCat + filAgency);
+  const result = await res.json();
 
-  if (serviceList.data.length > 0) {
+  const mergearray = uniqueValue.concat(
+    result.data.map((items) =>
+      items.attributes.project_cat.map((item) => item)
+    )
+  );
+  const delDuplicate = mergearray.flat();
+  const data = delDuplicate.filter((element) => {
+    const isDuplicate = delDuplicate.includes(element.value);
+    if (!isDuplicate) {
+      delDuplicate.push(element.value);
+      return true;
+    }
+    return false;
+  });
+  const valueData = data.map((item) => item.value);
+  const mergeValue = valueData.join("&filters[id]=");
+
+  const fetchCategory = fetch(`${process.env.STRAPI_API_URL}project-categories?pagination[pageSize]=100&filters[id]=${mergeValue}`);
+  const fetchServices = fetch(`${process.env.STRAPI_2_API_URL}services?populate=image` + user + limit + time + filAgency);
+  const fetchFAQ = fetch(`${process.env.STRAPI_API_URL}faqs?filters[$and][0][project_cat][$contains]="20956"`);
+
+  const [promiseCategory, promiseServices, promiseFAQ] = await Promise.all([fetchServices, fetchCategory, fetchFAQ,]);
+  const [dataServices, dataCategory, dataFAQ] = await Promise.all([ promiseCategory.json(), promiseServices.json(), promiseFAQ.json(),]);
+
+  if (dataServices.data.length > 0) {
     return {
       props: {
-        serviceList: serviceList["data"],
-        total: serviceList["meta"],
-        servicesCategory: servicesCategory["data"],
+        serviceList: dataServices["data"],
+        total: dataServices["meta"],
+        dataCategory: dataCategory["data"],
+        dataFAQ: dataFAQ["data"],
       },
+      revalidate: 1,
     };
   }
-
-  return {
-    notFound: true,
-  };
 }
