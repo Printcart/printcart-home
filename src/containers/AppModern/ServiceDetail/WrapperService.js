@@ -429,8 +429,7 @@ export const ContainerServicesDT = styled.div`
     margin-top: 50px;
     padding: 10px;
     box-shadow: 0 0 20px rgb(0 0 0 / 5%);
-    border-radius: 4px;
-    padding-bottom: 20px;
+    padding-bottom: 40px;
   }
   .titlerelated {
     font-size: 24px;

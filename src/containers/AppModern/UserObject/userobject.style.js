@@ -7,7 +7,12 @@ const ContainerUO = styled.section`
   border-bottom: 1px solid #e3e3e3;
   background: #f4f7f8;
   @media only screen and (min-width: 1400px) {
-    width: 1294px;
+    max-width: 1294px;
+    width: 100%;
+  }
+  @media only screen and (min-width: 1200px) {
+    max-width: 1192px;
+    width: 100%;
   }
   .titleuser {
     color: #fff;
