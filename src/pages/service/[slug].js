@@ -75,7 +75,7 @@ export async function getStaticProps({ params }) {
         fetchAlias: fetchAlias["data"],
         result: result,
       },
-      revalidate: 604800,
+      revalidate: 1,
     };
   }
 
