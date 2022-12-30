@@ -10,6 +10,12 @@ import { NewDate } from "../InfoServices/ServicesList";
 
 const SupportDetail = (props) => {
   const { character, fetchAlias } = props;
+  const handleChat = (e) => {
+    alert("hi");
+  };
+  const handleRS = (e) => {
+    console.log("hi");
+  };
   return (
     <Box className="boxRight">
       {/* P1 */}
@@ -64,7 +70,11 @@ const SupportDetail = (props) => {
         <a
           href={`https://solution.printcart.com/support_ticket/?idsv=${character.id}`}
         >
-          <Button className="buttonRequest" title="REQUEST SUPPORT" />
+          <Button
+            onClick={() => handleRS()}
+            className="buttonRequest"
+            title="REQUEST SUPPORT"
+          />
         </a>
       </Box>
       {/* P2 */}
@@ -73,16 +83,16 @@ const SupportDetail = (props) => {
           <img
             className="imagePA"
             src={
-              character.attributes?.users_permissions_user?.data?.attributes?.avatar?.data
-                ?.attributes.url ?? "/avatar-default.png"
+              character.attributes?.users_permissions_user?.data?.attributes
+                ?.avatar?.data?.attributes.url ?? "/avatar-default.png"
             }
             alt="Logo Service"
           />
           <Box className="boxTopPA">
             <Link prefetch={false} href="#">
               <a>
-                {character.attributes.users_permissions_user?.data?.attributes?.name ??
-                  "Printcart"}
+                {character.attributes.users_permissions_user?.data?.attributes
+                  ?.name ?? "Printcart"}
               </a>
             </Link>
             <p>Developer</p>
@@ -153,6 +163,7 @@ const SupportDetail = (props) => {
             }}
             title="SEND MESSAGE"
             className="buttomSendMes"
+            onClick={(e) => handleChat()}
           />
         </Box>
       </Box>
