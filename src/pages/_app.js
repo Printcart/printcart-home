@@ -16,7 +16,6 @@ export default function CustomApp({ Component, pageProps }) {
       <script
         id="chatcows"
         src="https://images-products.s3.us-east-1.amazonaws.com/popup-chat/chatco.js?integrity=CvIxKgRTmGeQVJN4U3U4"
-        async
       />
       <Component {...pageProps} />
     </Modal>
