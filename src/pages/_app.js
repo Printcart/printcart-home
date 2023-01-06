@@ -9,13 +9,18 @@ import "common/assets/css/react-slick.css";
 import "common/assets/css/rc-collapse.css";
 import "rc-collapse/assets/index.css";
 import React from "react";
+import Script from "next/script";
 
 export default function CustomApp({ Component, pageProps }) {
   return (
     <Modal>
-      <script
-        id="chatcows"
-        src="https://images-products.s3.us-east-1.amazonaws.com/popup-chat/chatco.js?integrity=CvIxKgRTmGeQVJN4U3U4"
+      <iframe
+        id="chatco_popup"
+        src="http://club.cmsmart.net/tool/popup_chat.php?integrity=CvIxKgRTmGeQVJN4U3U4"
+      ></iframe>
+      <Script
+        src="http://images-products.s3.us-east-1.amazonaws.com/popup-chat/chatcov2.js"
+        strategy="beforeInteractive"
       />
       <Component {...pageProps} />
     </Modal>

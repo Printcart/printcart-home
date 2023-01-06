@@ -10,12 +10,6 @@ import { NewDate } from "../InfoServices/ServicesList";
 
 const SupportDetail = (props) => {
   const { character, fetchAlias } = props;
-  const handleChat = (e) => {
-    alert("hi");
-  };
-  const handleRS = (e) => {
-    console.log("hi");
-  };
   return (
     <Box className="boxRight">
       {/* P1 */}
@@ -163,7 +157,6 @@ const SupportDetail = (props) => {
             }}
             title="SEND MESSAGE"
             className="buttomSendMes"
-            onClick={(e) => handleChat()}
           />
         </Box>
       </Box>
