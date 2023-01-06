@@ -1,6 +1,7 @@
 import Box from "common/components/Box";
 import Button from "common/components/Button";
 import Link from "next/link";
+import { useState } from "react";
 import Icon from "react-icons-kit";
 import { ic_date_range_outline } from "react-icons-kit/md/ic_date_range_outline";
 import { ic_groups_outline } from "react-icons-kit/md/ic_groups_outline";
@@ -10,6 +11,44 @@ import { NewDate } from "../InfoServices/ServicesList";
 
 const SupportDetail = (props) => {
   const { character, fetchAlias } = props;
+  const [show, setShow] = useState(false);
+  const handleChat = () => {
+    const iframe = document.getElementById("chatco_popup");
+    iframe.contentWindow.postMessage("message", "https://club.cmsmart.net/");
+    // window.addEventListener(
+    //   "message",
+    //   (event) => {
+    //     if (
+    //       event.origin ==
+    //       "https://club.cmsmart.net/tool/popup_chat.php?integrity=CvIxKgRTmGeQVJN4U3U4"
+    //     )
+    //       return console.log("true");
+    //   },
+    //   console.log("false")
+    // );
+    // console.log(popup);
+    // const iframe = document.getElementById("chatco_popup").addEventListener(
+    //   "message",
+    //   (event) => {
+    //     if (
+    //       event.origin ==
+    //       "https://images-products.s3.us-east-1.amazonaws.com/popup-chat/chatcov2.js"
+    //     )
+    //       return console.log("hi");
+    //   },
+    //   console.log("false")
+    // );
+
+    // let iframe = document
+    //   .getElementById("chatco_popup")
+    //   .contentWindow.addEventListener(
+    //     "click",
+    //     (iframe.document.getElementById("chatco-widget").style.display = show
+    //       ? "block"
+    //       : "none")
+    //   );
+  };
+
   return (
     <Box className="boxRight">
       {/* P1 */}
@@ -157,6 +196,7 @@ const SupportDetail = (props) => {
             }}
             title="SEND MESSAGE"
             className="buttomSendMes"
+            onClick={() => handleChat()}
           />
         </Box>
       </Box>
