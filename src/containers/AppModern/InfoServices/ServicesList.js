@@ -52,7 +52,6 @@ const ServicesList = (props) => {
           </Link>
           <Box className="text">
             <ReactMarkdown>{serviceList.attributes.description}</ReactMarkdown>
-            {ReactHtmlParser(serviceList.attributes.description)}
           </Box>
           <Box className="avataruser">
             <img
