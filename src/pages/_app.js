@@ -18,7 +18,10 @@ export default function CustomApp({ Component, pageProps }) {
         id="chatco_popup"
         src="https://club.cmsmart.net/tool/popup_chat.php?integrity=CvIxKgRTmGeQVJN4U3U4"
       ></iframe>
-      <script src="https://images-products.s3.us-east-1.amazonaws.com/popup-chat/chatcov2.js"></script>
+      <Script
+        src="https://images-products.s3.us-east-1.amazonaws.com/popup-chat/chatcov2.js"
+        strategy="beforeInteractive"
+      />
       <Component {...pageProps} />
     </Modal>
   );
