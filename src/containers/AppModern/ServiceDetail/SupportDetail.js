@@ -10,6 +10,11 @@ import { NewDate } from "../InfoServices/ServicesList";
 
 const SupportDetail = (props) => {
   const { character, fetchAlias } = props;
+  const handleChat = () => {
+    const iframe = document.getElementById("chatco_popup");
+    iframe.contentWindow.postMessage("message", "*");
+  };
+
   return (
     <Box className="boxRight">
       {/* P1 */}
@@ -73,16 +78,16 @@ const SupportDetail = (props) => {
           <img
             className="imagePA"
             src={
-              character.attributes?.users_permissions_user?.data?.attributes?.avatar?.data
-                ?.attributes.url ?? "/avatar-default.png"
+              character.attributes?.users_permissions_user?.data?.attributes
+                ?.avatar?.data?.attributes.url ?? "/avatar-default.png"
             }
             alt="Logo Service"
           />
           <Box className="boxTopPA">
             <Link prefetch={false} href="#">
               <a>
-                {character.attributes.users_permissions_user?.data?.attributes?.name ??
-                  "Printcart"}
+                {character.attributes.users_permissions_user?.data?.attributes
+                  ?.name ?? "Printcart"}
               </a>
             </Link>
             <p>Developer</p>
@@ -153,6 +158,7 @@ const SupportDetail = (props) => {
             }}
             title="SEND MESSAGE"
             className="buttomSendMes"
+            onClick={() => handleChat()}
           />
         </Box>
       </Box>
