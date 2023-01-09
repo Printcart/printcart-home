@@ -69,11 +69,7 @@ const SupportDetail = (props) => {
         <a
           href={`https://solution.printcart.com/support_ticket/?idsv=${character.id}`}
         >
-          <Button
-            onClick={() => handleRS()}
-            className="buttonRequest"
-            title="REQUEST SUPPORT"
-          />
+          <Button className="buttonRequest" title="REQUEST SUPPORT" />
         </a>
       </Box>
       {/* P2 */}
