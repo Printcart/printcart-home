@@ -76,7 +76,7 @@ export async function getServerSideProps({ query }) {
     const currentCat = { name_subcat, alias_subcat, name_cat, alias_cat };
 
     const fetchListService = fetch(`${newUrl}&filters[project_cat][$containsi]=${name_subcat}` + filAgency + filSort);
-    const fetchServiceRealted = fetch(`${newUrl}&filters[project_cat][$notContainsi]=${name_subcat}&filters[project_cat][$containsi]=${name_cat}` + filSort);
+    const fetchServiceRealted = fetch(`${newUrl}&filters[project_cat][$notContainsi]=${name_subcat}&filters[project_cat][$containsi]=${name_cat}` + filSort + filAgency);
     const fetchSubCat = fetch(`${urlStrapi}project-categories?populate=parent.parent&filters[parent][alias][$eq]=${aliasSub}&sort=service_count:DESC` +limit);
     const fetchFAQ = fetch(`${urlStrapi}faqs?filters[$and][0][project_cat][$contains]="20956"`);
 
