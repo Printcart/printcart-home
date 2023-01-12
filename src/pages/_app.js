@@ -23,6 +23,7 @@ export default function CustomApp({ Component, pageProps }) {
       <Script
         src="https://images-products.s3.us-east-1.amazonaws.com/popup-chat/chatcov2.js"
         strategy="beforeInteractive"
+        defer
       />
       <Component {...pageProps} />
     </Modal>
