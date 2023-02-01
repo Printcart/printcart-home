@@ -42,7 +42,7 @@ export default productsPOD;
 
 export async function getStaticProps() {
   const baseUrl = process.env.MEDUSA_API_URL;
-  const res = await fetch(`${baseUrl}/products`);
+  const res = await fetch(`${baseUrl}/products?limit=6`);
   const result = await res.json();
 
   return {
