@@ -91,6 +91,22 @@ export const GridServices = styled.div`
     -webkit-line-clamp: 2;
     cursor: pointer;
   }
+  .title-medusa {
+    margin-top: 0px;
+    height: 52px;
+    text-align: center;
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 0px;
+    color: #444;
+    line-height: 1.2;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    cursor: pointer;
+  }
   .text {
     & h2 {
       font-size: 17px;
@@ -163,6 +179,38 @@ export const GridServices = styled.div`
       font-size: 16px;
     }
   }
+
+  .tag-info {
+    display: flex;
+    align-items: center;
+    color: #5c5c5c;
+    display: -webkit-box;
+
+    & strong {
+      font-size: 16px;
+      font-weight: 500;
+      padding-bottom: 1px;
+    }
+    & p {
+      font-size: 16px;
+    }
+  }
+  .collection {
+    display: flex;
+    align-items: center;
+    color: #5c5c5c;
+    display: -webkit-box;
+
+    & strong {
+      font-size: 16px;
+      font-weight: 500;
+      padding-bottom: 1px;
+    }
+    & p {
+      font-size: 16px;
+    }
+  }
+
   .boxBtn {
     text-align: end;
     border-top: 1px dashed #cdcdcd;

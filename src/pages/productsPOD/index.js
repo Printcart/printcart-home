@@ -12,7 +12,6 @@ import ProductsPOD from "containers/AppModern/ProductsPOD";
 
 const productsPOD = (props) => {
   const { getProducts } = props;
-  console.log(getProducts);
   return (
     <ThemeProvider theme={theme}>
       <>

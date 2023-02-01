@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { themeGet } from "@styled-system/theme-get";
+import ImagePrinProvider from "common/assets/image/printing-house.webp";
 
 const HeaderPOD = styled.header`
   width: 100%;
-  margin: 0 auto 65px;
   text-align: center;
   overflow: hidden;
   @media only screen and (max-width: 1400px) {
@@ -63,3 +63,177 @@ const HeaderPOD = styled.header`
   }
 `;
 export default HeaderPOD;
+
+export const BannerWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
+  > div {
+    width: calc(100% / 2 - 34px);
+    margin: 38px 0 30px;
+    @media only screen and (max-width: 1366px) {
+      width: calc(100% / 2 - 34px);
+    }
+    @media only screen and (max-width: 991px) {
+      width: calc(100% / 2 - 34px);
+    }
+    @media only screen and (max-width: 767px) {
+      width: calc(100% / 2 - 15px);
+    }
+    @media only screen and (max-width: 480px) {
+      width: 100%;
+      margin-top: 15px;
+    }
+  }
+  .heading {
+    font-size: 35px;
+  }
+  .heading-first {
+    position: relative;
+    &:after {
+      content: "";
+      width: calc(100% - 160px);
+      height: 50%;
+      position: absolute;
+      bottom: 1px;
+      left: 0px;
+      background: #ff6666;
+      z-index: -1;
+    }
+  }
+  .heading-second {
+    color: #0099ff;
+  }
+  .description {
+    color: #718096;
+  }
+  .contRight {
+    flex: 1px;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+  }
+  .svg-background {
+    width: 100%;
+    height: 130%;
+    display: inline-block;
+    line-height: 1em;
+    position: absolute;
+    fill: none;
+    top: -20%;
+    left: 0px;
+    z-index: -1;
+    color: #fff5f5;
+  }
+  .boxImage {
+    position: relative;
+    height: 300px;
+    border-radius: 1rem;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    width: 100%;
+    overflow: hidden;
+  }
+  .imageBanner {
+    object-fit: cover;
+    object-position: center;
+    width: 100%;
+    height: 100%;
+  }
+  .footer {
+    margin-top: 2.5rem;
+  }
+  .btn-getstart {
+    display: inline-block;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    white-space: nowrap;
+    border-radius: 25px;
+    font-weight: 400;
+    height: 3rem;
+    min-width: 3rem;
+    font-size: 1.125rem;
+    background: #63b3ed;
+    color: #fff;
+    &:hover {
+      background: #2b6cb0;
+    }
+  }
+  .btn-howitworks {
+    display: inline-block;
+    margin-left: 30px;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    white-space: nowrap;
+    border-radius: 25px;
+    font-weight: 400;
+    height: 3rem;
+    min-width: 3rem;
+    font-size: 1.125rem;
+    background: #edf2f7;
+    color: inherit;
+    &:hover {
+      background: #e2e8f0;
+    }
+  }
+`;
+export const ContainerPP = styled.div`
+  display: flex;
+  width: 100%;
+  height: 250px;
+  margin-top: 56px;
+  background-image: url(${ImagePrinProvider?.src});
+  background-size: cover;
+  background-position: center center;
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    background-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.48),
+      transparent
+    );
+  }
+  .content-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    flex-direction: column;
+    max-width: 42rem;
+  }
+  .heading {
+    color: #fff;
+    font-size: 2.25rem;
+  }
+  .desc {
+    margin: 1.5rem;
+    color: #fff;
+    font-weight: 700;
+    line-height: 1.2;
+    font-size: 1rem;
+  }
+  .btn-seeprint {
+    display: inline-block;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    white-space: nowrap;
+    border-radius: 25px;
+    font-weight: 400;
+    height: 3rem;
+    min-width: 3rem;
+    font-size: 1.125rem;
+    background: #4299e1;
+    color: #fff;
+    &:hover {
+      background: #2b6cb0;
+    }
+  }
+`;
