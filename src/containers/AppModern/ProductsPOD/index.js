@@ -8,6 +8,7 @@ import Container from "../../../common/components/UI/Container";
 import { GridServices } from "../InfoServices/GridServices";
 import Banner from "./Banner";
 import HeaderPOD, { ContainerPP } from "./productspod.style";
+import Link from "next/link";
 
 const ProductsPOD = (props) => {
   const { getProducts } = props;
@@ -23,17 +24,25 @@ const ProductsPOD = (props) => {
           {getProducts.map((item, index) => (
             <Card className="cardItem" key={index}>
               <Box>
-                <img
-                  style={{
-                    width: "100%",
-                    height: "300px",
-                    borderTopLeftRadius: "5px",
-                    borderTopRightRadius: "5px",
-                  }}
-                  src={item?.thumbnail}
-                />
+                <Link href={`/product/${item?.id}`}>
+                  <a>
+                    <img
+                      style={{
+                        width: "100%",
+                        height: "300px",
+                        borderTopLeftRadius: "5px",
+                        borderTopRightRadius: "5px",
+                      }}
+                      src={item?.thumbnail}
+                    />
+                  </a>
+                </Link>
                 <Box className="content">
-                  <h3 className="title-medusa">{item.title}</h3>
+                  <Link href={`/product/${item?.id}`}>
+                    <a title={`View to ${item.title}`}>
+                      <h3 className="title-medusa">{item.title}</h3>
+                    </a>
+                  </Link>
                   <Box className="text">
                     {item.description && (
                       <ReactMarkdown>{item.description}</ReactMarkdown>

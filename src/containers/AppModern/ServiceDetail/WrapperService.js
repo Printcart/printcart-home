@@ -42,6 +42,162 @@ const WrapperServices = styled.section`
       }
     }
   }
+  .contProduct {
+    align-items: flex-start;
+    flex-direction: row;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    display: flex;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    max-width: 1440px;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  .contenLeft {
+    display: flex;
+    row-gap: 2rem;
+    flex-direction: column;
+    width: 100%;
+  }
+  .wrappImage {
+    align-items: flex-start;
+    display: flex;
+    position: relative;
+  }
+  .wrappchild {
+    display: flex;
+    row-gap: 1rem;
+    flex-direction: column;
+    top: 5rem;
+    position: sticky;
+  }
+  .btnchange {
+    border-width: 1px;
+    width: 3rem;
+    height: 3.5rem;
+    position: relative;
+    cursor: pointer;
+  }
+  .imageProduct {
+    position: absolute;
+    inset: 0px;
+    box-sizing: border-box;
+    padding: 0px;
+    border: none;
+    margin: auto;
+    display: block;
+    width: 0px;
+    height: 0px;
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 100%;
+    max-height: 100%;
+    object-fit: cover;
+  }
+  .wrappbig {
+    margin-left: 4rem;
+    margin-right: 4rem;
+    row-gap: 1rem;
+    flex-direction: column;
+    flex: 1 1 0%;
+    display: flex;
+  }
+  .contImage {
+    width: 100%;
+    aspect-ratio: 29 / 34;
+    position: relative;
+  }
+  .imageProductBig {
+    osition: absolute;
+    inset: 0px;
+    box-sizing: border-box;
+    padding: 0px;
+    border: none;
+    margin: auto;
+    display: block;
+    width: 0px;
+    height: 0px;
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 100%;
+    max-height: 100%;
+    object-fit: cover;
+  }
+  .contentRight {
+    max-width: 400px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    top: 5rem;
+    position: sticky;
+    row-gap: 3rem;
+    flex-direction: column;
+    width: 100%;
+    display: flex;
+  }
+  .info-child {
+    max-width: 500px;
+    row-gap: 3rem;
+    flex-direction: column;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .info-main {
+    row-gap: 0.5rem;
+    flex-direction: column;
+    display: flex;
+  }
+  .linktitle {
+    font-size: 0.75rem;
+    font-weight: 400;
+    line-height: 1.25rem;
+    text-decoration: inherit;
+  }
+  .titleProduct {
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 36px;
+    margin: 0;
+  }
+  .descProduct {
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.5rem;
+    margin: 0;
+  }
+  .selectSize {
+    row-gap: 1.5rem;
+    flex-direction: column;
+    display: flex;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+  .cont-size {
+    row-gap: 0.75rem;
+    flex-direction: column;
+    display: flex;
+  }
+  .title-size {
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1.5rem;
+  }
+  .valueSize {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 0.5rem;
+    display: grid;
+  }
+  .btnvalue {
+    border-width: 1px;
+    height: 50px;
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 1rem;
+    cursor: pointer;
+  }
 `;
 
 export const GridServicesDT = styled.div`
