@@ -198,6 +198,99 @@ const WrapperServices = styled.section`
     line-height: 1rem;
     cursor: pointer;
   }
+  .contPrices {
+    margin-bottom: 1rem;
+  }
+  .pricesDetail {
+    color: #374151;
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 36px;
+  }
+  .tabList {
+    border-color: #374151;
+    border-bottom: 1px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    display: grid;
+  }
+  .tabChecked {
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+    text-transform: uppercase;
+    text-align: left;
+    padding-bottom: 0.5rem;
+    border-color: rgb(17 24 39 / 1);
+    border-bottom-width: 1px;
+    background-color: transparent;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    font-size: 0.95rem;
+    font-weight: 400;
+    line-height: 1.25rem;
+    cursor: pointer;
+    margin: 1px;
+  }
+  .tabDefault {
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+    text-transform: uppercase;
+    text-align: left;
+    padding-bottom: 0.5rem;
+    border-color: rgb(229 231 235 / 1);
+    border-bottom-width: 1px;
+    background-color: transparent;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    font-size: 0.95rem;
+    font-weight: 400;
+    line-height: 1.25rem;
+    cursor: pointer;
+    margin: 1px;
+  }
+  .tabPanel {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    font-size: 0.95rem;
+    font-weight: 400;
+    line-height: 1.25rem;
+  }
+  .wrapperProduct {
+    column-gap: 2rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    display: grid;
+  }
+  .wrapperShipping {
+    row-gap: 2rem;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    display: grid;
+  }
+  .titleShipping {
+    font-weight: 500;
+  }
+  .descShipping {
+    max-width: 24rem;
+    margin: 0;
+  }
+  .shippingDetail {
+    column-gap: 0.5rem;
+    align-items: flex-start;
+    display: flex;
+  }
+  .infoLeft {
+    row-gap: 1rem;
+    flex-direction: column;
+    display: flex;
+  }
+  .valuematerial {
+    font-weight: 500;
+  }
+  .infoRight {
+    row-gap: 1rem;
+    flex-direction: column;
+    display: flex;
+  }
 `;
 
 export const GridServicesDT = styled.div`
