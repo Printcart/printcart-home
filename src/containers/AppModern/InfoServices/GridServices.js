@@ -221,6 +221,13 @@ export const GridServices = styled.div`
     padding: 5px 10px;
     border: 1px solid #2d58af;
   }
+  .pricesRelated {
+    text-align: center;
+    color: #374151;
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 36px;
+  }
 `;
 
 export default SectionWrapperServices;

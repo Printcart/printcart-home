@@ -23,7 +23,7 @@ const ProductsPOD = (props) => {
         <GridServices>
           {getProducts.map((item, index) => (
             <Card className="cardItem" key={index}>
-              <Box>
+              <Box className="cardItem-child">
                 <Link href={`/product/${item?.id}`}>
                   <a>
                     <img
@@ -43,10 +43,19 @@ const ProductsPOD = (props) => {
                       <h3 className="title-medusa">{item.title}</h3>
                     </a>
                   </Link>
-                  <Box className="text">
-                    {item.description && (
-                      <ReactMarkdown>{item.description}</ReactMarkdown>
+                  <Box className="contPricesRelated">
+                    {item?.variants && (
+                      <Box className="pricesRelated">
+                        € {item?.variants[0]?.prices[0]?.amount}
+                      </Box>
                     )}
+                  </Box>
+                  <Box className="text">
+                    <Box>
+                      {item.description && (
+                        <ReactMarkdown>{item.description}</ReactMarkdown>
+                      )}
+                    </Box>
                   </Box>
                   <Box>
                     <Box className="tag-info">

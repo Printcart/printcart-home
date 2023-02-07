@@ -10,7 +10,7 @@ import Head from "next/head";
 import { ThemeProvider } from "styled-components";
 
 const Product = (props) => {
-  const { product } = props;
+  const { product, products } = props;
   return (
     <ThemeProvider theme={theme}>
       <>
@@ -28,7 +28,7 @@ const Product = (props) => {
           <div className="sticky-active">
             <Navbar />
           </div>
-          <ProductDetail product={product} />
+          <ProductDetail product={product} products={products} />
           <Footer />
         </AppWrapper>
       </>
@@ -40,11 +40,14 @@ export default Product;
 export async function getStaticProps({ params }) {
   const baseUrl = process.env.MEDUSA_API_URL;
   const res = await fetch(`${baseUrl}/products/${params.id}`);
+  const resRelated = await fetch(`${baseUrl}/products/`);
   const result = await res.json();
+  const resultRelated = await resRelated.json();
 
   return {
     props: {
       product: result,
+      products: resultRelated.products,
     },
     revalidate: 1,
   };

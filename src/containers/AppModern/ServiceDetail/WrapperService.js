@@ -291,6 +291,9 @@ const WrapperServices = styled.section`
     flex-direction: column;
     display: flex;
   }
+  .container-related-products {
+    padding-bottom: 1.5rem;
+  }
 `;
 
 export const GridServicesDT = styled.div`

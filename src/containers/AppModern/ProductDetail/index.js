@@ -9,9 +9,12 @@ import Button from "common/components/Button";
 import { Tab } from "@headlessui/react";
 import ProductInfo from "./ProductInfo";
 import ShippingInfo from "./ShippingInfo";
+import { GridServices } from "../InfoServices/GridServices";
+import Card from "common/components/Card";
+import ReactMarkdown from "react-markdown";
 
 const ProductDetail = (props) => {
-  const { product } = props;
+  const { product, products } = props;
   const tabs = [
     {
       title: "Product Infomation",
@@ -22,7 +25,6 @@ const ProductDetail = (props) => {
       component: <ShippingInfo />,
     },
   ];
-  console.log(product);
   return (
     <ContentWrapper>
       <WrapperServices>
@@ -138,7 +140,72 @@ const ProductDetail = (props) => {
               {/**** */}
             </Box>
           </Box>
-          <Box className="container-related-products"></Box>
+          {/**RELATED PRODUCTS */}
+          <Box className="container-related-products">
+            <Box>
+              <h2 className="titleRelated">Related Products</h2>
+              <GridServices>
+                {products.map(
+                  (items, index) =>
+                    index > 0 &&
+                    index < 4 && (
+                      <Card className="cardItem" key={index}>
+                        <Box>
+                          <Link href={`/product/${items?.id}`}>
+                            <a>
+                              <img
+                                style={{
+                                  width: "100%",
+                                  height: "300px",
+                                  borderTopLeftRadius: "5px",
+                                  borderTopRightRadius: "5px",
+                                }}
+                                src={items?.thumbnail}
+                              />
+                            </a>
+                          </Link>
+                          <Box className="content">
+                            <Link href={`/product/${items?.id}`}>
+                              <a title={`View to ${items.title}`}>
+                                <h3 className="title-medusa">{items.title}</h3>
+                              </a>
+                            </Link>
+                            <Box className="contPricesRelated">
+                              {items?.variants && (
+                                <Box className="pricesRelated">
+                                  € {items?.variants[0]?.prices[0]?.amount}
+                                </Box>
+                              )}
+                            </Box>
+                            <Box className="text">
+                              {items.description && (
+                                <ReactMarkdown>
+                                  {items.description}
+                                </ReactMarkdown>
+                              )}
+                            </Box>
+                            <Box>
+                              <Box className="tag-info">
+                                {items.tag && (
+                                  <strong>Tags: {items.tags}</strong>
+                                )}
+                              </Box>
+                              <Box className="collection">
+                                {items.collection && (
+                                  <strong>
+                                    Collection: {items.collection.title}
+                                  </strong>
+                                )}
+                              </Box>
+                            </Box>
+                          </Box>
+                        </Box>
+                      </Card>
+                    )
+                )}
+              </GridServices>
+            </Box>
+          </Box>
         </Container>
       </WrapperServices>
     </ContentWrapper>
