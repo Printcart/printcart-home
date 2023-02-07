@@ -10,8 +10,9 @@ import GlobalStyle, {
 import Footer from "containers/AppModern/Footer";
 import ProductsPOD from "containers/AppModern/ProductsPOD";
 
-const productsPOD = (props) => {
-  const { getProducts } = props;
+const Catalog = (props) => {
+  const { getProducts, collections } = props;
+  console.log(collections);
   return (
     <ThemeProvider theme={theme}>
       <>
@@ -38,16 +39,20 @@ const productsPOD = (props) => {
     </ThemeProvider>
   );
 };
-export default productsPOD;
+export default Catalog;
 
 export async function getStaticProps() {
   const baseUrl = process.env.MEDUSA_API_URL;
+  const baseUrlAdmin = process.env.MEDUSA_API_ADMIN_URL;
+  const resAdmin = await fetch(`${baseUrl}collections`);
   const res = await fetch(`${baseUrl}/products?limit=6`);
   const result = await res.json();
+  const resultAdmin = await resAdmin.json();
 
   return {
     props: {
       getProducts: result.products,
+      collections: resultAdmin,
     },
   };
 }

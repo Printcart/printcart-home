@@ -112,6 +112,11 @@ const Navbar = () => {
                   </a>
                 </li>
                 <li>
+                  <a href="/catalog" offset={84}>
+                    CataLog
+                  </a>
+                </li>
+                <li>
                   <a href="/services" rel="nofollow" offset={84}>
                     Services
                   </a>
