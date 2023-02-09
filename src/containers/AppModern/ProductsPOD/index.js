@@ -5,13 +5,13 @@ import Heading from "common/components/Heading";
 import SectionWrapper from "containers/AppModern/Features/features.style";
 import ReactMarkdown from "react-markdown";
 import Container from "../../../common/components/UI/Container";
-import { GridServices } from "../InfoServices/GridServices";
+import { ContainerServices, GridServices } from "../InfoServices/GridServices";
 import Banner from "./Banner";
 import HeaderPOD, { ContainerPP } from "./productspod.style";
 import Link from "next/link";
 
 const ProductsPOD = (props) => {
-  const { getProducts } = props;
+  const { getProducts, collections } = props;
 
   return (
     <SectionWrapper id="features">
@@ -31,7 +31,7 @@ const ProductsPOD = (props) => {
                         width: "100%",
                         height: "300px",
                         borderTopLeftRadius: "5px",
-                        borderTopRightRadius: "5px",
+                        borderTopRightRadius: "5px"
                       }}
                       src={item?.thumbnail}
                     />
@@ -91,6 +91,20 @@ const ProductsPOD = (props) => {
             </Box>
           </Box>
         </ContainerPP>
+        <ContainerServices>
+          <HeaderPOD>
+            <h1 className="titleSlogan">Collections</h1>
+          </HeaderPOD>
+          <Box className="contCollection">
+            {collections?.collections.map((items, index) => (
+              <Link key={index} href={`collection/${items?.id}`}>
+                <a title={`View to ${items?.handle}`} className="btncategory">
+                  <Box className="titleName">{items?.title}</Box>
+                </a>
+              </Link>
+            ))}
+          </Box>
+        </ContainerServices>
       </Container>
     </SectionWrapper>
   );

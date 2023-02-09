@@ -294,6 +294,9 @@ const WrapperServices = styled.section`
   .container-related-products {
     padding-bottom: 1.5rem;
   }
+  .wrapperPOC {
+    margin: 0 auto 65px;
+  }
 `;
 
 export const GridServicesDT = styled.div`

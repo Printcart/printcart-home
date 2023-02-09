@@ -270,7 +270,13 @@ export const ContainerServices = styled.div`
       `};
   }
   .containerServices {
-    margin: 0 aut;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .contCollection {
+    margin-top: 15px;
+    justify-content:center;
     display: flex;
     flex-wrap: wrap;
   }

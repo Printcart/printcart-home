@@ -5,14 +5,14 @@ import Head from "next/head";
 import { ThemeProvider } from "styled-components";
 import GlobalStyle, {
   AppWrapper,
-  ContentWrapper,
+  ContentWrapper
 } from "containers/AppModern/appModern.style";
 import Footer from "containers/AppModern/Footer";
 import ProductsPOD from "containers/AppModern/ProductsPOD";
+import React from "react";
 
 const Catalog = (props) => {
   const { getProducts, collections } = props;
-  console.log(collections);
   return (
     <ThemeProvider theme={theme}>
       <>
@@ -31,7 +31,7 @@ const Catalog = (props) => {
             <Navbar />
           </div>
           <ContentWrapper>
-            <ProductsPOD getProducts={getProducts} />
+            <ProductsPOD getProducts={getProducts} collections={collections} />
           </ContentWrapper>
           <Footer />
         </AppWrapper>
@@ -44,7 +44,14 @@ export default Catalog;
 export async function getStaticProps() {
   const baseUrl = process.env.MEDUSA_API_URL;
   const baseUrlAdmin = process.env.MEDUSA_API_ADMIN_URL;
-  const resAdmin = await fetch(`${baseUrl}collections`);
+  const resAdmin = await fetch(`${baseUrlAdmin}collections`, {
+    method: "GET",
+    headers: {
+      Authorization: "Bearer Rl2KcwXuTa6abLczqxu1Z1ID2fE0CVCq",
+      "Content-Type": "application/json"
+    }
+  });
+
   const res = await fetch(`${baseUrl}/products?limit=6`);
   const result = await res.json();
   const resultAdmin = await resAdmin.json();
@@ -52,7 +59,8 @@ export async function getStaticProps() {
   return {
     props: {
       getProducts: result.products,
-      collections: resultAdmin,
+      collections: resultAdmin
     },
+    revalidate: 1,
   };
 }

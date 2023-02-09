@@ -2,7 +2,6 @@ import Box from "common/components/Box";
 import Container from "common/components/UI/Container";
 import React from "react";
 import { ContentWrapper } from "../appModern.style";
-import TitlePath from "../ServiceDetail/TitlePath";
 import WrapperServices from "../ServiceDetail/WrapperService";
 import Link from "next/link";
 import Button from "common/components/Button";
@@ -12,23 +11,24 @@ import ShippingInfo from "./ShippingInfo";
 import { GridServices } from "../InfoServices/GridServices";
 import Card from "common/components/Card";
 import ReactMarkdown from "react-markdown";
+import TitlePathMed from "./TitlePathMed";
 
 const ProductDetail = (props) => {
   const { product, products } = props;
   const tabs = [
     {
       title: "Product Infomation",
-      component: <ProductInfo product={product} />,
+      component: <ProductInfo product={product} />
     },
     {
       title: "Shipping & Returns",
-      component: <ShippingInfo />,
-    },
+      component: <ShippingInfo />
+    }
   ];
   return (
     <ContentWrapper>
       <WrapperServices>
-        <TitlePath currentCat={product.product} />
+        <TitlePathMed currentCat={product.product} />
         <Container>
           <Box className="contProduct">
             <Box className="contenLeft">
@@ -107,7 +107,7 @@ const ProductDetail = (props) => {
                       <Button
                         style={{
                           borderRadius: "5px",
-                          backgroundColor: "#111827",
+                          backgroundColor: "#111827"
                         }}
                         title="ADD TO CART"
                       />
@@ -158,7 +158,7 @@ const ProductDetail = (props) => {
                                   width: "100%",
                                   height: "300px",
                                   borderTopLeftRadius: "5px",
-                                  borderTopRightRadius: "5px",
+                                  borderTopRightRadius: "5px"
                                 }}
                                 src={items?.thumbnail}
                               />

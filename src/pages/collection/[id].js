@@ -1,16 +1,15 @@
 import ResetCSS from "common/assets/css/style";
-import { base } from "common/components/base";
 import { theme } from "common/theme/appModern";
 import GlobalStyle, { AppWrapper } from "containers/AppModern/appModern.style";
+import CollectionDetail from "containers/AppModern/CollectionDetail";
 import Footer from "containers/AppModern/Footer";
 import Navbar from "containers/AppModern/Navbar";
-import ProductDetail from "containers/AppModern/ProductDetail";
-import ServiceDetail from "containers/AppModern/ServiceDetail";
 import Head from "next/head";
 import { ThemeProvider } from "styled-components";
 
 const Product = (props) => {
-  const { product, products } = props;
+  const { collection } = props;
+  // console.log(collection);
   return (
     <ThemeProvider theme={theme}>
       <>
@@ -28,7 +27,7 @@ const Product = (props) => {
           <div className="sticky-active">
             <Navbar />
           </div>
-          <ProductDetail product={product} products={products} />
+          <CollectionDetail collection={collection} />
           <Footer />
         </AppWrapper>
       </>
@@ -36,33 +35,42 @@ const Product = (props) => {
   );
 };
 export default Product;
-
 export async function getStaticProps({ params }) {
-  const baseUrl = process.env.MEDUSA_API_URL;
-  const res = await fetch(`${baseUrl}/products/${params.id}`);
-  const resRelated = await fetch(`${baseUrl}/products/`);
-  const result = await res.json();
-  const resultRelated = await resRelated.json();
+  const baseUrlAdmin = process.env.MEDUSA_API_ADMIN_URL;
+  const resAdmin = await fetch(`${baseUrlAdmin}collections/${params.id}`, {
+    method: "GET",
+    headers: {
+      Authorization: "Bearer Rl2KcwXuTa6abLczqxu1Z1ID2fE0CVCq",
+      "Content-Type": "application/json"
+    }
+  });
+  const result = await resAdmin.json();
 
   return {
     props: {
-      product: result,
-      products: resultRelated.products
+      collection: result.collection
     },
     revalidate: 1
   };
 }
 
 export async function getStaticPaths() {
-  const baseUrl = process.env.MEDUSA_API_URL;
-  const res = await fetch(`${baseUrl}/products`);
-  const result = await res.json();
+  const baseUrl = process.env.MEDUSA_API_ADMIN_URL;
+  // console.log(`${baseUrl}collections`);
+  const resAdmin = await fetch(`${baseUrl}collections`, {
+    method: "GET",
+    headers: {
+      Authorization: "Bearer Rl2KcwXuTa6abLczqxu1Z1ID2fE0CVCq",
+      "Content-Type": "application/json"
+    }
+  });
+  const result = await resAdmin.json();
 
-  if (result.products) {
+  if (result.collections) {
     return {
-      paths: result.products.map((product) => {
+      paths: result.collections.map((collection) => {
         return {
-          params: { id: product.handle }
+          params: { id: collection.id }
         };
       }),
       fallback: "blocking"
