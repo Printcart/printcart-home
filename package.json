@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@glidejs/glide": "^3.4.1",
-    "@headlessui/react": "^1.7.7",
+    "@headlessui/react": "^1.7.10",
     "@mdx-js/loader": "^2.1.1",
     "@next/mdx": "^12.1.5",
     "@reach/accordion": "^0.16.1",
