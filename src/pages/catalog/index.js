@@ -52,7 +52,7 @@ export async function getStaticProps() {
     }
   });
 
-  const res = await fetch(`${baseUrl}/products?limit=6`);
+  const res = await fetch(`${baseUrl}products?limit=6`);
   const result = await res.json();
   const resultAdmin = await resAdmin.json();
 
@@ -61,6 +61,6 @@ export async function getStaticProps() {
       getProducts: result.products,
       collections: resultAdmin
     },
-    revalidate: 1,
+    revalidate: 1
   };
 }

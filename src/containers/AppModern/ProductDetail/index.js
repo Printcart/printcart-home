@@ -104,13 +104,13 @@ const ProductDetail = (props) => {
                           </Box>
                         )}
                       </Box>
-                      <Button
+                      {/* <Button
                         style={{
                           borderRadius: "5px",
                           backgroundColor: "#111827"
                         }}
                         title="ADD TO CART"
-                      />
+                      /> */}
                     </Box>
                   </Box>
                 </Box>

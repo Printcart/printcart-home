@@ -12,7 +12,6 @@ import Link from "next/link";
 
 const ProductsPOD = (props) => {
   const { getProducts, collections } = props;
-
   return (
     <SectionWrapper id="features">
       <Container>

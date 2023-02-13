@@ -7,14 +7,13 @@ import Navbar from "containers/AppModern/Navbar";
 import Head from "next/head";
 import { ThemeProvider } from "styled-components";
 
-const Product = (props) => {
+const Collection = (props) => {
   const { collection } = props;
-  // console.log(collection);
   return (
     <ThemeProvider theme={theme}>
       <>
         <Head>
-          <title>Printcart | ProductDetail</title>
+          <title>Printcart | Collection Detail</title>
           <meta name="theme-color" content="#2563FF" />
           <link
             href="https://fonts.googleapis.com/css?family=Heebo:300,400,500,700&display=swap"
@@ -34,7 +33,7 @@ const Product = (props) => {
     </ThemeProvider>
   );
 };
-export default Product;
+export default Collection;
 export async function getStaticProps({ params }) {
   const baseUrlAdmin = process.env.MEDUSA_API_ADMIN_URL;
   const resAdmin = await fetch(`${baseUrlAdmin}collections/${params.id}`, {
@@ -56,7 +55,6 @@ export async function getStaticProps({ params }) {
 
 export async function getStaticPaths() {
   const baseUrl = process.env.MEDUSA_API_ADMIN_URL;
-  // console.log(`${baseUrl}collections`);
   const resAdmin = await fetch(`${baseUrl}collections`, {
     method: "GET",
     headers: {

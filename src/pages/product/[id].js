@@ -15,7 +15,7 @@ const Product = (props) => {
     <ThemeProvider theme={theme}>
       <>
         <Head>
-          <title>Printcart | ProductDetail</title>
+          <title>Printcart | Product Detail</title>
           <meta name="theme-color" content="#2563FF" />
           <link
             href="https://fonts.googleapis.com/css?family=Heebo:300,400,500,700&display=swap"
@@ -39,8 +39,8 @@ export default Product;
 
 export async function getStaticProps({ params }) {
   const baseUrl = process.env.MEDUSA_API_URL;
-  const res = await fetch(`${baseUrl}/products/${params.id}`);
-  const resRelated = await fetch(`${baseUrl}/products/`);
+  const res = await fetch(`${baseUrl}products/${params.id}`);
+  const resRelated = await fetch(`${baseUrl}products/`);
   const result = await res.json();
   const resultRelated = await resRelated.json();
 
@@ -55,14 +55,14 @@ export async function getStaticProps({ params }) {
 
 export async function getStaticPaths() {
   const baseUrl = process.env.MEDUSA_API_URL;
-  const res = await fetch(`${baseUrl}/products`);
+  const res = await fetch(`${baseUrl}products`);
   const result = await res.json();
 
   if (result.products) {
     return {
       paths: result.products.map((product) => {
         return {
-          params: { id: product.handle }
+          params: { id: product.id }
         };
       }),
       fallback: "blocking"

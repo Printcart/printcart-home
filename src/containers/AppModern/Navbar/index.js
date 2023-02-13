@@ -113,7 +113,7 @@ const Navbar = () => {
                 </li>
                 <li>
                   <a href="/catalog" offset={84}>
-                    CataLog
+                    Catalog
                   </a>
                 </li>
                 <li>
