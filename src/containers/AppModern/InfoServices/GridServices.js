@@ -276,7 +276,7 @@ export const ContainerServices = styled.div`
   }
   .contCollection {
     margin-top: 15px;
-    justify-content:center;
+    justify-content: center;
     display: flex;
     flex-wrap: wrap;
   }
@@ -398,6 +398,18 @@ export const ContainerServices = styled.div`
       width: 24px;
       height: 24px;
       color: red;
+    }
+  }
+  .notify-collection {
+    display: flex;
+    font-size: 22px;
+    color: #5c5c5c;
+    margin-top: 10px;
+    & svg {
+      width: 29px;
+      height: 29px;
+      color: red;
+    }
   }
 `;
 export const SectionStep = styled.section`

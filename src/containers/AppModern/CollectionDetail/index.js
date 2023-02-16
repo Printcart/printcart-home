@@ -4,13 +4,15 @@ import Container from "common/components/UI/Container";
 import React from "react";
 import Banner from "../Banner";
 import SectionWrapper from "../Features/features.style";
-import { GridServices } from "../InfoServices/GridServices";
+import { ContainerServices, GridServices } from "../InfoServices/GridServices";
 import HeaderPOD from "../ProductsPOD/productspod.style";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 import { ContentWrapper, SectionHeader } from "../appModern.style";
 import TitlePathMed from "../ProductDetail/TitlePathMed";
 import WrapperServices from "../ServiceDetail/WrapperService";
+import Icon from "react-icons-kit";
+import { ic_close } from "react-icons-kit/md/ic_close";
 
 const CollectionDetail = (props) => {
   const { collection } = props;
@@ -33,6 +35,14 @@ const CollectionDetail = (props) => {
         <HeaderPOD>
           <h1 className="titleSlogan">Product</h1>
         </HeaderPOD> */}
+          <ContainerServices>
+            {collection?.products?.length === 0 && (
+              <p className="notify-collection">
+                <Icon icon={ic_close} />
+                No products found in the {title} category
+              </p>
+            )}
+          </ContainerServices>
           <Box className="wrapperPOC">
             <GridServices>
               {collection.products.map((item, index) => (
