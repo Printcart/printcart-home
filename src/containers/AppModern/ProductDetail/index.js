@@ -86,9 +86,9 @@ const ProductDetail = (props) => {
                             <Box className="cont-size" key={index}>
                               <span className="title-size"> Select Size</span>
                               <Box className="valueSize">
-                                {option.values.map((value, index) => (
+                                {option?.values?.map((value, index) => (
                                   <button key={index} className="btnvalue">
-                                    {value.value}
+                                    {value?.value}
                                   </button>
                                 ))}
                               </Box>

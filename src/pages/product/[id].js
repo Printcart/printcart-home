@@ -38,9 +38,21 @@ const Product = (props) => {
 export default Product;
 
 export async function getStaticProps({ params }) {
-  const baseUrl = process.env.MEDUSA_API_URL;
-  const res = await fetch(`${baseUrl}products/${params.id}`);
-  const resRelated = await fetch(`${baseUrl}products/`);
+  const baseUrl = process.env.MEDUSA_API_ADMIN_URL;
+  const res = await fetch(`${baseUrl}products/${params.id}`, {
+    method: "GET",
+    headers: {
+      Authorization: "Bearer Rl2KcwXuTa6abLczqxu1Z1ID2fE0CVCq",
+      "Content-Type": "application/json"
+    }
+  });
+  const resRelated = await fetch(`${baseUrl}products/`, {
+    method: "GET",
+    headers: {
+      Authorization: "Bearer Rl2KcwXuTa6abLczqxu1Z1ID2fE0CVCq",
+      "Content-Type": "application/json"
+    }
+  });
   const result = await res.json();
   const resultRelated = await resRelated.json();
 
@@ -54,8 +66,14 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-  const baseUrl = process.env.MEDUSA_API_URL;
-  const res = await fetch(`${baseUrl}products`);
+  const baseUrl = process.env.MEDUSA_API_ADMIN_URL;
+  const res = await fetch(`${baseUrl}products`, {
+    method: "GET",
+    headers: {
+      Authorization: "Bearer Rl2KcwXuTa6abLczqxu1Z1ID2fE0CVCq",
+      "Content-Type": "application/json"
+    }
+  });
   const result = await res.json();
 
   if (result.products) {
