@@ -95,13 +95,19 @@ const ProductsPOD = (props) => {
             <h1 className="titleSlogan">Collections</h1>
           </HeaderPOD>
           <Box className="contCollection">
-            {collections?.collections.map((items, index) => (
-              <Link key={index} href={`collection/${items?.id}`}>
-                <a title={`View to ${items?.handle}`} className="btncategory">
-                  <Box className="titleName">{items?.title}</Box>
-                </a>
-              </Link>
-            ))}
+            {collections?.collections?.map(
+              (items, index) =>
+                items?.products?.length > 0 && (
+                  <Link key={index} href={`collection/${items?.id}`}>
+                    <a
+                      title={`View to ${items?.handle}`}
+                      className="btncategory"
+                    >
+                      <Box className="titleName">{items?.title}</Box>
+                    </a>
+                  </Link>
+                )
+            )}
           </Box>
         </ContainerServices>
       </Container>
