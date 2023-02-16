@@ -80,7 +80,7 @@ const ProductDetail = (props) => {
                         {product?.product?.description}
                       </p>
                       {/**Select Size */}
-                      {product?.product?.variants?.length > 1 && (
+                      {product?.product?.variants?.length > 0 && (
                         <Box className="selectSize">
                           {product.product.options.map((option, index) => (
                             <Box className="cont-size" key={index}>
