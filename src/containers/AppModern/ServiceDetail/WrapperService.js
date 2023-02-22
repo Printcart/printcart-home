@@ -67,7 +67,7 @@ const WrapperServices = styled.section`
     display: flex;
     position: relative;
   }
-  .wrappchild {
+  .wrapperChild {
     display: flex;
     row-gap: 1rem;
     flex-direction: column;
@@ -75,6 +75,7 @@ const WrapperServices = styled.section`
     position: sticky;
   }
   .btnchange {
+    border-color: rgb(255 255 255 1);
     border-width: 1px;
     width: 3rem;
     height: 3.5rem;
@@ -110,8 +111,22 @@ const WrapperServices = styled.section`
     aspect-ratio: 29 / 34;
     position: relative;
   }
+  .spanImage {
+    box-sizing: border-box;
+    display: block;
+    overflow: hidden;
+    width: initial;
+    height: initial;
+    background: none;
+    opacity: 1;
+    border: 0px;
+    margin: 0px;
+    padding: 0px;
+    position: absolute;
+    inset: 0px;
+  }
   .imageProductBig {
-    osition: absolute;
+    position: absolute;
     inset: 0px;
     box-sizing: border-box;
     padding: 0px;
@@ -192,6 +207,7 @@ const WrapperServices = styled.section`
   }
   .btnvalue {
     border-width: 1px;
+    background-color: transparent;
     height: 50px;
     font-size: 10px;
     font-weight: 400;

@@ -12,9 +12,16 @@ import { GridServices } from "../InfoServices/GridServices";
 import Card from "common/components/Card";
 import ReactMarkdown from "react-markdown";
 import TitlePathMed from "./TitlePathMed";
+import ImageGallery from "./ImageGallery";
 
 const ProductDetail = (props) => {
   const { product, products } = props;
+  const val = product.product.options.map((option) =>
+    option.values.map((value) => value.value)
+  );
+  const valueSize = [...new Set(val[0])];
+  for (let i = 0; i < valueSize.length; i++) {}
+  const valueColor = [...new Set(val[1])];
   const tabs = [
     {
       title: "Product Infomation",
@@ -31,43 +38,16 @@ const ProductDetail = (props) => {
         <TitlePathMed currentCat={product.product} />
         <Container>
           <Box className="contProduct">
-            <Box className="contenLeft">
-              <Box className="wrappImage">
-                <Box className="wrappchild">
-                  {product?.product?.images?.map((image, index) => (
-                    <button
-                      key={index}
-                      className="btnchange"
-                      onClick={() => handleScrollTo()}
-                    >
-                      <img
-                        className="imageProduct"
-                        src={image.url}
-                        alt="Thumbnail"
-                      />
-                    </button>
-                  ))}
-                </Box>
-                <Box className="wrappbig">
-                  {product?.product?.images?.map((image, index) => (
-                    <Box key={index} className="contImage">
-                      <img
-                        className="imageProductBig"
-                        src={image.url}
-                        alt="Thumbnail"
-                      />
-                    </Box>
-                  ))}
-                </Box>
-              </Box>
-            </Box>
+            <ImageGallery product={product} />
             <Box className="contentRight">
               <Box className="product-info">
                 <Box className="info-child">
                   <Box>
                     <Box className="info-main">
                       {product?.product?.collection && (
-                        <Link href="/">
+                        <Link
+                          href={`/collection/${product?.product?.collection?.id}`}
+                        >
                           <a className="linktitle">
                             {product?.product?.collection.title}
                           </a>
@@ -84,11 +64,14 @@ const ProductDetail = (props) => {
                         <Box className="selectSize">
                           {product.product.options.map((option, index) => (
                             <Box className="cont-size" key={index}>
-                              <span className="title-size"> Select Size</span>
+                              <span className="title-size">
+                                {" "}
+                                Select {option?.title}
+                              </span>
                               <Box className="valueSize">
-                                {option?.values?.map((value, index) => (
+                                {valueSize.map((value, index) => (
                                   <button key={index} className="btnvalue">
-                                    {value?.value}
+                                    {value}
                                   </button>
                                 ))}
                               </Box>
@@ -100,7 +83,11 @@ const ProductDetail = (props) => {
                       <Box className="contPrices">
                         {product?.product?.variants && (
                           <Box className="pricesDetail">
-                            € {product?.product?.variants[0]?.prices[0]?.amount}
+                            €{" "}
+                            {(
+                              product?.product?.variants[0]?.prices[0]?.amount /
+                              100
+                            ).toFixed(2)}
                           </Box>
                         )}
                       </Box>
@@ -173,7 +160,10 @@ const ProductDetail = (props) => {
                             <Box className="contPricesRelated">
                               {items?.variants && (
                                 <Box className="pricesRelated">
-                                  € {items?.variants[0]?.prices[0]?.amount}
+                                  €{" "}
+                                  {(
+                                    items?.variants[0]?.prices[0]?.amount / 100
+                                  ).toFixed(2)}
                                 </Box>
                               )}
                             </Box>

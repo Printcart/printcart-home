@@ -45,7 +45,8 @@ const ProductsPOD = (props) => {
                   <Box className="contPricesRelated">
                     {item?.variants && (
                       <Box className="pricesRelated">
-                        € {item?.variants[0]?.prices[0]?.amount}
+                        €{" "}
+                        {(item?.variants[0]?.prices[0]?.amount / 100).toFixed(2)}
                       </Box>
                     )}
                   </Box>
