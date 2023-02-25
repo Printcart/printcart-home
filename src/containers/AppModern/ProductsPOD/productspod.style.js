@@ -73,6 +73,10 @@ export const BannerWrapper = styled.div`
   > div {
     width: calc(100% / 2 - 34px);
     margin: 38px 0 30px;
+    @media only screen and (max-width: 1440px) {
+      width: calc(100% / 2 - 34px);
+      margin: 100px 0 30px;
+    }
     @media only screen and (max-width: 1366px) {
       width: calc(100% / 2 - 34px);
     }

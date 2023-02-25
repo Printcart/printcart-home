@@ -1,9 +1,6 @@
 import Box from "common/components/Box";
 import Button from "common/components/Button";
 import Heading from "common/components/Heading";
-import Text from "common/components/Text";
-import Container from "common/components/UI/Container";
-import React from "react";
 import { BannerWrapper } from "./productspod.style";
 
 const Banner = () => {

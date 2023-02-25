@@ -43,7 +43,7 @@ export default Catalog;
 
 export async function getStaticProps() {
   const baseUrlAdmin = process.env.MEDUSA_API_ADMIN_URL;
-  const resAdmin = await fetch(`${baseUrlAdmin}collections`, {
+  const resAdmin = await fetch(`${baseUrlAdmin}collections?limit=30`, {
     method: "GET",
     headers: {
       Authorization: "Bearer Rl2KcwXuTa6abLczqxu1Z1ID2fE0CVCq",
@@ -51,7 +51,7 @@ export async function getStaticProps() {
     }
   });
 
-  const res = await fetch(`${baseUrlAdmin}products?limit=6`, {
+  const res = await fetch(`${baseUrlAdmin}products?limit=6&status=published`, {
     method: "GET",
     headers: {
       Authorization: "Bearer Rl2KcwXuTa6abLczqxu1Z1ID2fE0CVCq",

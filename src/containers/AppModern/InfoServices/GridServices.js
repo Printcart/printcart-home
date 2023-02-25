@@ -276,7 +276,6 @@ export const ContainerServices = styled.div`
   }
   .contCollection {
     margin-top: 15px;
-    justify-content: center;
     display: flex;
     flex-wrap: wrap;
   }
@@ -294,10 +293,11 @@ export const ContainerServices = styled.div`
   }
   .btncategory {
     border: 1px solid #cdcdcd;
-    height: 27px;
+    height: 40px;
     margin-right: 10px;
     margin-bottom: 10px;
-    padding: 0 10px;
+    padding: 7px 10px;
+    border-radius: 10px;
     font-size: 16px;
     color: #5c5c5c;
     font-weight: 500;
