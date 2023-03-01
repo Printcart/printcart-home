@@ -293,6 +293,22 @@ export const ContainerServices = styled.div`
   }
   .btncategory {
     border: 1px solid #cdcdcd;
+    height: 27px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    padding: 0px 10px;
+    font-size: 16px;
+    color: #5c5c5c;
+    font-weight: 500;
+    text-transform: capitalize;
+    &:hover {
+      color: #fff;
+      background: #2d58af;
+      border: 1px solid #2d58af;
+    }
+  }
+  .btncatalog {
+    border: 1px solid #cdcdcd;
     height: 40px;
     margin-right: 10px;
     margin-bottom: 10px;

@@ -313,6 +313,215 @@ const WrapperServices = styled.section`
   .wrapperPOC {
     margin: 0 auto 65px;
   }
+  .contVendor {
+    margin-top: 3.5rem;
+    display: block;
+  }
+  .headerVendor {
+    align-items: center;
+    flex-direction: row;
+    margin-bottom: 1.5rem;
+    .title {
+      font-size: 1.5rem;
+      line-height: 2rem;
+    }
+  }
+  .info-vendor {
+    display: block;
+    border: 1px solid #e3e4e5;
+    border-radius: 3px;
+    background-color: #f7f7f7;
+  }
+  .info-head {
+    align-items: center;
+    padding: 0px 24px 16px;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  .info-head-left {
+    display: flex;
+    align-items: center;
+    margin-top: 16px;
+    position: relative;
+    flex: 0 0 auto;
+    width: auto;
+    max-width: none;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .info-head-left-title {
+    display: inline;
+    font-size: 1.25rem;
+    line-height: 2rem;
+    font-weight: 700;
+  }
+  .iflt-star {
+    position: relative;
+  }
+  .iflt-star-title {
+    display: inline-flex;
+    align-items: center;
+    font-size: 1.25rem;
+    padding: 0 0.25rem 0.25rem;
+    margin-left: 0.5rem;
+    border-radius: 3px;
+    background-color: #403568;
+    color: #fff;
+    cursor: pointer;
+  }
+  .star-icon {
+    display: flex;
+    align-items: center;
+    color: inherit;
+    font-size: 0.875em;
+    margin-right: 0.125rem;
+    margin-bottom: 0.125rem;
+  }
+  .underlined {
+    border-top: 1px solid #ffffff;
+    position: absolute;
+    bottom: 50px;
+    width: 75%;
+    left: 12px;
+  }
+  .info-head-right {
+    padding-left: 10px;
+    padding-right: 10px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    max-width: 100%;
+    min-height: 1px;
+    flex-basis: 0;
+    flex-grow: 1;
+  }
+  .btn-more-details {
+    margin-top: 16px;
+    display: inline-block;
+  }
+  .cont-btn {
+    padding: calc(0.5rem - 1px) calc(1.5rem - 1px);
+    height: 40px;
+    color: #17262b;
+    background-color: #fff;
+    border-color: #c4c7c8;
+    width: 100%;
+    display: inline-block;
+    position: relative;
+    border: 1px solid transparent;
+    text-align: center;
+    border-radius: 3px;
+    font-size: 1em;
+    font-weight: 500;
+    cursor: pointer;
+    overflow: hidden;
+    transition: .15s;
+    vertical-align: top;
+    line-height: 1.5rem;
+    font-family: inherit;
+    white-space: nowrap;
+    outline: none;
+  }
+  .cont-start-design {
+    margin-left: 1rem;
+    margin-top: 16px;
+  }
+  .href-btn-design {
+    color: #29ab51;
+    font-family: inherit;
+    cursor: pointer;
+    text-decoration: none;
+    outline: none;
+    transition: color .15s ease;
+  }
+  .con-btn-design {
+    display: inline-block;
+  }
+  .btn-start-design {
+    padding: calc(0.5rem - 1px) calc(1.5rem - 1px);
+    height: 40px;
+    color: #fff;
+    background-color: #29ab51;
+    width: 100%;
+    display: inline-block;
+    position: relative;
+    border: 1px solid transparent;
+    text-align: center;
+    border-radius: 3px;
+    font-size: 1em;
+    font-weight: 500;
+    cursor: pointer;
+    overflow: hidden;
+    transition: .15s;
+    vertical-align: top;
+    line-height: 1.5rem;
+    font-family: inherit;
+    white-space: nowrap;
+    outline: none;
+  }
+  .info-detail {
+    grid-auto-columns: 1fr;
+    grid-auto-flow: column;
+    grid-template-columns: repeat(4,1fr);
+    display: grid;
+    grid-gap: 24px;
+    gap: 24px;
+    padding: 16px 16px;
+    border-top: 1px solid #e3e4e5;
+    overflow: hidden;
+  }
+  .catalog-title {
+    margin-bottom: 8px;
+    white-space: nowrap;
+    color: #686f71;
+    font-size: .875em;
+    line-height: 1.25rem;
+    font-weight: 400;
+  }
+  .desc-price {
+    color: #29ab51;
+    font-size: .875em;
+    line-height: 1.25rem;
+    font-weight: 400;
+  }
+  .wrapper-print-area {
+    grid-column-end: span 2;
+  }
+  .collection-about {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    display: block;
+    border-bottom: 1px solid #e3e4e5;
+  }
+  .wrapper-about {
+    display:flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+  .about-title {
+    align-self: flex-start;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.5em;
+    line-height: 2rem;
+    position: relative;
+    flex: 0 0 33.3%;
+    max-width: 33.3%;
+  }
+  .about-desc {
+    margin-top: 0;
+    position: relative;
+    width: 100%;
+    flex: 0 0 66.6%;
+    max-width: 66.6%;
+  }
+  }
 `;
 
 export const GridServicesDT = styled.div`

@@ -1,27 +1,27 @@
-import Box from "common/components/Box";
-import Container from "common/components/UI/Container";
-import React from "react";
-import { ContentWrapper } from "../appModern.style";
-import WrapperServices from "../ServiceDetail/WrapperService";
-import Link from "next/link";
-import Button from "common/components/Button";
 import { Tab } from "@headlessui/react";
+import Box from "common/components/Box";
+import Card from "common/components/Card";
+import Container from "common/components/UI/Container";
+import Link from "next/link";
+import ReactMarkdown from "react-markdown";
+import { ContentWrapper } from "../appModern.style";
+import { GridServices } from "../InfoServices/GridServices";
+import WrapperServices from "../ServiceDetail/WrapperService";
+import ImageGallery from "./ImageGallery";
+import InfoCollection from "./InfoCollection";
 import ProductInfo from "./ProductInfo";
 import ShippingInfo from "./ShippingInfo";
-import { GridServices } from "../InfoServices/GridServices";
-import Card from "common/components/Card";
-import ReactMarkdown from "react-markdown";
 import TitlePathMed from "./TitlePathMed";
-import ImageGallery from "./ImageGallery";
+import VendorInfo from "./VendorInfo";
 
 const ProductDetail = (props) => {
   const { product, products } = props;
-  const val = product.product.options.map((option) =>
-    option.values.map((value) => value.value)
-  );
-  const valueSize = [...new Set(val[0])];
-  for (let i = 0; i < valueSize.length; i++) {}
-  const valueColor = [...new Set(val[1])];
+  // const val = product?.product?.options.map((option) =>
+  //   option?.values?.map((value) => value.value)
+  // );
+  // const valueSize = [...new Set(val[0])];
+  // for (let i = 0; i < valueSize.length; i++) {}
+  // const valueColor = [...new Set(val[1])];
   const tabs = [
     {
       title: "Product Infomation",
@@ -69,9 +69,9 @@ const ProductDetail = (props) => {
                                 Select {option?.title}
                               </span>
                               <Box className="valueSize">
-                                {valueSize.map((value, index) => (
+                                {option?.values?.map((value, index) => (
                                   <button key={index} className="btnvalue">
-                                    {value}
+                                    {value?.value}
                                   </button>
                                 ))}
                               </Box>
@@ -126,6 +126,12 @@ const ProductDetail = (props) => {
               </Box>
               {/**** */}
             </Box>
+          </Box>
+          <Box className="contVendor">
+            <VendorInfo />
+          </Box>
+          <Box className="info-Collection">
+            <InfoCollection />
           </Box>
           {/**RELATED PRODUCTS */}
           <Box className="container-related-products">

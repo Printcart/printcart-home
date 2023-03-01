@@ -102,7 +102,7 @@ const ProductsPOD = (props) => {
                   <Link key={index} href={`collection/${items?.id}`}>
                     <a
                       title={`View to ${items?.handle}`}
-                      className="btncategory"
+                      className="btncatalog"
                     >
                       <Box className="titleName">{items?.title}</Box>
                     </a>
