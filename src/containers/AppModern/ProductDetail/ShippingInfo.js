@@ -1,9 +1,7 @@
 import { Tab } from "@headlessui/react";
 import Box from "common/components/Box";
 import React from "react";
-import Back from "./Back";
-import FastDelivery from "./FastDelivery";
-import Refresh from "./Refresh";
+import FastDelivery, { Back, Refresh } from "./FastDelivery";
 
 const ShippingInfo = () => {
   return (

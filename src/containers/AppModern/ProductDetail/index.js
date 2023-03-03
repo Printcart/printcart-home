@@ -127,10 +127,10 @@ const ProductDetail = (props) => {
               {/**** */}
             </Box>
           </Box>
-          <Box className="contVendor">
+          <Box className="cont-vendor">
             <VendorInfo />
           </Box>
-          <Box className="info-Collection">
+          <Box className="info-collection">
             <InfoCollection />
           </Box>
           {/**RELATED PRODUCTS */}

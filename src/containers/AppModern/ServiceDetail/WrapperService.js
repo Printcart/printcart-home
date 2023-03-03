@@ -313,7 +313,7 @@ const WrapperServices = styled.section`
   .wrapperPOC {
     margin: 0 auto 65px;
   }
-  .contVendor {
+  .cont-vendor {
     margin-top: 3.5rem;
     display: block;
   }
@@ -490,20 +490,20 @@ const WrapperServices = styled.section`
   .wrapper-print-area {
     grid-column-end: span 2;
   }
-  .collection-about {
+  .container-features {
     padding-top: 40px;
     padding-bottom: 40px;
     display: block;
     border-bottom: 1px solid #e3e4e5;
   }
-  .wrapper-about {
+  .wrapper-feature {
     display:flex;
     align-items: center;
     flex-wrap: wrap;
     margin-left: 1rem;
     margin-right: 1rem;
   }
-  .about-title {
+  .feature-title {
     align-self: flex-start;
     display: flex;
     justify-content: space-between;
@@ -521,13 +521,70 @@ const WrapperServices = styled.section`
     flex: 0 0 66.6%;
     max-width: 66.6%;
   }
+  .wrapper-content {
+    margin-top: 0;
+    position: relative;
+    width: 100%;
+    flex: 0 0 66.6%;
+    max-width: 66.6%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .key-features-desc {
+    margin-bottom: calc(1rem * -2);
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin-left: calc(1rem * -1);
+    margin-right: calc(1rem * -1);
+    padding: 0px;
+  }
+  .wrapper-desc {
+    margin-bottom: calc(1rem * 2);
+    position: relative;
+    width: 100%;
+    flex: 0 0 50%;
+    max-width: 50%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .img-feature {
+    display: block;
+    width: 48px;
+    height: 48px;
+    margin-bottom: 16px;
+  }
+  .desc-title {
+    font-weight: 400;
+    margin-bottom: 8px;
+  }
+  .desc-detail {
+    color: #9fa4a5;
+    font-size: .875em;
+    line-height: 1.25rem;
+    font-weight: 400;
+  }
+  .care-icons {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin-left: calc(8px * -1);
+    margin-right: calc(8px * -1);
+    padding: 0px;
+  }
+  .icon-image {
+    position: relative;
+    flex: 0 0 auto;
+    width: auto;
+    padding-left: 8px;
+    padding-right: 8px;
+  }
   }
 `;
 
 export const GridServicesDT = styled.div`
   display: flex;
   flex-wrap: wrap;
-
   .boxLeft {
     width: 66%;
     margin-bottom: 30px;
