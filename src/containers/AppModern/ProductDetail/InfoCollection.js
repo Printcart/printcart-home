@@ -2,25 +2,58 @@ import Box from "common/components/Box";
 import React from "react";
 import KeyFeatures1 from "../../../common/assets/image/icon1-key-feature.svg";
 import CareImage1 from "common/assets/image/icon-care1.svg";
+import { Table } from "common/components/Table/styleTable";
 
 const keyfeatures = [
   {
     media: `${KeyFeatures1?.src}`,
-    title: "Title feature.1",
+    title: "Feature title.1",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse feugiat dictum odio at semper. Suspendisse vulputate euismod nibh, in tristique libero suscipit vitae."
   },
   {
     media: `${KeyFeatures1?.src}`,
-    title: "Title feature.1",
+    title: "Feature title.1",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse feugiat dictum odio at semper. Suspendisse vulputate euismod nibh, in tristique libero suscipit vitae."
   },
   {
     media: `${KeyFeatures1?.src}`,
-    title: "Title feature.1",
+    title: "Feature title.1",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse feugiat dictum odio at semper. Suspendisse vulputate euismod nibh, in tristique libero suscipit vitae."
+  }
+];
+const parramtable = [
+  {
+    size: "XS",
+    valuewith: "17.72",
+    valuelength: "27.17"
+  },
+  {
+    size: "S",
+    valuewith: "18.90",
+    valuelength: "28.35"
+  },
+  {
+    size: "M",
+    valuewith: "20.08",
+    valuelength: "29.53"
+  },
+  {
+    size: "L",
+    valuewith: "21.26",
+    valuelength: "30.71"
+  },
+  {
+    size: "XL",
+    valuewith: "22.44",
+    valuelength: "31.89"
+  },
+  {
+    size: "2XL",
+    valuewith: "23.62",
+    valuelength: "33.07"
   }
 ];
 const InfoCollection = () => {
@@ -99,7 +132,7 @@ const InfoCollection = () => {
           </Box>
         </Box>
       </Box>
-      {/* <Box className="container-features">
+      <Box className="container-features">
         <Box className="wrapper-feature">
           <Box className="feature-title">
             <h2>Size guide</h2>
@@ -113,14 +146,49 @@ const InfoCollection = () => {
                 </Box>
                 <Box className="table-content">
                   <Box className="content-detail">
-                    
+                    <Table>
+                      <thead>
+                        <tr>
+                          <th>
+                            <div />
+                          </th>
+                          {parramtable.map((item, index) => (
+                            <th className="align-top" key={index}>
+                              <div className="cover-content">
+                                <div className="content-one">{item.size}</div>
+                              </div>
+                            </th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <React.Fragment>
+                          <tr>
+                            <td className="pcTitle">Width,in</td>
+                            {parramtable.map((items, index) => (
+                              <td className="value" key={index}>
+                                {items.valuewith}
+                              </td>
+                            ))}
+                          </tr>
+                          <tr>
+                            <td className="pcTitle">Length,in</td>
+                            {parramtable.map((items, index) => (
+                              <td className="value" key={index}>
+                                {items.valuelength}
+                              </td>
+                            ))}
+                          </tr>
+                        </React.Fragment>
+                      </tbody>
+                    </Table>
                   </Box>
                 </Box>
               </Box>
             </Box>
           </Box>
         </Box>
-      </Box> */}
+      </Box>
     </>
   );
 };
