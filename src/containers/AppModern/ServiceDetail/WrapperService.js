@@ -340,7 +340,6 @@ export const GridServicesDT = styled.div`
     },
     & img {
       padding: 10px 15px;
-      object-fit: cover;
     },
     & div {
       display: flex;
