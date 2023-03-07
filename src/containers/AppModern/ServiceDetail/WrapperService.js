@@ -75,7 +75,6 @@ const WrapperServices = styled.section`
     position: sticky;
   }
   .btnchange {
-    border-color: rgb(255 255 255 1);
     border-width: 1px;
     width: 3rem;
     height: 3.5rem;

@@ -3,7 +3,7 @@ import React, { useRef } from "react";
 
 const ImageGallery = (props) => {
   const { product } = props;
-  const imageRefs = useRef();
+  const imageRefs = useRef(null);
   const handleScrollTo = (id) => {
     const element = document.getElementById(id);
     if (element) {
