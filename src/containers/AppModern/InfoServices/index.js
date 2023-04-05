@@ -14,7 +14,7 @@ import Breadcrumb from "./Breadcrumb";
 import SectionWrapperServices, {
   ContainerServices,
   GridServices,
-  SectionStep,
+  SectionStep
 } from "./GridServices";
 import ServiceCategory from "./ServiceCategory";
 import ServicesList from "./ServicesList";
@@ -28,7 +28,7 @@ const InfoServices = (props) => {
     choice,
     serviceRealted,
     currentCat,
-    dataFAQ,
+    dataFAQ
   } = props;
   const router = useRouter();
   const query = router.query;
@@ -37,7 +37,7 @@ const InfoServices = (props) => {
 
   const data = {
     name: "Service",
-    alias: "services",
+    alias: "services"
   };
   const page = total.pagination.total / 18;
   let start = -1;

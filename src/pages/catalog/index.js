@@ -64,7 +64,7 @@ export async function getStaticProps() {
   return {
     props: {
       getProducts: result.products,
-      collections: resultAdmin
+      collections: resultAdmin.collections
     },
     revalidate: 1
   };
