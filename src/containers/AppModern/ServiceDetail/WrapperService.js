@@ -100,30 +100,22 @@ const WrapperServices = styled.section`
   .wrappbig {
     margin-left: 4rem;
     margin-right: 4rem;
+    max-width: calc(432px + 2 * 1rem);
+    position: relative;
+    width: 100%;
+    min-height: 1px;
     row-gap: 1rem;
     flex-direction: column;
     flex: 1 1 0%;
     display: flex;
   }
   .contImage {
-    width: 100%;
-    aspect-ratio: 29 / 34;
     position: relative;
-  }
-  .spanImage {
-    box-sizing: border-box;
-    display: block;
+    padding-top: 100%;
+    background-color: #f7f7f7;
     overflow: hidden;
-    width: initial;
-    height: initial;
-    background: none;
-    opacity: 1;
-    border: 0px;
-    margin: 0px;
-    padding: 0px;
-    position: absolute;
-    inset: 0px;
   }
+  
   .imageProductBig {
     position: absolute;
     inset: 0px;
@@ -144,7 +136,7 @@ const WrapperServices = styled.section`
     max-width: 400px;
     padding-top: 0px;
     padding-bottom: 0px;
-    top: 5rem;
+    top: 10rem;
     position: sticky;
     row-gap: 3rem;
     flex-direction: column;
@@ -171,13 +163,13 @@ const WrapperServices = styled.section`
     text-decoration: inherit;
   }
   .titleProduct {
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-weight: 400;
     line-height: 36px;
     margin: 0;
   }
   .descProduct {
-    font-size: 0.875rem;
+    font-size: 100%;
     font-weight: 400;
     line-height: 1.5rem;
     margin: 0;

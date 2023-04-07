@@ -59,8 +59,6 @@ const ProductsPOD = (props) => {
       name: "Men's Clothing"
     }
   ];
-  const index = 15;
-  console.log(imageCollection[parseInt(index % 3)].url);
   return (
     <SectionWrapper id="features">
       <Container>

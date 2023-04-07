@@ -1,29 +1,12 @@
-import Box from "common/components/Box";
-import React from "react";
-import KeyFeatures1 from "../../../common/assets/image/icon1-key-feature.svg";
 import CareImage1 from "common/assets/image/icon-care1.svg";
+import CareImage2 from "common/assets/image/icon-care2.svg";
+import CareImage3 from "common/assets/image/icon-care3.svg";
+import CareImage4 from "common/assets/image/icon-care4.svg";
+import CareImage5 from "common/assets/image/icon-care5.svg";
+import Box from "common/components/Box";
 import { Table } from "common/components/Table/styleTable";
+import React from "react";
 
-const keyfeatures = [
-  {
-    media: `${KeyFeatures1?.src}`,
-    title: "Feature title.1",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse feugiat dictum odio at semper. Suspendisse vulputate euismod nibh, in tristique libero suscipit vitae."
-  },
-  {
-    media: `${KeyFeatures1?.src}`,
-    title: "Feature title.1",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse feugiat dictum odio at semper. Suspendisse vulputate euismod nibh, in tristique libero suscipit vitae."
-  },
-  {
-    media: `${KeyFeatures1?.src}`,
-    title: "Feature title.1",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse feugiat dictum odio at semper. Suspendisse vulputate euismod nibh, in tristique libero suscipit vitae."
-  }
-];
 const parramtable = [
   {
     size: "XS",
@@ -56,24 +39,56 @@ const parramtable = [
     valuelength: "33.07"
   }
 ];
-const InfoCollection = () => {
+const iconCare = [
+  {
+    image: CareImage1.src
+  },
+  {
+    image: CareImage2.src
+  },
+  {
+    image: CareImage3.src
+  },
+  {
+    image: CareImage4.src
+  },
+  {
+    image: CareImage5.src
+  }
+];
+const InfoCollection = (props) => {
+  const { collection } = props;
+  const features = [
+    {
+      media: `${collection.metadata?.icon1 ?? ""}`,
+      title: `${collection?.metadata?.feature1 ?? ""}`,
+      description: `${collection?.metadata?.featureDesc1 ?? ""}`
+    },
+    {
+      media: `${collection.metadata?.icon2 ?? ""}`,
+      title: `${collection?.metadata?.feature2 ?? ""}`,
+      description: `${collection?.metadata?.featureDesc2 ?? ""}`
+    },
+    {
+      media: `${collection.metadata?.icon3 ?? ""}`,
+      title: `${collection?.metadata?.feature3 ?? ""}`,
+      description: `${collection?.metadata?.featureDesc3 ?? ""}`
+    },
+    {
+      media: `${collection.metadata?.icon4 ?? ""}`,
+      title: `${collection?.metadata?.feature4 ?? ""}`,
+      description: `${collection?.metadata?.featureDesc4 ?? ""}`
+    }
+  ];
   return (
-    <>
+    <React.Fragment>
       <Box className="container-features">
         <Box className="wrapper-feature">
           <Box className="feature-title">
             <h2>About</h2>
           </Box>
           <Box className="about-desc">
-            <p>
-              The AS Colour Unisex Barnard tank top is the tank for you. Make it
-              your own by customizing it to fit it’s cool cut off sleeve look.
-              It features low and raw (unsewn) armholes that are perfect for the
-              gym. It is a regular fit sleeveless tank tee made from 100% combed
-              cotton.
-              <br />
-              *AS Colour is an Ethical Fashion brand
-            </p>
+            <p>{collection.metadata?.about}</p>
           </Box>
         </Box>
       </Box>
@@ -84,10 +99,11 @@ const InfoCollection = () => {
           </Box>
           <Box className="wrapper-content">
             <Box className="key-features-desc">
-              {keyfeatures.map((item, index) => (
+              {features.map((item, index) => (
                 <Box className="wrapper-desc" key={index}>
                   <img
                     src={item?.media}
+                    style={{ display: item.media ? "block" : "none" }}
                     alt="Key features.1"
                     className="img-feature"
                   />
@@ -106,28 +122,14 @@ const InfoCollection = () => {
           </Box>
           <Box className="wrapper-content">
             <Box className="care-icons">
-              <Box className="icon-image">
-                <img src={CareImage1?.src} alt="Care Image 1" />
-              </Box>
-              <Box className="icon-image">
-                <img src={CareImage1?.src} alt="Care Image 1" />
-              </Box>
-              <Box className="icon-image">
-                <img src={CareImage1?.src} alt="Care Image 1" />
-              </Box>
-              <Box className="icon-image">
-                <img src={CareImage1?.src} alt="Care Image 1" />
-              </Box>
-              <Box className="icon-image">
-                <img src={CareImage1?.src} alt="Care Image 1" />
-              </Box>
+              {iconCare.map((items, index) => (
+                <Box className="icon-image" key={index}>
+                  <img src={items.image} alt="Icon Care" />
+                </Box>
+              ))}
             </Box>
             <Box className="care-desc">
-              <p>
-                Machine wash: warm (max 40C or 105F); Non-chlorine: bleach as
-                needed; Tumble dry: medium; Iron, steam or dry: low heat; Do not
-                dryclean.
-              </p>
+              <p>{collection.metadata?.careinstructions}</p>
             </Box>
           </Box>
         </Box>
@@ -189,7 +191,7 @@ const InfoCollection = () => {
           </Box>
         </Box>
       </Box>
-    </>
+    </React.Fragment>
   );
 };
 export default InfoCollection;
