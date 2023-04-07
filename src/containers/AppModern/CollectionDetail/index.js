@@ -6,9 +6,9 @@ import ReactMarkdown from "react-markdown";
 import styled from "styled-components";
 import { ContentWrapper } from "../appModern.style";
 import { GridServices } from "../InfoServices/GridServices";
-import InfoCollection from "../ProductDetail/InfoCollection";
+import InfoCollection from "./InfoCollection";
 import TitlePathMed from "../ProductDetail/TitlePathMed";
-import VendorInfo from "../ProductDetail/VendorInfo";
+import VendorInfo from "./VendorInfo";
 import WrapperServices from "../ServiceDetail/WrapperService";
 import ImageCollection from "./ImageCollection";
 
@@ -60,44 +60,6 @@ const CollectionDetail = (props) => {
                       <p className="descProduct">
                         {collection?.metadata?.short_description}
                       </p>
-                      {/**Select Size */}
-                      {collection?.variants?.length > 0 && (
-                        <Box className="selectSize">
-                          {product.product.options.map((option, index) => (
-                            <Box className="cont-size" key={index}>
-                              <span className="title-size">
-                                {" "}
-                                Select {option?.title}
-                              </span>
-                              <Box className="valueSize">
-                                {option?.values?.map((value, index) => (
-                                  <button key={index} className="btnvalue">
-                                    {value?.value}
-                                  </button>
-                                ))}
-                              </Box>
-                            </Box>
-                          ))}
-                        </Box>
-                      )}
-                      {/**PRICE */}
-                      <Box className="contPrices">
-                        {collection?.variants && (
-                          <Box className="pricesDetail">
-                            €{" "}
-                            {(
-                              collection?.variants[0]?.prices[0]?.amount / 100
-                            ).toFixed(2)}
-                          </Box>
-                        )}
-                      </Box>
-                      {/* <Button
-                        style={{
-                          borderRadius: "5px",
-                          backgroundColor: "#111827"
-                        }}
-                        title="ADD TO CART"
-                      /> */}
                     </Box>
                   </Box>
                 </Box>
@@ -112,7 +74,6 @@ const CollectionDetail = (props) => {
           <Box className="info-collection">
             <InfoCollection collection={collection} />
           </Box>
-
           <Box className="wrapperPOC">
             <h2>You may also like</h2>
             <GridServices>

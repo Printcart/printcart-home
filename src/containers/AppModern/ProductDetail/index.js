@@ -8,11 +8,11 @@ import { ContentWrapper } from "../appModern.style";
 import { GridServices } from "../InfoServices/GridServices";
 import WrapperServices from "../ServiceDetail/WrapperService";
 import ImageGallery from "./ImageGallery";
-import InfoCollection from "./InfoCollection";
+import InfoCollection from "../CollectionDetail/InfoCollection";
 import ProductInfo from "./ProductInfo";
 import ShippingInfo from "./ShippingInfo";
 import TitlePathMed from "./TitlePathMed";
-import VendorInfo from "./VendorInfo";
+import VendorInfo from "../CollectionDetail/VendorInfo";
 
 const ProductDetail = (props) => {
   const { product, products } = props;
@@ -126,12 +126,6 @@ const ProductDetail = (props) => {
               </Box>
               {/**** */}
             </Box>
-          </Box>
-          <Box className="cont-vendor">
-            <VendorInfo />
-          </Box>
-          <Box className="info-collection">
-            <InfoCollection />
           </Box>
           {/**RELATED PRODUCTS */}
           <Box className="container-related-products">

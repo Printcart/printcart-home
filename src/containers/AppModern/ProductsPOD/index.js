@@ -23,14 +23,13 @@ const CardCus = styled(Card)`
 `;
 const BoxCus = styled(Box)`
   height: 168px;
-  padding-right: 168px;
   align-items: flex-start;
   padding: 24px 144px 24px 24px;
   position: relative;
   display: flex;
   text-decoration: none;
   background-color: #f7f7f7;
-  border-radius: 6px;
+  border-radius: 5px;
   overflow: hidden;
   z-index: 0;
 `;
