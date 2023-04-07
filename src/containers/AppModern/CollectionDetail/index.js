@@ -11,6 +11,7 @@ import TitlePathMed from "../ProductDetail/TitlePathMed";
 import VendorInfo from "./VendorInfo";
 import WrapperServices from "../ServiceDetail/WrapperService";
 import ImageCollection from "./ImageCollection";
+import React from "react";
 
 const BoxCus = styled(Box)`
   align-items: flex-start;
@@ -29,6 +30,7 @@ const BoxCus = styled(Box)`
 
 const CollectionDetail = (props) => {
   const { collection } = props;
+  console.log(collection);
   const title = collection?.title;
   return (
     <ContentWrapper>
@@ -75,67 +77,73 @@ const CollectionDetail = (props) => {
             <InfoCollection collection={collection} />
           </Box>
           <Box className="wrapperPOC">
-            <h2>You may also like</h2>
-            <GridServices>
-              {collection.products.map(
-                (item, index) =>
-                  item.status === "published" && (
-                    <Card className="cardItem" key={index}>
-                      <Box className="cardItem-child">
-                        <Link href={`/product/${item?.id}`}>
-                          <a>
-                            <img
-                              style={{
-                                width: "100%",
-                                height: "300px",
-                                borderTopLeftRadius: "5px",
-                                borderTopRightRadius: "5px"
-                              }}
-                              src={item?.thumbnail}
-                            />
-                          </a>
-                        </Link>
-                        <Box className="content">
-                          <Link href={`/product/${item?.id}`}>
-                            <a title={`View to ${item.title}`}>
-                              <h3 className="title-medusa">{item.title}</h3>
-                            </a>
-                          </Link>
-                          <Box className="contPricesRelated">
-                            {item?.variants && (
-                              <Box className="pricesRelated">
-                                € {item?.variants[0]?.prices[0]?.amount}
+            {collection.products.length > 0 && (
+              <React.Fragment>
+                <h2>You may also like</h2>
+                <GridServices>
+                  {collection.products.map(
+                    (item, index) =>
+                      item.status === "published" && (
+                        <Card className="cardItem" key={index}>
+                          <Box className="cardItem-child">
+                            <Link href={`/product/${item?.id}`}>
+                              <a>
+                                <img
+                                  style={{
+                                    width: "100%",
+                                    height: "300px",
+                                    borderTopLeftRadius: "5px",
+                                    borderTopRightRadius: "5px"
+                                  }}
+                                  src={item?.thumbnail}
+                                />
+                              </a>
+                            </Link>
+                            <Box className="content">
+                              <Link href={`/product/${item?.id}`}>
+                                <a title={`View to ${item.title}`}>
+                                  <h3 className="title-medusa">{item.title}</h3>
+                                </a>
+                              </Link>
+                              <Box className="contPricesRelated">
+                                {item?.variants && (
+                                  <Box className="pricesRelated">
+                                    € {item?.variants[0]?.prices[0]?.amount}
+                                  </Box>
+                                )}
                               </Box>
-                            )}
-                          </Box>
-                          <Box className="text">
-                            <Box>
-                              {item.description && (
-                                <ReactMarkdown>
-                                  {item.description}
-                                </ReactMarkdown>
-                              )}
+                              <Box className="text">
+                                <Box>
+                                  {item.description && (
+                                    <ReactMarkdown>
+                                      {item.description}
+                                    </ReactMarkdown>
+                                  )}
+                                </Box>
+                              </Box>
+                              <Box>
+                                <Box className="tag-info">
+                                  {item.tag && (
+                                    <strong>Tags: {item.tags}</strong>
+                                  )}
+                                </Box>
+                                <Box className="collection">
+                                  {item.collection && (
+                                    <strong>
+                                      Collection:{" "}
+                                      {item.collection.title || item?.title}
+                                    </strong>
+                                  )}
+                                </Box>
+                              </Box>
                             </Box>
                           </Box>
-                          <Box>
-                            <Box className="tag-info">
-                              {item.tag && <strong>Tags: {item.tags}</strong>}
-                            </Box>
-                            <Box className="collection">
-                              {item.collection && (
-                                <strong>
-                                  Collection:{" "}
-                                  {item.collection.title || item?.title}
-                                </strong>
-                              )}
-                            </Box>
-                          </Box>
-                        </Box>
-                      </Box>
-                    </Card>
-                  )
-              )}
-            </GridServices>
+                        </Card>
+                      )
+                  )}
+                </GridServices>
+              </React.Fragment>
+            )}
           </Box>
         </Container>
       </WrapperServices>
