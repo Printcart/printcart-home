@@ -12,7 +12,7 @@ import ProductsPOD from "containers/AppModern/ProductsPOD";
 import React from "react";
 
 const Catalog = (props) => {
-  const { getProducts, collections } = props;
+  const { products, collections } = props;
   return (
     <ThemeProvider theme={theme}>
       <>
@@ -31,7 +31,7 @@ const Catalog = (props) => {
             <Navbar />
           </div>
           <ContentWrapper>
-            <ProductsPOD getProducts={getProducts} collections={collections} />
+            <ProductsPOD getProducts={products} collections={collections} />
           </ContentWrapper>
           <Footer />
         </AppWrapper>
@@ -43,29 +43,35 @@ export default Catalog;
 
 export async function getStaticProps() {
   const baseUrlAdmin = process.env.MEDUSA_API_ADMIN_URL;
-  const resAdmin = await fetch(`${baseUrlAdmin}collections?limit=30`, {
-    method: "GET",
-    headers: {
-      Authorization: "Bearer Rl2KcwXuTa6abLczqxu1Z1ID2fE0CVCq",
-      "Content-Type": "application/json"
-    }
-  });
+  const urlCollection = new URL("collections", baseUrlAdmin);
+  urlCollection.searchParams.set("limit", 30);
+  const paramsCollection = urlCollection.href;
 
-  const res = await fetch(`${baseUrlAdmin}products?limit=6&status=published`, {
+  const urlProduct = new URL("products", baseUrlAdmin);
+  urlProduct.searchParams.set("limit", 6);
+  urlProduct.searchParams.set("status", "published");
+  const paramsProduct = urlProduct.href;
+  const parameter = {
     method: "GET",
     headers: {
       Authorization: "Bearer Rl2KcwXuTa6abLczqxu1Z1ID2fE0CVCq",
       "Content-Type": "application/json"
     }
-  });
-  const result = await res.json();
-  const resultAdmin = await resAdmin.json();
+  };
+
+  const resCollection = await fetch(paramsCollection, parameter);
+  const resProducts = await fetch(paramsProduct, parameter);
+
+  const [fetchCollection, fetchProducts] = await Promise.all([
+    resCollection.json(),
+    resProducts.json()
+  ]);
 
   return {
     props: {
-      getProducts: result.products,
-      collections: resultAdmin.collections
+      collections: fetchCollection.collections,
+      products: fetchProducts.products
     },
-    revalidate: 1
+    revalidate: 86400
   };
 }

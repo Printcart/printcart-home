@@ -30,7 +30,6 @@ const BoxCus = styled(Box)`
 
 const CollectionDetail = (props) => {
   const { collection } = props;
-  console.log(collection);
   const title = collection?.title;
   return (
     <ContentWrapper>
