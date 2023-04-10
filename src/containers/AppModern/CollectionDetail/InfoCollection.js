@@ -4,8 +4,10 @@ import CareImage3 from "common/assets/image/icon-care3.svg";
 import CareImage4 from "common/assets/image/icon-care4.svg";
 import CareImage5 from "common/assets/image/icon-care5.svg";
 import Box from "common/components/Box";
+import Image from "common/components/Image";
 import { Table } from "common/components/Table/styleTable";
 import React from "react";
+import styled from "styled-components";
 
 const parramtable = [
   {
@@ -56,6 +58,88 @@ const iconCare = [
     image: CareImage5.src
   }
 ];
+const BoxFeatureContainer = styled(Box)`
+  padding-top: 40px;
+  padding-bottom: 40px;
+  display: block;
+  border-bottom: 1px solid #e3e4e5;
+`;
+const BoxWrapper = styled(Box)`
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+`;
+const BoxTitle = styled(Box)`
+  align-self: flex-start;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.5em;
+  line-height: 2rem;
+  position: relative;
+  flex: 0 0 33.3%;
+  max-width: 33.3%;
+`;
+const BoxAbout = styled(Box)`
+  margin-top: 0;
+  position: relative;
+  width: 100%;
+  flex: 0 0 66.6%;
+  max-width: 66.6%;
+`;
+const BoxWrapContent = styled(Box)`
+  margin-top: 0;
+  position: relative;
+  width: 100%;
+  flex: 0 0 66.6%;
+  max-width: 66.6%;
+`;
+const DescFeature = styled(Box)`
+  margin-bottom: calc(1rem * -2);
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin-left: calc(1rem * -1);
+  margin-right: calc(1rem * -1);
+  padding: 0px;
+`;
+const DescWrapp = styled(Box)`
+  margin-bottom: calc(1rem * 2);
+  position: relative;
+  width: 100%;
+  flex: 0 0 50%;
+  max-width: 50%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+`;
+const FeatureImage = styled(Image)`
+  display: block;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 16px;
+`;
+const CareIcon = styled(Box)`
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin-left: calc(8px * -1);
+  margin-right: calc(8px * -1);
+  padding: 0px;
+`;
+const IconImage = styled(Box)`
+  position: relative;
+  flex: 0 0 auto;
+  width: auto;
+  padding-left: 8px;
+  padding-right: 8px;
+`;
+const TableHeader = styled(Box)`
+  p {
+    color: #29ab51;
+    border-bottom: 1px solid #d3d3d3;
+    cursor: pointer;
+  }
+`;
 const InfoCollection = (props) => {
   const { collection } = props;
   const features = [
@@ -82,72 +166,71 @@ const InfoCollection = (props) => {
   ];
   return (
     <React.Fragment>
-      <Box className="container-features">
-        <Box className="wrapper-feature">
-          <Box className="feature-title">
+      <BoxFeatureContainer>
+        <BoxWrapper>
+          <BoxTitle>
             <h2>About</h2>
-          </Box>
-          <Box className="about-desc">
+          </BoxTitle>
+          <BoxAbout>
             <p>{collection.metadata?.about}</p>
-          </Box>
-        </Box>
-      </Box>
-      <Box className="container-features">
-        <Box className="wrapper-feature">
-          <Box className="feature-title">
+          </BoxAbout>
+        </BoxWrapper>
+      </BoxFeatureContainer>
+      <BoxFeatureContainer>
+        <BoxWrapper>
+          <BoxTitle>
             <h2>Key features</h2>
-          </Box>
-          <Box className="wrapper-content">
-            <Box className="key-features-desc">
+          </BoxTitle>
+          <BoxWrapContent>
+            <DescFeature>
               {features.map((item, index) => (
-                <Box className="wrapper-desc" key={index}>
-                  <img
+                <DescWrapp key={index}>
+                  <FeatureImage
                     src={item?.media}
                     style={{ display: item.media ? "block" : "none" }}
                     alt="Key features.1"
-                    className="img-feature"
                   />
                   <p className="desc-title">{item?.title}</p>
                   <p className="desc-detail">{item?.description}</p>
-                </Box>
+                </DescWrapp>
               ))}
-            </Box>
-          </Box>
-        </Box>
-      </Box>
-      <Box className="container-features">
-        <Box className="wrapper-feature">
-          <Box className="feature-title">
+            </DescFeature>
+          </BoxWrapContent>
+        </BoxWrapper>
+      </BoxFeatureContainer>
+      <BoxFeatureContainer>
+        <BoxWrapper>
+          <BoxTitle>
             <h2>Care instructions</h2>
-          </Box>
-          <Box className="wrapper-content">
-            <Box className="care-icons">
+          </BoxTitle>
+          <BoxWrapContent>
+            <CareIcon>
               {iconCare.map((items, index) => (
-                <Box className="icon-image" key={index}>
-                  <img src={items.image} alt="Icon Care" />
-                </Box>
+                <IconImage key={index}>
+                  <Image src={items.image} alt="Icon Care" />
+                </IconImage>
               ))}
-            </Box>
-            <Box className="care-desc">
+            </CareIcon>
+            <Box>
               <p>{collection.metadata?.careinstructions}</p>
             </Box>
-          </Box>
-        </Box>
-      </Box>
-      <Box className="container-features">
-        <Box className="wrapper-feature">
-          <Box className="feature-title">
+          </BoxWrapContent>
+        </BoxWrapper>
+      </BoxFeatureContainer>
+      <BoxFeatureContainer>
+        <BoxWrapper>
+          <BoxTitle>
             <h2>Size guide</h2>
-          </Box>
-          <Box className="wrapper-content">
+          </BoxTitle>
+          <BoxWrapContent>
             <p>All measurements in the table refer to product dimensions.</p>
-            <Box className="container-table">
-              <Box className="wrapper-table">
-                <Box className="table-header">
+            <Box>
+              <Box>
+                <TableHeader>
                   <p>Imperial</p>
-                </Box>
-                <Box className="table-content">
-                  <Box className="content-detail">
+                </TableHeader>
+                <Box>
+                  <Box>
                     <Table>
                       <thead>
                         <tr>
@@ -188,9 +271,9 @@ const InfoCollection = (props) => {
                 </Box>
               </Box>
             </Box>
-          </Box>
-        </Box>
-      </Box>
+          </BoxWrapContent>
+        </BoxWrapper>
+      </BoxFeatureContainer>
     </React.Fragment>
   );
 };
