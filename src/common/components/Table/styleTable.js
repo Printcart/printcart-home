@@ -45,6 +45,7 @@ export const Table = styled.table`
     color: #2f7bf8;
     border: 1px solid #2f7bf8;
     padding: 5px 20px;
+
     border-radius: 5px;
     &: hover {
       color: #f9fafb;
@@ -131,6 +132,20 @@ export const Table = styled.table`
   }
   .pcTitle {
     padding: 10px 20px !important;
+  }
+  .commingsoon {
+    font-size: 0.75rem;
+    border-radius: 2rem !important;
+    background-color: #cbd5e1 !important;
+    font-weight: 400 !important;
+    margin-left: 0.25rem !important;
+    display: inline-block;
+    padding: 0.1rem 0.4rem;
+    line-height: 1;
+    color: #f9fafb;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
   }
   .text-name {
     text-transform: uppercase;

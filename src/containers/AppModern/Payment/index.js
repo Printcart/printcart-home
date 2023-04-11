@@ -1,3 +1,4 @@
+import Box from "common/components/Box";
 import { SectionHeader } from "containers/AppModern/appModern.style";
 import SectionWrapper from "containers/AppModern/Features/features.style";
 import React from "react";
@@ -10,37 +11,36 @@ import HeaderPayment from "./payment.style";
 const contact = "https://solution.printcart.com/home/teams/#contact";
 const tiers = [
   {
-    tier: "Free",
-    price: "$0 / month",
+    name: "Free",
+    value: "free",
+    price: "0",
     button: {
-      label: "Contact",
-      url: contact,
-    },
+      label: "Contact"
+    }
   },
   {
-    tier: "Premium",
-    price: "$49 / month",
+    name: "Premium",
+    value: "premium",
+    price: "49",
     button: {
-      label: "Contact",
-      url: contact,
-    },
+      label: "Contact"
+    }
   },
   {
-    tier: "Advanced",
-    price: "$99 / month",
+    name: "Advanced",
+    value: "advanced",
+    price: "99",
     button: {
-      label: "Contact",
-      url: contact,
-    },
+      label: "Contact"
+    }
   },
   {
-    tier: "Enterprise",
-    price: "-",
+    name: "Enterprise",
+    value: "enterprise",
     button: {
-      label: "Contact",
-      url: contact,
-    },
-  },
+      label: "Contact"
+    }
+  }
 ];
 const pricings = [
   {
@@ -53,8 +53,8 @@ const pricings = [
           { value: "yes" },
           { value: "yes" },
           { value: "yes" },
-          { value: "yes" },
-        ],
+          { value: "yes" }
+        ]
       },
       {
         name: "Intergration with your website (via plugins or API)",
@@ -63,8 +63,8 @@ const pricings = [
           { value: "yes" },
           { value: "yes" },
           { value: "yes" },
-          { value: "yes" },
-        ],
+          { value: "yes" }
+        ]
       },
       {
         name: "Integrated Product Customization Tool",
@@ -73,8 +73,8 @@ const pricings = [
           { value: "yes" },
           { value: "yes" },
           { value: "yes" },
-          { value: "yes" },
-        ],
+          { value: "yes" }
+        ]
       },
       {
         name: "Print-ready files [PNG, SVG]",
@@ -83,8 +83,8 @@ const pricings = [
           { value: "yes" },
           { value: "yes" },
           { value: "yes" },
-          { value: "yes" },
-        ],
+          { value: "yes" }
+        ]
       },
       {
         name: "Unlimited product views and print areas per product",
@@ -93,8 +93,8 @@ const pricings = [
           { value: "yes" },
           { value: "yes" },
           { value: "yes" },
-          { value: "yes" },
-        ],
+          { value: "yes" }
+        ]
       },
       {
         name: "Unlimited download and edit Client Designs",
@@ -103,8 +103,8 @@ const pricings = [
           { value: "yes" },
           { value: "yes" },
           { value: "yes" },
-          { value: "yes" },
-        ],
+          { value: "yes" }
+        ]
       },
       {
         name: "Rest API Access",
@@ -112,8 +112,8 @@ const pricings = [
           { value: "yes" },
           { value: "yes" },
           { value: "yes" },
-          { value: "yes" },
-        ],
+          { value: "yes" }
+        ]
       },
       {
         name: "Setting your Product Customizer Branding",
@@ -122,8 +122,9 @@ const pricings = [
           { value: "no" },
           { value: "yes" },
           { value: "yes" },
-          { value: "yes" },
+          { value: "yes" }
         ],
+        isComingSoon: true
       },
       {
         name: "Export to PDF",
@@ -131,8 +132,8 @@ const pricings = [
           { value: "no" },
           { value: "yes" },
           { value: "yes" },
-          { value: "yes" },
-        ],
+          { value: "yes" }
+        ]
       },
       {
         name: "Up your own Mock-Up",
@@ -141,10 +142,10 @@ const pricings = [
           { value: "Unlimited" },
           { value: "Unlimited" },
           { value: "Unlimited" },
-          { value: "Unlimited" },
-        ],
-      },
-    ],
+          { value: "Unlimited" }
+        ]
+      }
+    ]
   },
   {
     name: "Storage",
@@ -155,8 +156,9 @@ const pricings = [
           { value: "50MB" },
           { value: "500MB" },
           { value: "5GB" },
-          { value: "Contact" },
+          { value: "Contact" }
         ],
+        isComingSoon: true
       },
       {
         name: "Number of Orders per month",
@@ -164,8 +166,8 @@ const pricings = [
           { value: "10" },
           { value: "100" },
           { value: "1000" },
-          { value: "Contact" },
-        ],
+          { value: "Contact" }
+        ]
       },
       {
         name: "Cloud Media File Storage",
@@ -173,8 +175,8 @@ const pricings = [
           { value: "10GB" },
           { value: "100GB" },
           { value: "1TB" },
-          { value: "Contact" },
-        ],
+          { value: "Contact" }
+        ]
       },
       {
         name: "Number of Products per store",
@@ -182,11 +184,11 @@ const pricings = [
           { value: "5" },
           { value: "Unlimited" },
           { value: "Unlimited" },
-          { value: "Unlimited" },
-        ],
-      },
-    ],
-  },
+          { value: "Unlimited" }
+        ]
+      }
+    ]
+  }
 ];
 
 const Payment = () => {
@@ -209,10 +211,12 @@ const Payment = () => {
               {tiers.map((tier, typeIndex) => (
                 <th className="align-top" key={typeIndex}>
                   <div className="cover-content">
-                    <div className="content-one">{tier.tier}</div>
-                    <div className="pcPrice">{tier.price}</div>
+                    <div className="content-one">{tier.name}</div>
+                    <div className="pcPrice">
+                      {tier.price ? `$${tier.price} / month` : "-"}
+                    </div>
                     {tier?.button && tier?.button?.label && (
-                      <a className="btnContact" href={tier.button.url}>
+                      <a className="btnContact" href={contact}>
                         {tier.button.label}
                       </a>
                     )}
@@ -231,17 +235,27 @@ const Payment = () => {
                 </tr>
                 {price?.items.map((item, itemIndex) => (
                   <tr key={itemIndex}>
-                    <td className="pcTitle">{item.name}</td>
+                    <td className="pcTitle">
+                      <div className="row-title">
+                        <div className="col-title">
+                          {item.name}
+                          {item?.isComingSoon && (
+                            <div className="commingsoon">Comming Soon</div>
+                          )}
+                        </div>
+                      </div>
+                    </td>
                     {item?.value.map((value, valueIndex) => (
                       <td key={valueIndex} className="value">
                         {value.value === "yes" && <Icon icon={check} />}
                         {value.value !== "yes" &&
                           value.value !== "no" &&
-                          value.value !== "Contact" &&
+                          value.value !== "contact" &&
                           value.value !== "Contact" && (
                             <div className="text-value">{value.value}</div>
                           )}
-                        {value.value === "Contact" && (
+                        {(value.value === "Contact" ||
+                          value.value === "contact") && (
                           <a className="btnContact" href={contact}>
                             {value.value}
                           </a>
