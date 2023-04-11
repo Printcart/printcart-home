@@ -22,7 +22,7 @@ const Navbar = () => {
   const [state, setState] = useState({
     search: "",
     searchToggle: false,
-    mobileMenu: false,
+    mobileMenu: false
   });
 
   const searchRef = useRef(null);
@@ -36,14 +36,14 @@ const Navbar = () => {
         ...state,
         search: "",
         searchToggle: !state.searchToggle,
-        mobileMenu: false,
+        mobileMenu: false
       });
     }
 
     if (type === "menu") {
       setState({
         ...state,
-        mobileMenu: !state.mobileMenu,
+        mobileMenu: !state.mobileMenu
       });
     }
   };
@@ -51,7 +51,7 @@ const Navbar = () => {
   const handleOnChange = (event) => {
     setState({
       ...state,
-      search: event.target.value,
+      search: event.target.value
     });
   };
 
@@ -63,7 +63,7 @@ const Navbar = () => {
 
       setState({
         ...state,
-        search: "",
+        search: ""
       });
     } else {
       console.log("Please fill this field.");
@@ -79,7 +79,7 @@ const Navbar = () => {
   const handleRemoveMenu = () => {
     setState({
       ...state,
-      mobileMenu: false,
+      mobileMenu: false
     });
   };
 
@@ -161,15 +161,9 @@ const Navbar = () => {
                     Documentation
                   </a>
                 </li>
-                <li>
-                  <a href="/payment" rel="nofollow" offset={84}>
-                    Payment
-                  </a>
-                </li>
               </ul>
             </div>
           </nav>
-
           <Search className="search" ref={searchRef}>
             <form onSubmit={handleSearchForm}>
               <input

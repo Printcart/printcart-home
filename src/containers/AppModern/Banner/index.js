@@ -108,7 +108,7 @@ const Banner = () => {
               <a href="https://dashboard.printcart.com/signup?get-started=true" target="_blank" rel="nofollow">
                 <Button className="primary" title="Start Now" />
               </a>
-              <a href="https://dev01.netbaseteam.com/designtool/" target="_blank" rel="nofollow">
+              <a href="https://designer.printcart.com/" target="_blank" rel="nofollow">
               <Button
                 className="text"
                 variant="textButton"
