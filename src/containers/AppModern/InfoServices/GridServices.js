@@ -71,11 +71,9 @@ export const GridServices = styled.div`
       padding: 25px 25px 30px;
     }
   }
-
   .content {
     padding: 20px;
   }
-
   .title {
     margin-top: 0px;
     height: 52px;

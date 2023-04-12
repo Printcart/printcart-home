@@ -12,6 +12,7 @@ import VendorInfo from "./VendorInfo";
 import WrapperServices from "../ServiceDetail/WrapperService";
 import ImageCollection from "./ImageCollection";
 import React from "react";
+import Heading from "common/components/Heading";
 
 const BoxCus = styled(Box)`
   align-items: flex-start;
@@ -27,7 +28,48 @@ const BoxCus = styled(Box)`
   padding-left: 2rem;
   padding-right: 2rem;
 `;
-
+const ProductInfo = styled(Box)`
+  max-width: 400px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  top: 10rem;
+  position: sticky;
+  row-gap: 3rem;
+  flex-direction: column;
+  width: 100%;
+  display: flex;
+`;
+const ContainerProduct = styled(Box)`
+  row-gap: 0.5rem;
+  flex-direction: column;
+  display: flex;
+`;
+const HeadingProduct = styled(Heading)`
+  font-size: 2rem;
+  margin: 0;
+`;
+const DescProduct = styled.p`
+  font-size: 100%;
+  font-weight: 400;
+  line-height: 1.5rem;
+  margin: 0;
+`;
+const ContainerVendor = styled(Box)`
+  margin-top: 3.5rem;
+  display: block;
+`;
+const CardItems = styled(Card)`
+  border-radius: 5px;
+  box-shadow: 0 0 5px 0 rgb(0 0 50 / 25%);
+  &:hover {
+    box-shadow: 5px 10px 10px 2px rgb(0 0 50 / 25%);
+    transform: translate(0, -7px);
+    transition: box-shadow 0.3s ease-out, transform 0.3s ease-out;
+  }
+  @media only screen and (max-width: 480px) {
+    padding: 25px 25px 30px;
+  }
+`;
 const CollectionDetail = (props) => {
   const { collection } = props;
   const title = collection?.title;
@@ -47,35 +89,33 @@ const CollectionDetail = (props) => {
         <Container>
           <BoxCus>
             <ImageCollection image={collection.metadata?.image1} />
-            <Box className="contentRight">
-              <Box className="product-info">
-                <Box className="info-child">
-                  <Box>
-                    <Box className="info-main">
-                      {collection && (
-                        <Link href={`/collection/${collection?.id}`}>
-                          <a className="linktitle">{collection.title}</a>
-                        </Link>
-                      )}
-                      <h3 className="titleProduct">{collection?.title}</h3>
-                      <p className="descProduct">
-                        {collection?.metadata?.short_description}
-                      </p>
-                    </Box>
-                  </Box>
-                </Box>
-              </Box>
+            <ProductInfo>
+              <ContainerProduct>
+                {collection && (
+                  <Link href={`/collection/${collection?.id}`}>
+                    <a>{collection.title}</a>
+                  </Link>
+                )}
+                <HeadingProduct
+                  content={collection?.title}
+                  fontWeight="400"
+                  lineHeight="36px"
+                />
+                <DescProduct>
+                  {collection?.metadata?.short_description}
+                </DescProduct>
+              </ContainerProduct>
               {/*Product info - shipping */}
               {/**** */}
-            </Box>
+            </ProductInfo>
           </BoxCus>
-          <Box className="cont-vendor">
+          <ContainerVendor>
             <VendorInfo />
-          </Box>
-          <Box className="info-collection">
+          </ContainerVendor>
+          <Box>
             <InfoCollection collection={collection} />
           </Box>
-          <Box className="wrapperPOC">
+          <Box>
             {collection.products.length > 0 && (
               <React.Fragment>
                 <h2>You may also like</h2>
@@ -83,8 +123,8 @@ const CollectionDetail = (props) => {
                   {collection.products.map(
                     (item, index) =>
                       item.status === "published" && (
-                        <Card className="cardItem" key={index}>
-                          <Box className="cardItem-child">
+                        <CardItems key={index}>
+                          <Box>
                             <Link href={`/product/${item?.id}`}>
                               <a>
                                 <img
@@ -137,7 +177,7 @@ const CollectionDetail = (props) => {
                               </Box>
                             </Box>
                           </Box>
-                        </Card>
+                        </CardItems>
                       )
                   )}
                 </GridServices>

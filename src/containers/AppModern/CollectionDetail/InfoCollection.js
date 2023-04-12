@@ -4,6 +4,7 @@ import CareImage3 from "common/assets/image/icon-care3.svg";
 import CareImage4 from "common/assets/image/icon-care4.svg";
 import CareImage5 from "common/assets/image/icon-care5.svg";
 import Box from "common/components/Box";
+import Heading from "common/components/Heading";
 import Image from "common/components/Image";
 import { Table } from "common/components/Table/styleTable";
 import React from "react";
@@ -140,6 +141,12 @@ const TableHeader = styled(Box)`
     cursor: pointer;
   }
 `;
+const FeatureDesc = styled.p`
+  color: #9fa4a5;
+  font-size: 1em;
+  line-height: 1.25rem;
+  font-weight: 400;
+`;
 const InfoCollection = (props) => {
   const { collection } = props;
   const features = [
@@ -190,8 +197,13 @@ const InfoCollection = (props) => {
                     style={{ display: item.media ? "block" : "none" }}
                     alt="Key features.1"
                   />
-                  <p className="desc-title">{item?.title}</p>
-                  <p className="desc-detail">{item?.description}</p>
+                  <Heading
+                    content={item?.title}
+                    fontWeight="400"
+                    mb="8px"
+                    as="h3"
+                  />
+                  <FeatureDesc>{item?.description}</FeatureDesc>
                 </DescWrapp>
               ))}
             </DescFeature>
