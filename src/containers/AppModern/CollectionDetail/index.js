@@ -106,7 +106,6 @@ const BoxSelect = styled(Box)`
   position: relative;
   display: block;
   border-radius: 5px;
-
   outline: none;
 `;
 const Select = styled.select`
@@ -116,7 +115,6 @@ const Select = styled.select`
   padding-left: 5px;
   font-size: 18px;
   margin-left: 10px;
-
   option {
     color: black;
     background: white;
