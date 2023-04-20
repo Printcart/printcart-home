@@ -6,7 +6,7 @@ import Icon from "react-icons-kit";
 import { ic_star_rate } from "react-icons-kit/md/ic_star_rate";
 import styled from "styled-components";
 
-const Grid = styled.div`
+export const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: 50px 0px;

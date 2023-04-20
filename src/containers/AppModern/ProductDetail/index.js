@@ -5,14 +5,14 @@ import Container from "common/components/UI/Container";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 import { ContentWrapper } from "../appModern.style";
+import InfoCollection from "../CollectionDetail/InfoCollection";
+import VendorInfo from "../CollectionDetail/VendorInfo";
 import { GridServices } from "../InfoServices/GridServices";
 import WrapperServices from "../ServiceDetail/WrapperService";
 import ImageGallery from "./ImageGallery";
-import InfoCollection from "../CollectionDetail/InfoCollection";
 import ProductInfo from "./ProductInfo";
 import ShippingInfo from "./ShippingInfo";
 import TitlePathMed from "./TitlePathMed";
-import VendorInfo from "../CollectionDetail/VendorInfo";
 
 const ProductDetail = (props) => {
   const { product, products } = props;
@@ -126,6 +126,12 @@ const ProductDetail = (props) => {
               </Box>
               {/**** */}
             </Box>
+          </Box>
+          <Box className="cont-vendor">
+            <VendorInfo />
+          </Box>
+          <Box className="info-collection">
+            <InfoCollection collection={product?.product?.collection} />
           </Box>
           {/**RELATED PRODUCTS */}
           <Box className="container-related-products">

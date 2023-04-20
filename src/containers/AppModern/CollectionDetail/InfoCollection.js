@@ -151,84 +151,90 @@ const InfoCollection = (props) => {
   const { collection } = props;
   const features = [
     {
-      media: `${collection.metadata?.icon1 ?? ""}`,
+      media: `${collection?.metadata?.icon1 ?? ""}`,
       title: `${collection?.metadata?.feature1 ?? ""}`,
       description: `${collection?.metadata?.featureDesc1 ?? ""}`
     },
     {
-      media: `${collection.metadata?.icon2 ?? ""}`,
+      media: `${collection?.metadata?.icon2 ?? ""}`,
       title: `${collection?.metadata?.feature2 ?? ""}`,
       description: `${collection?.metadata?.featureDesc2 ?? ""}`
     },
     {
-      media: `${collection.metadata?.icon3 ?? ""}`,
+      media: `${collection?.metadata?.icon3 ?? ""}`,
       title: `${collection?.metadata?.feature3 ?? ""}`,
       description: `${collection?.metadata?.featureDesc3 ?? ""}`
     },
     {
-      media: `${collection.metadata?.icon4 ?? ""}`,
+      media: `${collection?.metadata?.icon4 ?? ""}`,
       title: `${collection?.metadata?.feature4 ?? ""}`,
       description: `${collection?.metadata?.featureDesc4 ?? ""}`
     }
   ];
   return (
     <React.Fragment>
-      <BoxFeatureContainer>
-        <BoxWrapper>
-          <BoxTitle>
-            <h2>About</h2>
-          </BoxTitle>
-          <BoxAbout>
-            <p>{collection.metadata?.about}</p>
-          </BoxAbout>
-        </BoxWrapper>
-      </BoxFeatureContainer>
-      <BoxFeatureContainer>
-        <BoxWrapper>
-          <BoxTitle>
-            <h2>Key features</h2>
-          </BoxTitle>
-          <BoxWrapContent>
-            <DescFeature>
-              {features.map((item, index) => (
-                <DescWrapp key={index}>
-                  <FeatureImage
-                    src={item?.media}
-                    style={{ display: item.media ? "block" : "none" }}
-                    alt="Key features.1"
-                  />
-                  <Heading
-                    content={item?.title}
-                    fontWeight="400"
-                    mb="8px"
-                    as="h3"
-                  />
-                  <FeatureDesc>{item?.description}</FeatureDesc>
-                </DescWrapp>
-              ))}
-            </DescFeature>
-          </BoxWrapContent>
-        </BoxWrapper>
-      </BoxFeatureContainer>
-      <BoxFeatureContainer>
-        <BoxWrapper>
-          <BoxTitle>
-            <h2>Care instructions</h2>
-          </BoxTitle>
-          <BoxWrapContent>
-            <CareIcon>
-              {iconCare.map((items, index) => (
-                <IconImage key={index}>
-                  <Image src={items.image} alt="Icon Care" />
-                </IconImage>
-              ))}
-            </CareIcon>
-            <Box>
-              <p>{collection.metadata?.careinstructions}</p>
-            </Box>
-          </BoxWrapContent>
-        </BoxWrapper>
-      </BoxFeatureContainer>
+      {collection?.metadata?.about && (
+        <BoxFeatureContainer>
+          <BoxWrapper>
+            <BoxTitle>
+              <h2>About</h2>
+            </BoxTitle>
+            <BoxAbout>
+              <p>{collection?.metadata?.about}</p>
+            </BoxAbout>
+          </BoxWrapper>
+        </BoxFeatureContainer>
+      )}
+      {collection?.metadata?.feature1 && (
+        <BoxFeatureContainer>
+          <BoxWrapper>
+            <BoxTitle>
+              <h2>Key features</h2>
+            </BoxTitle>
+            <BoxWrapContent>
+              <DescFeature>
+                {features.map((item, index) => (
+                  <DescWrapp key={index}>
+                    <FeatureImage
+                      src={item?.media}
+                      style={{ display: item.media ? "block" : "none" }}
+                      alt="Key features.1"
+                    />
+                    <Heading
+                      content={item?.title}
+                      fontWeight="400"
+                      mb="8px"
+                      as="h3"
+                    />
+                    <FeatureDesc>{item?.description}</FeatureDesc>
+                  </DescWrapp>
+                ))}
+              </DescFeature>
+            </BoxWrapContent>
+          </BoxWrapper>
+        </BoxFeatureContainer>
+      )}
+      {collection?.metadata?.careinstructions && (
+        <BoxFeatureContainer>
+          <BoxWrapper>
+            <BoxTitle>
+              <h2>Care instructions</h2>
+            </BoxTitle>
+            <BoxWrapContent>
+              <CareIcon>
+                {iconCare.map((items, index) => (
+                  <IconImage key={index}>
+                    <Image src={items.image} alt="Icon Care" />
+                  </IconImage>
+                ))}
+              </CareIcon>
+              <Box>
+                <p>{collection?.metadata?.careinstructions}</p>
+              </Box>
+            </BoxWrapContent>
+          </BoxWrapper>
+        </BoxFeatureContainer>
+      )}
       <BoxFeatureContainer>
         <BoxWrapper>
           <BoxTitle>

@@ -44,20 +44,30 @@ const HeadingCollecion = styled(Heading)`
 `;
 const ProductsPOD = (props) => {
   const { getProducts, collections } = props;
-  const imageCollection = [
-    {
-      url: "https://i.imgur.com/qQhxOYm.png",
-      name: "Kid's Clothing"
-    },
-    {
-      url: "https://i.imgur.com/YT0XzEY.png",
-      name: "Women's Clothing"
-    },
-    {
-      url: "https://i.imgur.com/BQJ1quD.jpg",
-      name: "Men's Clothing"
+  const getCollection = getProducts.map((item) => item.collection);
+  const filterValues = getCollection.filter(Boolean);
+  const map = new Map();
+  const result = [];
+  for (const item of filterValues) {
+    if (!map.has(item.id)) {
+      map.set(item.id, true);
+      result.push(item);
     }
-  ];
+  }
+  // const imageCollection = [
+  //   {
+  //     url: "https://i.imgur.com/qQhxOYm.png",
+  //     name: "Kid's Clothing"
+  //   },
+  //   {
+  //     url: "https://i.imgur.com/YT0XzEY.png",
+  //     name: "Women's Clothing"
+  //   },
+  //   {
+  //     url: "https://i.imgur.com/BQJ1quD.jpg",
+  //     name: "Men's Clothing"
+  //   }
+  // ];
   return (
     <SectionWrapper id="features">
       <Container>
@@ -143,20 +153,16 @@ const ProductsPOD = (props) => {
           <h1 className="titleSlogan">Collections</h1>
         </HeaderPOD>
         <GridServices>
-          {collections.map((items, index) => (
+          {result.map((items, index) => (
             <CardCus key={index}>
               <Box>
                 <Box>
                   <Link href={`collection/${items?.id}`}>
                     <a title={`View to ${items?.title}`} className="btncatalog">
                       <BoxCus>
-                        <HeadingCollecion content={items.title} />
+                        <HeadingCollecion content={items?.title} />
                         <img
-                          src={
-                            imageCollection[parseInt(index % 3)]
-                              ? imageCollection[parseInt(index % 3)]?.url
-                              : imageCollection[0]?.url
-                          }
+                          src={items.metadata.image1}
                           style={{
                             right: "0",
                             position: "absolute",
@@ -164,11 +170,7 @@ const ProductsPOD = (props) => {
                             height: "100%",
                             width: "auto"
                           }}
-                          alt={
-                            imageCollection[parseInt(index % 3)]
-                              ? imageCollection[parseInt(index % 3)]?.name
-                              : imageCollection[0]?.name
-                          }
+                          alt={items?.title}
                         />
                       </BoxCus>
                     </a>
@@ -182,5 +184,4 @@ const ProductsPOD = (props) => {
     </SectionWrapper>
   );
 };
-
 export default ProductsPOD;

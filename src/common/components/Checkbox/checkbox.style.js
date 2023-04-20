@@ -61,16 +61,16 @@ const CheckBoxStyle = styled.div`
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 16px;
-      height: 16px;
+      width: 26px;
+      height: 26px;
       border-radius: 3px;
       border: 1px solid ${themeGet('colors.borderColor', '#dadada')};
       position: relative;
       transition: all 0.3s ease;
       &::after {
         content: '';
-        width: 4px;
-        height: 10px;
+        width: 8px;
+        height: 20px;
         transform: rotate(45deg) scale(0.8);
         border-bottom: 2px solid ${themeGet('colors.white', '#ffffff')};
         border-right: 2px solid ${themeGet('colors.white', '#ffffff')};

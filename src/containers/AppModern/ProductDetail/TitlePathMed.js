@@ -15,6 +15,19 @@ const TitlePathMed = (props) => {
         <Link href="/catalog">
           <a className="text">Catalog</a>
         </Link>
+        {currentCat?.collection ? (
+          <>
+            {" - "}
+            <Link
+              prefetch={false}
+              href={`/collection/${currentCat.collection.id}`}
+            >
+              <a className="text">{currentCat.collection.title}</a>
+            </Link>
+          </>
+        ) : (
+          ""
+        )}
         {currentCat ? (
           <>
             {" - "}
@@ -40,19 +53,6 @@ const TitlePathMed = (props) => {
               href={`/product/${currentCat.alias_cat}/${currentCat.alias_subcat}`}
             >
               <a className="text">{currentCat.name_subcat}</a>
-            </Link>
-          </>
-        ) : (
-          ""
-        )}
-        {currentCat?.name_sub ? (
-          <>
-            {" - "}
-            <Link
-              prefetch={false}
-              href={`/services/${currentCat.alias_cat}/${currentCat.alias_subcat}/${currentCat.alias_sub}`}
-            >
-              <a className="text">{currentCat.name_sub}</a>
             </Link>
           </>
         ) : (
