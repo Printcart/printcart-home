@@ -1,19 +1,15 @@
 import Box from "common/components/Box";
 import Card from "common/components/Card";
+import CheckBox from "common/components/Checkbox";
+import Heading from "common/components/Heading";
 import Container from "common/components/UI/Container";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 import styled from "styled-components";
 import { ContentWrapper, SectionHeader } from "../appModern.style";
 import { GridServices } from "../InfoServices/GridServices";
-import InfoCollection from "./InfoCollection";
 import TitlePathMed from "../ProductDetail/TitlePathMed";
-import VendorInfo from "./VendorInfo";
 import WrapperServices from "../ServiceDetail/WrapperService";
-import ImageCollection from "./ImageCollection";
-import React from "react";
-import Heading from "common/components/Heading";
-import CheckBox from "common/components/Checkbox";
 
 const filter = [
   {
@@ -29,50 +25,6 @@ const filter = [
     name: "EUROPE"
   }
 ];
-const BoxCus = styled(Box)`
-  align-items: flex-start;
-  flex-direction: row;
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
-  display: flex;
-  position: relative;
-  margin-left: auto;
-  margin-right: auto;
-  width: 100%;
-  max-width: 1440px;
-  padding-left: 2rem;
-  padding-right: 2rem;
-`;
-const ProductInfo = styled(Box)`
-  max-width: 400px;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  top: 10rem;
-  position: sticky;
-  row-gap: 3rem;
-  flex-direction: column;
-  width: 100%;
-  display: flex;
-`;
-const ContainerProduct = styled(Box)`
-  row-gap: 0.5rem;
-  flex-direction: column;
-  display: flex;
-`;
-const HeadingProduct = styled(Heading)`
-  font-size: 2rem;
-  margin: 0;
-`;
-const DescProduct = styled.p`
-  font-size: 100%;
-  font-weight: 400;
-  line-height: 1.5rem;
-  margin: 0;
-`;
-const ContainerVendor = styled(Box)`
-  margin-top: 3.5rem;
-  display: block;
-`;
 const CardItems = styled(Card)`
   border-radius: 5px;
   box-shadow: 0 0 5px 0 rgb(0 0 50 / 25%);
@@ -95,38 +47,6 @@ const BoxHeader = styled(Box)`
   justify-content: space-between;
   margin-bottom: 0;
   padding-right: 0;
-`;
-const Sortby = styled.span`
-  display: block;
-  padding-right: 0.5rem;
-  font-size: 18px;
-`;
-const BoxSelect = styled(Box)`
-  height: 48px;
-  position: relative;
-  display: block;
-  border-radius: 5px;
-  outline: none;
-`;
-const Select = styled.select`
-  width: 100%;
-  height: 48px;
-  background: white;
-  padding-left: 5px;
-  font-size: 18px;
-  margin-left: 10px;
-  option {
-    color: black;
-    background: white;
-    display: flex;
-    white-space: pre;
-    min-height: 20px;
-    padding: 0px 2px 1px;
-  }
-`;
-const BoxSortby = styled(Box)`
-  display: inline-flex;
-  align-items: baseline;
 `;
 const GridProducts = styled.div`
   display: flex;
@@ -231,13 +151,13 @@ const CheckBoxFilter = styled(CheckBox)`
   }
 `;
 const GridFilter = styled(GridServices)`
-  margin-top: calc(1rem * -1);
-  margin-bottom: calc(1rem * -1);
+  margin-top: calc(-1rem);
+  margin-bottom: calc(-1rem);
   display: flex;
   align-items: flex-start;
   flex-wrap: wrap;
-  margin-left: calc(1rem * -1);
-  margin-right: calc(1rem * -1);
+  margin-left: calc(-1rem);
+  margin-right: calc(-1rem);
 `;
 
 const WrapImage = styled(Box)`
@@ -280,6 +200,26 @@ const PDiscount = styled.p`
   line-height: 1.5rem;
   color: #29ab51;
 `;
+const BoxDesc = styled(Box)`
+  height: 90px;
+  font-size: 17px;
+  color: #5c5c5c;
+  margin-bottom: 10px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+`;
+const BoxSlogan = styled(Box)`
+  padding: 48px 0;
+  background-color: #002e47;
+`;
+const TitleHeading = styled(Heading)`
+  color: #ddd !important;
+  font-size: 32px !important;
+  margin: 40px !important;
+`;
 const CollectionDetail = (props) => {
   const { collection } = props;
   const title = collection?.title;
@@ -288,13 +228,17 @@ const CollectionDetail = (props) => {
       <WrapperServices>
         <TitlePathMed currentCat={collection} />
         <SectionHeader>
-          <Box className="containerSlogan">
+          <BoxSlogan>
             <Container>
-              <h1 className="titleSlogan">
-                {title && `Products in the ${title} Category`}
-              </h1>
+              <TitleHeading
+                lineHeight="36px"
+                mb="27px"
+                fontWeight="500"
+                textAlign="center"
+                content={title && `Products in the ${title} Category`}
+              />
             </Container>
-          </Box>
+          </BoxSlogan>
         </SectionHeader>
         <Container>
           {/* <BoxCus>
@@ -352,7 +296,6 @@ const CollectionDetail = (props) => {
                         <StatusTitle>
                           <Status>New</Status>
                         </StatusTitle>
-                        <icon></icon>
                       </TextTitle>
                     </TitleFilter>
                     <ContentFilter>
@@ -413,37 +356,13 @@ const CollectionDetail = (props) => {
                                     From USD 5.92 with Printcart
                                   </PDiscount>
                                 </VendorPrice>
-                                <Box className="contPricesRelated">
-                                  {item?.variants && (
-                                    <Box className="pricesRelated">
-                                      € {item?.variants[0]?.prices[0]?.amount}
-                                    </Box>
+                                <BoxDesc>
+                                  {item.description && (
+                                    <ReactMarkdown>
+                                      {item.description}
+                                    </ReactMarkdown>
                                   )}
-                                </Box>
-                                <Box className="text">
-                                  <Box>
-                                    {item.description && (
-                                      <ReactMarkdown>
-                                        {item.description}
-                                      </ReactMarkdown>
-                                    )}
-                                  </Box>
-                                </Box>
-                                <Box>
-                                  <Box className="tag-info">
-                                    {item.tag && (
-                                      <strong>Tags: {item.tags}</strong>
-                                    )}
-                                  </Box>
-                                  <Box className="collection">
-                                    {item.collection && (
-                                      <strong>
-                                        Collection:{" "}
-                                        {item.collection.title || item?.title}
-                                      </strong>
-                                    )}
-                                  </Box>
-                                </Box>
+                                </BoxDesc>
                               </WrappContent>
                             </Box>
                           </CardItems>

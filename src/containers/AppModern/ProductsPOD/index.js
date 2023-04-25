@@ -47,6 +47,50 @@ const TitleHead = styled(Heading)`
   color: #5c5c5c;
   font-size: 32px;
 `;
+const ButtonProvider = styled(Button)`
+  display: inline-block;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  white-space: nowrap;
+  border-radius: 25px;
+  font-weight: 400;
+  height: 3rem;
+  min-width: 3rem;
+  font-size: 1.125rem;
+  background: #4299e1;
+  color: #fff;
+  &:hover {
+    background: #2b6cb0;
+  }
+`;
+const WrappProvider = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.48), transparent);
+`;
+const WrappBox = styled(Box)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  flex-direction: column;
+  max-width: 42rem;
+`;
+const ProviderHeading = styled(Heading)`
+  color: #fff;
+  font-size: 2.25rem;
+`;
+const PDescription = styled.p`
+  margin: 1.5rem;
+  color: #fff;
+  font-weight: 700;
+  line-height: 1.2;
+  font-size: 1rem;
+`;
 const ProductsPOD = (props) => {
   const { getProducts, collections } = props;
   const getCollection = getProducts.map((item) => item.collection);
@@ -126,9 +170,9 @@ const ProductsPOD = (props) => {
                         <ReactMarkdown>{item.description}</ReactMarkdown>
                       )}
                     </Box>
-                    <Box className="tag-info">
+                    {/* <Box className="tag-info">
                       {item.tag && <strong>Tags: {item.tags}</strong>}
-                    </Box>
+                    </Box> */}
                     <Box className="collection">
                       {item.collection && (
                         <strong>Collection: {item.collection.title}</strong>
@@ -140,26 +184,21 @@ const ProductsPOD = (props) => {
             ))}
           </GridServices>
           <ContainerPP>
-            <Box className="container">
-              <Box className="content-image">
-                <Heading
-                  as="h2"
+            <WrappProvider>
+              <WrappBox>
+                <ProviderHeading
                   lineHeight="1.2"
                   fontWeight="700"
                   content="Print Provider"
-                  className="heading"
                 />
-                <p className="desc">
+                <PDescription>
                   Printcart is the largest print on demand network
-                </p>
+                </PDescription>
                 <Box className="btnSee">
-                  <Button
-                    title="See print providers"
-                    className="btn-seeprint"
-                  />
+                  <ButtonProvider title="See print providers" />
                 </Box>
-              </Box>
-            </Box>
+              </WrappBox>
+            </WrappProvider>
           </ContainerPP>
           <HeaderPOD>
             <TitleHead
@@ -173,7 +212,7 @@ const ProductsPOD = (props) => {
             {result.map((items, index) => (
               <CardCus key={index}>
                 <Link href={`collection/${items?.id}`}>
-                  <a title={`View to ${items?.title}`} className="btncatalog">
+                  <a title={`View to ${items?.title}`}>
                     <BoxCus>
                       <HeadingCollecion content={items?.title} />
                       <img

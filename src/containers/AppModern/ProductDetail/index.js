@@ -40,8 +40,8 @@ const ProductDetail = (props) => {
     padding-top: 0;
     display: flex;
     flex-wrap: wrap;
-    margin-left: calc(1rem * -1);
-    margin-right: calc(1rem * -1);
+    margin-left: 1rem;
+    margin-right: 1rem;
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
   `;
@@ -106,9 +106,6 @@ const ProductDetail = (props) => {
                             )}
                           </Box>
                           <Box>
-                            <Box className="tag-info">
-                              {items.tag && <strong>Tags: {items.tags}</strong>}
-                            </Box>
                             <Box className="collection">
                               {items.collection && (
                                 <strong>
