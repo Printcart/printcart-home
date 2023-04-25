@@ -74,123 +74,128 @@ const ProductsPOD = (props) => {
   //   }
   // ];
   return (
-    <SectionWrapper id="features">
-      <Container>
-        <Box>
-          <Banner />
-        </Box>
-        <HeaderPOD>
-          <TitleHead
-            fontWeight="500"
-            textAlign="center"
-            lineHeight="36px"
-            content="Products"
-          />
-        </HeaderPOD>
-        <GridServices>
-          {getProducts.map((item, index) => (
-            <Card className="cardItem" key={index}>
-              <Box className="cardItem-child">
-                <Link href={`/product/${item?.id}`}>
-                  <a>
-                    <img
-                      style={{
-                        width: "100%",
-                        height: "300px",
-                        borderTopLeftRadius: "5px",
-                        borderTopRightRadius: "5px"
-                      }}
-                      src={item?.thumbnail}
-                    />
-                  </a>
-                </Link>
-                <Box className="content">
+    <>
+      <SectionWrapper id="features">
+        <Container>
+          <Box>
+            <Banner />
+          </Box>
+          <HeaderPOD>
+            <TitleHead
+              fontWeight="500"
+              textAlign="center"
+              lineHeight="36px"
+              content="Products"
+            />
+          </HeaderPOD>
+          <GridServices>
+            {getProducts.map((item, index) => (
+              <Card className="cardItem" key={index}>
+                <Box className="cardItem-child">
                   <Link href={`/product/${item?.id}`}>
-                    <a title={`View to ${item.title}`}>
-                      <h3 className="title-medusa">{item.title}</h3>
+                    <a>
+                      <img
+                        style={{
+                          width: "100%",
+                          height: "300px",
+                          borderTopLeftRadius: "5px",
+                          borderTopRightRadius: "5px"
+                        }}
+                        src={item?.thumbnail}
+                      />
                     </a>
                   </Link>
-                  <Box className="contPricesRelated">
-                    {item?.variants && (
-                      <Box className="pricesRelated">
-                        €{" "}
-                        {(item?.variants[0]?.prices[0]?.amount / 100).toFixed(
-                          2
-                        )}
-                      </Box>
-                    )}
-                  </Box>
-                  <Box className="text">
-                    {item.description && (
-                      <ReactMarkdown>{item.description}</ReactMarkdown>
-                    )}
-                  </Box>
-                  <Box className="tag-info">
-                    {item.tag && <strong>Tags: {item.tags}</strong>}
-                  </Box>
-                  <Box className="collection">
-                    {item.collection && (
-                      <strong>Collection: {item.collection.title}</strong>
-                    )}
+                  <Box className="content">
+                    <Link href={`/product/${item?.id}`}>
+                      <a title={`View to ${item.title}`}>
+                        <h3 className="title-medusa">{item.title}</h3>
+                      </a>
+                    </Link>
+                    <Box className="contPricesRelated">
+                      {item?.variants && (
+                        <Box className="pricesRelated">
+                          €{" "}
+                          {(item?.variants[0]?.prices[0]?.amount / 100).toFixed(
+                            2
+                          )}
+                        </Box>
+                      )}
+                    </Box>
+                    <Box className="text">
+                      {item.description && (
+                        <ReactMarkdown>{item.description}</ReactMarkdown>
+                      )}
+                    </Box>
+                    <Box className="tag-info">
+                      {item.tag && <strong>Tags: {item.tags}</strong>}
+                    </Box>
+                    <Box className="collection">
+                      {item.collection && (
+                        <strong>Collection: {item.collection.title}</strong>
+                      )}
+                    </Box>
                   </Box>
                 </Box>
-              </Box>
-            </Card>
-          ))}
-        </GridServices>
-        <ContainerPP>
-          <Box className="container">
-            <Box className="content-image">
-              <Heading
-                as="h2"
-                lineHeight="1.2"
-                fontWeight="700"
-                content="Print Provider"
-                className="heading"
-              />
-              <p className="desc">
-                Printcart is the largest print on demand network
-              </p>
-              <Box className="btnSee">
-                <Button title="See print providers" className="btn-seeprint" />
+              </Card>
+            ))}
+          </GridServices>
+          <ContainerPP>
+            <Box className="container">
+              <Box className="content-image">
+                <Heading
+                  as="h2"
+                  lineHeight="1.2"
+                  fontWeight="700"
+                  content="Print Provider"
+                  className="heading"
+                />
+                <p className="desc">
+                  Printcart is the largest print on demand network
+                </p>
+                <Box className="btnSee">
+                  <Button
+                    title="See print providers"
+                    className="btn-seeprint"
+                  />
+                </Box>
               </Box>
             </Box>
-          </Box>
-        </ContainerPP>
-        <HeaderPOD>
-          <TitleHead
-            fontWeight="500"
-            textAlign="center"
-            lineHeight="36px"
-            content="Collections"
-          />
-        </HeaderPOD>
-        <GridServices>
-          {result.map((items, index) => (
-            <CardCus key={index}>
-              <Link href={`collection/${items?.id}`}>
-                <a title={`View to ${items?.title}`} className="btncatalog">
-                  <BoxCus>
-                    <HeadingCollecion content={items?.title} />
-                    <img
-                      src={items.metadata.image1}
-                      style={{
-                        right: "0",
-                        position: "absolute",
-                        top: "0",
-                        height: "100%",
-                        width: "auto"
-                      }}
-                      alt={items?.title}
-                    />
-                  </BoxCus>
-                </a>
-              </Link>
-            </CardCus>
-          ))}
-        </GridServices>
-      </Container>
-    </SectionWrapper>
+          </ContainerPP>
+          <HeaderPOD>
+            <TitleHead
+              fontWeight="500"
+              textAlign="center"
+              lineHeight="36px"
+              content="Collections"
+            />
+          </HeaderPOD>
+          <GridServices>
+            {result.map((items, index) => (
+              <CardCus key={index}>
+                <Link href={`collection/${items?.id}`}>
+                  <a title={`View to ${items?.title}`} className="btncatalog">
+                    <BoxCus>
+                      <HeadingCollecion content={items?.title} />
+                      <img
+                        src={items.metadata.image1}
+                        style={{
+                          right: "0",
+                          position: "absolute",
+                          top: "0",
+                          height: "100%",
+                          width: "auto"
+                        }}
+                        alt={items?.title}
+                      />
+                    </BoxCus>
+                  </a>
+                </Link>
+              </CardCus>
+            ))}
+          </GridServices>
+        </Container>
+      </SectionWrapper>
+    </>
   );
 };
 export default ProductsPOD;

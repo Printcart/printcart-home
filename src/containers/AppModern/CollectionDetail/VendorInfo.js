@@ -150,7 +150,7 @@ const DescProce = styled.p`
 `;
 const VendorInfo = () => {
   return (
-    <Box>
+    <>
       <Box>
         <Heading content="All Print Providers" />
         <Box>
@@ -265,7 +265,7 @@ const VendorInfo = () => {
           </BoxVendor>
         </Box>
       </Box>
-    </Box>
+    </>
   );
 };
 export default VendorInfo;

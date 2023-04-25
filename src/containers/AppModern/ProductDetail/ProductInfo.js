@@ -24,17 +24,21 @@ const PDescription = styled.p`
 const ProductInfo = (props) => {
   const { product } = props;
   return (
-    <WrapperInfo>
-      <Box>
-        {product?.product?.collection && (
-          <Link href={`/collection/${product?.product?.collection?.id}`}>
-            <a>{product?.product?.collection.title}</a>
-          </Link>
-        )}
-        <ProductHeading content={product?.product?.title} lineHeight="2.5rem" />
-        <PDescription>{product?.product?.description}</PDescription>
-        {/**Select Size */}
-        {/* {product?.product?.variants?.length > 0 && (
+    <>
+      <WrapperInfo>
+        <Box>
+          {product?.product?.collection && (
+            <Link href={`/collection/${product?.product?.collection?.id}`}>
+              <a>{product?.product?.collection.title}</a>
+            </Link>
+          )}
+          <ProductHeading
+            content={product?.product?.title}
+            lineHeight="2.5rem"
+          />
+          <PDescription>{product?.product?.description}</PDescription>
+          {/**Select Size */}
+          {/* {product?.product?.variants?.length > 0 && (
                         <Box className="selectSize">
                           {product.product.options.map((option, index) => (
                             <Box className="cont-size" key={index}>
@@ -53,8 +57,8 @@ const ProductInfo = (props) => {
                           ))}
                         </Box>
                       )} */}
-        {/**PRICE */}
-        {/* <Box className="contPrices">
+          {/**PRICE */}
+          {/* <Box className="contPrices">
                         {product?.product?.variants && (
                           <Box className="pricesDetail">
                             €{" "}
@@ -65,16 +69,16 @@ const ProductInfo = (props) => {
                           </Box>
                         )}
                       </Box> */}
-        {/* <Button
+          {/* <Button
                         style={{
                           borderRadius: "5px",
                           backgroundColor: "#111827"
                         }}
                         title="ADD TO CART"
                       /> */}
-      </Box>
-      {/*Product info - shipping */}
-      {/* <Box className="contProPri">
+        </Box>
+        {/*Product info - shipping */}
+        {/* <Box className="contProPri">
                 <Tab.Group>
                   <Tab.List className="tabList">
                     {tabs.map((item, index) => (
@@ -95,8 +99,9 @@ const ProductInfo = (props) => {
                   </Tab.Panels>
                 </Tab.Group>
               </Box> */}
-      {/**** */}
-    </WrapperInfo>
+        {/**** */}
+      </WrapperInfo>
+    </>
   );
 };
 export default ProductInfo;

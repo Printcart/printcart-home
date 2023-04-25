@@ -172,7 +172,7 @@ const InfoCollection = (props) => {
     }
   ];
   return (
-    <React.Fragment>
+    <>
       {collection?.metadata?.about && (
         <BoxFeatureContainer>
           <BoxWrapper>
@@ -252,9 +252,7 @@ const InfoCollection = (props) => {
                     <Table>
                       <thead>
                         <tr>
-                          <th>
-                            <div />
-                          </th>
+                          <th></th>
                           {parramtable.map((item, index) => (
                             <th className="align-top" key={index}>
                               <div className="cover-content">
@@ -292,7 +290,7 @@ const InfoCollection = (props) => {
           </BoxWrapContent>
         </BoxWrapper>
       </BoxFeatureContainer>
-    </React.Fragment>
+    </>
   );
 };
 export default InfoCollection;

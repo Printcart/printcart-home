@@ -93,33 +93,38 @@ const ImageGallery = (props) => {
     }
   };
   return (
-    <WrappImage>
-      <Container>
-        <ThumbnailImage>
-          {product?.product?.images?.map((image, index) => (
-            <ButtonChange key={index} onClick={() => handleScrollTo(image.id)}>
+    <>
+      <WrappImage>
+        <Container>
+          <ThumbnailImage>
+            {product?.product?.images?.map((image, index) => (
+              <ButtonChange
+                key={index}
+                onClick={() => handleScrollTo(image.id)}
+              >
+                <span>
+                  <ThumbnailItems src={image.url} alt="Thumbnail" />
+                </span>
+              </ButtonChange>
+            ))}
+          </ThumbnailImage>
+          <MainImage>
+            <WrapBigImage
+            // ref={(image) => imageRefs.current.push(image)}
+            // key={index}
+            // id={image.id}
+            >
               <span>
-                <ThumbnailItems src={image.url} alt="Thumbnail" />
+                <ImageBig
+                  src={product?.product?.images[0]?.url}
+                  alt="Image Product"
+                />
               </span>
-            </ButtonChange>
-          ))}
-        </ThumbnailImage>
-        <MainImage>
-          <WrapBigImage
-          // ref={(image) => imageRefs.current.push(image)}
-          // key={index}
-          // id={image.id}
-          >
-            <span>
-              <ImageBig
-                src={product?.product?.images[0]?.url}
-                alt="Image Product"
-              />
-            </span>
-          </WrapBigImage>
-        </MainImage>
-      </Container>
-    </WrappImage>
+            </WrapBigImage>
+          </MainImage>
+        </Container>
+      </WrappImage>
+    </>
   );
 };
 export default ImageGallery;

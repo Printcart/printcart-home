@@ -48,6 +48,9 @@ const ProductDetail = (props) => {
   const RelatedHeading = styled(Heading)`
     margin-top: 1rem;
   `;
+  const BoxRelated = styled(Box)`
+    margin-bottom: 1.5rem;
+  `;
   return (
     <ContentWrapper>
       <WrapperServices>
@@ -60,7 +63,7 @@ const ProductDetail = (props) => {
           <VendorInfo />
           <InfoCollection collection={product?.product?.collection} />
           {/**RELATED PRODUCTS */}
-          <Box>
+          <BoxRelated>
             <RelatedHeading content="Related Products" />
             <GridServices>
               {products.map(
@@ -120,7 +123,7 @@ const ProductDetail = (props) => {
                   )
               )}
             </GridServices>
-          </Box>
+          </BoxRelated>
         </Container>
       </WrapperServices>
     </ContentWrapper>
