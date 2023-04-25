@@ -62,75 +62,12 @@ const WrapperServices = styled.section`
     flex-direction: column;
     width: 100%;
   }
-  .wrappImage {
-    align-items: flex-start;
-    display: flex;
-    position: relative;
-  }
-  .wrapperChild {
-    display: flex;
-    row-gap: 1rem;
-    flex-direction: column;
-    top: 5rem;
-    position: sticky;
-  }
   .btnchange {
     border-width: 1px;
     width: 3rem;
     height: 3.5rem;
     position: relative;
     cursor: pointer;
-  }
-  .imageProduct {
-    position: absolute;
-    inset: 0px;
-    box-sizing: border-box;
-    padding: 0px;
-    border: none;
-    margin: auto;
-    display: block;
-    width: 0px;
-    height: 0px;
-    min-width: 100%;
-    max-width: 100%;
-    min-height: 100%;
-    max-height: 100%;
-    object-fit: cover;
-  }
-  .wrappbig {
-    margin-left: 4rem;
-    margin-right: 4rem;
-    max-width: calc(432px + 2 * 1rem);
-    position: relative;
-    width: 100%;
-    min-height: 1px;
-    row-gap: 1rem;
-    flex-direction: column;
-    flex: 1 1 0%;
-    display: flex;
-  }
-  .contImage {
-    position: relative;
-    padding-top: 100%;
-    background-color: #f7f7f7;
-    overflow: hidden;
-  }
-  
-  .imageProductBig {
-    position: absolute;
-    inset: 0px;
-    box-sizing: border-box;
-    padding: 0px;
-    border: none;
-    margin: auto;
-    display: block;
-    width: 0px;
-    height: 0px;
-    min-width: 100%;
-    max-width: 100%;
-    min-height: 100%;
-    max-height: 100%;
-    object-fit: cover;
   }
   .selectSize {
     row-gap: 1.5rem;
