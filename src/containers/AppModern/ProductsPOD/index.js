@@ -10,6 +10,7 @@ import Banner from "./Banner";
 import HeaderPOD, { ContainerPP } from "./productspod.style";
 import Link from "next/link";
 import styled from "styled-components";
+import React from "react";
 
 const CardCus = styled(Card)`
   border-radius: 5px;
@@ -42,6 +43,10 @@ const HeadingCollecion = styled(Heading)`
   line-height: 2.5rem;
   font-size: 1.75rem;
 `;
+const TitleHead = styled(Heading)`
+  color: #5c5c5c;
+  font-size: 32px;
+`;
 const ProductsPOD = (props) => {
   const { getProducts, collections } = props;
   const getCollection = getProducts.map((item) => item.collection);
@@ -71,9 +76,16 @@ const ProductsPOD = (props) => {
   return (
     <SectionWrapper id="features">
       <Container>
-        <Banner />
+        <Box>
+          <Banner />
+        </Box>
         <HeaderPOD>
-          <h1 className="titleSlogan">Product</h1>
+          <TitleHead
+            fontWeight="500"
+            textAlign="center"
+            lineHeight="36px"
+            content="Products"
+          />
         </HeaderPOD>
         <GridServices>
           {getProducts.map((item, index) => (
@@ -109,21 +121,17 @@ const ProductsPOD = (props) => {
                     )}
                   </Box>
                   <Box className="text">
-                    <Box>
-                      {item.description && (
-                        <ReactMarkdown>{item.description}</ReactMarkdown>
-                      )}
-                    </Box>
+                    {item.description && (
+                      <ReactMarkdown>{item.description}</ReactMarkdown>
+                    )}
                   </Box>
-                  <Box>
-                    <Box className="tag-info">
-                      {item.tag && <strong>Tags: {item.tags}</strong>}
-                    </Box>
-                    <Box className="collection">
-                      {item.collection && (
-                        <strong>Collection: {item.collection.title}</strong>
-                      )}
-                    </Box>
+                  <Box className="tag-info">
+                    {item.tag && <strong>Tags: {item.tags}</strong>}
+                  </Box>
+                  <Box className="collection">
+                    {item.collection && (
+                      <strong>Collection: {item.collection.title}</strong>
+                    )}
                   </Box>
                 </Box>
               </Box>
@@ -150,33 +158,34 @@ const ProductsPOD = (props) => {
           </Box>
         </ContainerPP>
         <HeaderPOD>
-          <h1 className="titleSlogan">Collections</h1>
+          <TitleHead
+            fontWeight="500"
+            textAlign="center"
+            lineHeight="36px"
+            content="Collections"
+          />
         </HeaderPOD>
         <GridServices>
           {result.map((items, index) => (
             <CardCus key={index}>
-              <Box>
-                <Box>
-                  <Link href={`collection/${items?.id}`}>
-                    <a title={`View to ${items?.title}`} className="btncatalog">
-                      <BoxCus>
-                        <HeadingCollecion content={items?.title} />
-                        <img
-                          src={items.metadata.image1}
-                          style={{
-                            right: "0",
-                            position: "absolute",
-                            top: "0",
-                            height: "100%",
-                            width: "auto"
-                          }}
-                          alt={items?.title}
-                        />
-                      </BoxCus>
-                    </a>
-                  </Link>
-                </Box>
-              </Box>
+              <Link href={`collection/${items?.id}`}>
+                <a title={`View to ${items?.title}`} className="btncatalog">
+                  <BoxCus>
+                    <HeadingCollecion content={items?.title} />
+                    <img
+                      src={items.metadata.image1}
+                      style={{
+                        right: "0",
+                        position: "absolute",
+                        top: "0",
+                        height: "100%",
+                        width: "auto"
+                      }}
+                      alt={items?.title}
+                    />
+                  </BoxCus>
+                </a>
+              </Link>
             </CardCus>
           ))}
         </GridServices>

@@ -26,23 +26,6 @@ const HeaderPOD = styled.header`
       margin-bottom: 10px;
     }
   }
-  h2 {
-    font-size: 30px;
-    line-height: 36px;
-    font-weight: 700;
-    color: ${themeGet("colors.headingColor", "#0F2137")};
-    margin: 0;
-    letter-spacing: -1px;
-    @media only screen and (max-width: 1366px) {
-      font-size: 28px;
-      letter-spacing: -0.7px;
-    }
-    @media only screen and (max-width: 992px) {
-      font-size: 26px;
-      line-height: 38px;
-      letter-spacing: -0.5px;
-    }
-  }
   .containerSlogan {
     padding: 40px 70px;
     background-color: #002e47;

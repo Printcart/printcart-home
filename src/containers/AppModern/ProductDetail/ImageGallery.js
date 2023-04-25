@@ -1,16 +1,16 @@
 import Box from "common/components/Box";
 import Image from "common/components/Image";
-import React, { useRef } from "react";
+import { useRef } from "react";
 import styled from "styled-components";
 
-const BoxLeft = styled(Box)`
+const WrappImage = styled(Box)`
   position: relative;
   width: 100%;
   box-sizing: border-box;
   flex: 0 0 60%;
   max-width: 60%;
 `;
-const WrappImage = styled(Box)`
+const Container = styled(Box)`
   align-items: flex-start;
   display: flex;
   position: relative;
@@ -93,8 +93,8 @@ const ImageGallery = (props) => {
     }
   };
   return (
-    <BoxLeft>
-      <WrappImage>
+    <WrappImage>
+      <Container>
         <ThumbnailImage>
           {product?.product?.images?.map((image, index) => (
             <ButtonChange key={index} onClick={() => handleScrollTo(image.id)}>
@@ -118,8 +118,8 @@ const ImageGallery = (props) => {
             </span>
           </WrapBigImage>
         </MainImage>
-      </WrappImage>
-    </BoxLeft>
+      </Container>
+    </WrappImage>
   );
 };
 export default ImageGallery;
