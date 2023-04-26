@@ -17,6 +17,22 @@ import ProductParam from "./ProductParam";
 import ShippingInfo from "./ShippingInfo";
 import TitlePathMed from "./TitlePathMed";
 
+const WrappInfo = styled(Box)`
+  align-items: center;
+  padding-top: 0;
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+`;
+const RelatedHeading = styled(Heading)`
+  margin-top: 1rem;
+`;
+const BoxRelated = styled(Box)`
+  margin-bottom: 1.5rem;
+`;
 const ProductDetail = (props) => {
   const { product, products } = props;
   // const val = product?.product?.options.map((option) =>
@@ -35,31 +51,16 @@ const ProductDetail = (props) => {
       component: <ShippingInfo />
     }
   ];
-  const GridProduct = styled.div`
-    align-items: center;
-    padding-top: 0;
-    display: flex;
-    flex-wrap: wrap;
-    margin-left: 1rem;
-    margin-right: 1rem;
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
-  `;
-  const RelatedHeading = styled(Heading)`
-    margin-top: 1rem;
-  `;
-  const BoxRelated = styled(Box)`
-    margin-bottom: 1.5rem;
-  `;
+
   return (
     <ContentWrapper>
       <WrapperServices>
         <TitlePathMed currentCat={product.product} />
         <Container>
-          <GridProduct>
+          <WrappInfo>
             <ImageGallery product={product} />
             <ProductInfo product={product} />
-          </GridProduct>
+          </WrappInfo>
           <VendorInfo />
           <InfoCollection collection={product?.product?.collection} />
           {/**RELATED PRODUCTS */}
