@@ -91,6 +91,10 @@ const Navbar = () => {
       url: "/services"
     },
     {
+      title: "Catalog",
+      url: "/catalog"
+    },
+    {
       title: "Printshop",
       url: "#",
       submenu: [
@@ -181,7 +185,7 @@ const Navbar = () => {
           {/* end of main menu */}
           <nav>
             <div className="nav-wrapper">
-              <ul id="nav-mobile" className="menu" style={navbar}>
+              <ul id="nav-mobile" className="menu">
                 {menuItems.map((menu, index) => (
                   <MenuItems items={menu} key={index} />
                 ))}
