@@ -47,7 +47,7 @@ export async function getStaticProps({ params }) {
 
   return {
     props: {
-      collection: result.collection
+      collection: result?.collection || {}
     },
     revalidate: 1
   };

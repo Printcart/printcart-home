@@ -285,7 +285,7 @@ const CollectionDetail = (props) => {
                 </BoxSelect>
               </BoxSortby> */}
             </BoxHeader>
-            <Box>{collection.metadata.short_description}</Box>
+            {collection?.metadata?.short_description}
             <GridProducts>
               <WrapperFilter>
                 <BoxFilter>
@@ -305,7 +305,6 @@ const CollectionDetail = (props) => {
                             <Boxfield key={index}>
                               <Label>
                                 <BoxName>
-                                  <Input type="checkbox" />
                                   <CheckBoxFilter labelText={item.name} />
                                 </BoxName>
                               </Label>
@@ -317,10 +316,10 @@ const CollectionDetail = (props) => {
                   </Box>
                 </BoxFilter>
               </WrapperFilter>
-              {collection.products.length > 0 && (
+              {collection?.products?.length > 0 && (
                 <WrapperProduct>
                   <GridFilter>
-                    {collection.products.map(
+                    {collection?.products.map(
                       (item, index) =>
                         item.status === "published" && (
                           <CardItems key={index}>
