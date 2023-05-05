@@ -1,21 +1,20 @@
-import React, { useState, useRef } from "react";
-import Fade from "react-reveal/Fade";
-import ScrollSpyMenu from "common/components/ScrollSpyMenu";
-import Scrollspy from "react-scrollspy";
+import LogoImage from "common/assets/image/appModern/Logo-printcart-white.png";
+import LogoImageAlt from "common/assets/image/appModern/printcart-logo.png";
+import Button from "common/components/Button";
+import Container from "common/components/UI/Container";
+import Logo from "common/components/UIElements/Logo";
+import useOnClickOutside from "common/hooks/useOnClickOutside";
+import { useRef, useState } from "react";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import { Icon } from "react-icons-kit";
 import { menu } from "react-icons-kit/feather/menu";
-import { x } from "react-icons-kit/feather/x";
 import { search } from "react-icons-kit/feather/search";
-import Logo from "common/components/UIElements/Logo";
-import Button from "common/components/Button";
-import Container from "common/components/UI/Container";
-import useOnClickOutside from "common/hooks/useOnClickOutside";
+import { x } from "react-icons-kit/feather/x";
+import Fade from "react-reveal/Fade";
+import Scrollspy from "react-scrollspy";
 import NavbarWrapper, { MenuArea, MobileMenu, Search } from "./navbar.style";
-import LogoImage from "common/assets/image/appModern/Logo-printcart-white.png";
-import LogoImageAlt from "common/assets/image/appModern/printcart-logo.png";
-
 import { navbar } from "common/data/AppModern";
+import MenuItems from "./MenuItems";
 
 const Navbar = () => {
   const { navMenu } = navbar;
@@ -82,6 +81,83 @@ const Navbar = () => {
       mobileMenu: false
     });
   };
+  const menuItems = [
+    {
+      title: "Home",
+      url: "/"
+    },
+    {
+      title: "Services",
+      url: "/services"
+    },
+    {
+      title: "Printshop",
+      url: "#",
+      submenu: [
+        {
+          title: "Shopify PrintShop",
+          url: "https://solution.printcart.com/web/shopify-printshop-website",
+          target: "_blank"
+        },
+        {
+          title: "Magento Printmart",
+          url: "https://solution.printcart.com/web/magento-printshop-website",
+          target: "_blank"
+        },
+        {
+          title: "Wordpress Printshop",
+          url: "https://solution.printcart.com/web/wordpress-printshop-website",
+          target: "_blank"
+        },
+        {
+          title: "T-shirt Website",
+          url: "https://solution.printcart.com/web/tshirt-website-template",
+          target: "_blank"
+        },
+        {
+          title: "T-shirt Shopify",
+          url: "https://solution.printcart.com/web/shopify-tshirt-website",
+          target: "_blank"
+        }
+      ]
+    },
+    {
+      title: "Integration",
+      url: "#",
+      submenu: [
+        {
+          title: "Premium Printcart API",
+          url: "https://solution.printcart.com/app/premium-printcart-api",
+          target: "_blank"
+        },
+        {
+          title: "Web To Print Shopify",
+          url: "https://solution.printcart.com/app/web-to-print-shopify",
+          target: "_blank"
+        },
+        {
+          title: "Mangento Online Design",
+          url: "https://solution.printcart.com/app/magento-premium-online-product-designer-extension",
+          target: "_blank"
+        },
+        {
+          title: "WP Product Designer",
+          url: "https://solution.printcart.com/app/wordpress-web-2-print-product-designer-plugin",
+          target: "_blank"
+        }
+      ]
+    },
+    {
+      title: "Community",
+      url: "https://solution.printcart.com/community/",
+      target: "_blank"
+    },
+    {
+      title: "Documentation",
+      url: "https://docs.printcart.com/",
+      target: "_blank"
+    }
+  ];
 
   return (
     <NavbarWrapper className="navbar">
@@ -106,56 +182,9 @@ const Navbar = () => {
           <nav>
             <div className="nav-wrapper">
               <ul id="nav-mobile" className="menu" style={navbar}>
-                <li>
-                  <a href="/" offset={84}>
-                    Home
-                  </a>
-                </li>
-                <li>
-                  <a href="/services" rel="nofollow" offset={84}>
-                    Services
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://solution.printcart.com/"
-                    target="_blank"
-                    rel="nofollow"
-                    offset={84}
-                  >
-                    Solution
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://solution.printcart.com/ecommerce-tutorials"
-                    target="_blank"
-                    rel="nofollow"
-                    offset={84}
-                  >
-                    Tutorials
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://solution.printcart.com/case-studies"
-                    target="_blank"
-                    rel="nofollow"
-                    offset={84}
-                  >
-                    Case Study
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://docs.printcart.com/"
-                    target="_blank"
-                    rel="nofollow"
-                    offset={84}
-                  >
-                    Documentation
-                  </a>
-                </li>
+                {menuItems.map((menu, index) => (
+                  <MenuItems items={menu} key={index} />
+                ))}
               </ul>
             </div>
           </nav>

@@ -39,12 +39,12 @@ const FAQfeature = (props) => {
                         </a>
                       </Disclosure.Button>
                       <Disclosure.Panel className="text-gray-500">
-                        <Box
+                        <div
                           className="answer"
                           dangerouslySetInnerHTML={{
-                            __html: items.attributes.answer,
+                            __html: items.attributes.answer
                           }}
-                        />
+                        ></div>
                       </Disclosure.Panel>
                     </Disclosure>
                   </Box>
@@ -68,10 +68,10 @@ const FAQfeature = (props) => {
                           </a>
                         </Disclosure.Button>
                         <Disclosure.Panel className="text-gray-500">
-                          <Box
+                          <div
                             className="answer"
                             dangerouslySetInnerHTML={{
-                              __html: items.attributes.answer,
+                              __html: items.attributes.answer
                             }}
                           />
                         </Disclosure.Panel>
