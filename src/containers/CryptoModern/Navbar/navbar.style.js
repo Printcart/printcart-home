@@ -71,7 +71,7 @@ export const MenuArea = styled.div`
         margin: 0 17px;
       }
       &:first-child {
-        margin-left: 0;
+        margin-left: 10;
       }
       &:last-child {
         margin-right: 0;

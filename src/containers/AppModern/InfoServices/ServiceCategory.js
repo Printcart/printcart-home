@@ -17,7 +17,7 @@ const ServiceCategory = (props) => {
       <Link href={`/services`}>
         <a className="btncategory">All</a>
       </Link>
-      {dataNew.length > 0 && <Box className="space" />}
+      {dataNew.length > 0 && <Box className="space">{""}</Box>}
       {dataNew.map(
         (items, index) =>
           index < qty && (
