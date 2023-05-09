@@ -46,6 +46,7 @@ const HeadingCollecion = styled(Heading)`
 const TitleHead = styled(Heading)`
   color: #5c5c5c;
   font-size: 32px;
+  margin-top: 20px;
 `;
 const ButtonProvider = styled(Button)`
   display: inline-block;

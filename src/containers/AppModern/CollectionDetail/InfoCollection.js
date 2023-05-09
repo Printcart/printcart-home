@@ -12,34 +12,22 @@ import styled from "styled-components";
 
 const parramtable = [
   {
-    size: "XS",
-    valuewith: "17.72",
-    valuelength: "27.17"
+    size: "XS"
   },
   {
-    size: "S",
-    valuewith: "18.90",
-    valuelength: "28.35"
+    size: "S"
   },
   {
-    size: "M",
-    valuewith: "20.08",
-    valuelength: "29.53"
+    size: "M"
   },
   {
-    size: "L",
-    valuewith: "21.26",
-    valuelength: "30.71"
+    size: "L"
   },
   {
-    size: "XL",
-    valuewith: "22.44",
-    valuelength: "31.89"
+    size: "XL"
   },
   {
-    size: "2XL",
-    valuewith: "23.62",
-    valuelength: "33.07"
+    size: "2XL"
   }
 ];
 const iconCare = [
@@ -149,6 +137,10 @@ const FeatureDesc = styled.p`
 `;
 const InfoCollection = (props) => {
   const { collection } = props;
+  const formatSizeWidth = collection?.metadata?.widthSize;
+  const widthSize = formatSizeWidth?.split(",");
+  const formatSizeHeight = collection?.metadata?.heightSize;
+  const heightSize = formatSizeHeight?.split(",");
   const features = [
     {
       media: `${collection?.metadata?.icon1 ?? ""}`,
@@ -235,61 +227,63 @@ const InfoCollection = (props) => {
           </BoxWrapper>
         </BoxFeatureContainer>
       )}
-      <BoxFeatureContainer>
-        <BoxWrapper>
-          <BoxTitle>
-            <h2>Size guide</h2>
-          </BoxTitle>
-          <BoxWrapContent>
-            <p>All measurements in the table refer to product dimensions.</p>
-            <Box>
+      {collection?.metadata?.widthSize && collection?.metadata?.heightSize && (
+        <BoxFeatureContainer>
+          <BoxWrapper>
+            <BoxTitle>
+              <h2>Size guide</h2>
+            </BoxTitle>
+            <BoxWrapContent>
+              <p>All measurements in the table refer to product dimensions.</p>
               <Box>
-                <TableHeader>
-                  <p>Imperial</p>
-                </TableHeader>
                 <Box>
+                  <TableHeader>
+                    <p>Imperial</p>
+                  </TableHeader>
                   <Box>
-                    <Table>
-                      <thead>
-                        <tr>
-                          <th></th>
-                          {parramtable.map((item, index) => (
-                            <th className="align-top" key={index}>
-                              <div className="cover-content">
-                                <div className="content-one">{item.size}</div>
-                              </div>
-                            </th>
-                          ))}
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <React.Fragment>
+                    <Box>
+                      <Table>
+                        <thead>
                           <tr>
-                            <td className="pcTitle">Width,in</td>
-                            {parramtable.map((items, index) => (
-                              <td className="value" key={index}>
-                                {items.valuewith}
-                              </td>
+                            <th></th>
+                            {parramtable.map((item, index) => (
+                              <th className="align-top" key={index}>
+                                <div className="cover-content">
+                                  <div className="content-one">{item.size}</div>
+                                </div>
+                              </th>
                             ))}
                           </tr>
-                          <tr>
-                            <td className="pcTitle">Length,in</td>
-                            {parramtable.map((items, index) => (
-                              <td className="value" key={index}>
-                                {items.valuelength}
-                              </td>
-                            ))}
-                          </tr>
-                        </React.Fragment>
-                      </tbody>
-                    </Table>
+                        </thead>
+                        <tbody>
+                          <React.Fragment>
+                            <tr>
+                              <td className="pcTitle">Width,in</td>
+                              {widthSize.map((items, index) => (
+                                <td className="value" key={index}>
+                                  {items}
+                                </td>
+                              ))}
+                            </tr>
+                            <tr>
+                              <td className="pcTitle">Length,in</td>
+                              {heightSize.map((items, index) => (
+                                <td className="value" key={index}>
+                                  {items}
+                                </td>
+                              ))}
+                            </tr>
+                          </React.Fragment>
+                        </tbody>
+                      </Table>
+                    </Box>
                   </Box>
                 </Box>
               </Box>
-            </Box>
-          </BoxWrapContent>
-        </BoxWrapper>
-      </BoxFeatureContainer>
+            </BoxWrapContent>
+          </BoxWrapper>
+        </BoxFeatureContainer>
+      )}
     </>
   );
 };
