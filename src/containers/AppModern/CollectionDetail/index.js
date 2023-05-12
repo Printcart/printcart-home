@@ -241,49 +241,9 @@ const CollectionDetail = (props) => {
           </BoxSlogan>
         </SectionHeader>
         <Container>
-          {/* <BoxCus>
-            <ImageCollection image={collection.metadata?.image1} />
-            <ProductInfo>
-              <ContainerProduct>
-                {collection && (
-                  <Link href={`/collection/${collection?.id}`}>
-                    <a>{collection.title}</a>
-                  </Link>
-                )}
-                <HeadingProduct
-                  content={collection?.title}
-                  fontWeight="400"
-                  lineHeight="36px"
-                />
-                <DescProduct>
-                  {collection?.metadata?.short_description}
-                </DescProduct>
-              </ContainerProduct> */}
-          {/*Product info - shipping */}
-          {/**** */}
-          {/* </ProductInfo>
-          </BoxCus> */}
-          {/* <ContainerVendor>
-            <VendorInfo />
-          </ContainerVendor>
-          <Box>
-            <InfoCollection collection={collection} />
-          </Box> */}
           <WrappProduc>
             <BoxHeader>
               <Heading content={title} lineHeight="2.5rem" fontWeight="600" />
-              {/* <BoxSortby>
-                <Sortby>Sort By</Sortby>
-                <BoxSelect>
-                  <Select>
-                    <option value="" hidden>
-                      Latest
-                    </option>
-                    <option value="1">Lowest price</option>
-                    <option value="2">Hightest price</option>
-                  </Select>
-                </BoxSelect>
-              </BoxSortby> */}
             </BoxHeader>
             {collection?.metadata?.short_description}
             <GridProducts>

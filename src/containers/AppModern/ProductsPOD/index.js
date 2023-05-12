@@ -11,6 +11,9 @@ import HeaderPOD, { ContainerPP } from "./productspod.style";
 import Link from "next/link";
 import styled from "styled-components";
 import React from "react";
+import ExploreProducts from "./ExploreProducts";
+import { ic_keyboard_arrow_right } from "react-icons-kit/md/ic_keyboard_arrow_right";
+import Icon from "react-icons-kit";
 
 const CardCus = styled(Card)`
   border-radius: 5px;
@@ -43,10 +46,11 @@ const HeadingCollecion = styled(Heading)`
   line-height: 2.5rem;
   font-size: 1.75rem;
 `;
-const TitleHead = styled(Heading)`
-  color: #5c5c5c;
-  font-size: 32px;
-  margin-top: 20px;
+const TitleHead = styled.h4`
+  margin: 0;
+  font-size: 2em;
+  line-height: 2rem;
+  font-weight: 700;
 `;
 const ButtonProvider = styled(Button)`
   display: inline-block;
@@ -92,6 +96,97 @@ const PDescription = styled.p`
   line-height: 1.2;
   font-size: 1rem;
 `;
+const HeadingCatalog = styled(Heading)`
+  font-size: 2rem;
+`;
+const ContainerBox = styled(Box)`
+  margin-bottom: 3rem;
+  display: block;
+`;
+const HeaderBox = styled(Box)`
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: calc(-1rem);
+  margin-right: calc(-1rem);
+`;
+const TitleBox = styled(Box)`
+  max-width: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  @media (min-width: 960px) {
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    flex: 0 0 50%;
+    margin-left: 25%;
+    text-align: center;
+  }
+`;
+const RedirectAll = styled(Box)`
+  text-align: right;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  @media (min-width: 960px) {
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    flex: 0 0 25%;
+    max-width: 25%;
+  }
+`;
+const TagA = styled.a`
+  cursor: pointer;
+  text-decoration: none;
+  outline: none;
+  &:hover {
+    color: #0013e7;
+    text-decoration: underline;
+  }
+`;
+const SpanLink = styled.span`
+  cursor: pointer;
+  color: #424dc6;
+  transition: color 0.15s ease;
+  text-decoration: none;
+  outline: none;
+  &:hover {
+    color: #0013e7;
+    text-decoration: underline;
+  }
+`;
+
+const ContainerProducts = styled(Box)`
+  display: block;
+  position: relative;
+  min-height: 402px;
+  @media (min-width: 1168px) {
+    min-height: 416px;
+  }
+  @media (min-width: 960px) {
+    min-height: 380px;
+  }
+  @media (min-width: 840px) {
+    min-height: 418px;
+  }
+`;
+const ContentProducts = styled(Box)`
+  position: relative;
+  display: block;
+  min-height: 54px;
+`;
+const GridProducts = styled(Box)`
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-x: contain;
+  position: relative;
+  display: flex;
+  flex-wrap: nowrap;
+  list-style: none;
+  scroll-behavior: smooth;
+  align-items: flex-start;
+`;
+
 const ProductsPOD = (props) => {
   const { getProducts, collections } = props;
   const getCollection = getProducts.map((item) => item.collection);
@@ -104,20 +199,6 @@ const ProductsPOD = (props) => {
       result.push(item);
     }
   }
-  // const imageCollection = [
-  //   {
-  //     url: "https://i.imgur.com/qQhxOYm.png",
-  //     name: "Kid's Clothing"
-  //   },
-  //   {
-  //     url: "https://i.imgur.com/YT0XzEY.png",
-  //     name: "Women's Clothing"
-  //   },
-  //   {
-  //     url: "https://i.imgur.com/BQJ1quD.jpg",
-  //     name: "Men's Clothing"
-  //   }
-  // ];
   return (
     <>
       <SectionWrapper id="features">
@@ -125,65 +206,81 @@ const ProductsPOD = (props) => {
           <Box>
             <Banner />
           </Box>
-          <HeaderPOD>
-            <TitleHead
-              fontWeight="500"
-              textAlign="center"
-              lineHeight="36px"
-              content="Products"
-            />
-          </HeaderPOD>
-          <GridServices>
-            {getProducts.map((item, index) => (
-              <Card className="cardItem" key={index}>
-                <Box className="cardItem-child">
-                  <Link href={`/product/${item?.id}`}>
-                    <a>
-                      <img
-                        style={{
-                          width: "100%",
-                          height: "300px",
-                          borderTopLeftRadius: "5px",
-                          borderTopRightRadius: "5px"
-                        }}
-                        src={item?.thumbnail}
-                      />
-                    </a>
-                  </Link>
-                  <Box className="content">
+          <HeadingCatalog
+            content="Printcart's Product Catalog"
+            mb="2rem"
+            lineHeight="3.5rem"
+          />
+          <ExploreProducts />
+          <ContainerBox>
+            <HeaderBox>
+              <TitleBox>
+                <TitleHead>Products</TitleHead>
+              </TitleBox>
+              <RedirectAll>
+                <Box>
+                  <TagA href="/catalog/#">
+                    <SpanLink>
+                      See all New Products
+                      <Icon icon={ic_keyboard_arrow_right} />
+                    </SpanLink>
+                  </TagA>
+                </Box>
+              </RedirectAll>
+            </HeaderBox>
+            {/* <HeaderPOD></HeaderPOD> */}
+            <GridServices>
+              {getProducts.map((item, index) => (
+                <Card className="cardItem" key={index}>
+                  <Box className="cardItem-child">
                     <Link href={`/product/${item?.id}`}>
-                      <a title={`View to ${item.title}`}>
-                        <h3 className="title-medusa">{item.title}</h3>
+                      <a>
+                        <img
+                          style={{
+                            width: "100%",
+                            height: "300px",
+                            borderTopLeftRadius: "5px",
+                            borderTopRightRadius: "5px"
+                          }}
+                          src={item?.thumbnail}
+                        />
                       </a>
                     </Link>
-                    <Box className="contPricesRelated">
-                      {item?.variants && (
-                        <Box className="pricesRelated">
-                          €{" "}
-                          {(item?.variants[0]?.prices[0]?.amount / 100).toFixed(
-                            2
-                          )}
-                        </Box>
-                      )}
-                    </Box>
-                    <Box className="text">
-                      {item.description && (
-                        <ReactMarkdown>{item.description}</ReactMarkdown>
-                      )}
-                    </Box>
-                    {/* <Box className="tag-info">
+                    <Box className="content">
+                      <Link href={`/product/${item?.id}`}>
+                        <a title={`View to ${item.title}`}>
+                          <h3 className="title-medusa">{item.title}</h3>
+                        </a>
+                      </Link>
+                      <Box className="contPricesRelated">
+                        {item?.variants && (
+                          <Box className="pricesRelated">
+                            €{" "}
+                            {(
+                              item?.variants[0]?.prices[0]?.amount / 100
+                            ).toFixed(2)}
+                          </Box>
+                        )}
+                      </Box>
+                      <Box className="text">
+                        {item.description && (
+                          <ReactMarkdown>{item.description}</ReactMarkdown>
+                        )}
+                      </Box>
+                      {/* <Box className="tag-info">
                       {item.tag && <strong>Tags: {item.tags}</strong>}
                     </Box> */}
-                    <Box className="collection">
-                      {item.collection && (
-                        <strong>Collection: {item.collection.title}</strong>
-                      )}
+                      <Box className="collection">
+                        {item.collection && (
+                          <strong>Collection: {item.collection.title}</strong>
+                        )}
+                      </Box>
                     </Box>
                   </Box>
-                </Box>
-              </Card>
-            ))}
-          </GridServices>
+                </Card>
+              ))}
+            </GridServices>
+          </ContainerBox>
           <ContainerPP>
             <WrappProvider>
               <WrappBox>
@@ -202,12 +299,7 @@ const ProductsPOD = (props) => {
             </WrappProvider>
           </ContainerPP>
           <HeaderPOD>
-            <TitleHead
-              fontWeight="500"
-              textAlign="center"
-              lineHeight="36px"
-              content="Collections"
-            />
+            <TitleHead>Collections</TitleHead>
           </HeaderPOD>
           <GridServices>
             {result.map((items, index) => (
