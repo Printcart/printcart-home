@@ -24,7 +24,7 @@ const ContainerWrapper = styled.div`
     width: 100%;
   }
   @media (min-width: 992px) {
-    max-width: 1192px;
+    max-width: 100%;
     width: 100%;
   }
   @media (min-width: 1200px) {

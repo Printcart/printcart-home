@@ -25,7 +25,7 @@ const Dropdown = ({ submenus }) => {
         <DropdownLi key={index}>
           <Link href={submenu.url}>
             <a
-              style={{ color: "#444", lineHeight: "30px", fontSize: "18px" }}
+              style={{ color: "#444", lineHeight: "30px" }}
               target={submenu.target ? "_blank" : null}
               offset={84}
             >

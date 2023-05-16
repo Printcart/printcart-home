@@ -13,7 +13,12 @@ const MenuItems = ({ items }) => {
             target={items.target ? "_blank" : null}
             offset={84}
           >
-            {items.title} <Icon icon={ic_keyboard_arrow_down} size={20} />
+            {items.title}{" "}
+            <Icon
+              icon={ic_keyboard_arrow_down}
+              size={20}
+              style={{ margin: "-5px" }}
+            />
           </a>
 
           <Dropdown submenus={items.submenu} />
