@@ -13,16 +13,16 @@ import WrapperServices from "../ServiceDetail/WrapperService";
 
 const filter = [
   {
-    name: "USA"
+    name: "Vendor_Name 01"
   },
   {
-    name: "CANADA"
+    name: "Vendor_Name 02"
   },
   {
-    name: "UNITED KINGDOM"
+    name: "Vendor_Name 03"
   },
   {
-    name: "EUROPE"
+    name: "Vendor_Name 04"
   }
 ];
 const CardItems = styled(Card)`
@@ -68,7 +68,6 @@ const WrapperProduct = styled(Box)`
   position: relative;
   width: 100%;
   box-sizing: border-box;
-  flex: 00 75%;
   max-width: 75%;
 `;
 
@@ -151,13 +150,10 @@ const CheckBoxFilter = styled(CheckBox)`
   }
 `;
 const GridFilter = styled(GridServices)`
-  margin-top: calc(-1rem);
-  margin-bottom: calc(-1rem);
+  margin: calc(-1rem);
   display: flex;
   align-items: flex-start;
   flex-wrap: wrap;
-  margin-left: calc(-1rem);
-  margin-right: calc(-1rem);
 `;
 
 const WrapImage = styled(Box)`

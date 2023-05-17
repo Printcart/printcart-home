@@ -235,51 +235,43 @@ const InfoCollection = (props) => {
             </BoxTitle>
             <BoxWrapContent>
               <p>All measurements in the table refer to product dimensions.</p>
-              <Box>
-                <Box>
-                  <TableHeader>
-                    <p>Imperial</p>
-                  </TableHeader>
-                  <Box>
-                    <Box>
-                      <Table>
-                        <thead>
-                          <tr>
-                            <th></th>
-                            {parramtable.map((item, index) => (
-                              <th className="align-top" key={index}>
-                                <div className="cover-content">
-                                  <div className="content-one">{item.size}</div>
-                                </div>
-                              </th>
-                            ))}
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <React.Fragment>
-                            <tr>
-                              <td className="pcTitle">Width,in</td>
-                              {widthSize.map((items, index) => (
-                                <td className="value" key={index}>
-                                  {items}
-                                </td>
-                              ))}
-                            </tr>
-                            <tr>
-                              <td className="pcTitle">Length,in</td>
-                              {heightSize.map((items, index) => (
-                                <td className="value" key={index}>
-                                  {items}
-                                </td>
-                              ))}
-                            </tr>
-                          </React.Fragment>
-                        </tbody>
-                      </Table>
-                    </Box>
-                  </Box>
-                </Box>
-              </Box>
+              <TableHeader>
+                <p>Imperial</p>
+              </TableHeader>
+              <Table>
+                <thead>
+                  <tr>
+                    <th></th>
+                    {parramtable.map((item, index) => (
+                      <th className="align-top" key={index}>
+                        <div className="cover-content">
+                          <div className="content-one">{item.size}</div>
+                        </div>
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  <React.Fragment>
+                    <tr>
+                      <td className="pcTitle">Width,in</td>
+                      {widthSize.map((items, index) => (
+                        <td className="value" key={index}>
+                          {items}
+                        </td>
+                      ))}
+                    </tr>
+                    <tr>
+                      <td className="pcTitle">Length,in</td>
+                      {heightSize.map((items, index) => (
+                        <td className="value" key={index}>
+                          {items}
+                        </td>
+                      ))}
+                    </tr>
+                  </React.Fragment>
+                </tbody>
+              </Table>
             </BoxWrapContent>
           </BoxWrapper>
         </BoxFeatureContainer>

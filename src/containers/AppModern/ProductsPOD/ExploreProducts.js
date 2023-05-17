@@ -6,18 +6,16 @@ import React from "react";
 import styled from "styled-components";
 import ExploreImage from "../../../common/assets/image/princart-blog.png";
 
+const WrappExplore = styled(Box)`
+  margin-bottom: 3rem;
+`;
 const ExploreContainer = styled(Box)`
   justify-content: center;
-  margin-bottom: 2.5rem;
   display: flex;
   align-items: flex-start;
   flex-wrap: wrap;
-  margin-left: calc(-5rem);
-  margin-right: calc(-5rem);
 `;
 const ContentBox = styled(Box)`
-  padding-left: 5rem;
-  padding-right: 5rem;
   position: relative;
   width: 100%;
   max-width: 100%;
@@ -33,7 +31,7 @@ const ExploreSection = styled.section`
   @media only screen and (min-width: 960px) {
     min-height: 346px;
   }
-  max-width: 1168px;
+  max-width: 100%;
   margin-left: auto;
   margin-right: auto;
   border-radius: 3px;
@@ -102,7 +100,7 @@ const ExploreButton = styled(Button)`
 
 const ExploreProducts = () => {
   return (
-    <Box>
+    <WrappExplore>
       <ExploreContainer>
         <ContentBox>
           <ExploreSection>
@@ -121,7 +119,7 @@ const ExploreProducts = () => {
           </ExploreSection>
         </ContentBox>
       </ExploreContainer>
-    </Box>
+    </WrappExplore>
   );
 };
 

@@ -171,7 +171,7 @@ export const ContainerPP = styled.div`
   display: flex;
   width: 100%;
   height: 250px;
-  margin-top: 56px;
+  margin-bottom: 3rem;
   background-image: url(${ImagePrinProvider?.src});
   background-size: cover;
   background-position: center center;

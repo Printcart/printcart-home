@@ -10,6 +10,19 @@ import { ContentWrapper } from "../appModern.style";
 import InfoCollection from "../CollectionDetail/InfoCollection";
 import VendorInfo from "../CollectionDetail/VendorInfo";
 import { GridServices } from "../InfoServices/GridServices";
+import {
+  BoxDesc,
+  CardItems,
+  GridFilter,
+  PByVendor,
+  PDiscount,
+  PPrice,
+  PTitle,
+  VendorPrice,
+  WrapContent,
+  WrapImage,
+  WrapperProduct
+} from "../ProductsPOD";
 import WrapperServices from "../ServiceDetail/WrapperService";
 import ImageGallery from "./ImageGallery";
 import ProductInfo from "./ProductInfo";
@@ -28,10 +41,10 @@ const WrappInfo = styled(Box)`
   padding-bottom: 1.5rem;
 `;
 const RelatedHeading = styled(Heading)`
-  margin-top: 1rem;
+  margin-top: 0px;
 `;
 const BoxRelated = styled(Box)`
-  margin-bottom: 1.5rem;
+  margin: 2rem 0;
 `;
 const ProductDetail = (props) => {
   const { product, products } = props;
@@ -65,62 +78,59 @@ const ProductDetail = (props) => {
           <InfoCollection collection={product?.product?.collection} />
           {/**RELATED PRODUCTS */}
           <BoxRelated>
-            <RelatedHeading content="Related Products" />
-            <GridServices>
-              {products.map(
-                (items, index) =>
-                  index < 3 && (
-                    <Card className="cardItem" key={index}>
-                      <Box>
-                        <Link href={`/product/${items?.id}`}>
-                          <a>
-                            <img
-                              style={{
-                                width: "100%",
-                                height: "300px",
-                                borderTopLeftRadius: "5px",
-                                borderTopRightRadius: "5px"
-                              }}
-                              src={items?.thumbnail}
-                            />
-                          </a>
-                        </Link>
-                        <Box className="content">
-                          <Link href={`/product/${items?.id}`}>
-                            <a title={`View to ${items.title}`}>
-                              <h3 className="title-medusa">{items.title}</h3>
-                            </a>
-                          </Link>
-                          <Box className="contPricesRelated">
-                            {items?.variants && (
-                              <Box className="pricesRelated">
-                                €{" "}
-                                {(
-                                  items?.variants[0]?.prices[0]?.amount / 100
-                                ).toFixed(2)}
-                              </Box>
-                            )}
-                          </Box>
-                          <Box className="text">
-                            {items.description && (
-                              <ReactMarkdown>{items.description}</ReactMarkdown>
-                            )}
-                          </Box>
-                          <Box>
-                            <Box className="collection">
-                              {items.collection && (
-                                <strong>
-                                  Collection: {items.collection.title}
-                                </strong>
+            <RelatedHeading mb="0px" content="You May Also Like" />
+            <WrapperProduct>
+              <GridFilter>
+                {products.map(
+                  (items, index) =>
+                    index < 3 && (
+                      <CardItems key={index}>
+                        <Box>
+                          <WrapImage>
+                            <Link href={`/product/${items?.id}`}>
+                              <a>
+                                <img
+                                  style={{
+                                    position: "absolute",
+                                    width: "100%",
+                                    height: "100%",
+                                    top: "0",
+                                    left: "0",
+                                    borderTopLeftRadius: "5px",
+                                    borderTopRightRadius: "5px"
+                                  }}
+                                  src={items?.thumbnail}
+                                />
+                              </a>
+                            </Link>
+                          </WrapImage>
+                          <WrapContent>
+                            <Link href={`/product/${items?.id}`}>
+                              <a title={`View to ${items.title}`}>
+                                <PTitle>{items.title}</PTitle>
+                              </a>
+                            </Link>
+                            <PByVendor>By [Vendor_Name]. qty</PByVendor>
+                            <VendorPrice>
+                              <PPrice>From USD 9.38</PPrice>
+                              <PDiscount>
+                                From USD 5.92 with Printcart
+                              </PDiscount>
+                            </VendorPrice>
+                            <BoxDesc>
+                              {items.description && (
+                                <ReactMarkdown>
+                                  {items.description}
+                                </ReactMarkdown>
                               )}
-                            </Box>
-                          </Box>
+                            </BoxDesc>
+                          </WrapContent>
                         </Box>
-                      </Box>
-                    </Card>
-                  )
-              )}
-            </GridServices>
+                      </CardItems>
+                    )
+                )}
+              </GridFilter>
+            </WrapperProduct>
           </BoxRelated>
         </Container>
       </WrapperServices>

@@ -107,8 +107,6 @@ const HeaderBox = styled(Box)`
   align-items: center;
   display: flex;
   flex-wrap: wrap;
-  margin-left: calc(-1rem);
-  margin-right: calc(-1rem);
 `;
 const TitleBox = styled(Box)`
   max-width: 100%;
@@ -186,7 +184,81 @@ const GridProducts = styled(Box)`
   scroll-behavior: smooth;
   align-items: flex-start;
 `;
-
+export const WrapContent = styled(Box)`
+  padding: 16px 16px 8px;
+`;
+export const PTitle = styled.p`
+  margin: 0;
+  max-height: 48px;
+  overflow: hidden;
+  font-size: 1.25em;
+  line-height: 1.5rem;
+  color: #17262b;
+`;
+export const PByVendor = styled.p`
+  margin: 0;
+  color: #757c7e;
+  font-size: 0.875em;
+  line-height: 1.25rem;
+  font-weight: 400;
+`;
+export const VendorPrice = styled(Box)`
+  margin: 8px 0 0;
+`;
+export const PPrice = styled.p`
+  font-size: 1em;
+  margin: 0;
+  line-height: 1.25rem;
+  color: #17262b;
+`;
+export const PDiscount = styled.p`
+  font-size: 1em;
+  margin: 0;
+  line-height: 1.25rem;
+  color: #29ab51;
+`;
+export const BoxDesc = styled(Box)`
+  height: 90px;
+  font-size: 16px;
+  color: #5c5c5c;
+  margin-bottom: 10px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+`;
+export const WrapImage = styled(Box)`
+  position: relative;
+  display: block;
+  overflow: hidden;
+  padding-bottom: 100%;
+  text-align: center;
+`;
+export const CardItems = styled(Card)`
+  border-radius: 5px;
+  box-shadow: 0 0 5px 0 rgb(0 0 50 / 25%);
+  &:hover {
+    box-shadow: 5px 10px 10px 2px rgb(0 0 50 / 25%);
+    transform: translate(0, -7px);
+    transition: box-shadow 0.3s ease-out, transform 0.3s ease-out;
+  }
+  @media only screen and (max-width: 480px) {
+    padding: 25px 25px 30px;
+  }
+`;
+export const WrapperProduct = styled(Box)`
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  max-width: 100%;
+`;
+export const GridFilter = styled(GridServices)`
+  margin: 0px;
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+`;
 const ProductsPOD = (props) => {
   const { getProducts, collections } = props;
   const getCollection = getProducts.map((item) => item.collection);
@@ -208,7 +280,7 @@ const ProductsPOD = (props) => {
           </Box>
           <HeadingCatalog
             content="Printcart's Product Catalog"
-            mb="2rem"
+            mb="3rem"
             lineHeight="3.5rem"
           />
           <ExploreProducts />
@@ -229,57 +301,51 @@ const ProductsPOD = (props) => {
               </RedirectAll>
             </HeaderBox>
             {/* <HeaderPOD></HeaderPOD> */}
-            <GridServices>
-              {getProducts.map((item, index) => (
-                <Card className="cardItem" key={index}>
-                  <Box className="cardItem-child">
-                    <Link href={`/product/${item?.id}`}>
-                      <a>
-                        <img
-                          style={{
-                            width: "100%",
-                            height: "300px",
-                            borderTopLeftRadius: "5px",
-                            borderTopRightRadius: "5px"
-                          }}
-                          src={item?.thumbnail}
-                        />
-                      </a>
-                    </Link>
-                    <Box className="content">
-                      <Link href={`/product/${item?.id}`}>
-                        <a title={`View to ${item.title}`}>
-                          <h3 className="title-medusa">{item.title}</h3>
-                        </a>
-                      </Link>
-                      <Box className="contPricesRelated">
-                        {item?.variants && (
-                          <Box className="pricesRelated">
-                            €{" "}
-                            {(
-                              item?.variants[0]?.prices[0]?.amount / 100
-                            ).toFixed(2)}
-                          </Box>
-                        )}
-                      </Box>
-                      <Box className="text">
-                        {item.description && (
-                          <ReactMarkdown>{item.description}</ReactMarkdown>
-                        )}
-                      </Box>
-                      {/* <Box className="tag-info">
-                      {item.tag && <strong>Tags: {item.tags}</strong>}
-                    </Box> */}
-                      <Box className="collection">
-                        {item.collection && (
-                          <strong>Collection: {item.collection.title}</strong>
-                        )}
-                      </Box>
+            <WrapperProduct>
+              <GridFilter>
+                {getProducts.map((item, index) => (
+                  <CardItems key={index}>
+                    <Box>
+                      <WrapImage>
+                        <Link href={`/product/${item?.id}`}>
+                          <a>
+                            <img
+                              style={{
+                                position: "absolute",
+                                width: "100%",
+                                height: "100%",
+                                top: "0",
+                                left: "0",
+                                borderTopLeftRadius: "5px",
+                                borderTopRightRadius: "5px"
+                              }}
+                              src={item?.thumbnail}
+                            />
+                          </a>
+                        </Link>
+                      </WrapImage>
+                      <WrapContent>
+                        <Link href={`/product/${item?.id}`}>
+                          <a title={`View to ${item.title}`}>
+                            <PTitle>{item.title}</PTitle>
+                          </a>
+                        </Link>
+                        <PByVendor>By [Vendor_Name]. qty</PByVendor>
+                        <VendorPrice>
+                          <PPrice>From USD 9.38</PPrice>
+                          <PDiscount>From USD 5.92 with Printcart</PDiscount>
+                        </VendorPrice>
+                        <BoxDesc>
+                          {item.description && (
+                            <ReactMarkdown>{item.description}</ReactMarkdown>
+                          )}
+                        </BoxDesc>
+                      </WrapContent>
                     </Box>
-                  </Box>
-                </Card>
-              ))}
-            </GridServices>
+                  </CardItems>
+                ))}
+              </GridFilter>
+            </WrapperProduct>
           </ContainerBox>
           <ContainerPP>
             <WrappProvider>
@@ -298,9 +364,11 @@ const ProductsPOD = (props) => {
               </WrappBox>
             </WrappProvider>
           </ContainerPP>
-          <HeaderPOD>
-            <TitleHead>Collections</TitleHead>
-          </HeaderPOD>
+          <HeaderBox>
+            <TitleBox>
+              <TitleHead>Collections</TitleHead>
+            </TitleBox>
+          </HeaderBox>
           <GridServices>
             {result.map((items, index) => (
               <CardCus key={index}>
