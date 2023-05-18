@@ -64,14 +64,14 @@ export const BannerWrapper = styled.div`
       width: calc(100% / 2 - 34px);
     }
     @media only screen and (max-width: 991px) {
-      width: calc(100% / 2 - 34px);
+      width: calc(100% / 1 - 0px);
     }
     @media only screen and (max-width: 767px) {
-      width: calc(100% / 2 - 15px);
+      width: calc(100% / 1 - 0px);
     }
-    @media only screen and (max-width: 480px) {
+    @media only screen and (max-width: 594px) {
       width: 100%;
-      margin-top: 15px;
+      margin-top: 34px;
     }
   }
   .heading {
@@ -79,9 +79,10 @@ export const BannerWrapper = styled.div`
   }
   .heading-first {
     position: relative;
+    width: 386px;
     &:after {
       content: "";
-      width: calc(100% - 160px);
+      width: 100%;
       height: 50%;
       position: absolute;
       bottom: 1px;
@@ -95,12 +96,6 @@ export const BannerWrapper = styled.div`
   }
   .description {
     color: #718096;
-  }
-  .contRight {
-    flex: 1px;
-    justify-content: center;
-    position: relative;
-    width: 100%;
   }
   .svg-background {
     width: 100%;

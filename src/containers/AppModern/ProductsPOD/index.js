@@ -72,6 +72,7 @@ const ButtonProvider = styled(Button)`
 const WrappProvider = styled.div`
   display: flex;
   align-items: center;
+  border-radius: 6px;
   justify-content: center;
   flex-direction: column;
   width: 100%;
@@ -275,9 +276,7 @@ const ProductsPOD = (props) => {
     <>
       <SectionWrapper id="features">
         <Container>
-          <Box>
-            <Banner />
-          </Box>
+          <Banner />
           <HeadingCatalog
             content="Printcart's Product Catalog"
             mb="3rem"

@@ -55,8 +55,7 @@ export const GridServices = styled.div`
       width: calc(100% / 2 - 34px);
     }
     @media only screen and (max-width: 594px) {
-      width: 100%;
-      margin-top: 15px;
+      width: calc(100% / 1 - 34px);
     }
   }
   .cardItem {
