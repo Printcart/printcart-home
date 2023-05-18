@@ -5,7 +5,7 @@ import Dropdown from "./Dropdown";
 
 const MenuItems = ({ items }) => {
   return (
-    <li>
+    <li style={{ position: "relative" }}>
       {items.submenu ? (
         <>
           <a
@@ -17,7 +17,7 @@ const MenuItems = ({ items }) => {
             <Icon
               icon={ic_keyboard_arrow_down}
               size={20}
-              style={{ margin: "-5px" }}
+              style={{ margin: "0px", position: "absolute" }}
             />
           </a>
 
