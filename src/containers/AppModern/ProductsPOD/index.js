@@ -261,7 +261,7 @@ export const GridFilter = styled(GridServices)`
   flex-wrap: wrap;
 `;
 const ProductsPOD = (props) => {
-  const { getProducts, collections } = props;
+  const { getProducts } = props;
   const getCollection = getProducts.map((item) => item.collection);
   const filterValues = getCollection.filter(Boolean);
   const map = new Map();

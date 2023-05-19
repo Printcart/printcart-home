@@ -150,7 +150,7 @@ const CheckBoxFilter = styled(CheckBox)`
   }
 `;
 const GridFilter = styled(GridServices)`
-  margin: calc(-1rem);
+  margin: -1rem;
   display: flex;
   align-items: flex-start;
   flex-wrap: wrap;
@@ -164,7 +164,7 @@ const WrapImage = styled(Box)`
   text-align: center;
 `;
 const WrappContent = styled(Box)`
-  padding: 16px 16px 8px;
+  padding: 16px 8px;
 `;
 const PTitle = styled.p`
   margin: 0;

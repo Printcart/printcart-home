@@ -7,6 +7,15 @@ import Navbar from "containers/AppModern/Navbar";
 import Head from "next/head";
 import { ThemeProvider } from "styled-components";
 
+const baseUrlAdmin = process.env.MEDUSA_API_ADMIN_URL;
+const parameter = {
+  method: "GET",
+  headers: {
+    Authorization: "Bearer Rl2KcwXuTa6abLczqxu1Z1ID2fE0CVCq",
+    "Content-Type": "application/json"
+  }
+};
+
 const Collection = (props) => {
   const { collection } = props;
   return (
@@ -35,14 +44,10 @@ const Collection = (props) => {
 };
 export default Collection;
 export async function getStaticProps({ params }) {
-  const baseUrlAdmin = process.env.MEDUSA_API_ADMIN_URL;
-  const resAdmin = await fetch(`${baseUrlAdmin}collections/${params.id}`, {
-    method: "GET",
-    headers: {
-      Authorization: "Bearer Rl2KcwXuTa6abLczqxu1Z1ID2fE0CVCq",
-      "Content-Type": "application/json"
-    }
-  });
+  const urlCollection = new URL(`collections/${params.id}`, baseUrlAdmin);
+  const fetchUrl = urlCollection.href;
+
+  const resAdmin = await fetch(`${fetchUrl}`, parameter);
   const result = await resAdmin.json();
 
   return {
@@ -54,14 +59,7 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-  const baseUrl = process.env.MEDUSA_API_ADMIN_URL;
-  const resAdmin = await fetch(`${baseUrl}collections`, {
-    method: "GET",
-    headers: {
-      Authorization: "Bearer Rl2KcwXuTa6abLczqxu1Z1ID2fE0CVCq",
-      "Content-Type": "application/json"
-    }
-  });
+  const resAdmin = await fetch(`${baseUrlAdmin}collections`, parameter);
   const result = await resAdmin.json();
 
   if (result.collections) {
