@@ -1,15 +1,15 @@
-import { Tab } from "@headlessui/react";
 import Box from "common/components/Box";
-import Card from "common/components/Card";
 import Heading from "common/components/Heading";
 import Container from "common/components/UI/Container";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 import styled from "styled-components";
-import { ContentWrapper } from "../appModern.style";
-import InfoCollection from "../CollectionDetail/InfoCollection";
+import InfoCollection, {
+  BoxAbout,
+  BoxTitle,
+  BoxWrapper
+} from "../CollectionDetail/InfoCollection";
 import VendorInfo from "../CollectionDetail/VendorInfo";
-import { GridServices } from "../InfoServices/GridServices";
 import {
   BoxDesc,
   CardItems,
@@ -24,6 +24,7 @@ import {
   WrapperProduct
 } from "../ProductsPOD";
 import WrapperServices from "../ServiceDetail/WrapperService";
+import { ContentWrapper } from "../appModern.style";
 import ImageGallery from "./ImageGallery";
 import ProductInfo from "./ProductInfo";
 import ProductParam from "./ProductParam";
@@ -45,6 +46,12 @@ const RelatedHeading = styled(Heading)`
 `;
 const BoxRelated = styled(Box)`
   margin: 2rem 0;
+`;
+const AboutCollection = styled(Box)`
+  padding-top: 40px;
+  padding-bottom: 40px;
+  display: block;
+  border-top: 1px solid #e3e4e5;
 `;
 const ProductDetail = (props) => {
   const { product, products } = props;
@@ -132,6 +139,18 @@ const ProductDetail = (props) => {
               </GridFilter>
             </WrapperProduct>
           </BoxRelated>
+          {product.product.collection?.metadata?.about && (
+            <AboutCollection>
+              <BoxWrapper>
+                <BoxTitle>
+                  <h2>About</h2>
+                </BoxTitle>
+                <BoxAbout>
+                  <p>{product?.product?.collection?.metadata?.about}</p>
+                </BoxAbout>
+              </BoxWrapper>
+            </AboutCollection>
+          )}
         </Container>
       </WrapperServices>
     </ContentWrapper>

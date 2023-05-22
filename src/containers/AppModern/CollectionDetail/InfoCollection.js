@@ -47,18 +47,18 @@ const iconCare = [
     image: CareImage5.src
   }
 ];
-const BoxFeatureContainer = styled(Box)`
+export const BoxFeatureContainer = styled(Box)`
   padding-top: 40px;
   padding-bottom: 40px;
   display: block;
   border-bottom: 1px solid #e3e4e5;
 `;
-const BoxWrapper = styled(Box)`
+export const BoxWrapper = styled(Box)`
   display: flex;
   align-items: center;
   flex-wrap: wrap;
 `;
-const BoxTitle = styled(Box)`
+export const BoxTitle = styled(Box)`
   align-self: flex-start;
   display: flex;
   justify-content: space-between;
@@ -69,7 +69,7 @@ const BoxTitle = styled(Box)`
   flex: 0 0 33.3%;
   max-width: 33.3%;
 `;
-const BoxAbout = styled(Box)`
+export const BoxAbout = styled(Box)`
   margin-top: 0;
   position: relative;
   width: 100%;
@@ -169,10 +169,10 @@ const InfoCollection = (props) => {
         <BoxFeatureContainer>
           <BoxWrapper>
             <BoxTitle>
-              <h2>About</h2>
+              <h2>Description</h2>
             </BoxTitle>
             <BoxAbout>
-              <p>{collection?.metadata?.about}</p>
+              <p>{collection?.metadata?.short_description}</p>
             </BoxAbout>
           </BoxWrapper>
         </BoxFeatureContainer>

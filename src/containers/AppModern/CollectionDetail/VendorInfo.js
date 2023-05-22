@@ -152,7 +152,7 @@ const VendorInfo = () => {
   return (
     <>
       <Box>
-        <Heading content="All Print Providers" />
+        <Heading content="Vendor Information" />
         <Box>
           <BoxVendor>
             <Grid>

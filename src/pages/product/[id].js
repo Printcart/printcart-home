@@ -1,11 +1,9 @@
 import ResetCSS from "common/assets/css/style";
-import { base } from "common/components/base";
 import { theme } from "common/theme/appModern";
 import GlobalStyle, { AppWrapper } from "containers/AppModern/appModern.style";
 import Footer from "containers/AppModern/Footer";
 import Navbar from "containers/AppModern/Navbar";
 import ProductDetail from "containers/AppModern/ProductDetail";
-import ServiceDetail from "containers/AppModern/ServiceDetail";
 import Head from "next/head";
 import { ThemeProvider } from "styled-components";
 
