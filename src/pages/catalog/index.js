@@ -72,6 +72,6 @@ export async function getStaticProps() {
       collections: fetchCollection.collections,
       products: fetchProducts.products
     },
-    revalidate: 86400
+    revalidate: 1
   };
 }
