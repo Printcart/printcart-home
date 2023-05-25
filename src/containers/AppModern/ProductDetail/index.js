@@ -54,7 +54,8 @@ const AboutCollection = styled(Box)`
   border-top: 1px solid #e3e4e5;
 `;
 const ProductDetail = (props) => {
-  const { product, products } = props;
+  const { product, productsRelated } = props;
+
   // const val = product?.product?.options.map((option) =>
   //   option?.values?.map((value) => value.value)
   // );
@@ -75,20 +76,20 @@ const ProductDetail = (props) => {
   return (
     <ContentWrapper>
       <WrapperServices>
-        <TitlePathMed currentCat={product.product} />
+        <TitlePathMed currentCat={product} />
         <Container>
           <WrappInfo>
             <ImageGallery product={product} />
             <ProductInfo product={product} />
           </WrappInfo>
           <VendorInfo />
-          <InfoCollection collection={product?.product?.collection} />
+          <InfoCollection collection={product?.collection} />
           {/**RELATED PRODUCTS */}
           <BoxRelated>
             <RelatedHeading mb="0px" content="You May Also Like" />
             <WrapperProduct>
               <GridFilter>
-                {products.map(
+                {productsRelated.map(
                   (items, index) =>
                     index < 3 && (
                       <CardItems key={index}>
@@ -139,14 +140,14 @@ const ProductDetail = (props) => {
               </GridFilter>
             </WrapperProduct>
           </BoxRelated>
-          {product.product.collection?.metadata?.about && (
+          {product?.collection?.metadata?.about && (
             <AboutCollection>
               <BoxWrapper>
                 <BoxTitle>
                   <h2>About</h2>
                 </BoxTitle>
                 <BoxAbout>
-                  <p>{product?.product?.collection?.metadata?.about}</p>
+                  <p>{product?.collection?.metadata?.about}</p>
                 </BoxAbout>
               </BoxWrapper>
             </AboutCollection>

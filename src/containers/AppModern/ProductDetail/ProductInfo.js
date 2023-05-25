@@ -27,16 +27,13 @@ const ProductInfo = (props) => {
     <>
       <WrapperInfo>
         <Box>
-          {product?.product?.collection && (
-            <Link href={`/collection/${product?.product?.collection?.id}`}>
-              <a>{product?.product?.collection.title}</a>
+          {product?.collection && (
+            <Link href={`/collection/${product?.collection?.id}`}>
+              <a>{product?.collection.title}</a>
             </Link>
           )}
-          <ProductHeading
-            content={product?.product?.title}
-            lineHeight="2.5rem"
-          />
-          <PDescription>{product?.product?.description}</PDescription>
+          <ProductHeading content={product?.title} lineHeight="2.5rem" />
+          <PDescription>{product?.description}</PDescription>
           {/**Select Size */}
           {/* {product?.product?.variants?.length > 0 && (
                         <Box className="selectSize">
