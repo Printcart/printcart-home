@@ -64,16 +64,16 @@ const BoxWrapContent = styled(Box)`
   max-width: 66.6%;
 `;
 const DescFeature = styled(Box)`
-  margin-bottom: calc(1rem * -2);
+  margin-bottom: -2rem;
   display: flex;
   align-items: flex-start;
   flex-wrap: wrap;
-  margin-left: calc(1rem * -1);
-  margin-right: calc(1rem * -1);
+  margin-left: -1rem;
+  margin-right: -1rem;
   padding: 0px;
 `;
 const DescWrapp = styled(Box)`
-  margin-bottom: calc(1rem * 2);
+  margin-bottom: 2rem;
   position: relative;
   width: 100%;
   flex: 0 0 50%;
@@ -91,8 +91,8 @@ const CareIcon = styled(Box)`
   display: flex;
   align-items: flex-start;
   flex-wrap: wrap;
-  margin-left: calc(8px * -1);
-  margin-right: calc(8px * -1);
+  margin-left: -8px;
+  margin-right: -8px;
   padding: 0px;
 `;
 const IconImage = styled(Box)`
