@@ -10,26 +10,6 @@ import { Table } from "common/components/Table/styleTable";
 import React from "react";
 import styled from "styled-components";
 
-const parramtable = [
-  {
-    size: "XS"
-  },
-  {
-    size: "S"
-  },
-  {
-    size: "M"
-  },
-  {
-    size: "L"
-  },
-  {
-    size: "XL"
-  },
-  {
-    size: "2XL"
-  }
-];
 const iconCare = [
   {
     image: CareImage1.src
