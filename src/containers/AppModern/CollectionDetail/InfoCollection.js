@@ -141,6 +141,8 @@ const InfoCollection = (props) => {
   const widthSize = formatSizeWidth?.split(",");
   const formatSizeHeight = collection?.metadata?.heightSize;
   const heightSize = formatSizeHeight?.split(",");
+  const formatSize = collection?.metadata?.size;
+  const sizeNew = formatSize?.split(",");
   const features = [
     {
       media: `${collection?.metadata?.icon1 ?? ""}`,
@@ -227,55 +229,59 @@ const InfoCollection = (props) => {
           </BoxWrapper>
         </BoxFeatureContainer>
       )}
-      {collection?.metadata?.widthSize && collection?.metadata?.heightSize && (
-        <BoxFeatureContainer>
-          <BoxWrapper>
-            <BoxTitle>
-              <h2>Size guide</h2>
-            </BoxTitle>
-            <BoxWrapContent>
-              <p>All measurements in the table refer to product dimensions.</p>
-              <TableHeader>
-                <p>Imperial</p>
-              </TableHeader>
-              <Table>
-                <thead>
-                  <tr>
-                    <th></th>
-                    {parramtable.map((item, index) => (
-                      <th className="align-top" key={index}>
-                        <div className="cover-content">
-                          <div className="content-one">{item.size}</div>
-                        </div>
-                      </th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  <React.Fragment>
+      {collection?.metadata?.widthSize &&
+        collection?.metadata?.heightSize &&
+        collection?.metadata?.size && (
+          <BoxFeatureContainer>
+            <BoxWrapper>
+              <BoxTitle>
+                <h2>Size guide</h2>
+              </BoxTitle>
+              <BoxWrapContent>
+                <p>
+                  All measurements in the table refer to product dimensions.
+                </p>
+                <TableHeader>
+                  <p>Imperial</p>
+                </TableHeader>
+                <Table>
+                  <thead>
                     <tr>
-                      <td className="pcTitle">Width,in</td>
-                      {widthSize.map((items, index) => (
-                        <td className="value" key={index}>
-                          {items}
-                        </td>
+                      <th></th>
+                      {sizeNew.map((item, index) => (
+                        <th className="align-top" key={index}>
+                          <div className="cover-content">
+                            <div className="content-one">{item}</div>
+                          </div>
+                        </th>
                       ))}
                     </tr>
-                    <tr>
-                      <td className="pcTitle">Length,in</td>
-                      {heightSize.map((items, index) => (
-                        <td className="value" key={index}>
-                          {items}
-                        </td>
-                      ))}
-                    </tr>
-                  </React.Fragment>
-                </tbody>
-              </Table>
-            </BoxWrapContent>
-          </BoxWrapper>
-        </BoxFeatureContainer>
-      )}
+                  </thead>
+                  <tbody>
+                    <React.Fragment>
+                      <tr>
+                        <td className="pcTitle">Width,in</td>
+                        {widthSize.map((items, index) => (
+                          <td className="value" key={index}>
+                            {items}
+                          </td>
+                        ))}
+                      </tr>
+                      <tr>
+                        <td className="pcTitle">Length,in</td>
+                        {heightSize.map((items, index) => (
+                          <td className="value" key={index}>
+                            {items}
+                          </td>
+                        ))}
+                      </tr>
+                    </React.Fragment>
+                  </tbody>
+                </Table>
+              </BoxWrapContent>
+            </BoxWrapper>
+          </BoxFeatureContainer>
+        )}
     </>
   );
 };
