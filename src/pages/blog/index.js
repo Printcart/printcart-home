@@ -1,8 +1,8 @@
 import ResetCSS from "common/assets/css/style";
-import Navbar from "common/components/Navbar";
 import { theme } from "common/theme/appModern";
 import BlogPage from "containers/AppModern/BlogPage";
 import Footer from "containers/AppModern/Footer";
+import Navbar from "containers/AppModern/Navbar";
 import GlobalStyle, {
   AppWrapper,
   ContentWrapper
@@ -11,7 +11,8 @@ import Head from "next/head";
 import React from "react";
 import { ThemeProvider } from "styled-components";
 
-const Blog = () => {
+const Blog = (props) => {
+  const { resPosts } = props;
   return (
     <ThemeProvider theme={theme}>
       <React.Fragment>
@@ -30,7 +31,7 @@ const Blog = () => {
             <Navbar />
           </div>
           <ContentWrapper>
-            <BlogPage />
+            <BlogPage resPosts={resPosts} />
           </ContentWrapper>
           <Footer />
         </AppWrapper>
@@ -39,3 +40,22 @@ const Blog = () => {
   );
 };
 export default Blog;
+
+export async function getStaticProps() {
+  const baseUrl = process.env.STRAPI_API_URL;
+  const setUrl = new URL("posts", baseUrl);
+  setUrl.searchParams.set("filters[channels][name][$eq]", "Printcart");
+  setUrl.searchParams.set("populate", "*");
+  setUrl.searchParams.set("&pagination[limit]", "10");
+  const newUrl = setUrl.href;
+
+  const fetchData = await fetch(newUrl);
+  const results = await fetchData.json();
+
+  return {
+    props: {
+      resPosts: results
+    },
+    revalidate: 1
+  };
+}
