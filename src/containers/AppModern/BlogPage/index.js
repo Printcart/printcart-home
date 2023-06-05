@@ -6,6 +6,7 @@ import Icon from "react-icons-kit";
 import { ic_remove_red_eye } from "react-icons-kit/md/ic_remove_red_eye";
 import styled from "styled-components";
 import SectionWrapperServices from "../InfoServices/GridServices";
+import ReactHtmlParser from "react-html-parser";
 import { SectionHeader } from "../appModern.style";
 import GridPost, {
   AuthorPost,
@@ -82,11 +83,7 @@ const BlogPage = ({ resPosts }) => {
                       </a>
                     </Link>
                   </Box>
-                  <DesBox
-                    dangerouslySetInnerHTML={{
-                      __html: items?.attributes?.content
-                    }}
-                  />
+                  <DesBox>{ReactHtmlParser(items?.attributes?.content)}</DesBox>
                   <Box>
                     <TagBox>
                       {items?.attributes?.tags?.data.map((tags, index) => (

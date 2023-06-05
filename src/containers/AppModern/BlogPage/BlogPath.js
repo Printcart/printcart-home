@@ -3,8 +3,7 @@ import { Breadcrumb } from "../ServiceDetail/TitlePath";
 import Box from "common/components/Box";
 import Link from "next/link";
 
-function BlogPath() {
-  const currentCat = [];
+const BlogPath = ({ postData }) => {
   return (
     <Breadcrumb>
       <Box className="container-text">
@@ -15,24 +14,20 @@ function BlogPath() {
         <Link href="/blog">
           <a className="text">Blog</a>
         </Link>
-        {/* {currentCat && (
+        {postData?.attributes?.title && (
           <>
             {" - "}
             <Link
               prefetch={false}
-              href={
-                currentCat.alias_cat
-                  ? `/services/${currentCat.alias_cat}`
-                  : `/service/${currentCat.alias}`
-              }
+              href={`/blog/${postData?.attributes?.alias}`}
             >
-              <a className="text">{currentCat.name_cat || currentCat.title}</a>
+              <a className="text">{postData?.attributes?.title}</a>
             </Link>
           </>
-        )} */}
+        )}
       </Box>
     </Breadcrumb>
   );
-}
+};
 
 export default BlogPath;
