@@ -24,8 +24,9 @@ const WraaperBox = styled(Box)`
   margin-bottom: 50px;
 `;
 const Banner = styled(Box)`
-  height: 600px;
+  height: auto;
   padding-top: 1px;
+  background-repeat: no-repeat;
   background-image: url("/tutorial.jpg");
   background-size: cover;
   background-position: center;
@@ -161,14 +162,41 @@ const TableHeading = styled(Heading)`
   color: #444;
   text-transform: uppercase;
 `;
+const GridBlog = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+
+  .boxLeft {
+    width: 66%;
+    margin-bottom: 30px;
+    @media only screen and (max-width: 1400px) {
+      width: 65%;
+    }
+    @media only screen and (max-width: 1200px) {
+      width: 60%;
+    }
+    @media only screen and (max-width: 992px) {
+      width: 100%;
+    }
+    @media only screen and (max-width: 768px) {
+      width: 100%;
+    }
+    @media only screen and (max-width: 576px) {
+      width: 100%;
+    }
+  }
+`;
 const PostDetail = ({ postData }) => {
-  console.log(postData);
-  const content = postData?.attributes?.content;
+  const content = postData?.attributes?.content
+    ?.replace(/&nbsp;?/gi, "")
+    ?.replace(/<h2/g, '<h2 class="text"')
+    ?.replace(/<h3/g, '<h3 class="text"')
+    ?.replace(/<a/g, '<a rel="nofollow" target="_blank"');
   const [data, setData] = useState([]);
   const [block, setBlock] = useState([]);
   const [checkId, setCheckId] = useState();
   const [checkOffset, setCheckOffset] = useState();
-
+  console.log(data);
   const { ref, inView } = useInView({
     threshold: 0.5
   });
@@ -317,7 +345,7 @@ const PostDetail = ({ postData }) => {
           </Banner>
         </WraaperBox>
         <Container>
-          <GridServicesDT>
+          <GridBlog>
             <LeftDesc>
               {postData?.attributes?.feature_image?.data && (
                 <Image
@@ -329,14 +357,12 @@ const PostDetail = ({ postData }) => {
                   }
                 />
               )}
-              <ContenBox>
-                {ReactHtmlParser(postData?.attributes?.content)}
-              </ContenBox>
+              <ContenBox>{ReactHtmlParser(content)}</ContenBox>
             </LeftDesc>
             <RightDesc>
               <WrapRight>
                 <TableHeading content="On this Page" />
-                <Box>
+                <Box inView={inView}>
                   {data.length > 0 ? (
                     data.map((item, index) => (
                       <Box
@@ -369,7 +395,7 @@ const PostDetail = ({ postData }) => {
                 </Box>
               </WrapRight>
             </RightDesc>
-          </GridServicesDT>
+          </GridBlog>
         </Container>
       </WrapperServices>
     </ContentWrapper>

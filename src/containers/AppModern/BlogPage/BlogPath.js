@@ -8,11 +8,11 @@ const BlogPath = ({ postData }) => {
     <Breadcrumb>
       <Box className="container-text">
         <Link href="/">
-          <a className="text">Printcart</a>
+          <a className="textTitle">Printcart</a>
         </Link>
         {" - "}
         <Link href="/blog">
-          <a className="text">Blog</a>
+          <a className="textTitle">Blog</a>
         </Link>
         {postData?.attributes?.title && (
           <>
@@ -21,7 +21,7 @@ const BlogPath = ({ postData }) => {
               prefetch={false}
               href={`/blog/${postData?.attributes?.alias}`}
             >
-              <a className="text">{postData?.attributes?.title}</a>
+              <a className="textTitle">{postData?.attributes?.title}</a>
             </Link>
           </>
         )}
