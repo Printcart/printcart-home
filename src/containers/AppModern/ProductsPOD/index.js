@@ -190,11 +190,16 @@ export const WrapContent = styled(Box)`
 `;
 export const PTitle = styled.p`
   margin: 0;
+  height: 48px;
   max-height: 48px;
-  overflow: hidden;
   font-size: 1.25em;
   line-height: 1.5rem;
   color: #17262b;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 `;
 export const PByVendor = styled.p`
   margin: 0;
