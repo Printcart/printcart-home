@@ -20,7 +20,7 @@ import {
 import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 
-const WraaperBox = styled(Box)`
+const WrapBox = styled(Box)`
   margin-bottom: 50px;
 `;
 const Banner = styled(Box)`
@@ -186,17 +186,103 @@ const GridBlog = styled.div`
     }
   }
 `;
+const BoxRecap = styled(Box)`
+  .text {
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0.3px;
+    color: #5c5c5c;
+  }
+  .text_h2 {
+    cursor: pointer;
+    font-size: 16px;
+    color: #5c5c5c;
+    &:hover {
+      color: #2d58af;
+    }
+  }
+  .textChoose_h3 {
+    cursor: pointer;
+    line-height: 1.4px;
+    font-size: 16px;
+    font-weight: 500;
+    margin-top: 10px;
+    margin-left: 20px;
+    color: #2d58af;
+    letter-spacing: 0.3px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+  .textChoose_h2 {
+    cusor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    margin-top: 15px;
+    color: #2d58af;
+    letter-spacing: 0.3px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    & svg {
+      font-size: 8px;
+      margin-right: 5px;
+      margin-bottom: 1px;
+    }
+  }
+  .text_h3n {
+    display: none;
+    cursor: pointer;
+    line-height: 1.4px;
+    font-size: 16px;
+    font-weight: 400;
+    margin-top: 10px;
+    margin-left: 20px;
+    color: #5c5c5c;
+    letter-spacing: 0.3px;
+    &:hover {
+      color: #2d58af;
+      font-weight: 500;
+    }
+  }
+  .text_h3b {
+    cusor: pointer;
+    line-height: 1.4px;
+    font-size: 16px;
+    font-weight: 400;
+    margin-top: 10px;
+    margin-left: 20px;
+    color: #5c5c5c;
+    letter-spacing: 0.3px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    &:hover {
+      color: #2d58af;
+      font-weight: 500;
+    }
+  }
+`;
 const PostDetail = ({ postData }) => {
+  // console.log(postData);
+  const topicId = postData?.attributes?.post_type?.data?.id;
   const content = postData?.attributes?.content
     ?.replace(/&nbsp;?/gi, "")
     ?.replace(/<h2/g, '<h2 class="text"')
     ?.replace(/<h3/g, '<h3 class="text"')
-    ?.replace(/<a/g, '<a rel="nofollow" target="_blank"');
+    ?.replace(/<a/g, '<a rel="nofollow" target="_blank"')
+    ?.replace(/<img/g, `<img alt="image ${topicId}"`);
   const [data, setData] = useState([]);
   const [block, setBlock] = useState([]);
   const [checkId, setCheckId] = useState();
   const [checkOffset, setCheckOffset] = useState();
-  console.log(data);
+  // console.log(data);
   const { ref, inView } = useInView({
     threshold: 0.5
   });
@@ -280,7 +366,7 @@ const PostDetail = ({ postData }) => {
     <ContentWrapper>
       <WrapperServices>
         <BlogPath postData={postData} />
-        <WraaperBox>
+        <WrapBox>
           <Banner>
             <Container>
               <BoxPost>
@@ -343,7 +429,7 @@ const PostDetail = ({ postData }) => {
               </BoxPost>
             </Container>
           </Banner>
-        </WraaperBox>
+        </WrapBox>
         <Container>
           <GridBlog>
             <LeftDesc>
@@ -362,10 +448,10 @@ const PostDetail = ({ postData }) => {
             <RightDesc>
               <WrapRight>
                 <TableHeading content="On this Page" />
-                <Box inView={inView}>
+                <BoxRecap>
                   {data.length > 0 ? (
                     data.map((item, index) => (
-                      <Box
+                      <p
                         key={index}
                         ref={checkOffset === item.label ? ref : null}
                         id={item.label}
@@ -373,26 +459,26 @@ const PostDetail = ({ postData }) => {
                         className={
                           (checkOffset || checkId) === item.label
                             ? item.label.slice(0, 4) === "text"
-                              ? "classes.textChoose_h3"
-                              : "classes.textChoose_h2"
+                              ? "textChoose_h3"
+                              : "textChoose_h2"
                             : item.label.slice(0, 4) === "text"
                             ? block.length === 0
-                              ? "classes.text_h3n"
+                              ? "text_h3n"
                               : block.map((e) =>
                                   e.label === item.label
-                                    ? "classes.text_h3b"
-                                    : "classes.text_h3n"
+                                    ? "text_h3b"
+                                    : "text_h3n"
                                 )
-                            : "classes.text_h2"
+                            : "text_h2"
                         }
                       >
                         {item.value}
-                      </Box>
+                      </p>
                     ))
                   ) : (
-                    <Box> There is no table of contents for this article.</Box>
+                    <p> There is no table of contents for this article.</p>
                   )}
-                </Box>
+                </BoxRecap>
               </WrapRight>
             </RightDesc>
           </GridBlog>

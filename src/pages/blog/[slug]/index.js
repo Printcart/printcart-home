@@ -44,6 +44,10 @@ export async function getStaticProps({ params }) {
 
   const fetchData = await fetch(newUrl);
   const resultData = await fetchData.json();
+  console.log(resultData);
+
+  const idUser = resultData.data[0]?.attributes?.user_profile?.data?.id;
+  console.log(idUser);
 
   return {
     props: {
