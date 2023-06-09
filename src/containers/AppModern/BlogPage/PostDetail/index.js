@@ -2,7 +2,7 @@ import Box from "common/components/Box";
 import Heading from "common/components/Heading";
 import Container from "common/components/UI/Container";
 import WrapperServices, {
-  GridServicesDT
+  GridServicesDT,
 } from "containers/AppModern/ServiceDetail/WrapperService";
 import { ContentWrapper } from "containers/AppModern/appModern.style";
 import Link from "next/link";
@@ -15,7 +15,7 @@ import {
   LeftContent,
   LogoAuthor,
   TimeUser,
-  TitleUser
+  TitleUser,
 } from "../blogPage.style";
 import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
@@ -269,7 +269,9 @@ const BoxRecap = styled(Box)`
     }
   }
 `;
-const PostDetail = ({ postData }) => {
+const PostDetail = (props) => {
+  const { postData, relatedData } = props;
+  console.log(relatedData);
   // console.log(postData);
   const topicId = postData?.attributes?.post_type?.data?.id;
   const content = postData?.attributes?.content
@@ -284,7 +286,7 @@ const PostDetail = ({ postData }) => {
   const [checkOffset, setCheckOffset] = useState();
   // console.log(data);
   const { ref, inView } = useInView({
-    threshold: 0.5
+    threshold: 0.5,
   });
 
   function showItem(item) {
@@ -314,7 +316,7 @@ const PostDetail = ({ postData }) => {
     if (anchor) {
       anchor.scrollIntoView({
         behavior: "smooth",
-        block: "start"
+        block: "start",
       });
     }
   }
@@ -353,7 +355,7 @@ const PostDetail = ({ postData }) => {
             : `text-${index}`;
         setData((e) => [
           ...e,
-          { label: paragraph[index].id, value: paragraph[index].textContent }
+          { label: paragraph[index].id, value: paragraph[index].textContent },
         ]);
       }
 
@@ -389,7 +391,7 @@ const PostDetail = ({ postData }) => {
                                   height: "100%",
                                   textAlign: "center",
                                   objectFit: "cover",
-                                  textIndent: "10000px"
+                                  textIndent: "10000px",
                                 }}
                                 alt="Avatar"
                                 src={
@@ -482,6 +484,11 @@ const PostDetail = ({ postData }) => {
               </WrapRight>
             </RightDesc>
           </GridBlog>
+          <Box>
+            {relatedData.data.map((items, index) => (
+              <p key={index}>{items.attributes.title}</p>
+            ))}
+          </Box>
         </Container>
       </WrapperServices>
     </ContentWrapper>

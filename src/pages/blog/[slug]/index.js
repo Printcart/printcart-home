@@ -8,7 +8,7 @@ import Head from "next/head";
 import { ThemeProvider } from "styled-components";
 
 const DetailPage = (props) => {
-  const { postData } = props;
+  const { postData, relatedData } = props;
   return (
     <ThemeProvider theme={theme}>
       <>
@@ -25,7 +25,7 @@ const DetailPage = (props) => {
           <div className="sticky-active">
             <Navbar />
           </div>
-          <PostDetail postData={postData} />
+          <PostDetail postData={postData} relatedData={relatedData} />
           <Footer />
         </AppWrapper>
       </>
@@ -44,15 +44,27 @@ export async function getStaticProps({ params }) {
 
   const fetchData = await fetch(newUrl);
   const resultData = await fetchData.json();
-  console.log(resultData);
 
   const idUser = resultData.data[0]?.attributes?.user_profile?.data?.id;
-  console.log(idUser);
+  const notIdUser = resultData.data[0]?.id;
+  const relatedURL = new URL("posts", baseUrl);
+  // relatedURL.searchParams.set("filters[channels][name][$eq]", "Printcart");
+  relatedURL.searchParams.set("filters[$or][1][user_profile][id]", idUser);
+  relatedURL.searchParams.set("filters[id][$notIn]", notIdUser);
+  relatedURL.searchParams.set("pagination[limit]", 6);
+  relatedURL.searchParams.set("filters[post_type][id]", 3);
+  relatedURL.searchParams.set("populate", "*");
+
+  const newUrlRelated = relatedURL.href;
+
+  const fetchRelated = await fetch(newUrlRelated);
+  const resultRelated = await fetchRelated.json();
 
   return {
     props: {
-      postData: resultData.data[0]
-    }
+      postData: resultData.data[0],
+      relatedData: resultRelated,
+    },
   };
 }
 
@@ -69,10 +81,10 @@ export async function getStaticPaths() {
     return {
       paths: result?.data.map((items) => {
         return {
-          params: { slug: items?.attributes?.alias }
+          params: { slug: items?.attributes?.alias },
         };
       }),
-      fallback: "blocking"
+      fallback: "blocking",
     };
   }
 }
