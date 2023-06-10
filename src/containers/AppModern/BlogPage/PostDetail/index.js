@@ -1,24 +1,30 @@
 import Box from "common/components/Box";
 import Heading from "common/components/Heading";
 import Container from "common/components/UI/Container";
-import WrapperServices, {
-  GridServicesDT,
-} from "containers/AppModern/ServiceDetail/WrapperService";
+import WrapperServices from "containers/AppModern/ServiceDetail/WrapperService";
 import { ContentWrapper } from "containers/AppModern/appModern.style";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import ReactHtmlParser from "react-html-parser";
+import { ic_remove_red_eye } from "react-icons-kit/md/ic_remove_red_eye";
+import { useInView } from "react-intersection-observer";
 import styled from "styled-components";
 import BlogPath from "../BlogPath";
-import {
+import GridPost, {
   AuthorPost,
   AvatarAuthor,
+  ButtonRead,
+  ContainerPost,
+  DesBox,
+  GridItem,
   LeftContent,
   LogoAuthor,
+  TagBox,
   TimeUser,
-  TitleUser,
+  TitleUser
 } from "../blogPage.style";
-import { useEffect, useState } from "react";
-import { useInView } from "react-intersection-observer";
+
+import Icon from "react-icons-kit";
 
 const WrapBox = styled(Box)`
   margin-bottom: 50px;
@@ -269,9 +275,19 @@ const BoxRecap = styled(Box)`
     }
   }
 `;
+const WrapRelated = styled(Box)`
+  padding-top: 50px;
+  margin-bottom: 50px;
+  border-top: 1px solid rgb(0 0 50 / 15%);
+`;
+const RelatedHeading = styled(Heading)`
+  font-size: 35px;
+  color: #444;
+  font-weight: 500;
+  margin-bottom: 50px;
+`;
 const PostDetail = (props) => {
   const { postData, relatedData } = props;
-  console.log(relatedData);
   // console.log(postData);
   const topicId = postData?.attributes?.post_type?.data?.id;
   const content = postData?.attributes?.content
@@ -284,9 +300,8 @@ const PostDetail = (props) => {
   const [block, setBlock] = useState([]);
   const [checkId, setCheckId] = useState();
   const [checkOffset, setCheckOffset] = useState();
-  // console.log(data);
   const { ref, inView } = useInView({
-    threshold: 0.5,
+    threshold: 0.5
   });
 
   function showItem(item) {
@@ -316,7 +331,7 @@ const PostDetail = (props) => {
     if (anchor) {
       anchor.scrollIntoView({
         behavior: "smooth",
-        block: "start",
+        block: "start"
       });
     }
   }
@@ -355,7 +370,7 @@ const PostDetail = (props) => {
             : `text-${index}`;
         setData((e) => [
           ...e,
-          { label: paragraph[index].id, value: paragraph[index].textContent },
+          { label: paragraph[index].id, value: paragraph[index].textContent }
         ]);
       }
 
@@ -365,7 +380,7 @@ const PostDetail = (props) => {
   }, [content, checkOffset]);
 
   return (
-    <ContentWrapper>
+    <>
       <WrapperServices>
         <BlogPath postData={postData} />
         <WrapBox>
@@ -391,7 +406,7 @@ const PostDetail = (props) => {
                                   height: "100%",
                                   textAlign: "center",
                                   objectFit: "cover",
-                                  textIndent: "10000px",
+                                  textIndent: "10000px"
                                 }}
                                 alt="Avatar"
                                 src={
@@ -449,49 +464,144 @@ const PostDetail = (props) => {
             </LeftDesc>
             <RightDesc>
               <WrapRight>
-                <TableHeading content="On this Page" />
-                <BoxRecap>
-                  {data.length > 0 ? (
-                    data.map((item, index) => (
-                      <p
-                        key={index}
-                        ref={checkOffset === item.label ? ref : null}
-                        id={item.label}
-                        onClick={transferTo}
-                        className={
-                          (checkOffset || checkId) === item.label
-                            ? item.label.slice(0, 4) === "text"
-                              ? "textChoose_h3"
-                              : "textChoose_h2"
-                            : item.label.slice(0, 4) === "text"
-                            ? block.length === 0
-                              ? "text_h3n"
-                              : block.map((e) =>
-                                  e.label === item.label
-                                    ? "text_h3b"
-                                    : "text_h3n"
-                                )
-                            : "text_h2"
-                        }
-                      >
-                        {item.value}
+                <>
+                  <TableHeading content="On this Page" />
+                  <BoxRecap>
+                    {data.length > 0 ? (
+                      data.map((item, index) => (
+                        <p
+                          key={index}
+                          ref={checkOffset === item.label ? ref : null}
+                          id={item.label}
+                          onClick={transferTo}
+                          className={
+                            (checkOffset || checkId) === item.label
+                              ? item.label.slice(0, 4) === "text"
+                                ? "textChoose_h3"
+                                : "textChoose_h2"
+                              : item.label.slice(0, 4) === "text"
+                              ? block.length === 0
+                                ? "text_h3n"
+                                : block.map((e) =>
+                                    e.label === item.label
+                                      ? "text_h3b"
+                                      : "text_h3n"
+                                  )
+                              : "text_h2"
+                          }
+                        >
+                          {item.value}
+                        </p>
+                      ))
+                    ) : (
+                      <p className="text">
+                        {" "}
+                        There is no table of contents for this article.
                       </p>
-                    ))
-                  ) : (
-                    <p> There is no table of contents for this article.</p>
-                  )}
-                </BoxRecap>
+                    )}
+                  </BoxRecap>
+                </>
               </WrapRight>
             </RightDesc>
           </GridBlog>
-          <Box>
-            {relatedData.data.map((items, index) => (
-              <p key={index}>{items.attributes.title}</p>
-            ))}
-          </Box>
+          {relatedData?.data?.length > 0 && (
+            <WrapRelated>
+              <RelatedHeading content="Related Tutorial" />
+              <GridPost>
+                {relatedData?.data.map((items, index) => (
+                  <GridItem key={index}>
+                    <ContainerPost>
+                      <Box>
+                        <Link href={`/blog/${items?.attributes?.alias}`}>
+                          <a title={`View to ${items?.attributes?.title}`}>
+                            <h3>{items?.attributes?.title}</h3>
+                          </a>
+                        </Link>
+                      </Box>
+                      <DesBox>
+                        {ReactHtmlParser(items?.attributes?.content)}
+                      </DesBox>
+                      <Box>
+                        <TagBox>
+                          {items?.attributes?.tags?.data.map((tags, index) => (
+                            <Link href="#" key={index}>
+                              <a>#{tags.attributes.alias}</a>
+                            </Link>
+                          ))}
+                        </TagBox>
+                      </Box>
+                      <Box>
+                        <AuthorPost>
+                          <LeftContent>
+                            <LogoAuthor>
+                              <Link href={"#"}>
+                                <a>
+                                  <AvatarAuthor>
+                                    <img
+                                      style={{
+                                        width: "100%",
+                                        height: "100%",
+                                        textAlign: "center",
+                                        objectFit: "cover",
+                                        textIndent: "10000px"
+                                      }}
+                                      alt="Avatar"
+                                      src={
+                                        items?.attributes?.user_profile?.data
+                                          ?.attributes?.avatar ??
+                                        "https://media-cloodo.s3.amazonaws.com/thumbnail_Icon_2d75277193.png"
+                                      }
+                                    />
+                                  </AvatarAuthor>
+                                </a>
+                              </Link>
+                            </LogoAuthor>
+                            {items?.attributes?.user_profile && (
+                              <Box>
+                                <TitleUser>
+                                  <Link href={"#"}>
+                                    <a>
+                                      {items?.attributes?.user_profile?.data
+                                        .attributes?.name ?? "Printcart"}
+                                    </a>
+                                  </Link>
+                                </TitleUser>
+                                <TimeUser>
+                                  <Link href={"#"}>
+                                    <a>
+                                      {new Date(
+                                        items?.attributes?.user_profile?.data.attributes?.publishedAt
+                                      ).toLocaleString()}
+                                    </a>
+                                  </Link>
+                                </TimeUser>
+                              </Box>
+                            )}
+                          </LeftContent>
+                          <Box>
+                            <Link href={`/blog/${items?.attributes?.alias}`}>
+                              <a>
+                                <ButtonRead>
+                                  <Icon
+                                    icon={ic_remove_red_eye}
+                                    style={{ marginRight: "10px" }}
+                                  />
+                                  Read Tutorial
+                                </ButtonRead>
+                              </a>
+                            </Link>
+                          </Box>
+                        </AuthorPost>
+                      </Box>
+                    </ContainerPost>
+                  </GridItem>
+                ))}
+              </GridPost>
+            </WrapRelated>
+          )}
         </Container>
       </WrapperServices>
-    </ContentWrapper>
+    </>
   );
 };
 

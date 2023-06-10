@@ -11,7 +11,9 @@ import { SectionHeader } from "../appModern.style";
 import GridPost, {
   AuthorPost,
   AvatarAuthor,
+  ButtonRead,
   ContainerPost,
+  DesBox,
   GridItem,
   LeftContent,
   LogoAuthor,
@@ -20,38 +22,6 @@ import GridPost, {
   TitleUser
 } from "./blogPage.style";
 
-const ButtonRead = styled.button`
-  color: #2d58af;
-  cursor: pointer;
-  border: 1px solid #7a99d9;
-  height: 40px;
-  border-radius: 5px;
-  display: flex;
-  padding: 5px 15px;
-  align-items: center;
-  font-weight: 400;
-  text-transform: capitalize;
-  &:hover {
-    background: #2d58af;
-    color: #fff;
-  }
-`;
-const DesBox = styled(Box)`
-  > p {
-    margin: 0;
-    font-size: 17px;
-    color: #5c5c5c;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 4;
-  }
-  height: 100px;
-  margin-bottom: 10px;
-  text-overflow: ellipsis;
-  overflow: hidden;
-`;
 const BlogPage = ({ resPosts }) => {
   return (
     <React.Fragment>

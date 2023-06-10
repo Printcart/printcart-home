@@ -1,3 +1,4 @@
+import Box from "common/components/Box";
 import styled from "styled-components";
 
 const GridPost = styled.div`
@@ -141,5 +142,37 @@ export const TimeUser = styled.div`
       text-decoration: underline;
     }
   }
+`;
+export const ButtonRead = styled.button`
+  color: #2d58af;
+  cursor: pointer;
+  border: 1px solid #7a99d9;
+  height: 40px;
+  border-radius: 5px;
+  display: flex;
+  padding: 5px 15px;
+  align-items: center;
+  font-weight: 400;
+  text-transform: capitalize;
+  &:hover {
+    background: #2d58af;
+    color: #fff;
+  }
+`;
+export const DesBox = styled(Box)`
+  > p {
+    margin: 0;
+    font-size: 17px;
+    color: #5c5c5c;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+  }
+  height: 100px;
+  margin-bottom: 10px;
+  text-overflow: ellipsis;
+  overflow: hidden;
 `;
 export default GridPost;

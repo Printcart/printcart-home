@@ -37,7 +37,6 @@ export async function getStaticProps({ params }) {
   const baseUrl = process.env.STRAPI_API_URL;
   const getSlug = params.slug;
   const setUrl = new URL("posts", baseUrl);
-  setUrl.searchParams.set("filters[channels][name][$eq]", "Printcart");
   setUrl.searchParams.set("filters[alias][$eq]", getSlug);
   setUrl.searchParams.set("populate", "*");
   const newUrl = setUrl.href;
@@ -54,7 +53,6 @@ export async function getStaticProps({ params }) {
   relatedURL.searchParams.set("pagination[limit]", 6);
   relatedURL.searchParams.set("filters[post_type][id]", 3);
   relatedURL.searchParams.set("populate", "*");
-
   const newUrlRelated = relatedURL.href;
 
   const fetchRelated = await fetch(newUrlRelated);
@@ -62,16 +60,17 @@ export async function getStaticProps({ params }) {
 
   return {
     props: {
-      postData: resultData.data[0],
-      relatedData: resultRelated,
+      postData: resultData?.data[0] || {},
+      relatedData: resultRelated || {}
     },
+    revalidate: 1
   };
 }
 
 export async function getStaticPaths() {
   const baseUrl = process.env.STRAPI_API_URL;
   const setUrl = new URL("posts", baseUrl);
-  setUrl.searchParams.set("filters[channels][name][$eq]", "Printcart");
+  setUrl.searchParams.set("pagination[limit]", 1);
   const newUrl = setUrl.href;
 
   const fetchData = await fetch(newUrl);
@@ -81,10 +80,10 @@ export async function getStaticPaths() {
     return {
       paths: result?.data.map((items) => {
         return {
-          params: { slug: items?.attributes?.alias },
+          params: { slug: items.attributes.alias }
         };
       }),
-      fallback: "blocking",
+      fallback: "blocking"
     };
   }
 }
