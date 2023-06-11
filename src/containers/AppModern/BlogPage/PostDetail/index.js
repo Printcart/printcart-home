@@ -129,18 +129,57 @@ const Image = styled.img`
   box-shadow: 0 0px 10px 1px rgb(0 0 50 / 10%);
 `;
 const ContenBox = styled(Box)`
+  margin-bottom: 5px;
   color: #444;
   font-size: 18px;
   font-weight: 300;
   letter-spacing: 0.5px;
   line-height: 30px;
-  > p,
+  & p,
   span,
   ins,
   ul,
   li,
   a {
     line-height: 1.8;
+  }
+  & h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    line-height: 1.2;
+  }
+  & h1 {
+    color: #444;
+    font-size: 40px;
+    font-weight: 500;
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+  & h2 {
+    color: #444;
+    font-size: 35px;
+    font-weight: 500;
+    padding-top: 25px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+  & h3 {
+    color: #444;
+    font-size: 25px;
+    font-weight: 500;
+    padding-top: 25px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+  & h4 {
+    color: #444;
+    font-size: 20px;
+    font-weight: 500;
+    padding-top: 25px;
+    margin-top: 50px;
+    margin-bottom: 50px;
   }
   & a {
     color: #2d58af;
@@ -193,7 +232,7 @@ const GridBlog = styled.div`
   }
 `;
 const BoxRecap = styled(Box)`
-  .text {
+  .texttitle {
     font-size: 16px;
     font-weight: 400;
     letter-spacing: 0.3px;
@@ -203,8 +242,17 @@ const BoxRecap = styled(Box)`
     cursor: pointer;
     font-size: 16px;
     color: #5c5c5c;
+    display: -webkit-box;
+    overflow: hidden;
+    margin-top: 15px;
+    font-weight: 400;
+    text-overflow: ellipsis;
+    letter-spacing: 0.3px;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
     &:hover {
       color: #2d58af;
+      font-weight: 500;
     }
   }
   .textChoose_h3 {
@@ -241,8 +289,8 @@ const BoxRecap = styled(Box)`
     }
   }
   .text_h3n {
-    display: none;
     cursor: pointer;
+    display: none;
     line-height: 1.4px;
     font-size: 16px;
     font-weight: 400;
@@ -292,10 +340,11 @@ const PostDetail = (props) => {
   const topicId = postData?.attributes?.post_type?.data?.id;
   const content = postData?.attributes?.content
     ?.replace(/&nbsp;?/gi, "")
-    ?.replace(/<h2/g, '<h2 class="text"')
-    ?.replace(/<h3/g, '<h3 class="text"')
+    ?.replace(/<h2/g, '<h2 class="texttitle"')
+    ?.replace(/<h3/g, '<h3 class="texttitle"')
     ?.replace(/<a/g, '<a rel="nofollow" target="_blank"')
     ?.replace(/<img/g, `<img alt="image ${topicId}"`);
+
   const [data, setData] = useState([]);
   const [block, setBlock] = useState([]);
   const [checkId, setCheckId] = useState();
@@ -303,16 +352,14 @@ const PostDetail = (props) => {
   const { ref, inView } = useInView({
     threshold: 0.5
   });
-
+  console.log(block);
   function showItem(item) {
     const id = item.replace(/\D/g, "");
     const isH2 = item.startsWith("content-");
-
     if (isH2) {
-      setBlock([]);
       for (let i = 0; i < data.length; i++) {
         if (i > id) {
-          if (data[i].label.slice(0, 4) === "text") {
+          if (data[i].label.slice(0, 9) === "texttitle") {
             setBlock((e) => [...e, data[i]]);
           } else {
             break;
@@ -338,7 +385,9 @@ const PostDetail = (props) => {
 
   function handleScroll() {
     const headings = Array.from(
-      document.querySelectorAll(".text[id^=content-], .text[id^=text-]")
+      document.querySelectorAll(
+        ".texttitle[id^=content-], .texttitle[id^=texttitle-]"
+      )
     );
     const firstVisibleHeading = headings.find((heading) => {
       const headingRect = heading.getBoundingClientRect();
@@ -360,14 +409,14 @@ const PostDetail = (props) => {
 
   useEffect(() => {
     if (typeof document !== "undefined" && typeof window !== "undefined") {
-      const paragraph = document.getElementsByClassName("text");
+      const paragraph = document.getElementsByClassName("texttitle");
       setData([]);
 
       for (let index = 0; index < paragraph.length; index++) {
         paragraph[index].id =
           paragraph[index].localName === "h2"
             ? `content-${index}`
-            : `text-${index}`;
+            : `texttitle-${index}`;
         setData((e) => [
           ...e,
           { label: paragraph[index].id, value: paragraph[index].textContent }
@@ -378,6 +427,7 @@ const PostDetail = (props) => {
       return () => window.removeEventListener("scroll", handleScroll);
     }
   }, [content, checkOffset]);
+  console.log(data);
 
   return (
     <>
@@ -448,23 +498,24 @@ const PostDetail = (props) => {
           </Banner>
         </WrapBox>
         <Container>
-          <GridBlog>
-            <LeftDesc>
-              {postData?.attributes?.feature_image?.data && (
-                <Image
-                  src={
-                    postData?.attributes?.feature_image?.data?.attributes?.url
-                  }
-                  alt={
-                    postData?.attributes?.feature_image?.data?.attributes?.name
-                  }
-                />
-              )}
-              <ContenBox>{ReactHtmlParser(content)}</ContenBox>
-            </LeftDesc>
-            <RightDesc>
-              <WrapRight>
-                <>
+          <Box>
+            <GridBlog>
+              <LeftDesc>
+                {postData?.attributes?.feature_image?.data && (
+                  <Image
+                    src={
+                      postData?.attributes?.feature_image?.data?.attributes?.url
+                    }
+                    alt={
+                      postData?.attributes?.feature_image?.data?.attributes
+                        ?.name
+                    }
+                  />
+                )}
+                <ContenBox>{ReactHtmlParser(content)}</ContenBox>
+              </LeftDesc>
+              <RightDesc>
+                <WrapRight>
                   <TableHeading content="On this Page" />
                   <BoxRecap>
                     {data.length > 0 ? (
@@ -476,10 +527,10 @@ const PostDetail = (props) => {
                           onClick={transferTo}
                           className={
                             (checkOffset || checkId) === item.label
-                              ? item.label.slice(0, 4) === "text"
+                              ? item.label.slice(0, 4) === "texttitle"
                                 ? "textChoose_h3"
                                 : "textChoose_h2"
-                              : item.label.slice(0, 4) === "text"
+                              : item.label.slice(0, 9) == "texttitle"
                               ? block.length === 0
                                 ? "text_h3n"
                                 : block.map((e) =>
@@ -494,111 +545,113 @@ const PostDetail = (props) => {
                         </p>
                       ))
                     ) : (
-                      <p className="text">
+                      <p className="texttitle">
                         {" "}
                         There is no table of contents for this article.
                       </p>
                     )}
                   </BoxRecap>
-                </>
-              </WrapRight>
-            </RightDesc>
-          </GridBlog>
-          {relatedData?.data?.length > 0 && (
-            <WrapRelated>
-              <RelatedHeading content="Related Tutorial" />
-              <GridPost>
-                {relatedData?.data.map((items, index) => (
-                  <GridItem key={index}>
-                    <ContainerPost>
-                      <Box>
-                        <Link href={`/blog/${items?.attributes?.alias}`}>
-                          <a title={`View to ${items?.attributes?.title}`}>
-                            <h3>{items?.attributes?.title}</h3>
-                          </a>
-                        </Link>
-                      </Box>
-                      <DesBox>
-                        {ReactHtmlParser(items?.attributes?.content)}
-                      </DesBox>
-                      <Box>
-                        <TagBox>
-                          {items?.attributes?.tags?.data.map((tags, index) => (
-                            <Link href="#" key={index}>
-                              <a>#{tags.attributes.alias}</a>
-                            </Link>
-                          ))}
-                        </TagBox>
-                      </Box>
-                      <Box>
-                        <AuthorPost>
-                          <LeftContent>
-                            <LogoAuthor>
-                              <Link href={"#"}>
+                </WrapRight>
+              </RightDesc>
+            </GridBlog>
+            {relatedData?.data?.length > 0 && (
+              <WrapRelated>
+                <RelatedHeading content="Related Tutorial" />
+                <GridPost>
+                  {relatedData?.data.map((items, index) => (
+                    <GridItem key={index}>
+                      <ContainerPost>
+                        <Box>
+                          <Link href={`/blog/${items?.attributes?.alias}`}>
+                            <a title={`View to ${items?.attributes?.title}`}>
+                              <h3>{items?.attributes?.title}</h3>
+                            </a>
+                          </Link>
+                        </Box>
+                        <DesBox>
+                          {ReactHtmlParser(items?.attributes?.content)}
+                        </DesBox>
+                        <Box>
+                          <TagBox>
+                            {items?.attributes?.tags?.data.map(
+                              (tags, index) => (
+                                <Link href="#" key={index}>
+                                  <a>#{tags.attributes.alias}</a>
+                                </Link>
+                              )
+                            )}
+                          </TagBox>
+                        </Box>
+                        <Box>
+                          <AuthorPost>
+                            <LeftContent>
+                              <LogoAuthor>
+                                <Link href={"#"}>
+                                  <a>
+                                    <AvatarAuthor>
+                                      <img
+                                        style={{
+                                          width: "100%",
+                                          height: "100%",
+                                          textAlign: "center",
+                                          objectFit: "cover",
+                                          textIndent: "10000px"
+                                        }}
+                                        alt="Avatar"
+                                        src={
+                                          items?.attributes?.user_profile?.data
+                                            ?.attributes?.avatar ??
+                                          "https://media-cloodo.s3.amazonaws.com/thumbnail_Icon_2d75277193.png"
+                                        }
+                                      />
+                                    </AvatarAuthor>
+                                  </a>
+                                </Link>
+                              </LogoAuthor>
+                              {items?.attributes?.user_profile && (
+                                <Box>
+                                  <TitleUser>
+                                    <Link href={"#"}>
+                                      <a>
+                                        {items?.attributes?.user_profile?.data
+                                          .attributes?.name ?? "Printcart"}
+                                      </a>
+                                    </Link>
+                                  </TitleUser>
+                                  <TimeUser>
+                                    <Link href={"#"}>
+                                      <a>
+                                        {new Date(
+                                          items?.attributes?.user_profile?.data.attributes?.publishedAt
+                                        ).toLocaleString()}
+                                      </a>
+                                    </Link>
+                                  </TimeUser>
+                                </Box>
+                              )}
+                            </LeftContent>
+                            <Box>
+                              <Link href={`/blog/${items?.attributes?.alias}`}>
                                 <a>
-                                  <AvatarAuthor>
-                                    <img
-                                      style={{
-                                        width: "100%",
-                                        height: "100%",
-                                        textAlign: "center",
-                                        objectFit: "cover",
-                                        textIndent: "10000px"
-                                      }}
-                                      alt="Avatar"
-                                      src={
-                                        items?.attributes?.user_profile?.data
-                                          ?.attributes?.avatar ??
-                                        "https://media-cloodo.s3.amazonaws.com/thumbnail_Icon_2d75277193.png"
-                                      }
+                                  <ButtonRead>
+                                    <Icon
+                                      icon={ic_remove_red_eye}
+                                      style={{ marginRight: "10px" }}
                                     />
-                                  </AvatarAuthor>
+                                    Read Tutorial
+                                  </ButtonRead>
                                 </a>
                               </Link>
-                            </LogoAuthor>
-                            {items?.attributes?.user_profile && (
-                              <Box>
-                                <TitleUser>
-                                  <Link href={"#"}>
-                                    <a>
-                                      {items?.attributes?.user_profile?.data
-                                        .attributes?.name ?? "Printcart"}
-                                    </a>
-                                  </Link>
-                                </TitleUser>
-                                <TimeUser>
-                                  <Link href={"#"}>
-                                    <a>
-                                      {new Date(
-                                        items?.attributes?.user_profile?.data.attributes?.publishedAt
-                                      ).toLocaleString()}
-                                    </a>
-                                  </Link>
-                                </TimeUser>
-                              </Box>
-                            )}
-                          </LeftContent>
-                          <Box>
-                            <Link href={`/blog/${items?.attributes?.alias}`}>
-                              <a>
-                                <ButtonRead>
-                                  <Icon
-                                    icon={ic_remove_red_eye}
-                                    style={{ marginRight: "10px" }}
-                                  />
-                                  Read Tutorial
-                                </ButtonRead>
-                              </a>
-                            </Link>
-                          </Box>
-                        </AuthorPost>
-                      </Box>
-                    </ContainerPost>
-                  </GridItem>
-                ))}
-              </GridPost>
-            </WrapRelated>
-          )}
+                            </Box>
+                          </AuthorPost>
+                        </Box>
+                      </ContainerPost>
+                    </GridItem>
+                  ))}
+                </GridPost>
+              </WrapRelated>
+            )}
+          </Box>
         </Container>
       </WrapperServices>
     </>
