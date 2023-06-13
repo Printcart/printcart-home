@@ -336,7 +336,6 @@ const RelatedHeading = styled(Heading)`
 `;
 const PostDetail = (props) => {
   const { postData, relatedData } = props;
-  // console.log(postData);
   const topicId = postData?.attributes?.post_type?.data?.id;
   const content = postData?.attributes?.content
     ?.replace(/&nbsp;?/gi, "")
@@ -352,7 +351,6 @@ const PostDetail = (props) => {
   const { ref, inView } = useInView({
     threshold: 0.5
   });
-  console.log(block);
   function showItem(item) {
     const id = item.replace(/\D/g, "");
     const isH2 = item.startsWith("content-");
@@ -427,7 +425,6 @@ const PostDetail = (props) => {
       return () => window.removeEventListener("scroll", handleScroll);
     }
   }, [content, checkOffset]);
-  console.log(data);
 
   return (
     <>
@@ -530,7 +527,7 @@ const PostDetail = (props) => {
                               ? item.label.slice(0, 4) === "texttitle"
                                 ? "textChoose_h3"
                                 : "textChoose_h2"
-                              : item.label.slice(0, 9) == "texttitle"
+                              : item.label.slice(0, 4) === "texttitle"
                               ? block.length === 0
                                 ? "text_h3n"
                                 : block.map((e) =>
