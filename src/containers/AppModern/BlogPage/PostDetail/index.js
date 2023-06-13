@@ -334,6 +334,9 @@ const RelatedHeading = styled(Heading)`
   font-weight: 500;
   margin-bottom: 50px;
 `;
+const WrapContainer = styled(Box)`
+  margin-bottom: 3rem;
+`;
 const PostDetail = (props) => {
   const { postData, relatedData } = props;
   const topicId = postData?.attributes?.post_type?.data?.id;
@@ -494,8 +497,8 @@ const PostDetail = (props) => {
             </Container>
           </Banner>
         </WrapBox>
-        <Container>
-          <Box>
+        <WrapContainer>
+          <Container>
             <GridBlog>
               <LeftDesc>
                 {postData?.attributes?.feature_image?.data && (
@@ -648,8 +651,8 @@ const PostDetail = (props) => {
                 </GridPost>
               </WrapRelated>
             )}
-          </Box>
-        </Container>
+          </Container>
+        </WrapContainer>
       </WrapperServices>
     </>
   );
