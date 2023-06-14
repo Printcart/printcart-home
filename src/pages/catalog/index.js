@@ -48,8 +48,8 @@ export async function getStaticProps() {
   const paramsCollection = urlCollection.href;
 
   const urlProduct = new URL("products", baseUrlAdmin);
-  urlProduct.searchParams.set("limit", 6);
   urlProduct.searchParams.set("status", "published");
+
   const paramsProduct = urlProduct.href;
   const parameter = {
     method: "GET",

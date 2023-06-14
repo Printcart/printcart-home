@@ -307,47 +307,54 @@ const ProductsPOD = (props) => {
             {/* <HeaderPOD></HeaderPOD> */}
             <WrapperProduct>
               <GridFilter>
-                {getProducts.map((item, index) => (
-                  <CardItems key={index}>
-                    <Box>
-                      <WrapImage>
-                        <Link href={`/product/${item?.id}`}>
-                          <a>
-                            <img
-                              style={{
-                                position: "absolute",
-                                width: "100%",
-                                height: "100%",
-                                top: "0",
-                                left: "0",
-                                borderTopLeftRadius: "5px",
-                                borderTopRightRadius: "5px"
-                              }}
-                              src={item?.thumbnail}
-                            />
-                          </a>
-                        </Link>
-                      </WrapImage>
-                      <WrapContent>
-                        <Link href={`/product/${item?.id}`}>
-                          <a title={`View to ${item.title}`}>
-                            <PTitle>{item.title}</PTitle>
-                          </a>
-                        </Link>
-                        <PByVendor>By [Vendor_Name]. qty</PByVendor>
-                        <VendorPrice>
-                          <PPrice>From USD 9.38</PPrice>
-                          <PDiscount>From USD 5.92 with Printcart</PDiscount>
-                        </VendorPrice>
-                        <BoxDesc>
-                          {item.description && (
-                            <ReactMarkdown>{item.description}</ReactMarkdown>
-                          )}
-                        </BoxDesc>
-                      </WrapContent>
-                    </Box>
-                  </CardItems>
-                ))}
+                {getProducts.map(
+                  (item, index) =>
+                    index < 6 && (
+                      <CardItems key={index}>
+                        <Box>
+                          <WrapImage>
+                            <Link href={`/product/${item?.id}`}>
+                              <a>
+                                <img
+                                  style={{
+                                    position: "absolute",
+                                    width: "100%",
+                                    height: "100%",
+                                    top: "0",
+                                    left: "0",
+                                    borderTopLeftRadius: "5px",
+                                    borderTopRightRadius: "5px"
+                                  }}
+                                  src={item?.thumbnail}
+                                />
+                              </a>
+                            </Link>
+                          </WrapImage>
+                          <WrapContent>
+                            <Link href={`/product/${item?.id}`}>
+                              <a title={`View to ${item.title}`}>
+                                <PTitle>{item.title}</PTitle>
+                              </a>
+                            </Link>
+                            <PByVendor>By [Vendor_Name]. qty</PByVendor>
+                            <VendorPrice>
+                              <PPrice>From USD 9.38</PPrice>
+                              <PDiscount>
+                                From USD 5.92 with Printcart
+                              </PDiscount>
+                            </VendorPrice>
+                            <BoxDesc>
+                              {item.description && (
+                                <ReactMarkdown>
+                                  {item.description}
+                                </ReactMarkdown>
+                              )}
+                            </BoxDesc>
+                          </WrapContent>
+                        </Box>
+                      </CardItems>
+                    )
+                )}
               </GridFilter>
             </WrapperProduct>
           </ContainerBox>
@@ -368,11 +375,13 @@ const ProductsPOD = (props) => {
               </WrappBox>
             </WrappProvider>
           </ContainerPP>
-          <HeaderBox>
-            <TitleBox>
-              <TitleHead>Collections</TitleHead>
-            </TitleBox>
-          </HeaderBox>
+          {result && (
+            <HeaderBox>
+              <TitleBox>
+                <TitleHead>Collections</TitleHead>
+              </TitleBox>
+            </HeaderBox>
+          )}
           <GridServices>
             {result.map((items, index) => (
               <CardCus key={index}>
