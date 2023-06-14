@@ -1,18 +1,18 @@
 import ResetCSS from "common/assets/css/style";
 import { theme } from "common/theme/appModern";
+import Footer from "containers/AppModern/Footer";
 import Navbar from "containers/AppModern/Navbar";
-import Head from "next/head";
-import { ThemeProvider } from "styled-components";
+import ProductsPOD from "containers/AppModern/ProductsPOD";
 import GlobalStyle, {
   AppWrapper,
   ContentWrapper
 } from "containers/AppModern/appModern.style";
-import Footer from "containers/AppModern/Footer";
-import ProductsPOD from "containers/AppModern/ProductsPOD";
-import React from "react";
+import Head from "next/head";
+import { ThemeProvider } from "styled-components";
 
 const Catalog = (props) => {
   const { products, collections } = props;
+
   return (
     <ThemeProvider theme={theme}>
       <>
@@ -59,18 +59,18 @@ export async function getStaticProps() {
     }
   };
 
-  const resCollection = await fetch(paramsCollection, parameter);
-  const resProducts = await fetch(paramsProduct, parameter);
+  const fetchCollections = await fetch(paramsCollection, parameter);
+  const fetchProducts = await fetch(paramsProduct, parameter);
 
-  const [fetchCollection, fetchProducts] = await Promise.all([
-    resCollection.json(),
-    resProducts.json()
+  const [resCollection, resProducts] = await Promise.all([
+    fetchCollections.json(),
+    fetchProducts.json()
   ]);
 
   return {
     props: {
-      collections: fetchCollection.collections,
-      products: fetchProducts.products
+      collections: resCollection.collections,
+      products: resProducts.products
     },
     revalidate: 1
   };
