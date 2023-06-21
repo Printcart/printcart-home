@@ -55,7 +55,7 @@ export async function getStaticProps() {
   if (results.data.length > 0) {
     return {
       props: {
-        resPosts: results
+        resPosts: results["data"]
       },
       revalidate: 1
     };

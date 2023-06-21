@@ -461,8 +461,7 @@ const PostDetail = (props) => {
                                 alt="Avatar"
                                 src={
                                   postData?.attributes?.user_profile?.data
-                                    ?.attributes?.avatar ??
-                                  "https://media-cloodo.s3.amazonaws.com/thumbnail_Icon_2d75277193.png"
+                                    ?.attributes?.avatar ?? "favicon.png"
                                 }
                               />
                             </AvatarAuthor>

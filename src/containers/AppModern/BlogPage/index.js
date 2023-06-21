@@ -43,7 +43,7 @@ const BlogPage = ({ resPosts }) => {
         </SectionHeader>
         <Container>
           <GridPost>
-            {resPosts?.data.map((items, index) => (
+            {resPosts.map((items, index) => (
               <GridItem key={index}>
                 <ContainerPost>
                   <Box>
