@@ -52,10 +52,12 @@ export async function getStaticProps() {
   const fetchData = await fetch(newUrl);
   const results = await fetchData.json();
 
-  return {
-    props: {
-      resPosts: results
-    },
-    revalidate: 1
-  };
+  if (results.data.length > 0) {
+    return {
+      props: {
+        resPosts: results
+      },
+      revalidate: 1
+    };
+  }
 }
