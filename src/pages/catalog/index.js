@@ -12,7 +12,6 @@ import { ThemeProvider } from "styled-components";
 
 const Catalog = (props) => {
   const { products, collections } = props;
-
   return (
     <ThemeProvider theme={theme}>
       <>
@@ -49,6 +48,7 @@ export async function getStaticProps() {
 
   const urlProduct = new URL("products", baseUrlAdmin);
   urlProduct.searchParams.set("status", "published");
+  urlProduct.searchParams.set("limit", 500);
 
   const paramsProduct = urlProduct.href;
   const parameter = {

@@ -232,7 +232,7 @@ export const BoxDesc = styled(Box)`
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 4;
 `;
 export const WrapImage = styled(Box)`
   position: relative;
@@ -336,7 +336,7 @@ const ProductsPOD = (props) => {
                                 <PTitle>{item.title}</PTitle>
                               </a>
                             </Link>
-                            <PByVendor>By [Vendor_Name]. qty</PByVendor>
+                            <PByVendor>By {item?.vendor?.store_name}</PByVendor>
                             <VendorPrice>
                               <PPrice>From USD 9.38</PPrice>
                               <PDiscount>
@@ -344,9 +344,9 @@ const ProductsPOD = (props) => {
                               </PDiscount>
                             </VendorPrice>
                             <BoxDesc>
-                              {item.description && (
+                              {item?.description && (
                                 <ReactMarkdown>
-                                  {item.description}
+                                  {item?.description}
                                 </ReactMarkdown>
                               )}
                             </BoxDesc>
@@ -385,7 +385,7 @@ const ProductsPOD = (props) => {
           <GridServices>
             {result.map((items, index) => (
               <CardCus key={index}>
-                <Link href={`collection/${items?.id}`}>
+                <Link href={`/collection/${items?.id}`}>
                   <a title={`View to ${items?.title}`}>
                     <BoxCus>
                       <HeadingCollecion content={items?.title} />

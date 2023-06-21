@@ -17,7 +17,7 @@ const parameter = {
 };
 
 const Collection = (props) => {
-  const { collection } = props;
+  const { collection, vendors } = props;
   return (
     <ThemeProvider theme={theme}>
       <>
@@ -35,7 +35,7 @@ const Collection = (props) => {
           <div className="sticky-active">
             <Navbar />
           </div>
-          <CollectionDetail collection={collection} />
+          <CollectionDetail collection={collection} vendors={vendors} />
           <Footer />
         </AppWrapper>
       </>
@@ -44,15 +44,23 @@ const Collection = (props) => {
 };
 export default Collection;
 export async function getStaticProps({ params }) {
+  console.log(params);
   const urlCollection = new URL(`collections/${params.id}`, baseUrlAdmin);
   const fetchUrl = urlCollection.href;
+  const urlVendor = new URL("vendors", baseUrlAdmin);
+  urlVendor.searchParams.set("limit", 5000);
+  const fetchUrlVendor = urlVendor.href;
 
-  const resAdmin = await fetch(`${fetchUrl}`, parameter);
+  const resAdmin = await fetch(fetchUrl, parameter);
+  const fetchVendor = await fetch(fetchUrlVendor, parameter);
+
   const result = await resAdmin.json();
+  const resVendor = await fetchVendor.json();
 
   return {
     props: {
-      collection: result?.collection || {}
+      collection: result?.collection || {},
+      vendors: resVendor.vendors || {}
     },
     revalidate: 1
   };

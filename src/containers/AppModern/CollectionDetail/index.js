@@ -4,12 +4,15 @@ import CheckBox from "common/components/Checkbox";
 import Heading from "common/components/Heading";
 import Container from "common/components/UI/Container";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import styled from "styled-components";
-import { ContentWrapper, SectionHeader } from "../appModern.style";
 import { GridServices } from "../InfoServices/GridServices";
 import TitlePathMed from "../ProductDetail/TitlePathMed";
 import WrapperServices from "../ServiceDetail/WrapperService";
+import { ContentWrapper, SectionHeader } from "../appModern.style";
+import { log } from "firebase-functions/logger";
 
 const filter = [
   {
@@ -168,11 +171,16 @@ const WrappContent = styled(Box)`
 `;
 const PTitle = styled.p`
   margin: 0;
+  height: 48px;
   max-height: 48px;
-  overflow: hidden;
   font-size: 1.25em;
   line-height: 1.5rem;
   color: #17262b;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 `;
 const PByVendor = styled.p`
   margin: 0;
@@ -216,9 +224,47 @@ const TitleHeading = styled(Heading)`
   font-size: 32px !important;
   margin: 40px !important;
 `;
+
 const CollectionDetail = (props) => {
-  const { collection } = props;
+  const { collection, vendors } = props;
+  const baseUrlAdmin = process.env.MEDUSA_API_ADMIN_URL;
+  const parameter = {
+    method: "GET",
+    headers: {
+      Authorization: "Bearer Rl2KcwXuTa6abLczqxu1Z1ID2fE0CVCq",
+      "Content-Type": "application/json"
+    }
+  };
+  const router = useRouter();
+  useEffect(() => {
+    const params = new URLSearchParams(document.location.search);
+    const newId = params.get("id");
+    const fetchData = async () => {
+      const fetchProduct = await fetch(
+        `${baseUrlAdmin}vendors/${newId}/products?status=published`,
+        parameter
+      );
+      const resProduct = await fetchProduct.json();
+      console.log(resProduct);
+    };
+    fetchData();
+    console.log(newId);
+  });
+
+  const getId = collection.products.map((items) => items.vendor_id);
+  const uniqueValue = [...new Set(Object.values(getId))];
+
+  const filterObject = vendors.filter((obj) => uniqueValue.includes(obj.id));
   const title = collection?.title;
+  const handleCheck = (value) => {
+    const currentUrl = router.asPath;
+    const queryParams = { id: value };
+    console.log(value);
+    router.push({
+      pathname: currentUrl,
+      query: queryParams
+    });
+  };
   return (
     <ContentWrapper>
       <WrapperServices>
@@ -257,11 +303,14 @@ const CollectionDetail = (props) => {
                     <ContentFilter>
                       <WapperContent>
                         <ContainerContent>
-                          {filter.map((item, index) => (
+                          {filterObject.map((item, index) => (
                             <Boxfield key={index}>
                               <Label>
                                 <BoxName>
-                                  <CheckBoxFilter labelText={item.name} />
+                                  <CheckBoxFilter
+                                    labelText={item.store_name}
+                                    onClick={() => handleCheck(item.id)}
+                                  />
                                 </BoxName>
                               </Label>
                             </Boxfield>
@@ -312,9 +361,9 @@ const CollectionDetail = (props) => {
                                   </PDiscount>
                                 </VendorPrice>
                                 <BoxDesc>
-                                  {item.description && (
+                                  {item?.description && (
                                     <ReactMarkdown>
-                                      {item.description}
+                                      {item?.description}
                                     </ReactMarkdown>
                                   )}
                                 </BoxDesc>
