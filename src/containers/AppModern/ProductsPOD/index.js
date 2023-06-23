@@ -396,7 +396,7 @@ const ProductsPOD = (props) => {
                           position: "absolute",
                           top: "0",
                           height: "100%",
-                          width: "auto"
+                          width: "40%"
                         }}
                         alt={items?.title}
                       />

@@ -227,34 +227,15 @@ const TitleHeading = styled(Heading)`
 
 const CollectionDetail = (props) => {
   const { collection, vendors } = props;
-  const baseUrlAdmin = process.env.MEDUSA_API_ADMIN_URL;
-  const parameter = {
-    method: "GET",
-    headers: {
-      Authorization: "Bearer Rl2KcwXuTa6abLczqxu1Z1ID2fE0CVCq",
-      "Content-Type": "application/json"
-    }
-  };
-  const router = useRouter();
-  useEffect(() => {
-    const params = new URLSearchParams(document.location.search);
-    const newId = params.get("id");
-    const fetchData = async () => {
-      const fetchProduct = await fetch(
-        `${baseUrlAdmin}vendors/${newId}/products?status=published`,
-        parameter
-      );
-      const resProduct = await fetchProduct.json();
-      console.log(resProduct);
-    };
-    fetchData();
-    console.log(newId);
-  });
+  const [data, setData] = useState([]);
 
+  const router = useRouter();
   const getId = collection.products.map((items) => items.vendor_id);
   const uniqueValue = [...new Set(Object.values(getId))];
+  // console.log(uniqueValue);
 
   const filterObject = vendors.filter((obj) => uniqueValue.includes(obj.id));
+  // console.log(filterObject);
   const title = collection?.title;
   const handleCheck = (value) => {
     const currentUrl = router.asPath;
