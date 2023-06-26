@@ -51,8 +51,8 @@ export const BannerWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin-top: 2.5rem;
-  margin-bottom: 2.5rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
   > div {
     width: calc(100% / 2 - 34px);
     margin: 38px 0 30px;

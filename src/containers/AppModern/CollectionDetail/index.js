@@ -1,18 +1,26 @@
 import Box from "common/components/Box";
-import Card from "common/components/Card";
 import CheckBox from "common/components/Checkbox";
 import Heading from "common/components/Heading";
 import Container from "common/components/UI/Container";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
-import ReactMarkdown from "react-markdown";
+import { useState } from "react";
 import styled from "styled-components";
-import { GridServices } from "../InfoServices/GridServices";
 import TitlePathMed from "../ProductDetail/TitlePathMed";
+import {
+  CardItems,
+  GridFilter,
+  PByVendor,
+  PDiscount,
+  PPrice,
+  PTitle,
+  VendorPrice,
+  WrapContent,
+  WrapImage,
+  WrapperProduct
+} from "../ProductsPOD";
 import WrapperServices from "../ServiceDetail/WrapperService";
 import { ContentWrapper, SectionHeader } from "../appModern.style";
-import { log } from "firebase-functions/logger";
 
 const filter = [
   {
@@ -28,18 +36,7 @@ const filter = [
     name: "Vendor_Name 04"
   }
 ];
-const CardItems = styled(Card)`
-  border-radius: 5px;
-  box-shadow: 0 0 5px 0 rgb(0 0 50 / 25%);
-  &:hover {
-    box-shadow: 5px 10px 10px 2px rgb(0 0 50 / 25%);
-    transform: translate(0, -7px);
-    transition: box-shadow 0.3s ease-out, transform 0.3s ease-out;
-  }
-  @media only screen and (max-width: 480px) {
-    padding: 25px 25px 30px;
-  }
-`;
+
 const WrappProduc = styled(Box)`
   margin-bottom: 2rem;
 `;
@@ -67,13 +64,6 @@ const WrapperFilter = styled(Box)`
   flex: 0 0 25%;
   max-width: 25%;
 `;
-const WrapperProduct = styled(Box)`
-  position: relative;
-  width: 100%;
-  box-sizing: border-box;
-  max-width: 75%;
-`;
-
 const BoxFilter = styled(Box)`
   margin-top: 15px;
   display: block;
@@ -152,58 +142,7 @@ const CheckBoxFilter = styled(CheckBox)`
     font-weight: 400 !important;
   }
 `;
-const GridFilter = styled(GridServices)`
-  margin: -1rem;
-  display: flex;
-  align-items: flex-start;
-  flex-wrap: wrap;
-`;
 
-const WrapImage = styled(Box)`
-  position: relative;
-  display: block;
-  overflow: hidden;
-  padding-bottom: 100%;
-  text-align: center;
-`;
-const WrappContent = styled(Box)`
-  padding: 16px 8px;
-`;
-const PTitle = styled.p`
-  margin: 0;
-  height: 48px;
-  max-height: 48px;
-  font-size: 1.25em;
-  line-height: 1.5rem;
-  color: #17262b;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-`;
-const PByVendor = styled.p`
-  margin: 0;
-  color: #757c7e;
-  font-size: 0.875em;
-  line-height: 1.25rem;
-  font-weight: 400;
-`;
-const VendorPrice = styled(Box)`
-  margin: 8px 0 0;
-`;
-const PPrice = styled.p`
-  font-size: 1em;
-  margin: 0;
-  line-height: 1.5rem;
-  color: #17262b;
-`;
-const PDiscount = styled.p`
-  font-size: 1em;
-  margin: 0;
-  line-height: 1.5rem;
-  color: #29ab51;
-`;
 const BoxDesc = styled(Box)`
   height: 90px;
   font-size: 17px;
@@ -269,8 +208,7 @@ const CollectionDetail = (props) => {
               <Heading content={title} lineHeight="2.5rem" fontWeight="600" />
             </BoxHeader>
             {collection?.metadata?.short_description}
-            <GridProducts>
-              <WrapperFilter>
+            {/* <WrapperFilter>
                 <BoxFilter>
                   <Box>
                     <TitleFilter>
@@ -301,62 +239,54 @@ const CollectionDetail = (props) => {
                     </ContentFilter>
                   </Box>
                 </BoxFilter>
-              </WrapperFilter>
-              {collection?.products?.length > 0 && (
-                <WrapperProduct>
-                  <GridFilter>
-                    {collection?.products.map(
-                      (item, index) =>
-                        item.status === "published" && (
-                          <CardItems key={index}>
-                            <Box>
-                              <WrapImage>
-                                <Link href={`/product/${item?.id}`}>
-                                  <a>
-                                    <img
-                                      style={{
-                                        position: "absolute",
-                                        width: "100%",
-                                        height: "100%",
-                                        top: "0",
-                                        left: "0",
-                                        borderTopLeftRadius: "5px",
-                                        borderTopRightRadius: "5px"
-                                      }}
-                                      src={item?.thumbnail}
-                                    />
-                                  </a>
-                                </Link>
-                              </WrapImage>
-                              <WrappContent>
-                                <Link href={`/product/${item?.id}`}>
-                                  <a title={`View to ${item.title}`}>
-                                    <PTitle>{item.title}</PTitle>
-                                  </a>
-                                </Link>
-                                <PByVendor>By [Vendor_Name]. qty</PByVendor>
-                                <VendorPrice>
-                                  <PPrice>From USD 9.38</PPrice>
-                                  <PDiscount>
-                                    From USD 5.92 with Printcart
-                                  </PDiscount>
-                                </VendorPrice>
-                                <BoxDesc>
-                                  {item?.description && (
-                                    <ReactMarkdown>
-                                      {item?.description}
-                                    </ReactMarkdown>
-                                  )}
-                                </BoxDesc>
-                              </WrappContent>
-                            </Box>
-                          </CardItems>
-                        )
-                    )}
-                  </GridFilter>
-                </WrapperProduct>
-              )}
-            </GridProducts>
+              </WrapperFilter> */}
+            {collection?.products?.length > 0 && (
+              <WrapperProduct>
+                <GridFilter>
+                  {collection?.products.map(
+                    (item, index) =>
+                      item.status === "published" && (
+                        <CardItems key={index}>
+                          <Box>
+                            <WrapImage>
+                              <Link href={`/product/${item?.id}`}>
+                                <a>
+                                  <img
+                                    style={{
+                                      position: "absolute",
+                                      width: "100%",
+                                      height: "100%",
+                                      top: "0",
+                                      left: "0",
+                                      borderTopLeftRadius: "5px",
+                                      borderTopRightRadius: "5px"
+                                    }}
+                                    src={item?.thumbnail}
+                                  />
+                                </a>
+                              </Link>
+                            </WrapImage>
+                            <WrapContent>
+                              <Link href={`/product/${item?.id}`}>
+                                <a title={`View to ${item.title}`}>
+                                  <PTitle>{item.title}</PTitle>
+                                </a>
+                              </Link>
+                              <PByVendor>By [Vendor_Name]. qty</PByVendor>
+                              <VendorPrice>
+                                <PPrice>From USD 9.38</PPrice>
+                                <PDiscount>
+                                  From USD 5.92 with Printcart
+                                </PDiscount>
+                              </VendorPrice>
+                            </WrapContent>
+                          </Box>
+                        </CardItems>
+                      )
+                  )}
+                </GridFilter>
+              </WrapperProduct>
+            )}
           </WrappProduc>
         </Container>
       </WrapperServices>

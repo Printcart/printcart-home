@@ -14,6 +14,7 @@ import React from "react";
 import ExploreProducts from "./ExploreProducts";
 import { ic_keyboard_arrow_right } from "react-icons-kit/md/ic_keyboard_arrow_right";
 import Icon from "react-icons-kit";
+import ReactHtmlParser from "react-html-parser";
 
 const CardCus = styled(Card)`
   border-radius: 5px;
@@ -103,6 +104,7 @@ const HeadingCatalog = styled(Heading)`
 const ContainerBox = styled(Box)`
   margin-bottom: 3rem;
   display: block;
+  margin-top: 28px;
 `;
 const HeaderBox = styled(Box)`
   align-items: center;
@@ -186,11 +188,11 @@ const GridProducts = styled(Box)`
   align-items: flex-start;
 `;
 export const WrapContent = styled(Box)`
-  padding: 16px 16px 8px;
+  padding: 16px 16px 16px;
 `;
 export const PTitle = styled.p`
   margin: 0;
-  height: 48px;
+  height: 24px;
   max-height: 48px;
   font-size: 1.25em;
   line-height: 1.5rem;
@@ -199,12 +201,13 @@ export const PTitle = styled.p`
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 1;
 `;
 export const PByVendor = styled.p`
   margin: 0;
+  margin-top: 5px;
   color: #757c7e;
-  font-size: 0.875em;
+  font-size: 1em;
   line-height: 1.25rem;
   font-weight: 400;
 `;
@@ -245,9 +248,7 @@ export const CardItems = styled(Card)`
   border-radius: 5px;
   box-shadow: 0 0 5px 0 rgb(0 0 50 / 25%);
   &:hover {
-    box-shadow: 5px 10px 10px 2px rgb(0 0 50 / 25%);
-    transform: translate(0, -7px);
-    transition: box-shadow 0.3s ease-out, transform 0.3s ease-out;
+    background-color: #f7f7f7;
   }
   @media only screen and (max-width: 480px) {
     padding: 25px 25px 30px;
@@ -264,6 +265,42 @@ export const GridFilter = styled(GridServices)`
   display: flex;
   align-items: flex-start;
   flex-wrap: wrap;
+  > div {
+    width: calc(100% / 4 - 34px);
+    margin: 30px 17px 10px;
+
+    @media only screen and (max-width: 1400px) {
+      width: calc(100% / 4 - 34px);
+    }
+    @media only screen and (max-width: 1200px) {
+      width: calc(100% / 3 - 34px);
+    }
+    @media only screen and (max-width: 991px) {
+      width: calc(100% / 2 - 34px);
+    }
+    @media only screen and (max-width: 767px) {
+      width: calc(100% / 2 - 34px);
+    }
+    @media only screen and (max-width: 594px) {
+      width: calc(100% / 1 - 34px);
+    }
+  }
+`;
+const BoxLabel = styled(Box)`
+  position: absolute;
+  z-index: 1;
+  top: 8px;
+  left: 12px;
+`;
+const SmallNew = styled.small`
+  border: 1px solid #2b6ca3;
+  background-color: #e1eff9;
+  color: #1e5180;
+  display: inline-flex;
+  align-items: center;
+  height: 24px;
+  padding: 0.1rem 0.5rem;
+  border-radius: 3px;
 `;
 const ProductsPOD = (props) => {
   const { getProducts } = props;
@@ -282,12 +319,12 @@ const ProductsPOD = (props) => {
       <SectionWrapper id="features">
         <Container>
           <Banner />
-          <HeadingCatalog
+          {/* <HeadingCatalog
             content="Printcart's Product Catalog"
             mb="3rem"
             lineHeight="3.5rem"
-          />
-          <ExploreProducts />
+          /> */}
+          {/* <ExploreProducts /> */}
           <ContainerBox>
             <HeaderBox>
               <TitleBox>
@@ -309,7 +346,7 @@ const ProductsPOD = (props) => {
               <GridFilter>
                 {getProducts.map(
                   (item, index) =>
-                    index < 6 && (
+                    index < 4 && (
                       <CardItems key={index}>
                         <Box>
                           <WrapImage>
@@ -329,6 +366,9 @@ const ProductsPOD = (props) => {
                                 />
                               </a>
                             </Link>
+                            <BoxLabel>
+                              <SmallNew>New</SmallNew>
+                            </BoxLabel>
                           </WrapImage>
                           <WrapContent>
                             <Link href={`/product/${item?.id}`}>
@@ -343,13 +383,6 @@ const ProductsPOD = (props) => {
                                 From USD 5.92 with Printcart
                               </PDiscount>
                             </VendorPrice>
-                            <BoxDesc>
-                              {item?.description && (
-                                <ReactMarkdown>
-                                  {item?.description}
-                                </ReactMarkdown>
-                              )}
-                            </BoxDesc>
                           </WrapContent>
                         </Box>
                       </CardItems>
@@ -361,16 +394,16 @@ const ProductsPOD = (props) => {
           <ContainerPP>
             <WrappProvider>
               <WrappBox>
-                <ProviderHeading
+                {/* <ProviderHeading
                   lineHeight="1.2"
                   fontWeight="700"
                   content="Print Provider"
-                />
+                /> */}
                 <PDescription>
-                  Printcart is the largest print on demand network
+                  Bridge the Gap Between Selling and Production
                 </PDescription>
                 <Box className="btnSee">
-                  <ButtonProvider title="See print providers" />
+                  <ButtonProvider title="Create POD Printer store" />
                 </Box>
               </WrappBox>
             </WrappProvider>
