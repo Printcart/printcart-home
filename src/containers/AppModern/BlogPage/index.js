@@ -58,7 +58,7 @@ const BlogPage = ({ resPosts }) => {
                     <TagBox>
                       {items?.attributes?.tags?.data.map((tags, index) => (
                         <Link href="#" key={index}>
-                          <a>#{tags.attributes.alias}</a>
+                          <a>#{tags?.attributes?.alias}</a>
                         </Link>
                       ))}
                     </TagBox>
@@ -94,7 +94,7 @@ const BlogPage = ({ resPosts }) => {
                               <Link href={"#"}>
                                 <a>
                                   {items?.attributes?.user_profile?.data
-                                    .attributes?.name ?? "Printcart"}
+                                    ?.attributes?.name ?? "Printcart"}
                                 </a>
                               </Link>
                             </TitleUser>
@@ -102,7 +102,7 @@ const BlogPage = ({ resPosts }) => {
                               <Link href={"#"}>
                                 <a>
                                   {new Date(
-                                    items?.attributes?.user_profile?.data.attributes?.publishedAt
+                                    items?.attributes?.createdAt
                                   ).toLocaleString()}
                                 </a>
                               </Link>

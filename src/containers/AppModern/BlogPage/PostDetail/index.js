@@ -2,13 +2,13 @@ import Box from "common/components/Box";
 import Heading from "common/components/Heading";
 import Container from "common/components/UI/Container";
 import WrapperServices from "containers/AppModern/ServiceDetail/WrapperService";
-import { ContentWrapper } from "containers/AppModern/appModern.style";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import ReactHtmlParser from "react-html-parser";
 import { ic_remove_red_eye } from "react-icons-kit/md/ic_remove_red_eye";
 import { useInView } from "react-intersection-observer";
 import styled from "styled-components";
+import ImageLogo from "../../../../../src/common/assets/image/favicon.png";
 import BlogPath from "../BlogPath";
 import GridPost, {
   AuthorPost,
@@ -461,7 +461,7 @@ const PostDetail = (props) => {
                                 alt="Avatar"
                                 src={
                                   postData?.attributes?.user_profile?.data
-                                    ?.attributes?.avatar ?? "favicon.png"
+                                    ?.attributes?.avatar ?? ImageLogo.src
                                 }
                               />
                             </AvatarAuthor>
@@ -474,7 +474,7 @@ const PostDetail = (props) => {
                             <Link href={"#"}>
                               <a style={{ color: "#fff", fontSize: "18px" }}>
                                 {postData?.attributes?.user_profile?.data
-                                  .attributes?.name ?? "Printcart"}
+                                  ?.attributes?.name ?? "Printcart"}
                               </a>
                             </Link>
                           </TitleUser>
@@ -482,7 +482,7 @@ const PostDetail = (props) => {
                             <Link href={"#"}>
                               <a style={{ color: "#fff", fontSize: "18px" }}>
                                 {new Date(
-                                  postData?.attributes?.user_profile?.data.attributes?.publishedAt
+                                  postData?.attributes?.createdAt
                                 ).toLocaleString()}
                               </a>
                             </Link>
@@ -575,7 +575,7 @@ const PostDetail = (props) => {
                             {items?.attributes?.tags?.data.map(
                               (tags, index) => (
                                 <Link href="#" key={index}>
-                                  <a>#{tags.attributes.alias}</a>
+                                  <a>#{tags?.attributes?.alias}</a>
                                 </Link>
                               )
                             )}
