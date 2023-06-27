@@ -1,7 +1,9 @@
 import Box from "common/components/Box";
 import Heading from "common/components/Heading";
 import Link from "next/link";
+import ReactHtmlParser from "react-html-parser";
 import styled from "styled-components";
+
 const WrapperInfo = styled(Box)`
   position: relative;
   width: 100%;
@@ -11,6 +13,11 @@ const WrapperInfo = styled(Box)`
 `;
 const ProductHeading = styled(Heading)`
   font-size: 2em;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 `;
 const PDescription = styled.p`
   margin-top: 0px;
@@ -33,7 +40,7 @@ const ProductInfo = (props) => {
             </Link>
           )}
           <ProductHeading content={product?.title} lineHeight="2.5rem" />
-          <PDescription>{product?.description}</PDescription>
+          <PDescription>{ReactHtmlParser(product?.description)}</PDescription>
           {/**Select Size */}
           {/* {product?.product?.variants?.length > 0 && (
                         <Box className="selectSize">

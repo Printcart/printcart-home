@@ -20,7 +20,7 @@ import {
   WrapContent,
   WrapImage,
   WrapperProduct
-} from "../ProductsPOD";
+} from "../ProductsPOD/productspod.style";
 import WrapperServices from "../ServiceDetail/WrapperService";
 import { ContentWrapper } from "../appModern.style";
 import ImageGallery from "./ImageGallery";

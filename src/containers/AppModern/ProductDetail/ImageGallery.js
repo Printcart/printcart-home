@@ -115,7 +115,7 @@ const ImageGallery = (props) => {
             // id={image.id}
             >
               <span>
-                <ImageBig src={product?.images[0]?.url} alt="Image Product" />
+                <ImageBig src={product?.thumbnail} alt="Image Product" />
               </span>
             </WrapBigImage>
           </MainImage>

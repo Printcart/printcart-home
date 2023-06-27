@@ -18,7 +18,7 @@ import {
   WrapContent,
   WrapImage,
   WrapperProduct
-} from "../ProductsPOD";
+} from "../ProductsPOD/productspod.style";
 import WrapperServices from "../ServiceDetail/WrapperService";
 import { ContentWrapper, SectionHeader } from "../appModern.style";
 

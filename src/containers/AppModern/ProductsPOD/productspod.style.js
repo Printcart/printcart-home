@@ -1,6 +1,9 @@
-import styled from "styled-components";
 import { themeGet } from "@styled-system/theme-get";
 import ImagePrinProvider from "common/assets/image/printing-house.webp";
+import Box from "common/components/Box";
+import Card from "common/components/Card";
+import styled from "styled-components";
+import { GridServices } from "../InfoServices/GridServices";
 
 const HeaderPOD = styled.header`
   width: 100%;
@@ -170,4 +173,199 @@ export const ContainerPP = styled.div`
   background-image: url(${ImagePrinProvider?.src});
   background-size: cover;
   background-position: center center;
+`;
+
+export const ContainerBox = styled(Box)`
+  margin-bottom: 3.5rem;
+  display: block;
+  margin-top: 28px;
+`;
+export const HeaderBox = styled(Box)`
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+`;
+export const TitleHead = styled.h4`
+  margin: 0;
+  font-size: 24px;
+  line-height: 2rem;
+  font-weight: 700;
+`;
+export const TitleBox = styled(Box)`
+  max-width: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  @media (min-width: 960px) {
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    flex: 0 0 50%;
+    margin-left: 25%;
+    text-align: center;
+  }
+`;
+
+export const WrapperProduct = styled(Box)`
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  max-width: 100%;
+`;
+export const GridFilter = styled(GridServices)`
+  margin: 0px;
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  > div {
+    width: calc(100% / 4 - 34px);
+    margin: 30px 17px 10px;
+
+    @media only screen and (max-width: 1400px) {
+      width: calc(100% / 4 - 34px);
+    }
+    @media only screen and (max-width: 1200px) {
+      width: calc(100% / 3 - 34px);
+    }
+    @media only screen and (max-width: 991px) {
+      width: calc(100% / 2 - 34px);
+    }
+    @media only screen and (max-width: 767px) {
+      width: calc(100% / 2 - 34px);
+    }
+    @media only screen and (max-width: 594px) {
+      width: calc(100% / 1 - 34px);
+    }
+  }
+`;
+export const CardItems = styled(Card)`
+  border-radius: 5px;
+  box-shadow: 0 0 5px 0 rgb(0 0 50 / 25%);
+  &:hover {
+    background-color: #f7f7f7;
+  }
+  @media only screen and (max-width: 480px) {
+    padding: 25px 25px 30px;
+  }
+`;
+export const WrapImage = styled(Box)`
+  position: relative;
+  display: block;
+  overflow: hidden;
+  padding-bottom: 100%;
+  text-align: center;
+`;
+export const BoxLabel = styled(Box)`
+  position: absolute;
+  z-index: 1;
+  top: 16px;
+  left: 16px;
+`;
+export const SmallNew = styled.small`
+  border: 1px solid #2b6ca3;
+  background-color: #e1eff9;
+  color: #1e5180;
+  display: inline-flex;
+  align-items: center;
+  height: 24px;
+  padding: 0.1rem 0.5rem;
+  border-radius: 3px;
+`;
+export const SmallEco = styled.small`
+  border: 1px solid #248e4c;
+  background-color: #e2f7e3;
+  color: #1f6b45;
+  display: inline-flex;
+  align-items: center;
+  height: 24px;
+  padding: 0.1rem 0.5rem;
+  border-radius: 3px;
+`;
+export const WrapContent = styled(Box)`
+  padding: 16px 16px 16px;
+`;
+export const PTitle = styled.p`
+  margin: 0;
+  height: 24px;
+  max-height: 48px;
+  font-size: 1.25em;
+  line-height: 1.5rem;
+  color: #17262b;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+`;
+export const PByVendor = styled.p`
+  margin: 0;
+  height: 22px;
+  margin-top: 8px;
+  color: #757c7e;
+  font-size: 1em;
+  line-height: 1.25rem;
+  font-weight: 400;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+`;
+export const VendorPrice = styled(Box)`
+  margin: 8px 0 0;
+`;
+export const PPrice = styled.p`
+  font-size: 1em;
+  height: 22px;
+  margin: 0;
+  line-height: 1.25rem;
+  color: #17262b;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+`;
+export const PDiscount = styled.p`
+  font-size: 1em;
+  height: 22px;
+  margin: 0;
+  line-height: 1.25rem;
+  color: #29ab51;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+`;
+export const RedirectAll = styled(Box)`
+  text-align: right;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  @media (min-width: 960px) {
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    flex: 0 0 25%;
+    max-width: 25%;
+  }
+`;
+export const TagA = styled.a`
+  cursor: pointer;
+  text-decoration: none;
+  outline: none;
+  &:hover {
+    color: #0013e7;
+    text-decoration: underline;
+  }
+`;
+export const SpanLink = styled.span`
+  cursor: pointer;
+  color: #424dc6;
+  transition: color 0.15s ease;
+  text-decoration: none;
+  outline: none;
+  &:hover {
+    color: #0013e7;
+    text-decoration: underline;
+  }
 `;
