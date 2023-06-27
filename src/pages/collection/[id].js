@@ -44,11 +44,10 @@ const Collection = (props) => {
 };
 export default Collection;
 export async function getStaticProps({ params }) {
-  console.log(params);
   const urlCollection = new URL(`collections/${params.id}`, baseUrlAdmin);
   const fetchUrl = urlCollection.href;
   const urlVendor = new URL("vendors", baseUrlAdmin);
-  urlVendor.searchParams.set("limit", 5000);
+  // urlVendor.searchParams.set("limit", 5000);
   const fetchUrlVendor = urlVendor.href;
 
   const resAdmin = await fetch(fetchUrl, parameter);

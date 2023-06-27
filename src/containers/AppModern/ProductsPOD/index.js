@@ -3,18 +3,12 @@ import Button from "common/components/Button";
 import Card from "common/components/Card";
 import Heading from "common/components/Heading";
 import SectionWrapper from "containers/AppModern/Features/features.style";
-import ReactMarkdown from "react-markdown";
-import Container from "../../../common/components/UI/Container";
-import { ContainerServices, GridServices } from "../InfoServices/GridServices";
-import Banner from "./Banner";
-import HeaderPOD, { ContainerPP } from "./productspod.style";
 import Link from "next/link";
 import styled from "styled-components";
-import React from "react";
-import ExploreProducts from "./ExploreProducts";
-import { ic_keyboard_arrow_right } from "react-icons-kit/md/ic_keyboard_arrow_right";
-import Icon from "react-icons-kit";
-import ReactHtmlParser from "react-html-parser";
+import Container from "../../../common/components/UI/Container";
+import { GridServices } from "../InfoServices/GridServices";
+import Banner from "./Banner";
+import { ContainerPP } from "./productspod.style";
 
 const CardCus = styled(Card)`
   border-radius: 5px;
@@ -102,7 +96,7 @@ const HeadingCatalog = styled(Heading)`
   font-size: 2rem;
 `;
 const ContainerBox = styled(Box)`
-  margin-bottom: 3rem;
+  margin-bottom: 3.5rem;
   display: block;
   margin-top: 28px;
 `;
@@ -289,8 +283,8 @@ export const GridFilter = styled(GridServices)`
 const BoxLabel = styled(Box)`
   position: absolute;
   z-index: 1;
-  top: 8px;
-  left: 12px;
+  top: 16px;
+  left: 16px;
 `;
 const SmallNew = styled.small`
   border: 1px solid #2b6ca3;
@@ -302,8 +296,18 @@ const SmallNew = styled.small`
   padding: 0.1rem 0.5rem;
   border-radius: 3px;
 `;
+const SmallEco = styled.small`
+  border: 1px solid #248e4c;
+  background-color: #e2f7e3;
+  color: #1f6b45;
+  display: inline-flex;
+  align-items: center;
+  height: 24px;
+  padding: 0.1rem 0.5rem;
+  border-radius: 3px;
+`;
 const ProductsPOD = (props) => {
-  const { getProducts } = props;
+  const { getProducts, ecoFilter, aopFilter, neckFilter } = props;
   const getCollection = getProducts.map((item) => item.collection);
   const filterValues = getCollection.filter(Boolean);
   const map = new Map();
@@ -328,9 +332,9 @@ const ProductsPOD = (props) => {
           <ContainerBox>
             <HeaderBox>
               <TitleBox>
-                <TitleHead>Products</TitleHead>
+                <TitleHead>New Products</TitleHead>
               </TitleBox>
-              <RedirectAll>
+              {/* <RedirectAll>
                 <Box>
                   <TagA href="/catalog/#">
                     <SpanLink>
@@ -339,7 +343,7 @@ const ProductsPOD = (props) => {
                     </SpanLink>
                   </TagA>
                 </Box>
-              </RedirectAll>
+              </RedirectAll> */}
             </HeaderBox>
             {/* <HeaderPOD></HeaderPOD> */}
             <WrapperProduct>
@@ -369,6 +373,204 @@ const ProductsPOD = (props) => {
                             <BoxLabel>
                               <SmallNew>New</SmallNew>
                             </BoxLabel>
+                          </WrapImage>
+                          <WrapContent>
+                            <Link href={`/product/${item?.id}`}>
+                              <a title={`View to ${item.title}`}>
+                                <PTitle>{item.title}</PTitle>
+                              </a>
+                            </Link>
+                            <PByVendor>By {item?.vendor?.store_name}</PByVendor>
+                            <VendorPrice>
+                              <PPrice>From USD 9.38</PPrice>
+                              <PDiscount>
+                                From USD 5.92 with Printcart
+                              </PDiscount>
+                            </VendorPrice>
+                          </WrapContent>
+                        </Box>
+                      </CardItems>
+                    )
+                )}
+              </GridFilter>
+            </WrapperProduct>
+          </ContainerBox>
+          <ContainerBox>
+            <HeaderBox>
+              <TitleBox>
+                <TitleHead>Eco-friendly</TitleHead>
+              </TitleBox>
+              {/* <RedirectAll>
+                <Box>
+                  <TagA href="/catalog/#">
+                    <SpanLink>
+                      See all Eco-friendly
+                      <Icon icon={ic_keyboard_arrow_right} />
+                    </SpanLink>
+                  </TagA>
+                </Box>
+              </RedirectAll> */}
+            </HeaderBox>
+            {/* <HeaderPOD></HeaderPOD> */}
+            <WrapperProduct>
+              <GridFilter>
+                {ecoFilter.map(
+                  (item, index) =>
+                    index < 4 && (
+                      <CardItems key={index}>
+                        <Box>
+                          <WrapImage>
+                            <Link href={`/product/${item?.id}`}>
+                              <a>
+                                <img
+                                  style={{
+                                    position: "absolute",
+                                    width: "100%",
+                                    height: "100%",
+                                    top: "0",
+                                    left: "0",
+                                    borderTopLeftRadius: "5px",
+                                    borderTopRightRadius: "5px"
+                                  }}
+                                  src={item?.thumbnail ?? "favicon.png"}
+                                />
+                              </a>
+                            </Link>
+                            <BoxLabel>
+                              <SmallEco>Eco-friendly</SmallEco>
+                            </BoxLabel>
+                          </WrapImage>
+                          <WrapContent>
+                            <Link href={`/product/${item?.id}`}>
+                              <a title={`View to ${item.title}`}>
+                                <PTitle>{item.title}</PTitle>
+                              </a>
+                            </Link>
+                            <PByVendor>By {item?.vendor?.store_name}</PByVendor>
+                            <VendorPrice>
+                              <PPrice>From USD 9.38</PPrice>
+                              <PDiscount>
+                                From USD 5.92 with Printcart
+                              </PDiscount>
+                            </VendorPrice>
+                          </WrapContent>
+                        </Box>
+                      </CardItems>
+                    )
+                )}
+              </GridFilter>
+            </WrapperProduct>
+          </ContainerBox>
+          <ContainerBox>
+            <HeaderBox>
+              <TitleBox>
+                <TitleHead>AOP Clothing</TitleHead>
+              </TitleBox>
+              {/* <RedirectAll>
+                <Box>
+                  <TagA href="/catalog/#">
+                    <SpanLink>
+                      See all AOP Clothing
+                      <Icon icon={ic_keyboard_arrow_right} />
+                    </SpanLink>
+                  </TagA>
+                </Box>
+              </RedirectAll> */}
+            </HeaderBox>
+            {/* <HeaderPOD></HeaderPOD> */}
+            <WrapperProduct>
+              <GridFilter>
+                {aopFilter.map(
+                  (item, index) =>
+                    index < 4 && (
+                      <CardItems key={index}>
+                        <Box>
+                          <WrapImage>
+                            <Link href={`/product/${item?.id}`}>
+                              <a>
+                                <img
+                                  style={{
+                                    position: "absolute",
+                                    width: "100%",
+                                    height: "100%",
+                                    top: "0",
+                                    left: "0",
+                                    borderTopLeftRadius: "5px",
+                                    borderTopRightRadius: "5px"
+                                  }}
+                                  src={item?.thumbnail ?? "favicon.png"}
+                                />
+                              </a>
+                            </Link>
+                            {/* <BoxLabel>
+                              <SmallEco>Eco-friendly</SmallEco>
+                            </BoxLabel> */}
+                          </WrapImage>
+                          <WrapContent>
+                            <Link href={`/product/${item?.id}`}>
+                              <a title={`View to ${item.title}`}>
+                                <PTitle>{item.title}</PTitle>
+                              </a>
+                            </Link>
+                            <PByVendor>By {item?.vendor?.store_name}</PByVendor>
+                            <VendorPrice>
+                              <PPrice>From USD 9.38</PPrice>
+                              <PDiscount>
+                                From USD 5.92 with Printcart
+                              </PDiscount>
+                            </VendorPrice>
+                          </WrapContent>
+                        </Box>
+                      </CardItems>
+                    )
+                )}
+              </GridFilter>
+            </WrapperProduct>
+          </ContainerBox>
+          <ContainerBox>
+            <HeaderBox>
+              <TitleBox>
+                <TitleHead>Neck Labels</TitleHead>
+              </TitleBox>
+              {/* <RedirectAll>
+                <Box>
+                  <TagA href="/catalog/#">
+                    <SpanLink>
+                      See all Eco-friendly
+                      <Icon icon={ic_keyboard_arrow_right} />
+                    </SpanLink>
+                  </TagA>
+                </Box>
+              </RedirectAll> */}
+            </HeaderBox>
+            {/* <HeaderPOD></HeaderPOD> */}
+            <WrapperProduct>
+              <GridFilter>
+                {neckFilter.map(
+                  (item, index) =>
+                    index < 4 && (
+                      <CardItems key={index}>
+                        <Box>
+                          <WrapImage>
+                            <Link href={`/product/${item?.id}`}>
+                              <a>
+                                <img
+                                  style={{
+                                    position: "absolute",
+                                    width: "100%",
+                                    height: "100%",
+                                    top: "0",
+                                    left: "0",
+                                    borderTopLeftRadius: "5px",
+                                    borderTopRightRadius: "5px"
+                                  }}
+                                  src={item?.thumbnail ?? "favicon.png"}
+                                />
+                              </a>
+                            </Link>
+                            {/* <BoxLabel>
+                              <SmallEco>Neck labels</SmallEco>
+                            </BoxLabel> */}
                           </WrapImage>
                           <WrapContent>
                             <Link href={`/product/${item?.id}`}>

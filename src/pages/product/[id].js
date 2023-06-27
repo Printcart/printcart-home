@@ -59,8 +59,8 @@ export async function getStaticProps({ params }) {
 
   return {
     props: {
-      product: result?.product,
-      productsRelated: resultRelated.products
+      product: result?.product || {},
+      productsRelated: resultRelated.products || {}
     },
     revalidate: 1
   };

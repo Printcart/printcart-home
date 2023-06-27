@@ -169,11 +169,11 @@ const CollectionDetail = (props) => {
   const [data, setData] = useState([]);
 
   const router = useRouter();
-  const getId = collection.products.map((items) => items.vendor_id);
-  const uniqueValue = [...new Set(Object.values(getId))];
+  // const getId = collection.products.map((items) => items.vendor_id);
+  // const uniqueValue = [...new Set(Object.values(getId))];
   // console.log(uniqueValue);
 
-  const filterObject = vendors.filter((obj) => uniqueValue.includes(obj.id));
+  // const filterObject = vendors.filter((obj) => uniqueValue.includes(obj.id));
   // console.log(filterObject);
   const title = collection?.title;
   const handleCheck = (value) => {

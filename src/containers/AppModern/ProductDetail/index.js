@@ -2,7 +2,6 @@ import Box from "common/components/Box";
 import Heading from "common/components/Heading";
 import Container from "common/components/UI/Container";
 import Link from "next/link";
-import ReactMarkdown from "react-markdown";
 import styled from "styled-components";
 import InfoCollection, {
   BoxAbout,
@@ -11,7 +10,6 @@ import InfoCollection, {
 } from "../CollectionDetail/InfoCollection";
 import VendorInfo from "../CollectionDetail/VendorInfo";
 import {
-  BoxDesc,
   CardItems,
   GridFilter,
   PByVendor,
@@ -91,7 +89,7 @@ const ProductDetail = (props) => {
               <GridFilter>
                 {productsRelated.map(
                   (items, index) =>
-                    index < 3 && (
+                    index < 4 && (
                       <CardItems key={index}>
                         <Box>
                           <WrapImage>
@@ -125,13 +123,13 @@ const ProductDetail = (props) => {
                                 From USD 5.92 with Printcart
                               </PDiscount>
                             </VendorPrice>
-                            <BoxDesc>
+                            {/* <BoxDesc>
                               {items.description && (
                                 <ReactMarkdown>
                                   {items.description}
                                 </ReactMarkdown>
                               )}
-                            </BoxDesc>
+                            </BoxDesc> */}
                           </WrapContent>
                         </Box>
                       </CardItems>

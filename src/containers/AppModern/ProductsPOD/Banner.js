@@ -16,9 +16,9 @@ const Banner = () => {
           <Heading content="everywhere !" className="heading-second" />
         </Box>
         <p className="description">
-          Snippy is a rich coding snippets app that lets you create your own
-          code snippets, categorize them, and even sync them in the cloud so you
-          can use them anywhere. All that is free!
+          Browse our POD Catalog today and embark on a remarkable printing
+          adventure with Printcart. Let's transform your ideas into captivating,
+          personalized products that your customers will love and cherish
         </p>
         <Box className="footer">
           <Button title="Get Started" className="btn-getstart" />
