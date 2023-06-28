@@ -37,7 +37,7 @@ const TagsFilter = ({ dataFilter, status, title }) => {
             <Box>
               <TagA href="/catalog/#">
                 <SpanLink>
-                  See all New Products
+                  See all {title}
                   <Icon icon={ic_keyboard_arrow_right} />
                 </SpanLink>
               </TagA>

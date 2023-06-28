@@ -115,6 +115,13 @@ const FeatureDesc = styled.p`
   line-height: 1.25rem;
   font-weight: 400;
 `;
+
+const AboutCollection = styled(Box)`
+  padding-top: 40px;
+  padding-bottom: 40px;
+  display: block;
+  border-bottom: 1px solid #e3e4e5;
+`;
 const InfoCollection = (props) => {
   const { collection } = props;
   const formatSizeWidth = collection?.metadata?.widthSize;
@@ -148,6 +155,18 @@ const InfoCollection = (props) => {
   return (
     <>
       {collection?.metadata?.about && (
+        <AboutCollection>
+          <BoxWrapper>
+            <BoxTitle>
+              <h2>About</h2>
+            </BoxTitle>
+            <BoxAbout>
+              <p>{collection?.metadata?.about}</p>
+            </BoxAbout>
+          </BoxWrapper>
+        </AboutCollection>
+      )}
+      {collection?.metadata?.short_description && (
         <BoxFeatureContainer>
           <BoxWrapper>
             <BoxTitle>

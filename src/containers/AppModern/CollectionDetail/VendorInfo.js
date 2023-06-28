@@ -152,7 +152,7 @@ const VendorInfo = () => {
   return (
     <>
       <Box>
-        <Heading content="Vendor Information" />
+        {/* <Heading content="Vendor Information" /> */}
         <Box>
           <BoxVendor>
             <Grid>
@@ -174,7 +174,7 @@ const VendorInfo = () => {
               </BoxVendorHeader>
               <BoxHeaderRight>
                 <BoxButton>
-                  <BtnMoreDetail>More details</BtnMoreDetail>
+                  <BtnMoreDetail>Visit Store</BtnMoreDetail>
                 </BoxButton>
                 <ContainerDesign>
                   <a href="/">

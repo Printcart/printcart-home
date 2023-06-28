@@ -3,11 +3,7 @@ import Heading from "common/components/Heading";
 import Container from "common/components/UI/Container";
 import Link from "next/link";
 import styled from "styled-components";
-import InfoCollection, {
-  BoxAbout,
-  BoxTitle,
-  BoxWrapper
-} from "../CollectionDetail/InfoCollection";
+import InfoCollection from "../CollectionDetail/InfoCollection";
 import VendorInfo from "../CollectionDetail/VendorInfo";
 import {
   CardItems,
@@ -37,7 +33,7 @@ const WrappInfo = styled(Box)`
   margin-left: 1rem;
   margin-right: 1rem;
   padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
+  padding-bottom: 3.5rem;
 `;
 const RelatedHeading = styled(Heading)`
   margin-top: 0px;
@@ -45,12 +41,7 @@ const RelatedHeading = styled(Heading)`
 const BoxRelated = styled(Box)`
   margin: 2rem 0;
 `;
-const AboutCollection = styled(Box)`
-  padding-top: 40px;
-  padding-bottom: 40px;
-  display: block;
-  border-top: 1px solid #e3e4e5;
-`;
+
 const ProductDetail = (props) => {
   const { product, productsRelated } = props;
 
@@ -138,18 +129,6 @@ const ProductDetail = (props) => {
               </GridFilter>
             </WrapperProduct>
           </BoxRelated>
-          {product?.collection?.metadata?.about && (
-            <AboutCollection>
-              <BoxWrapper>
-                <BoxTitle>
-                  <h2>About</h2>
-                </BoxTitle>
-                <BoxAbout>
-                  <p>{product?.collection?.metadata?.about}</p>
-                </BoxAbout>
-              </BoxWrapper>
-            </AboutCollection>
-          )}
         </Container>
       </WrapperServices>
     </ContentWrapper>
