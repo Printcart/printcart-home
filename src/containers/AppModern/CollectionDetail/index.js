@@ -167,6 +167,7 @@ const TitleHeading = styled(Heading)`
 
 const CollectionDetail = (props) => {
   const { collection, vendors, products } = props;
+  console.log(products);
   // console.log(collection);
   const [data, setData] = useState([]);
 
@@ -245,44 +246,44 @@ const CollectionDetail = (props) => {
             {products && (
               <WrapperProduct>
                 <GridFilter>
-                  <CardItems>
-                    <Box>
-                      <WrapImage>
-                        <Link href={`/product/${products[0]?.id}`}>
-                          <a>
-                            <img
-                              style={{
-                                position: "absolute",
-                                width: "100%",
-                                height: "100%",
-                                top: "0",
-                                left: "0",
-                                borderTopLeftRadius: "5px",
-                                borderTopRightRadius: "5px"
-                              }}
-                              src={products[0]?.thumbnail}
-                            />
-                          </a>
-                        </Link>
-                      </WrapImage>
-                      <WrapContent>
-                        <Link href={`/product/${products[0]?.id}`}>
-                          <a title={`View to ${products[0].title}`}>
-                            <PTitle>{products[0].title}</PTitle>
-                          </a>
-                        </Link>
-                        <PByVendor>
-                          By {products[0]?.vendor?.store_name}
-                        </PByVendor>
-                        {/* <VendorPrice>
+                  {products.map((item, index) => (
+                    <CardItems key={index}>
+                      <Box>
+                        <WrapImage>
+                          <Link href={`/product/${item?.id}`}>
+                            <a>
+                              <img
+                                style={{
+                                  position: "absolute",
+                                  width: "100%",
+                                  height: "100%",
+                                  top: "0",
+                                  left: "0",
+                                  borderTopLeftRadius: "5px",
+                                  borderTopRightRadius: "5px"
+                                }}
+                                src={item?.thumbnail}
+                              />
+                            </a>
+                          </Link>
+                        </WrapImage>
+                        <WrapContent>
+                          <Link href={`/product/${item?.id}`}>
+                            <a title={`View to ${item.title}`}>
+                              <PTitle>{item.title}</PTitle>
+                            </a>
+                          </Link>
+                          <PByVendor>By {item?.vendor?.store_name}</PByVendor>
+                          {/* <VendorPrice>
                                 <PPrice>From USD 9.38</PPrice>
                                 <PDiscount>
                                   From USD 5.92 with Printcart
                                 </PDiscount>
                               </VendorPrice> */}
-                      </WrapContent>
-                    </Box>
-                  </CardItems>
+                        </WrapContent>
+                      </Box>
+                    </CardItems>
+                  ))}
                 </GridFilter>
                 {products.map((item, index) => (
                   <VendorInfo />
