@@ -24,7 +24,7 @@ const NavbarWrapper = styled.nav`
       }
     }
     .logo-alt {
-      width: 128px;
+      width: 148px;
       height: auto;
       display: none;
     }

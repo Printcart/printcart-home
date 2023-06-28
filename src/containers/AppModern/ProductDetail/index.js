@@ -27,19 +27,18 @@ import TitlePathMed from "./TitlePathMed";
 
 const WrappInfo = styled(Box)`
   align-items: center;
-  padding-top: 0;
   display: flex;
   flex-wrap: wrap;
   margin-left: 1rem;
   margin-right: 1rem;
-  padding-top: 1.5rem;
-  padding-bottom: 3.5rem;
+  margin-top: 3.5rem;
+  margin-bottom: 3.5rem;
 `;
 const RelatedHeading = styled(Heading)`
   margin-top: 0px;
 `;
 const BoxRelated = styled(Box)`
-  margin: 2rem 0;
+  margin: 3.5rem 0;
 `;
 
 const ProductDetail = (props) => {
@@ -108,12 +107,12 @@ const ProductDetail = (props) => {
                               </a>
                             </Link>
                             <PByVendor>By [Vendor_Name]. qty</PByVendor>
-                            <VendorPrice>
+                            {/* <VendorPrice>
                               <PPrice>From USD 9.38</PPrice>
                               <PDiscount>
                                 From USD 5.92 with Printcart
                               </PDiscount>
-                            </VendorPrice>
+                            </VendorPrice> */}
                             {/* <BoxDesc>
                               {items.description && (
                                 <ReactMarkdown>

@@ -192,7 +192,7 @@ const ProductsPOD = (props) => {
               </WrappBox>
             </WrappProvider>
           </ContainerPP>
-          {result && (
+          {/* {result && (
             <HeaderBox>
               <TitleBox>
                 <TitleHead>Collections</TitleHead>
@@ -222,7 +222,7 @@ const ProductsPOD = (props) => {
                 </Link>
               </CardCus>
             ))}
-          </GridServices>
+          </GridServices> */}
         </Container>
       </SectionWrapper>
     </>

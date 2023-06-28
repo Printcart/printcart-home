@@ -54,14 +54,12 @@ export const BannerWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
+  margin-top: 3.5rem;
+  margin-bottom: 3.5rem;
   > div {
     width: calc(100% / 2 - 34px);
-    margin: 38px 0 30px;
     @media only screen and (max-width: 1440px) {
       width: calc(100% / 2 - 34px);
-      margin: 100px 0 30px;
     }
     @media only screen and (max-width: 1366px) {
       width: calc(100% / 2 - 34px);
@@ -169,7 +167,7 @@ export const ContainerPP = styled.div`
   display: flex;
   width: 100%;
   height: 250px;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   background-image: url(${ImagePrinProvider?.src});
   background-size: cover;
   background-position: center center;
@@ -178,12 +176,12 @@ export const ContainerPP = styled.div`
 export const ContainerBox = styled(Box)`
   margin-bottom: 3.5rem;
   display: block;
-  margin-top: 28px;
 `;
 export const HeaderBox = styled(Box)`
   align-items: center;
   display: flex;
   flex-wrap: wrap;
+  margin-bottom: 0.5rem;
 `;
 export const TitleHead = styled.h4`
   margin: 0;

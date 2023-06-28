@@ -33,7 +33,7 @@ const TagsFilter = ({ dataFilter, status, title }) => {
           <TitleBox>
             <TitleHead>{title}</TitleHead>
           </TitleBox>
-          <RedirectAll>
+          {/* <RedirectAll>
             <Box>
               <TagA href="/catalog/#">
                 <SpanLink>
@@ -42,7 +42,7 @@ const TagsFilter = ({ dataFilter, status, title }) => {
                 </SpanLink>
               </TagA>
             </Box>
-          </RedirectAll>
+          </RedirectAll> */}
         </HeaderBox>
         {/* <HeaderPOD></HeaderPOD> */}
         <WrapperProduct>
@@ -86,10 +86,10 @@ const TagsFilter = ({ dataFilter, status, title }) => {
                           </a>
                         </Link>
                         <PByVendor>By {item?.vendor?.store_name}</PByVendor>
-                        <VendorPrice>
+                        {/* <VendorPrice>
                           <PPrice>From USD 9.38</PPrice>
                           <PDiscount>From USD 5.92 with Printcart</PDiscount>
-                        </VendorPrice>
+                        </VendorPrice> */}
                       </WrapContent>
                     </Box>
                   </CardItems>

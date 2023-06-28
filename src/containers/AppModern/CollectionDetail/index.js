@@ -21,6 +21,7 @@ import {
 } from "../ProductsPOD/productspod.style";
 import WrapperServices from "../ServiceDetail/WrapperService";
 import { ContentWrapper, SectionHeader } from "../appModern.style";
+import VendorInfo from "./VendorInfo";
 
 const filter = [
   {
@@ -165,7 +166,8 @@ const TitleHeading = styled(Heading)`
 `;
 
 const CollectionDetail = (props) => {
-  const { collection, vendors } = props;
+  const { collection, vendors, products } = props;
+  // console.log(collection);
   const [data, setData] = useState([]);
 
   const router = useRouter();
@@ -240,51 +242,51 @@ const CollectionDetail = (props) => {
                   </Box>
                 </BoxFilter>
               </WrapperFilter> */}
-            {collection?.products?.length > 0 && (
+            {products && (
               <WrapperProduct>
                 <GridFilter>
-                  {collection?.products.map(
-                    (item, index) =>
-                      item.status === "published" && (
-                        <CardItems key={index}>
-                          <Box>
-                            <WrapImage>
-                              <Link href={`/product/${item?.id}`}>
-                                <a>
-                                  <img
-                                    style={{
-                                      position: "absolute",
-                                      width: "100%",
-                                      height: "100%",
-                                      top: "0",
-                                      left: "0",
-                                      borderTopLeftRadius: "5px",
-                                      borderTopRightRadius: "5px"
-                                    }}
-                                    src={item?.thumbnail}
-                                  />
-                                </a>
-                              </Link>
-                            </WrapImage>
-                            <WrapContent>
-                              <Link href={`/product/${item?.id}`}>
-                                <a title={`View to ${item.title}`}>
-                                  <PTitle>{item.title}</PTitle>
-                                </a>
-                              </Link>
-                              <PByVendor>By [Vendor_Name]. qty</PByVendor>
-                              <VendorPrice>
+                  <CardItems>
+                    <Box>
+                      <WrapImage>
+                        <Link href={`/product/${products[0]?.id}`}>
+                          <a>
+                            <img
+                              style={{
+                                position: "absolute",
+                                width: "100%",
+                                height: "100%",
+                                top: "0",
+                                left: "0",
+                                borderTopLeftRadius: "5px",
+                                borderTopRightRadius: "5px"
+                              }}
+                              src={products[0]?.thumbnail}
+                            />
+                          </a>
+                        </Link>
+                      </WrapImage>
+                      <WrapContent>
+                        <Link href={`/product/${products[0]?.id}`}>
+                          <a title={`View to ${products[0].title}`}>
+                            <PTitle>{products[0].title}</PTitle>
+                          </a>
+                        </Link>
+                        <PByVendor>
+                          By {products[0]?.vendor?.store_name}
+                        </PByVendor>
+                        {/* <VendorPrice>
                                 <PPrice>From USD 9.38</PPrice>
                                 <PDiscount>
                                   From USD 5.92 with Printcart
                                 </PDiscount>
-                              </VendorPrice>
-                            </WrapContent>
-                          </Box>
-                        </CardItems>
-                      )
-                  )}
+                              </VendorPrice> */}
+                      </WrapContent>
+                    </Box>
+                  </CardItems>
                 </GridFilter>
+                {products.map((item, index) => (
+                  <VendorInfo />
+                ))}
               </WrapperProduct>
             )}
           </WrappProduc>
