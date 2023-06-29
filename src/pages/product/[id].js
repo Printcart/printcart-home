@@ -7,14 +7,6 @@ import ProductDetail from "containers/AppModern/ProductDetail";
 import Head from "next/head";
 import { ThemeProvider } from "styled-components";
 
-const baseUrl = process.env.MEDUSA_API_ADMIN_URL;
-const paramsProduct = {
-  method: "GET",
-  headers: {
-    Authorization: "Bearer Rl2KcwXuTa6abLczqxu1Z1ID2fE0CVCq",
-    "Content-Type": "application/json"
-  }
-};
 const Product = (props) => {
   const { product, productsRelated } = props;
 
@@ -45,18 +37,34 @@ const Product = (props) => {
 export default Product;
 
 export async function getStaticProps({ params }) {
-  const newBaseProduct = new URL(`products/${params.id}`, baseUrl);
-  const fetchProduct = newBaseProduct.href;
-  const newBaseUrl = new URL("products", baseUrl);
-  newBaseUrl.searchParams.set("status", "published");
-  newBaseUrl.searchParams.set("limit", 4);
-  const fetchUrl = newBaseUrl.href;
+  const baseUrl = process.env.MEDUSA_API_ADMIN_URL;
+  const token = process.env.TOKEN_AUTH;
+  const paramsProduct = {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json"
+    }
+  };
+  const setUrlProducts = new URL(`products/${params.id}`, baseUrl);
+  const urlProducts = setUrlProducts.href;
+  const setUrlRelated = new URL("products", baseUrl);
+  setUrlRelated.searchParams.set("status", "published");
+  setUrlRelated.searchParams.set("limit", 4);
+  const urlRelated = setUrlRelated.href;
 
-  const res = await fetch(fetchProduct, paramsProduct);
-  const resRelated = await fetch(fetchUrl, paramsProduct);
+  const fetchProducts = fetch(urlProducts, paramsProduct);
+  const fetchProductsRelated = fetch(urlRelated, paramsProduct);
 
-  const result = await res.json();
-  const resultRelated = await resRelated.json();
+  const [res, resRelated] = await Promise.all([
+    fetchProducts,
+    fetchProductsRelated
+  ]);
+
+  const [result, resultRelated] = await Promise.all([
+    res.json(),
+    resRelated.json()
+  ]);
 
   return {
     props: {
@@ -68,6 +76,16 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
+  const baseUrl = process.env.MEDUSA_API_ADMIN_URL;
+  const token = process.env.TOKEN_AUTH;
+
+  const paramsProduct = {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json"
+    }
+  };
   const newUrlPath = new URL("products", baseUrl);
   const fetchPath = newUrlPath.href;
 

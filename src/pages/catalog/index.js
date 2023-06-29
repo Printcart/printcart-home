@@ -11,7 +11,7 @@ import Head from "next/head";
 import { ThemeProvider } from "styled-components";
 
 const Catalog = (props) => {
-  const { products, collections, ecoFilter, aopFilter, neckFilter } = props;
+  const { products, collections, ecoData, aopData, neckData } = props;
   return (
     <ThemeProvider theme={theme}>
       <>
@@ -33,9 +33,9 @@ const Catalog = (props) => {
             <ProductsPOD
               getProducts={products}
               collections={collections}
-              ecoFilter={ecoFilter}
-              aopFilter={aopFilter}
-              neckFilter={neckFilter}
+              ecoData={ecoData}
+              aopData={aopData}
+              neckData={neckData}
             />
           </ContentWrapper>
           <Footer />
@@ -48,6 +48,15 @@ export default Catalog;
 
 export async function getStaticProps() {
   const baseUrlAdmin = process.env.MEDUSA_API_ADMIN_URL;
+  const token = process.env.TOKEN_AUTH;
+  const parameter = {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json"
+    }
+  };
+
   const urlCollection = new URL("collections", baseUrlAdmin);
   urlCollection.searchParams.set("limit", 30);
   const paramsCollection = urlCollection.href;
@@ -70,43 +79,44 @@ export async function getStaticProps() {
   const urlProduct = new URL("products", baseUrlAdmin);
   urlProduct.searchParams.set("status", "published");
   urlProduct.searchParams.set("limit", 500);
-
   const paramsProduct = urlProduct.href;
-  const parameter = {
-    method: "GET",
-    headers: {
-      Authorization: "Bearer Rl2KcwXuTa6abLczqxu1Z1ID2fE0CVCq",
-      "Content-Type": "application/json"
-    }
-  };
 
-  const fetchCollections = await fetch(paramsCollection, parameter);
-  const fetchProducts = await fetch(paramsProduct, parameter);
-  const fetchFilter = await fetch(newUrlFilter, parameter);
-  const fetchFilter2 = await fetch(newUrlFilter2, parameter);
-  const fetchFilter3 = await fetch(newUrlFilter3, parameter);
+  const fetchCollections = fetch(paramsCollection, parameter);
+  const fetchProducts = fetch(paramsProduct, parameter);
+  const fetchFilter = fetch(newUrlFilter, parameter);
+  const fetchFilter2 = fetch(newUrlFilter2, parameter);
+  const fetchFilter3 = fetch(newUrlFilter3, parameter);
+
+  const [resCollections, resProducts, resFilter, resFilter2, resFilter3] =
+    await Promise.all([
+      fetchCollections,
+      fetchProducts,
+      fetchFilter,
+      fetchFilter2,
+      fetchFilter3
+    ]);
 
   const [
-    resCollection,
-    resProducts,
-    resEcoFilter,
-    resAOPfilter,
-    resNeckFilter
+    resultCollection,
+    resultProducts,
+    resultEcoFilter,
+    resultAOPfilter,
+    resultNeckFilter
   ] = await Promise.all([
-    fetchCollections.json(),
-    fetchProducts.json(),
-    fetchFilter.json(),
-    fetchFilter2.json(),
-    fetchFilter3.json()
+    resCollections.json(),
+    resProducts.json(),
+    resFilter.json(),
+    resFilter2.json(),
+    resFilter3.json()
   ]);
 
   return {
     props: {
-      collections: resCollection.collections,
-      products: resProducts.products,
-      ecoFilter: resEcoFilter.products,
-      aopFilter: resAOPfilter.products,
-      neckFilter: resNeckFilter.products
+      collections: resultCollection.collections || {},
+      products: resultProducts.products || {},
+      ecoData: resultEcoFilter.products || {},
+      aopData: resultAOPfilter.products || {},
+      neckData: resultNeckFilter.products || {}
     },
     revalidate: 1
   };

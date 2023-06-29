@@ -190,7 +190,7 @@ const CollectionDetail = (props) => {
             )}
             <WrapVendor>
               {dataVendor.map((item) => (
-                <VendorInfo data={item} />
+                <VendorInfo key={item.id} data={item} />
               ))}
             </WrapVendor>
           </WrappProduc>

@@ -40,38 +40,40 @@ const Collection = (props) => {
 export default Collection;
 export async function getStaticProps({ params }) {
   const baseUrlAdmin = process.env.MEDUSA_API_ADMIN_URL;
+  const token = process.env.TOKEN_AUTH;
   const parameter = {
     method: "GET",
     headers: {
-      Authorization: "Bearer Rl2KcwXuTa6abLczqxu1Z1ID2fE0CVCq",
+      Authorization: `Bearer ${token}`,
       "Content-Type": "application/json"
     }
   };
-  const urlCollection = new URL(`collections/${params.id}`, baseUrlAdmin);
-  const fetchUrl = urlCollection.href;
-  const urlVendor = new URL("vendors", baseUrlAdmin);
-  // urlVendor.searchParams.set("limit", 5000);
-  const fetchUrlVendor = urlVendor.href;
 
-  const urlProducts = new URL("products", baseUrlAdmin);
-  urlProducts.searchParams.set("collection_id[]", params.id);
-  urlProducts.searchParams.set("status", "published");
-  const newUrl = urlProducts.href;
-  console.log(newUrl);
+  const setUrlCollections = new URL(`collections/${params.id}`, baseUrlAdmin);
+  const urlCollections = setUrlCollections.href;
 
-  const resAdmin = await fetch(fetchUrl, parameter);
-  const fetchVendor = await fetch(fetchUrlVendor, parameter);
-  const fetchProducts = await fetch(newUrl, parameter);
+  const setUrlProducts = new URL("products", baseUrlAdmin);
+  setUrlProducts.searchParams.set("collection_id[]", params.id);
+  setUrlProducts.searchParams.set("status", "published");
+  const newUrlProducts = setUrlProducts.href;
 
-  const result = await resAdmin.json();
-  const resVendor = await fetchVendor.json();
-  const resProducts = await fetchProducts.json();
+  const fetchCollection = fetch(urlCollections, parameter);
+  const fetchProducts = fetch(newUrlProducts, parameter);
+
+  const [resCollection, resProducts] = await Promise.all([
+    fetchCollection,
+    fetchProducts
+  ]);
+
+  const [resultCollection, resultProducts] = await Promise.all([
+    resCollection.json(),
+    resProducts.json()
+  ]);
 
   return {
     props: {
-      collection: result?.collection || {},
-      vendors: resVendor.vendors || {},
-      products: resProducts?.products || {}
+      collection: resultCollection?.collection || {},
+      products: resultProducts?.products || {}
     },
     revalidate: 1
   };
@@ -79,10 +81,11 @@ export async function getStaticProps({ params }) {
 
 export async function getStaticPaths() {
   const baseUrlAdmin = process.env.MEDUSA_API_ADMIN_URL;
+  const token = process.env.TOKEN_AUTH;
   const parameter = {
     method: "GET",
     headers: {
-      Authorization: "Bearer Rl2KcwXuTa6abLczqxu1Z1ID2fE0CVCq",
+      Authorization: `Bearer ${token}`,
       "Content-Type": "application/json"
     }
   };
