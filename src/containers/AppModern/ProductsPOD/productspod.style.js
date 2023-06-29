@@ -208,6 +208,7 @@ export const WrapperProduct = styled(Box)`
   width: 100%;
   box-sizing: border-box;
   max-width: 100%;
+  margin-bottom: 65px;
 `;
 export const GridFilter = styled(GridServices)`
   margin: 0px;

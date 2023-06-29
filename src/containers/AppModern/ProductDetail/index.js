@@ -25,7 +25,7 @@ import ProductParam from "./ProductParam";
 import ShippingInfo from "./ShippingInfo";
 import TitlePathMed from "./TitlePathMed";
 
-const WrappInfo = styled(Box)`
+export const WrappInfo = styled(Box)`
   align-items: center;
   display: flex;
   flex-wrap: wrap;

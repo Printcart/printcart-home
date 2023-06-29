@@ -1,9 +1,6 @@
 import Box from "common/components/Box";
 import Heading from "common/components/Heading";
-import ListGrid from "common/components/ListGrid";
-import React from "react";
-import Icon from "react-icons-kit";
-import { ic_star_rate } from "react-icons-kit/md/ic_star_rate";
+import Link from "next/link";
 import styled from "styled-components";
 
 export const Grid = styled.div`
@@ -36,6 +33,7 @@ const BoxVendorHeader = styled(Box)`
 const HeadingVendor = styled(Heading)`
   display: inline;
   font-size: 1.25rem;
+  text-transform: capitalize;
 `;
 const BoxIcon = styled(Box)`
   position: relative;
@@ -80,7 +78,9 @@ const BoxButton = styled(Box)`
 const BtnMoreDetail = styled.button`
   padding: calc(0.5rem - 1px) calc(1.5rem - 1px);
   height: 40px;
-  color: #17262b;
+  > a {
+    color: #17262b;
+  }
   background-color: #fff;
   border-color: #c4c7c8;
   width: 100%;
@@ -99,6 +99,11 @@ const BtnMoreDetail = styled.button`
   font-family: inherit;
   white-space: nowrap;
   outline: none;
+  &:hover {
+    > a {
+      color: #424dc6;
+    }
+  }
 `;
 const ContainerDesign = styled(Box)`
   margin-left: 1rem;
@@ -148,33 +153,34 @@ const DescProce = styled.p`
   line-height: 1.25rem;
   font-weight: 400;
 `;
-const VendorInfo = () => {
+const ContainerBox = styled(Box)`
+  margin-bottom: 1.5rem;
+`;
+const VendorInfo = (props) => {
+  const { data } = props;
   return (
     <>
-      <Box>
-        {/* <Heading content="Vendor Information" /> */}
+      <ContainerBox>
         <Box>
           <BoxVendor>
             <Grid>
               <BoxVendorHeader>
                 <HeadingVendor
-                  content="Vendor Name"
+                  content={data?.vendor?.store_name}
                   lineHeight="2rem"
                   fontWeight="700"
                   mb="0"
                 />
-                <BoxIcon>
-                  <WrapIcon>
-                    <ContainerIcon>
-                      <Icon icon={ic_star_rate} size={20} />
-                    </ContainerIcon>
-                    7.5
-                  </WrapIcon>
-                </BoxIcon>
               </BoxVendorHeader>
               <BoxHeaderRight>
                 <BoxButton>
-                  <BtnMoreDetail>Visit Store</BtnMoreDetail>
+                  <BtnMoreDetail>
+                    <Link href={`${data?.vendor?.shop_url ?? "#"}`}>
+                      <a target="_blank" title="Visit Store">
+                        Visit Store{" "}
+                      </a>
+                    </Link>
+                  </BtnMoreDetail>
                 </BoxButton>
                 <ContainerDesign>
                   <a href="/">
@@ -264,7 +270,7 @@ const VendorInfo = () => {
             </ContainerVendor>
           </BoxVendor>
         </Box>
-      </Box>
+      </ContainerBox>
     </>
   );
 };

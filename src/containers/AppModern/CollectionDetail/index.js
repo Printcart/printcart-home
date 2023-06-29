@@ -2,23 +2,12 @@ import Box from "common/components/Box";
 import CheckBox from "common/components/Checkbox";
 import Heading from "common/components/Heading";
 import Container from "common/components/UI/Container";
-import Link from "next/link";
-import { useRouter } from "next/router";
 import { useState } from "react";
 import styled from "styled-components";
+import { WrappInfo } from "../ProductDetail";
+import ImageGallery from "../ProductDetail/ImageGallery";
+import ProductInfo from "../ProductDetail/ProductInfo";
 import TitlePathMed from "../ProductDetail/TitlePathMed";
-import {
-  CardItems,
-  GridFilter,
-  PByVendor,
-  PDiscount,
-  PPrice,
-  PTitle,
-  VendorPrice,
-  WrapContent,
-  WrapImage,
-  WrapperProduct
-} from "../ProductsPOD/productspod.style";
 import WrapperServices from "../ServiceDetail/WrapperService";
 import { ContentWrapper, SectionHeader } from "../appModern.style";
 import VendorInfo from "./VendorInfo";
@@ -164,30 +153,23 @@ const TitleHeading = styled(Heading)`
   font-size: 32px !important;
   margin: 40px !important;
 `;
+const WrapVendor = styled(Box)`
+  margin-bottom: 65px;
+`;
 
 const CollectionDetail = (props) => {
   const { collection, vendors, products } = props;
-  console.log(products);
-  // console.log(collection);
   const [data, setData] = useState([]);
+  const number = products.length - 1;
+  const dataProduct = products[number];
+  const dataVendor = Array.from(
+    new Set(products.map((item) => item.vendor.id))
+  ).map((id) => {
+    return products.find((item) => item.vendor.id === id);
+  });
 
-  const router = useRouter();
-  // const getId = collection.products.map((items) => items.vendor_id);
-  // const uniqueValue = [...new Set(Object.values(getId))];
-  // console.log(uniqueValue);
-
-  // const filterObject = vendors.filter((obj) => uniqueValue.includes(obj.id));
-  // console.log(filterObject);
   const title = collection?.title;
-  const handleCheck = (value) => {
-    const currentUrl = router.asPath;
-    const queryParams = { id: value };
-    console.log(value);
-    router.push({
-      pathname: currentUrl,
-      query: queryParams
-    });
-  };
+
   return (
     <ContentWrapper>
       <WrapperServices>
@@ -211,85 +193,18 @@ const CollectionDetail = (props) => {
               <Heading content={title} lineHeight="2.5rem" fontWeight="600" />
             </BoxHeader>
             {collection?.metadata?.short_description}
-            {/* <WrapperFilter>
-                <BoxFilter>
-                  <Box>
-                    <TitleFilter>
-                      <TextTitle>
-                        Filter by Vendor
-                        <StatusTitle>
-                          <Status>New</Status>
-                        </StatusTitle>
-                      </TextTitle>
-                    </TitleFilter>
-                    <ContentFilter>
-                      <WapperContent>
-                        <ContainerContent>
-                          {filterObject.map((item, index) => (
-                            <Boxfield key={index}>
-                              <Label>
-                                <BoxName>
-                                  <CheckBoxFilter
-                                    labelText={item.store_name}
-                                    onClick={() => handleCheck(item.id)}
-                                  />
-                                </BoxName>
-                              </Label>
-                            </Boxfield>
-                          ))}
-                        </ContainerContent>
-                      </WapperContent>
-                    </ContentFilter>
-                  </Box>
-                </BoxFilter>
-              </WrapperFilter> */}
+
             {products && (
-              <WrapperProduct>
-                <GridFilter>
-                  {products.map((item, index) => (
-                    <CardItems key={index}>
-                      <Box>
-                        <WrapImage>
-                          <Link href={`/product/${item?.id}`}>
-                            <a>
-                              <img
-                                style={{
-                                  position: "absolute",
-                                  width: "100%",
-                                  height: "100%",
-                                  top: "0",
-                                  left: "0",
-                                  borderTopLeftRadius: "5px",
-                                  borderTopRightRadius: "5px"
-                                }}
-                                src={item?.thumbnail}
-                              />
-                            </a>
-                          </Link>
-                        </WrapImage>
-                        <WrapContent>
-                          <Link href={`/product/${item?.id}`}>
-                            <a title={`View to ${item.title}`}>
-                              <PTitle>{item.title}</PTitle>
-                            </a>
-                          </Link>
-                          <PByVendor>By {item?.vendor?.store_name}</PByVendor>
-                          {/* <VendorPrice>
-                                <PPrice>From USD 9.38</PPrice>
-                                <PDiscount>
-                                  From USD 5.92 with Printcart
-                                </PDiscount>
-                              </VendorPrice> */}
-                        </WrapContent>
-                      </Box>
-                    </CardItems>
-                  ))}
-                </GridFilter>
-                {products.map((item, index) => (
-                  <VendorInfo />
-                ))}
-              </WrapperProduct>
+              <WrappInfo>
+                <ImageGallery product={dataProduct} />
+                <ProductInfo product={dataProduct} />
+              </WrappInfo>
             )}
+            <WrapVendor>
+              {dataVendor.map((item) => (
+                <VendorInfo data={item} />
+              ))}
+            </WrapVendor>
           </WrappProduc>
         </Container>
       </WrapperServices>
