@@ -53,7 +53,9 @@ const BlogPage = ({ resPosts }) => {
                       </a>
                     </Link>
                   </Box>
-                  <DesBox>{ReactHtmlParser(items?.attributes?.content)}</DesBox>
+                  <DesBox>
+                    {ReactHtmlParser(items?.attributes?.short_intro)}
+                  </DesBox>
                   <Box>
                     <TagBox>
                       {items?.attributes?.tags?.data.map((tags, index) => (

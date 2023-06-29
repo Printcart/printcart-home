@@ -160,19 +160,15 @@ export const ButtonRead = styled.button`
   }
 `;
 export const DesBox = styled(Box)`
-  > p {
-    margin: 0;
-    font-size: 17px;
-    color: #5c5c5c;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 4;
-  }
+  margin: 0;
+  font-size: 17px;
+  color: #5c5c5c;
   height: 100px;
   margin-bottom: 10px;
   text-overflow: ellipsis;
   overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
 `;
 export default GridPost;
