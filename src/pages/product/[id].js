@@ -49,6 +49,7 @@ export async function getStaticProps({ params }) {
   const fetchProduct = newBaseProduct.href;
   const newBaseUrl = new URL("products", baseUrl);
   newBaseUrl.searchParams.set("status", "published");
+  newBaseUrl.searchParams.set("limit", 4);
   const fetchUrl = newBaseUrl.href;
 
   const res = await fetch(fetchProduct, paramsProduct);

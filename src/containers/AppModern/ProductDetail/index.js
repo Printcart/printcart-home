@@ -9,10 +9,7 @@ import {
   CardItems,
   GridFilter,
   PByVendor,
-  PDiscount,
-  PPrice,
   PTitle,
-  VendorPrice,
   WrapContent,
   WrapImage,
   WrapperProduct
@@ -21,8 +18,6 @@ import WrapperServices from "../ServiceDetail/WrapperService";
 import { ContentWrapper } from "../appModern.style";
 import ImageGallery from "./ImageGallery";
 import ProductInfo from "./ProductInfo";
-import ProductParam from "./ProductParam";
-import ShippingInfo from "./ShippingInfo";
 import TitlePathMed from "./TitlePathMed";
 
 export const WrappInfo = styled(Box)`
@@ -44,23 +39,6 @@ const BoxRelated = styled(Box)`
 const ProductDetail = (props) => {
   const { product, productsRelated } = props;
 
-  // const val = product?.product?.options.map((option) =>
-  //   option?.values?.map((value) => value.value)
-  // );
-  // const valueSize = [...new Set(val[0])];
-  // for (let i = 0; i < valueSize.length; i++) {}
-  // const valueColor = [...new Set(val[1])];
-  const tabs = [
-    {
-      title: "Product Infomation",
-      component: <ProductParam product={product} />
-    },
-    {
-      title: "Shipping & Returns",
-      component: <ShippingInfo />
-    }
-  ];
-
   return (
     <ContentWrapper>
       <WrapperServices>
@@ -70,7 +48,7 @@ const ProductDetail = (props) => {
             <ImageGallery product={product} />
             <ProductInfo product={product} />
           </WrappInfo>
-          <VendorInfo />
+          <VendorInfo data={product} />
           <InfoCollection collection={product?.collection} />
           {/**RELATED PRODUCTS */}
           <BoxRelated>
@@ -80,7 +58,7 @@ const ProductDetail = (props) => {
                 {productsRelated.map(
                   (items, index) =>
                     index < 4 && (
-                      <CardItems key={index}>
+                      <CardItems key={items.id}>
                         <Box>
                           <WrapImage>
                             <Link href={`/product/${items?.id}`}>
@@ -106,7 +84,9 @@ const ProductDetail = (props) => {
                                 <PTitle>{items.title}</PTitle>
                               </a>
                             </Link>
-                            <PByVendor>By [Vendor_Name]. qty</PByVendor>
+                            <PByVendor>
+                              By {items?.vendor?.store_name}
+                            </PByVendor>
                             {/* <VendorPrice>
                               <PPrice>From USD 9.38</PPrice>
                               <PDiscount>

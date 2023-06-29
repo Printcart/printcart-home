@@ -32,7 +32,7 @@ const BoxVendorHeader = styled(Box)`
 `;
 const HeadingVendor = styled(Heading)`
   display: inline;
-  font-size: 1.25rem;
+  font-size: 1.75rem;
   text-transform: capitalize;
 `;
 const BoxIcon = styled(Box)`
@@ -176,7 +176,10 @@ const VendorInfo = (props) => {
                 <BoxButton>
                   <BtnMoreDetail>
                     <Link href={`${data?.vendor?.shop_url ?? "#"}`}>
-                      <a target="_blank" title="Visit Store">
+                      <a
+                        target={`${data?.vendor?.shop_url ? "_blank" : ""}`}
+                        title="Visit Store"
+                      >
                         Visit Store{" "}
                       </a>
                     </Link>

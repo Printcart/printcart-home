@@ -158,7 +158,7 @@ const InfoCollection = (props) => {
         <AboutCollection>
           <BoxWrapper>
             <BoxTitle>
-              <h2>About</h2>
+              <h3>About</h3>
             </BoxTitle>
             <BoxAbout>
               <p>{collection?.metadata?.about}</p>
@@ -170,7 +170,7 @@ const InfoCollection = (props) => {
         <BoxFeatureContainer>
           <BoxWrapper>
             <BoxTitle>
-              <h2>Description</h2>
+              <h3>Description</h3>
             </BoxTitle>
             <BoxAbout>
               <p>{collection?.metadata?.short_description}</p>
@@ -182,7 +182,7 @@ const InfoCollection = (props) => {
         <BoxFeatureContainer>
           <BoxWrapper>
             <BoxTitle>
-              <h2>Key features</h2>
+              <h3>Key features</h3>
             </BoxTitle>
             <BoxWrapContent>
               <DescFeature>
@@ -211,7 +211,7 @@ const InfoCollection = (props) => {
         <BoxFeatureContainer>
           <BoxWrapper>
             <BoxTitle>
-              <h2>Care instructions</h2>
+              <h3>Care instructions</h3>
             </BoxTitle>
             <BoxWrapContent>
               <CareIcon>
@@ -234,7 +234,7 @@ const InfoCollection = (props) => {
           <BoxFeatureContainer>
             <BoxWrapper>
               <BoxTitle>
-                <h2>Size guide</h2>
+                <h3>Size guide</h3>
               </BoxTitle>
               <BoxWrapContent>
                 <p>

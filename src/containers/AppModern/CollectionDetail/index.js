@@ -2,7 +2,6 @@ import Box from "common/components/Box";
 import CheckBox from "common/components/Checkbox";
 import Heading from "common/components/Heading";
 import Container from "common/components/UI/Container";
-import { useState } from "react";
 import styled from "styled-components";
 import { WrappInfo } from "../ProductDetail";
 import ImageGallery from "../ProductDetail/ImageGallery";
@@ -11,21 +10,6 @@ import TitlePathMed from "../ProductDetail/TitlePathMed";
 import WrapperServices from "../ServiceDetail/WrapperService";
 import { ContentWrapper, SectionHeader } from "../appModern.style";
 import VendorInfo from "./VendorInfo";
-
-const filter = [
-  {
-    name: "Vendor_Name 01"
-  },
-  {
-    name: "Vendor_Name 02"
-  },
-  {
-    name: "Vendor_Name 03"
-  },
-  {
-    name: "Vendor_Name 04"
-  }
-];
 
 const WrappProduc = styled(Box)`
   margin-bottom: 2rem;
@@ -132,7 +116,6 @@ const CheckBoxFilter = styled(CheckBox)`
     font-weight: 400 !important;
   }
 `;
-
 const BoxDesc = styled(Box)`
   height: 90px;
   font-size: 17px;
@@ -154,14 +137,14 @@ const TitleHeading = styled(Heading)`
   margin: 40px !important;
 `;
 const WrapVendor = styled(Box)`
-  margin-bottom: 65px;
+  margin-bottom: 3.5rem;
 `;
 
 const CollectionDetail = (props) => {
   const { collection, vendors, products } = props;
-  const [data, setData] = useState([]);
   const number = products.length - 1;
   const dataProduct = products[number];
+
   const dataVendor = Array.from(
     new Set(products.map((item) => item.vendor.id))
   ).map((id) => {
@@ -190,10 +173,15 @@ const CollectionDetail = (props) => {
         <Container>
           <WrappProduc>
             <BoxHeader>
-              <Heading content={title} lineHeight="2.5rem" fontWeight="600" />
+              <Heading
+                content={title}
+                lineHeight="2.5rem"
+                fontWeight="600"
+                as="h1"
+                fontSize="2rem"
+              />
             </BoxHeader>
-            {collection?.metadata?.short_description}
-
+            <Box>{collection?.metadata?.short_description}</Box>
             {products && (
               <WrappInfo>
                 <ImageGallery product={dataProduct} />
