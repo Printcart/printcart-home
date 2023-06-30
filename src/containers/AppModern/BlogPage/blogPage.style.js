@@ -163,7 +163,7 @@ export const DesBox = styled(Box)`
   margin: 0;
   font-size: 17px;
   color: #5c5c5c;
-  height: 100px;
+  height: 80px;
   margin-bottom: 10px;
   text-overflow: ellipsis;
   overflow: hidden;
