@@ -39,9 +39,10 @@ const Banner = styled(Box)`
 `;
 const PostHeading = styled(Heading)`
   color: #fff;
-  margin: 0px;
   margin-bottom: 35px;
+  word-break: break-word;
   font-size: 45px;
+  line-height: 1.2;
   text-decoration: none;
   letter-spacing: 0.5px;
   text-overflow: ellipsis;
@@ -51,7 +52,7 @@ const PostHeading = styled(Heading)`
   -webkit-line-clamp: 2;
 `;
 const BoxPost = styled(Box)`
-  padding: 40px 0;
+  padding: 40px 30px;
 `;
 const BoxHead = styled(Box)`
   position: relative;
@@ -65,12 +66,12 @@ const BoxHead = styled(Box)`
 `;
 const PShort = styled.p`
   color: #fff;
-  font-size: 19px;
-  text-indent: 30px;
+  font-size: 20px;
   line-height: 1.8;
   font-weight: 400;
   margin: 0px;
   margin-bottom: 35px;
+  letter-spacing: 0.5px;
   text-decoration: none;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -130,60 +131,130 @@ const Image = styled.img`
 `;
 const ContenBox = styled(Box)`
   margin-bottom: 5px;
-  color: #444;
-  font-size: 18px;
-  font-weight: 300;
-  letter-spacing: 0.5px;
-  line-height: 30px;
   & p,
   span,
   ins,
   ul,
   li,
   a {
-    line-height: 1.8;
+    line-height: 1.8 !important;
+    word-break: break-word;
+    text-decoration: none;
+    letter-spacing: 0.5px;
   }
   & h1,
   h2,
   h3,
   h4,
-  h5 {
-    line-height: 1.2;
+  h5,
+  h6 {
+    line-height: 1.2 !important;
+    word-break: break-word;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+  }
+  & p,
+  b,
+  u,
+  a,
+  i,
+  ins,
+  span,
+  ul,
+  li {
+    font-size: 18px !important;
+    color: #444 !important;
+    & strong {
+      font-size: 18px !important;
+      color: #444 !important;
+    }
+  }
+  & p,
+  ul,
+  li {
+    margin-bottom: 25px;
+    font-weight: 300;
   }
   & h1 {
     color: #444;
-    font-size: 40px;
+    font-size: 45px !important;
     font-weight: 500;
     margin-top: 50px;
     margin-bottom: 50px;
+    & strong {
+      color: #444;
+      font-size: 45px !important;
+      font-weight: 500;
+      margin-top: 50px;
+      margin-bottom: 50px;
+    }
   }
   & h2 {
     color: #444;
-    font-size: 35px;
+    font-size: 40px;
     font-weight: 500;
     padding-top: 25px;
     margin-top: 50px;
     margin-bottom: 50px;
+    & strong,
+    span,
+    a {
+      font-size: 40px !important;
+      font-weight: 500;
+      color: #444;
+    }
   }
   & h3 {
     color: #444;
-    font-size: 25px;
+    font-size: 30px !important;
     font-weight: 500;
     padding-top: 25px;
-    margin-top: 50px;
     margin-bottom: 50px;
+    & strong,
+    span,
+    a {
+      font-size: 30px !important;
+      font-weight: 500;
+      color: #444;
+    }
   }
-  & h4 {
+  & h4,
+  h5,
+  h6 {
     color: #444;
-    font-size: 20px;
+    font-size: 18px !important;
     font-weight: 500;
-    padding-top: 25px;
-    margin-top: 50px;
-    margin-bottom: 50px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    & strong,
+    span,
+    a {
+      font-size: 18px !important;
+      color: #444;
+      font-weight: 500;
+    }
+  }
+  & ul {
+    list-style: unset;
+    margin-left: 20px;
   }
   & a {
-    color: #2d58af;
-    font-weight: 300;
+    color: #2d58af !important;
+    margin-bottom: 5px;
+    text-decoration: none;
+    & u,
+    li,
+    strong,
+    span {
+      color: #2d58af !important;
+      text-decoration: none;
+    }
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  & a:hover {
+    text-decoration: underline;
   }
   & img {
     width: 100% !important;
@@ -193,6 +264,10 @@ const ContenBox = styled(Box)`
     border-radius: 5px;
     onbject-fit: contain;
     box-shadow: 0 0px 10px 1px rgb(0 0 50 / 10%);
+  }
+  & iframe {
+    max-width: 100%;
+    margin-bottom: 30px;
   }
 `;
 const WrapRight = styled(Box)`
@@ -210,6 +285,7 @@ const TableHeading = styled(Heading)`
 const GridBlog = styled.div`
   display: flex;
   flex-wrap: wrap;
+  padding: 0 30px;
 
   .boxLeft {
     width: 66%;
@@ -342,6 +418,7 @@ const PostDetail = (props) => {
   const topicId = postData?.attributes?.post_type?.data?.id;
   const content = postData?.attributes?.content
     ?.replace(/&nbsp;?/gi, "")
+    ?.replace(/<h1/g, '<h1 class="texttitle"')
     ?.replace(/<h2/g, '<h2 class="texttitle"')
     ?.replace(/<h3/g, '<h3 class="texttitle"')
     ?.replace(/<a/g, '<a rel="nofollow" target="_blank"')
@@ -568,7 +645,7 @@ const PostDetail = (props) => {
                           </Link>
                         </Box>
                         <DesBox>
-                          {ReactHtmlParser(items?.attributes?.content)}
+                          {ReactHtmlParser(items?.attributes?.short_intro)}
                         </DesBox>
                         <Box>
                           <TagBox>

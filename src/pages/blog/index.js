@@ -46,7 +46,7 @@ export async function getStaticProps() {
   const setUrl = new URL("posts", baseUrl);
   setUrl.searchParams.set("filters[channels][name][$eq]", "Printcart");
   setUrl.searchParams.set("populate", "*");
-  setUrl.searchParams.set("&pagination[limit]", "10");
+  setUrl.searchParams.set("&pagination[limit]", "20");
   const newUrl = setUrl.href;
 
   const fetchData = await fetch(newUrl);
