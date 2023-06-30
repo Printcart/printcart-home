@@ -138,6 +138,7 @@ const ContenBox = styled(Box)`
   li,
   a {
     line-height: 1.8 !important;
+    font-family: heebo !important;
     word-break: break-word;
     text-decoration: none;
     letter-spacing: 0.5px;
@@ -164,6 +165,7 @@ const ContenBox = styled(Box)`
   li {
     font-size: 18px !important;
     color: #444 !important;
+    font-family: heebo !important;
     & strong {
       font-size: 18px !important;
       color: #444 !important;
@@ -202,6 +204,7 @@ const ContenBox = styled(Box)`
       font-size: 40px !important;
       font-weight: 500;
       color: #444;
+      font-family: heebo !important;
     }
   }
   & h3 {
@@ -216,6 +219,7 @@ const ContenBox = styled(Box)`
       font-size: 30px !important;
       font-weight: 500;
       color: #444;
+      font-family: heebo !important;
     }
   }
   & h4,
@@ -232,6 +236,7 @@ const ContenBox = styled(Box)`
       font-size: 18px !important;
       color: #444;
       font-weight: 500;
+      font-family: heebo !important;
     }
   }
   & ul {
@@ -248,6 +253,7 @@ const ContenBox = styled(Box)`
     span {
       color: #2d58af !important;
       text-decoration: none;
+      font-family: heebo !important;
     }
     &:hover {
       text-decoration: underline;

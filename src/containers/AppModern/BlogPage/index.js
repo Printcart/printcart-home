@@ -49,7 +49,9 @@ const BlogPage = ({ resPosts }) => {
                   <Box>
                     <Link href={`/blog/${items?.attributes?.alias}`}>
                       <a title={`View to ${items?.attributes?.title}`}>
-                        <h3>{items?.attributes?.title}</h3>
+                        <h3 style={{ lineHeight: "1.5", height: "64px" }}>
+                          {items?.attributes?.title}
+                        </h3>
                       </a>
                     </Link>
                   </Box>
