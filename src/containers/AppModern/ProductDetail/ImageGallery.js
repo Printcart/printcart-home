@@ -60,7 +60,6 @@ const MainImage = styled(Box)`
 const WrapBigImage = styled(Box)`
   position: relative;
   padding-top: 100%;
-  background-color: #f7f7f7;
   overflow: hidden;
 `;
 const ImageBig = styled(Image)`
@@ -77,7 +76,7 @@ const ImageBig = styled(Image)`
   max-width: 100%;
   min-height: 100%;
   max-height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 `;
 const ImageGallery = (props) => {
   const { product } = props;

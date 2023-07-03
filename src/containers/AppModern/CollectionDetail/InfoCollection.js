@@ -166,7 +166,7 @@ const InfoCollection = (props) => {
           </BoxWrapper>
         </AboutCollection>
       )}
-      {collection?.metadata?.short_description && (
+      {/* {collection?.metadata?.short_description && (
         <BoxFeatureContainer>
           <BoxWrapper>
             <BoxTitle>
@@ -177,7 +177,7 @@ const InfoCollection = (props) => {
             </BoxAbout>
           </BoxWrapper>
         </BoxFeatureContainer>
-      )}
+      )} */}
       {collection?.metadata?.feature1 && (
         <BoxFeatureContainer>
           <BoxWrapper>

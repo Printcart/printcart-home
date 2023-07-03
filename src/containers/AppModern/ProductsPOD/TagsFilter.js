@@ -63,6 +63,7 @@ const TagsFilter = ({ dataFilter, status, title }) => {
                                 top: "0",
                                 left: "0",
                                 borderTopLeftRadius: "5px",
+                                objectFit: "contain",
                                 borderTopRightRadius: "5px"
                               }}
                               src={item?.thumbnail}

@@ -56,6 +56,8 @@ export const BannerWrapper = styled.div`
   justify-content: space-between;
   margin-top: 3.5rem;
   margin-bottom: 3.5rem;
+  margin-left: 17px;
+  margin-right: 17px;
   > div {
     width: calc(100% / 2 - 34px);
     @media only screen and (max-width: 1440px) {
@@ -167,6 +169,8 @@ export const ContainerPP = styled.div`
   display: flex;
   width: 100%;
   height: 250px;
+  margin-left: 17px;
+  margin-right: 17px;
   margin-bottom: 2rem;
   background-image: url(${ImagePrinProvider?.src});
   background-size: cover;
@@ -188,6 +192,7 @@ export const TitleHead = styled.h4`
   font-size: 24px;
   line-height: 2rem;
   font-weight: 700;
+  text-transform: capitalize;
 `;
 export const TitleBox = styled(Box)`
   max-width: 100%;
@@ -208,7 +213,7 @@ export const WrapperProduct = styled(Box)`
   width: 100%;
   box-sizing: border-box;
   max-width: 100%;
-  margin-bottom: 65px;
+  margin-bottom: 3.5rem;
 `;
 export const GridFilter = styled(GridServices)`
   margin: 0px;

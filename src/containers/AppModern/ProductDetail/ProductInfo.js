@@ -39,8 +39,13 @@ const ProductInfo = (props) => {
               <a>{product?.collection.title}</a>
             </Link>
           )}
-          <ProductHeading content={product?.title} lineHeight="2.5rem" />
-          <PDescription>{ReactHtmlParser(product?.description)}</PDescription>
+          <ProductHeading
+            content={product?.collection.title}
+            lineHeight="2.5rem"
+          />
+          <PDescription>
+            {ReactHtmlParser(product?.collection?.metadata?.short_description)}
+          </PDescription>
           {/**Select Size */}
           {/* {product?.product?.variants?.length > 0 && (
                         <Box className="selectSize">
