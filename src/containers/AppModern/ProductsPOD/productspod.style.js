@@ -245,6 +245,10 @@ export const CardItems = styled(Card)`
   border-radius: 5px;
   box-shadow: 0 0 5px 0 rgb(0 0 50 / 25%);
   &:hover {
+    img {
+      transform: scale(1.1);
+      transition: transform 0.3s ease-out;
+    }
     background-color: #f7f7f7;
   }
   @media only screen and (max-width: 480px) {

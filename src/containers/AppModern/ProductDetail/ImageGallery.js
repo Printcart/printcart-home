@@ -36,6 +36,7 @@ const ThumbnailItems = styled(Image)`
   padding: 0px;
   border: none;
   margin: auto;
+  background-color: #f7f7f7;
   display: block;
   width: 0px;
   height: 0px;
@@ -68,6 +69,7 @@ const ImageBig = styled(Image)`
   box-sizing: border-box;
   padding: 0px;
   border: none;
+  background-color: #f7f7f7;
   margin: auto;
   display: block;
   width: 0px;

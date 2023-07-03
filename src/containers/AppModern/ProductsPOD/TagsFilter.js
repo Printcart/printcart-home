@@ -62,6 +62,7 @@ const TagsFilter = ({ dataFilter, status, title }) => {
                                 height: "100%",
                                 top: "0",
                                 left: "0",
+                                backgroundColor: "#f7f7f7",
                                 borderTopLeftRadius: "5px",
                                 objectFit: "contain",
                                 borderTopRightRadius: "5px"
