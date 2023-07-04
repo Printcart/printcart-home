@@ -161,6 +161,8 @@ const BoxStyleText = styled(Box)`
 `;
 const VendorInfo = (props) => {
   const { data } = props;
+  const getSize = data?.collection?.metadata?.size;
+  const convertArray = getSize?.split(",");
   return (
     <>
       <ContainerBox>
@@ -248,7 +250,7 @@ const VendorInfo = (props) => {
               </Box> */}
               <Box>
                 <HeadingTitle
-                  content="Print Areas * Qty"
+                  content="Print Areas * 2"
                   mb="8px"
                   lineHeight="1.25rem"
                   fontWeight="400"
@@ -257,12 +259,21 @@ const VendorInfo = (props) => {
               </Box>
               <Box>
                 <HeadingTitle
-                  content="Size * Qty"
+                  content={`Size * ${convertArray?.length || "0"}`}
                   mb="8px"
                   lineHeight="1.25rem"
                   fontWeight="400"
                 />
-                <p className="size-detail">A-z</p>
+
+                {convertArray && convertArray?.length <= 1 ? (
+                  <p className="size-detail">{`${convertArray[0]} `}</p>
+                ) : convertArray?.length > 1 ? (
+                  <p className="size-detail">{`${convertArray[0]} - ${
+                    convertArray[convertArray?.length - 1]
+                  }`}</p>
+                ) : (
+                  "Updating"
+                )}
               </Box>
               <Box>
                 <HeadingTitle

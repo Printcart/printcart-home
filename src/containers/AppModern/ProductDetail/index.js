@@ -38,6 +38,7 @@ const BoxRelated = styled(Box)`
 
 const ProductDetail = (props) => {
   const { product, productsRelated } = props;
+
   return (
     <ContentWrapper>
       <WrapperServices>

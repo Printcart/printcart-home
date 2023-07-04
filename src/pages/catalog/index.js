@@ -57,8 +57,7 @@ export async function getStaticProps() {
     }
   };
   const today = new Date();
-  const curentDay =
-    today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
+  const curentDay = today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
 
   const urlCollection = new URL("collections", baseUrlAdmin);
   urlCollection.searchParams.set("limit", 30);
@@ -81,7 +80,7 @@ export async function getStaticProps() {
 
   const urlProduct = new URL("products", baseUrlAdmin);
   urlProduct.searchParams.set("status", "published");
-  urlProduct.searchParams.set("limit", 500);
+  // urlProduct.searchParams.set("limit", 500);
   urlProduct.searchParams.set("updated_at[gte]", curentDay);
   const paramsProduct = urlProduct.href;
 
