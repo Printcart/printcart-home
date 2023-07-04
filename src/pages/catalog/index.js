@@ -82,7 +82,7 @@ export async function getStaticProps() {
   const urlProduct = new URL("products", baseUrlAdmin);
   urlProduct.searchParams.set("status", "published");
   urlProduct.searchParams.set("limit", 500);
-  urlProduct.searchParams.set("updated_at[lte]", curentDay);
+  urlProduct.searchParams.set("updated_at[gte]", curentDay);
   const paramsProduct = urlProduct.href;
 
   const fetchCollections = fetch(paramsCollection, parameter);
