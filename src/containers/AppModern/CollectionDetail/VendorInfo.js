@@ -161,6 +161,8 @@ const BoxStyleText = styled(Box)`
 `;
 const VendorInfo = (props) => {
   const { data } = props;
+  const getVariants = data.variants.map((item) => item.title);
+
   const getSize = data?.collection?.metadata?.size;
   const convertArray = getSize?.split(",");
   return (
@@ -277,12 +279,12 @@ const VendorInfo = (props) => {
               </Box>
               <Box>
                 <HeadingTitle
-                  content="Color * Qty"
+                  content={`Color * ${getVariants?.length || "0"}`}
                   mb="8px"
                   lineHeight="1.25rem"
                   fontWeight="400"
                 />
-                <p>A-z</p>
+                <p>{getVariants.join(", ") || "Updating"}</p>
               </Box>
             </ContainerVendor>
           </BoxVendor>
