@@ -9,7 +9,7 @@ export const Grid = styled.div`
   grid-template-rows: 50px 0px;
   grid-gap: 5px;
   align-items: center;
-  padding: 0px 24px 16px;
+  padding: 0px 0px 16px;
   margin-left: 10px;
   margin-right: 10px;
 `;
@@ -138,7 +138,7 @@ const ContainerVendor = styled(Box)`
   display: grid;
   grid-gap: 24px;
   gap: 24px;
-  padding: 16px 16px;
+  padding: 16px 19px;
   border-top: 1px solid #e3e4e5;
   overflow: hidden;
 `;
@@ -155,6 +155,9 @@ const DescProce = styled.p`
 `;
 const ContainerBox = styled(Box)`
   margin-bottom: 1.5rem;
+`;
+const BoxStyleText = styled(Box)`
+  text-align: center;
 `;
 const VendorInfo = (props) => {
   const { data } = props;
@@ -203,13 +206,13 @@ const VendorInfo = (props) => {
                   fontWeight="400"
                 />
                 <Box>
-                  <p>Name country</p>
-                  <Box>
+                  <p>{data?.origin_country}</p>
+                  {/* <Box>
                     <Box>Flag</Box>
-                  </Box>
+                  </Box> */}
                 </Box>
               </Box>
-              <Box>
+              {/* <Box>
                 <HeadingTitle
                   content="Price"
                   mb="8px"
@@ -222,8 +225,8 @@ const VendorInfo = (props) => {
                     <DescProce>From USD 11.99 with Printify Premium</DescProce>
                   </Box>
                 </Box>
-              </Box>
-              <Box>
+              </Box> */}
+              {/* <Box>
                 <HeadingTitle
                   content="Shipping"
                   mb="8px"
@@ -233,8 +236,8 @@ const VendorInfo = (props) => {
                 <Box>
                   <p>From USD 6.09</p>
                 </Box>
-              </Box>
-              <Box>
+              </Box> */}
+              {/* <Box>
                 <HeadingTitle
                   content="Avg.production"
                   mb="8px"
@@ -242,7 +245,7 @@ const VendorInfo = (props) => {
                   fontWeight="400"
                 />
                 <p>2.9 business days</p>
-              </Box>
+              </Box> */}
               <Box>
                 <HeadingTitle
                   content="Print Areas * Qty"

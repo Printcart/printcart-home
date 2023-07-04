@@ -38,7 +38,6 @@ const BoxRelated = styled(Box)`
 
 const ProductDetail = (props) => {
   const { product, productsRelated } = props;
-
   return (
     <ContentWrapper>
       <WrapperServices>
@@ -70,6 +69,8 @@ const ProductDetail = (props) => {
                                     height: "100%",
                                     top: "0",
                                     left: "0",
+                                    backgroundColor: "#f7f7f7",
+                                    objectFit: "contain",
                                     borderTopLeftRadius: "5px",
                                     borderTopRightRadius: "5px"
                                   }}
