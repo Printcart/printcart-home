@@ -36,17 +36,17 @@ const ProductInfo = (props) => {
         <Box>
           {product?.collection && (
             <Link href={`/collection/${product?.collection?.id}`}>
-              <a>{product?.collection.title}</a>
+              <a>{product?.collection?.title || ""}</a>
             </Link>
           )}
           <ProductHeading
-            content={product?.collection?.title || product?.title}
+            content={product?.title || product?.collection?.title}
             lineHeight="2.5rem"
           />
           <PDescription>
             {ReactHtmlParser(
               product?.collection?.metadata?.short_description ||
-                product?.description
+                product?.metadata?.short_description
             )}
           </PDescription>
           {/**Select Size */}

@@ -150,7 +150,6 @@ const CollectionDetail = (props) => {
   ).map((id) => {
     return products.find((item) => item.vendor.id === id);
   });
-
   const title = collection?.title;
 
   return (
@@ -185,7 +184,7 @@ const CollectionDetail = (props) => {
             {products && (
               <WrappInfo>
                 <ImageGallery product={dataProduct} />
-                <ProductInfo product={dataProduct} />
+                <ProductInfo product={collection} />
               </WrappInfo>
             )}
             <WrapVendor>
