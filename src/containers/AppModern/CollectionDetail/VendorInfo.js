@@ -113,7 +113,7 @@ const ButtonDesign = styled.button`
   padding: calc(0.5rem - 1px) calc(1.5rem - 1px);
   height: 40px;
   color: #fff;
-  background-color: #29ab51;
+  background-color: #424dc6;
   width: 100%;
   display: inline-block;
   position: relative;
@@ -162,9 +162,9 @@ const BoxStyleText = styled(Box)`
 const VendorInfo = (props) => {
   const { data } = props;
   const getVariants = data.variants.map((item) => item.title);
-
   const getSize = data?.collection?.metadata?.size;
-  const convertArray = getSize?.split(",");
+  const showSize = getSize?.split(",");
+
   return (
     <>
       <ContainerBox>
@@ -261,17 +261,17 @@ const VendorInfo = (props) => {
               </Box>
               <Box>
                 <HeadingTitle
-                  content={`Size * ${convertArray?.length || "0"}`}
+                  content={`Size * ${showSize?.length || "0"}`}
                   mb="8px"
                   lineHeight="1.25rem"
                   fontWeight="400"
                 />
 
-                {convertArray && convertArray?.length <= 1 ? (
-                  <p className="size-detail">{`${convertArray[0]} `}</p>
-                ) : convertArray?.length > 1 ? (
-                  <p className="size-detail">{`${convertArray[0]} - ${
-                    convertArray[convertArray?.length - 1]
+                {showSize && showSize?.length === 1 ? (
+                  <p className="size-detail">{`${showSize[0]} `}</p>
+                ) : showSize?.length > 1 ? (
+                  <p className="size-detail">{`${showSize[0]} - ${
+                    showSize[showSize?.length - 1]
                   }`}</p>
                 ) : (
                   "Updating"

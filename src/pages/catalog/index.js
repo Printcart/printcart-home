@@ -11,7 +11,7 @@ import Head from "next/head";
 import { ThemeProvider } from "styled-components";
 
 const Catalog = (props) => {
-  const { products, collections, ecoData, aopData, neckData } = props;
+  const { products, collections, ecoData, aopData, neckData, otherData } = props;
   return (
     <ThemeProvider theme={theme}>
       <>
@@ -36,6 +36,7 @@ const Catalog = (props) => {
               ecoData={ecoData}
               aopData={aopData}
               neckData={neckData}
+              otherData={otherData}
             />
           </ContentWrapper>
           <Footer />
@@ -65,7 +66,7 @@ export async function getStaticProps() {
 
   const urlFilter = new URL("products", baseUrlAdmin);
   urlFilter.searchParams.set("status", "published");
-  urlFilter.searchParams.set("tags[]", "ptag_01H3XHMMXSMKNB5YVEB0Y5DCGJ");
+  urlFilter.searchParams.set("tags[]", "ptag_01H4JEYNQ52B0KW1K4NZMNVN1Q");
   const newUrlFilter = urlFilter.href;
 
   const urlFilter2 = new URL("products", baseUrlAdmin);
@@ -78,6 +79,11 @@ export async function getStaticProps() {
   urlFilter3.searchParams.set("tags[]", "ptag_01H3XV3ZSP0YAZ9N4E4QTD88XN");
   const newUrlFilter3 = urlFilter3.href;
 
+  const urlFilter4 = new URL("products", baseUrlAdmin);
+  urlFilter4.searchParams.set("status", "published");
+  urlFilter4.searchParams.set("tags[]", "ptag_01H4JKTVGYYZQDY0D4FEAY1P4K");
+  const newUrlFilter4 = urlFilter4.href;
+
   const urlProduct = new URL("products", baseUrlAdmin);
   urlProduct.searchParams.set("status", "published");
   // urlProduct.searchParams.set("limit", 500);
@@ -89,14 +95,16 @@ export async function getStaticProps() {
   const fetchFilter = fetch(newUrlFilter, parameter);
   const fetchFilter2 = fetch(newUrlFilter2, parameter);
   const fetchFilter3 = fetch(newUrlFilter3, parameter);
+  const fetchFilter4 = fetch(newUrlFilter4, parameter);
 
-  const [resCollections, resProducts, resFilter, resFilter2, resFilter3] =
+  const [resCollections, resProducts, resFilter, resFilter2, resFilter3, resFilter4] =
     await Promise.all([
       fetchCollections,
       fetchProducts,
       fetchFilter,
       fetchFilter2,
-      fetchFilter3
+      fetchFilter3,
+      fetchFilter4
     ]);
 
   const [
@@ -104,13 +112,15 @@ export async function getStaticProps() {
     resultProducts,
     resultEcoFilter,
     resultAOPfilter,
-    resultNeckFilter
+    resultNeckFilter,
+    resultOtherFilter
   ] = await Promise.all([
     resCollections.json(),
     resProducts.json(),
     resFilter.json(),
     resFilter2.json(),
-    resFilter3.json()
+    resFilter3.json(), 
+    resFilter4.json(), 
   ]);
 
   return {
@@ -119,7 +129,8 @@ export async function getStaticProps() {
       products: resultProducts.products || {},
       ecoData: resultEcoFilter.products || {},
       aopData: resultAOPfilter.products || {},
-      neckData: resultNeckFilter.products || {}
+      neckData: resultNeckFilter.products || {},
+      otherData: resultOtherFilter.products || {}
     },
     revalidate: 1
   };

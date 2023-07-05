@@ -141,7 +141,7 @@ export const BoxDesc = styled(Box)`
 `;
 
 const ProductsPOD = (props) => {
-  const { getProducts, ecoData, aopData, neckData } = props;
+  const { getProducts, ecoData, aopData, neckData, otherData } = props;
   const getCollection = getProducts.map((item) => item.collection);
   const filterValues = getCollection.filter(Boolean);
   const map = new Map();
@@ -175,6 +175,7 @@ const ProductsPOD = (props) => {
           />
           <TagsFilter dataFilter={aopData} title="AOP Clothing" />
           <TagsFilter dataFilter={neckData} title="Neck Labels" />
+          <TagsFilter dataFilter={otherData} title="Other Products" />
           <ContainerPP>
             <WrappProvider>
               <WrappBox>
