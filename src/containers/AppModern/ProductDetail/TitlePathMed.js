@@ -15,7 +15,7 @@ const TitlePathMed = (props) => {
         <Link href="/catalog">
           <a className="text">Catalog</a>
         </Link>
-        {currentCat?.collection ? (
+        {/* {currentCat?.collection ? (
           <>
             {" - "}
             <Link
@@ -27,7 +27,7 @@ const TitlePathMed = (props) => {
           </>
         ) : (
           ""
-        )}
+        )} */}
         {currentCat ? (
           <>
             {" - "}

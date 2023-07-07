@@ -28,17 +28,24 @@ const PDescription = styled.p`
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
 `;
+const PTags = styled.p`
+  color: #9fa4a5;
+  margin: 0px;
+  margin-bottom: 5px;
+`;
 const ProductInfo = (props) => {
   const { product } = props;
+  const getTags = product?.tags?.map((item) => item.value || {});
   return (
     <>
       <WrapperInfo>
         <Box>
-          {product?.collection && (
+          {/* {product?.collection && (
             <Link href={`/collection/${product?.collection?.id}`}>
               <a>{product?.collection?.title || ""}</a>
             </Link>
-          )}
+          )} */}
+          <PTags>{getTags?.join(", ") || ""}</PTags>
           <ProductHeading
             content={product?.title || product?.collection?.title}
             lineHeight="2.5rem"

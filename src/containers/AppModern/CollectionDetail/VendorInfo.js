@@ -284,7 +284,7 @@ const VendorInfo = (props) => {
                   lineHeight="1.25rem"
                   fontWeight="400"
                 />
-                <p>{getVariants.join(", ") || "Updating"}</p>
+                <p>{getVariants?.join(", ") || "Updating"}</p>
               </Box>
             </ContainerVendor>
           </BoxVendor>
