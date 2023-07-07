@@ -53,7 +53,7 @@ export async function getStaticProps({ params }) {
   const urlCollections = setUrlCollections.href;
 
   const setUrlProducts = new URL("products", baseUrlAdmin);
-  setUrlProducts.searchParams.set("collection_id[]", params.id);
+  setUrlProducts.searchParams.set("type_id[]", params.id);
   setUrlProducts.searchParams.set("status", "published");
   const newUrlProducts = setUrlProducts.href;
 
@@ -89,14 +89,15 @@ export async function getStaticPaths() {
       "Content-Type": "application/json"
     }
   };
-  const resAdmin = await fetch(`${baseUrlAdmin}collections`, parameter);
+  const resAdmin = await fetch(`${baseUrlAdmin}product-types`, parameter);
   const result = await resAdmin.json();
+  console.log(result);
 
-  if (result.collections) {
+  if (result.product_types) {
     return {
-      paths: result.collections.map((collection) => {
+      paths: result.product_types.map((product_types) => {
         return {
-          params: { id: collection.id }
+          params: { id: product_types.id }
         };
       }),
       fallback: "blocking"

@@ -144,18 +144,19 @@ const CollectionDetail = (props) => {
   const { collection, vendors, products } = props;
   const number = products.length - 1;
   const dataProduct = products[number];
+  console.log(products);
 
   const dataVendor = Array.from(
     new Set(products.map((item) => item.vendor.id))
   ).map((id) => {
     return products.find((item) => item.vendor.id === id);
   });
-  const title = collection?.title;
+  const title = dataProduct?.type?.value;
 
   return (
     <ContentWrapper>
       <WrapperServices>
-        <TitlePathMed currentCat={collection} />
+        <TitlePathMed currentCat={dataProduct} />
         <SectionHeader>
           <BoxSlogan>
             <Container>
@@ -180,11 +181,11 @@ const CollectionDetail = (props) => {
                 fontSize="2rem"
               />
             </BoxHeader>
-            <Box>{collection?.metadata?.short_description}</Box>
+            <Box>{dataProduct?.collection?.metadata?.short_description}</Box>
             {products && (
               <WrappInfo>
                 <ImageGallery product={dataProduct} />
-                <ProductInfo product={collection} />
+                <ProductInfo product={dataProduct} />
               </WrappInfo>
             )}
             <WrapVendor>

@@ -30,17 +30,18 @@ const PDescription = styled.p`
 `;
 const ProductInfo = (props) => {
   const { product } = props;
+
   return (
     <>
       <WrapperInfo>
         <Box>
           {product?.collection && (
-            <Link href={`/collection/${product?.collection?.id}`}>
-              <a>{product?.collection?.title || ""}</a>
+            <Link href={`/collection/${product?.type?.id}`}>
+              <a>{product?.type?.value || ""}</a>
             </Link>
           )}
           <ProductHeading
-            content={product?.title || product?.collection?.title}
+            content={product?.title || product?.type?.title}
             lineHeight="2.5rem"
           />
           <PDescription>

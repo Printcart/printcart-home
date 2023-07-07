@@ -15,14 +15,11 @@ const TitlePathMed = (props) => {
         <Link href="/catalog">
           <a className="text">Catalog</a>
         </Link>
-        {currentCat?.collection ? (
+        {currentCat?.type ? (
           <>
             {" - "}
-            <Link
-              prefetch={false}
-              href={`/collection/${currentCat.collection.id}`}
-            >
-              <a className="text">{currentCat.collection.title}</a>
+            <Link prefetch={false} href={`/collection/${currentCat.type.id}`}>
+              <a className="text">{currentCat.type.value}</a>
             </Link>
           </>
         ) : (
