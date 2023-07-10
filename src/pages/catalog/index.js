@@ -11,7 +11,8 @@ import Head from "next/head";
 import { ThemeProvider } from "styled-components";
 
 const Catalog = (props) => {
-  const { products, collections, ecoData, aopData, neckData, otherData } = props;
+  const { products, collections, ecoData, aopData, neckData, otherData } =
+    props;
   return (
     <ThemeProvider theme={theme}>
       <>
@@ -57,8 +58,8 @@ export async function getStaticProps() {
       "Content-Type": "application/json"
     }
   };
-  const today = new Date();
-  const curentDay = today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
+  // const today = new Date();
+  // const curentDay = today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
 
   const urlCollection = new URL("collections", baseUrlAdmin);
   urlCollection.searchParams.set("limit", 30);
@@ -87,7 +88,7 @@ export async function getStaticProps() {
   const urlProduct = new URL("products", baseUrlAdmin);
   urlProduct.searchParams.set("status", "published");
   // urlProduct.searchParams.set("limit", 500);
-  urlProduct.searchParams.set("updated_at[lte]", curentDay);
+  // urlProduct.searchParams.set("updated_at[lte]", curentDay);
   const paramsProduct = urlProduct.href;
 
   const fetchCollections = fetch(paramsCollection, parameter);
@@ -97,15 +98,21 @@ export async function getStaticProps() {
   const fetchFilter3 = fetch(newUrlFilter3, parameter);
   const fetchFilter4 = fetch(newUrlFilter4, parameter);
 
-  const [resCollections, resProducts, resFilter, resFilter2, resFilter3, resFilter4] =
-    await Promise.all([
-      fetchCollections,
-      fetchProducts,
-      fetchFilter,
-      fetchFilter2,
-      fetchFilter3,
-      fetchFilter4
-    ]);
+  const [
+    resCollections,
+    resProducts,
+    resFilter,
+    resFilter2,
+    resFilter3,
+    resFilter4
+  ] = await Promise.all([
+    fetchCollections,
+    fetchProducts,
+    fetchFilter,
+    fetchFilter2,
+    fetchFilter3,
+    fetchFilter4
+  ]);
 
   const [
     resultCollection,
@@ -119,8 +126,8 @@ export async function getStaticProps() {
     resProducts.json(),
     resFilter.json(),
     resFilter2.json(),
-    resFilter3.json(), 
-    resFilter4.json(), 
+    resFilter3.json(),
+    resFilter4.json()
   ]);
 
   return {
