@@ -58,7 +58,7 @@ const ProductDetail = (props) => {
                 {productsRelated.map(
                   (items, index) =>
                     index < 4 && (
-                      <CardItems key={items.id}>
+                      <CardItems key={items?.id}>
                         <Box>
                           <WrapImage>
                             <Link href={`/product/${items?.id}`}>
@@ -75,15 +75,15 @@ const ProductDetail = (props) => {
                                     borderTopLeftRadius: "5px",
                                     borderTopRightRadius: "5px"
                                   }}
-                                  src={items?.thumbnail}
+                                  src={items?.thumbnail ?? ""}
                                 />
                               </a>
                             </Link>
                           </WrapImage>
                           <WrapContent>
                             <Link href={`/product/${items?.id}`}>
-                              <a title={`View to ${items.title}`}>
-                                <PTitle>{items.title}</PTitle>
+                              <a title={`View to ${items?.title}`}>
+                                <PTitle>{items?.title}</PTitle>
                               </a>
                             </Link>
                             <PByVendor>

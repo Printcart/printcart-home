@@ -161,7 +161,7 @@ const BoxStyleText = styled(Box)`
 `;
 const VendorInfo = (props) => {
   const { data } = props;
-  const getVariants = data.variants.map((item) => item.title);
+  const getVariants = data?.variants?.map((item) => item?.title);
   const getSize = data?.collection?.metadata?.size;
   const showSize = getSize?.split(",");
 
@@ -193,9 +193,9 @@ const VendorInfo = (props) => {
                   </BtnMoreDetail>
                 </BoxButton>
                 <ContainerDesign>
-                  <a href="/">
+                  <a target="_blank" href="https://dashboard.printcart.com/">
                     <Box>
-                      <ButtonDesign>Start Design</ButtonDesign>
+                      <ButtonDesign>Start Selling</ButtonDesign>
                     </Box>
                   </a>
                 </ContainerDesign>
