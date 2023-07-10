@@ -173,7 +173,7 @@ const ProductsPOD = (props) => {
             status="Eco-friendly"
             title="Eco-friendly"
           />
-          <TagsFilter dataFilter={aopData} title="AOP Clothing" />
+          <TagsFilter dataFilter={aopData} title="AOP Products" />
           <TagsFilter dataFilter={neckData} title="Neck Labels" />
           <TagsFilter dataFilter={otherData} title="Other Products" />
           <ContainerPP>
