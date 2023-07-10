@@ -175,7 +175,7 @@ const ProductsPOD = (props) => {
           />
           <TagsFilter dataFilter={aopData} title="AOP Products" />
           <TagsFilter dataFilter={neckData} title="Neck Labels" />
-          <TagsFilter dataFilter={otherData} title="Other Products" />
+          <TagsFilter dataFilter={otherData} title="Orther Products" />
           <ContainerPP>
             <WrappProvider>
               <WrappBox>

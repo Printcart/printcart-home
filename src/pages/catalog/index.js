@@ -82,7 +82,7 @@ export async function getStaticProps() {
 
   const urlFilter4 = new URL("products", baseUrlAdmin);
   urlFilter4.searchParams.set("status", "published");
-  urlFilter4.searchParams.set("tags[]", "ptag_01H4JKTVGYYZQDY0D4FEAY1P4K");
+  urlFilter4.searchParams.set("tags[]", "ptag_01H4ZGW9MFKMMRQ6BF64BE616Q");
   const newUrlFilter4 = urlFilter4.href;
 
   const urlProduct = new URL("products", baseUrlAdmin);
