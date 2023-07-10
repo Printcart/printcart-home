@@ -104,8 +104,11 @@ const IconImage = styled(Box)`
 `;
 const TableHeader = styled(Box)`
   p {
-    color: #29ab51;
-    border-bottom: 1px solid #d3d3d3;
+    color: #424dc6;
+    border: 1px solid #424dc6;
+    width: 10%;
+    text-align: center;
+    border-radius: 5px;
     cursor: pointer;
   }
 `;
