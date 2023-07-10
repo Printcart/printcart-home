@@ -55,8 +55,7 @@ export const GridServices = styled.div`
       width: calc(100% / 2 - 34px);
     }
     @media only screen and (max-width: 594px) {
-      width: 100%;
-      margin-top: 15px;
+      width: calc(100% / 1 - 34px);
     }
   }
   .cardItem {
@@ -71,17 +70,31 @@ export const GridServices = styled.div`
       padding: 25px 25px 30px;
     }
   }
-
   .content {
     padding: 20px;
   }
-
   .title {
     margin-top: 0px;
     height: 52px;
     font-size: 22px;
     font-weight: 500;
     margin-bottom: 10px;
+    color: #444;
+    line-height: 1.2;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    cursor: pointer;
+  }
+  .title-medusa {
+    margin-top: 0px;
+    height: 52px;
+    text-align: center;
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 0px;
     color: #444;
     line-height: 1.2;
     text-overflow: ellipsis;
@@ -163,6 +176,38 @@ export const GridServices = styled.div`
       font-size: 16px;
     }
   }
+
+  .tag-info {
+    display: flex;
+    align-items: center;
+    color: #5c5c5c;
+    display: -webkit-box;
+
+    & strong {
+      font-size: 16px;
+      font-weight: 500;
+      padding-bottom: 1px;
+    }
+    & p {
+      font-size: 16px;
+    }
+  }
+  .collection {
+    display: flex;
+    align-items: center;
+    color: #5c5c5c;
+    display: -webkit-box;
+
+    & strong {
+      font-size: 16px;
+      font-weight: 500;
+      padding-bottom: 1px;
+    }
+    & p {
+      font-size: 16px;
+    }
+  }
+
   .boxBtn {
     text-align: end;
     border-top: 1px dashed #cdcdcd;
@@ -172,6 +217,13 @@ export const GridServices = styled.div`
   button {
     padding: 5px 10px;
     border: 1px solid #2d58af;
+  }
+  .pricesRelated {
+    text-align: center;
+    color: #374151;
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 36px;
   }
 `;
 
@@ -215,7 +267,12 @@ export const ContainerServices = styled.div`
       `};
   }
   .containerServices {
-    margin: 0 aut;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .contCollection {
+    margin-top: 15px;
     display: flex;
     flex-wrap: wrap;
   }
@@ -236,7 +293,24 @@ export const ContainerServices = styled.div`
     height: 27px;
     margin-right: 10px;
     margin-bottom: 10px;
-    padding: 0 10px;
+    padding: 0px 10px;
+    font-size: 16px;
+    color: #5c5c5c;
+    font-weight: 500;
+    text-transform: capitalize;
+    &:hover {
+      color: #fff;
+      background: #2d58af;
+      border: 1px solid #2d58af;
+    }
+  }
+  .btncatalog {
+    border: 1px solid #cdcdcd;
+    height: 40px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    padding: 7px 10px;
+    border-radius: 10px;
     font-size: 16px;
     color: #5c5c5c;
     font-weight: 500;
@@ -337,6 +411,18 @@ export const ContainerServices = styled.div`
       width: 24px;
       height: 24px;
       color: red;
+    }
+  }
+  .notify-collection {
+    display: flex;
+    font-size: 22px;
+    color: #5c5c5c;
+    margin-top: 10px;
+    & svg {
+      width: 29px;
+      height: 29px;
+      color: red;
+    }
   }
 `;
 export const SectionStep = styled.section`

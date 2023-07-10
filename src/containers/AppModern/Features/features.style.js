@@ -1,11 +1,11 @@
-import styled from 'styled-components';
-import { themeGet } from '@styled-system/theme-get';
+import { themeGet } from "@styled-system/theme-get";
+import styled from "styled-components";
 
 const SectionWrapper = styled.section`
-  padding: 105px 0 40px;
+  padding: 95px 0 40px;
   overflow: hidden;
   @media only screen and (max-width: 1440px) {
-    padding: 50px 0;
+    padding: 88px 0 40px;
   }
   @media only screen and (max-width: 667px) {
     padding: 45px 0;
@@ -86,7 +86,7 @@ export const FeatureWrapper = styled.div`
       @media only screen and (max-width: 767px) {
       }
       h3 {
-        color: ${themeGet('colors.heading')};
+        color: ${themeGet("colors.heading")};
         font-size: 19px;
         line-height: 30px;
         font-weight: 500;
@@ -97,7 +97,7 @@ export const FeatureWrapper = styled.div`
         }
       }
       p {
-        color: ${themeGet('colors.textColor')};
+        color: ${themeGet("colors.textColor")};
         font-size: 15px;
         line-height: 28px;
         margin: 0;

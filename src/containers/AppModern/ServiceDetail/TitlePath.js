@@ -3,7 +3,7 @@ import Box from "common/components/Box";
 import Link from "next/link";
 import styled from "styled-components";
 
-const Breadcrumb = styled.div`
+export const Breadcrumb = styled.div`
   margin-top: 0;
   padding: 10px 0;
   background-color: #f5f5f5;
@@ -28,6 +28,7 @@ const Breadcrumb = styled.div`
     }
   }
 `;
+
 const TitlePath = (props) => {
   const { currentCat, data } = props;
 

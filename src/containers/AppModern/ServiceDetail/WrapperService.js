@@ -42,12 +42,263 @@ const WrapperServices = styled.section`
       }
     }
   }
+  .contProduct {
+    align-items: flex-start;
+    flex-direction: row;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    display: flex;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    max-width: 1440px;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  .contenLeft {
+    display: flex;
+    row-gap: 2rem;
+    flex-direction: column;
+    width: 100%;
+  }
+  .btnchange {
+    border-width: 1px;
+    width: 3rem;
+    height: 3.5rem;
+    position: relative;
+    cursor: pointer;
+  }
+  .selectSize {
+    row-gap: 1.5rem;
+    flex-direction: column;
+    display: flex;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+  .cont-size {
+    row-gap: 0.75rem;
+    flex-direction: column;
+    display: flex;
+  }
+  .title-size {
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1.5rem;
+  }
+  .valueSize {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 0.5rem;
+    display: grid;
+  }
+  .btnvalue {
+    border-width: 1px;
+    background-color: transparent;
+    height: 50px;
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 1rem;
+    cursor: pointer;
+  }
+  .contPrices {
+    margin-bottom: 1rem;
+  }
+  .pricesDetail {
+    color: #374151;
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 36px;
+  }
+  .tabList {
+    border-color: #374151;
+    border-bottom: 1px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    display: grid;
+  }
+  .tabChecked {
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+    text-transform: uppercase;
+    text-align: left;
+    padding-bottom: 0.5rem;
+    border-color: rgb(17 24 39 / 1);
+    border-bottom-width: 1px;
+    background-color: transparent;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    font-size: 0.95rem;
+    font-weight: 400;
+    line-height: 1.25rem;
+    cursor: pointer;
+    margin: 1px;
+  }
+  .tabDefault {
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+    text-transform: uppercase;
+    text-align: left;
+    padding-bottom: 0.5rem;
+    border-color: rgb(229 231 235 / 1);
+    border-bottom-width: 1px;
+    background-color: transparent;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    font-size: 0.95rem;
+    font-weight: 400;
+    line-height: 1.25rem;
+    cursor: pointer;
+    margin: 1px;
+  }
+  .tabPanel {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    font-size: 0.95rem;
+    font-weight: 400;
+    line-height: 1.25rem;
+  }
+  .wrapperProduct {
+    column-gap: 2rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    display: grid;
+  }
+  .wrapperShipping {
+    row-gap: 2rem;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    display: grid;
+  }
+  .titleShipping {
+    font-weight: 500;
+  }
+  .descShipping {
+    max-width: 24rem;
+    margin: 0;
+  }
+  .shippingDetail {
+    column-gap: 0.5rem;
+    align-items: flex-start;
+    display: flex;
+  }
+  .infoLeft {
+    row-gap: 1rem;
+    flex-direction: column;
+    display: flex;
+  }
+  .valuematerial {
+    font-weight: 500;
+  }
+  .infoRight {
+    row-gap: 1rem;
+    flex-direction: column;
+    display: flex;
+  }
+  .container-related-products {
+    padding-bottom: 1.5rem;
+  }
+  .href-btn-design {
+    color: #29ab51;
+    font-family: inherit;
+    cursor: pointer;
+    text-decoration: none;
+    outline: none;
+    transition: color .15s ease;
+  }
+  .wrapper-print-area {
+    grid-column-end: span 2;
+  }
+  .container-features {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    display: block;
+    border-bottom: 1px solid #e3e4e5;
+  }
+  .wrapper-feature {
+    display:flex;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .feature-title {
+    align-self: flex-start;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.5em;
+    line-height: 2rem;
+    position: relative;
+    flex: 0 0 33.3%;
+    max-width: 33.3%;
+  }
+  .about-desc {
+    margin-top: 0;
+    position: relative;
+    width: 100%;
+    flex: 0 0 66.6%;
+    max-width: 66.6%;
+  }
+  .wrapper-content {
+    margin-top: 0;
+    position: relative;
+    width: 100%;
+    flex: 0 0 66.6%;
+    max-width: 66.6%;
+  }
+  .key-features-desc {
+    margin-bottom: calc(1rem * -2);
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin-left: calc(1rem * -1);
+    margin-right: calc(1rem * -1);
+    padding: 0px;
+  }
+  .wrapper-desc {
+    margin-bottom: calc(1rem * 2);
+    position: relative;
+    width: 100%;
+    flex: 0 0 50%;
+    max-width: 50%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .img-feature {
+    display: block;
+    width: 48px;
+    height: 48px;
+    margin-bottom: 16px;
+  }
+  
+  .desc-detail {
+    
+  }
+  .care-icons {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin-left: calc(8px * -1);
+    margin-right: calc(8px * -1);
+    padding: 0px;
+  }
+  .icon-image {
+    position: relative;
+    flex: 0 0 auto;
+    width: auto;
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+  .table-header {
+    p {
+      color: #29ab51;
+      border-bottom: 1px solid #d3d3d3;
+      cursor: pointer;
+    }
+  }
+  }
 `;
 
 export const GridServicesDT = styled.div`
   display: flex;
   flex-wrap: wrap;
-
   .boxLeft {
     width: 66%;
     margin-bottom: 30px;
@@ -233,21 +484,6 @@ export const GridServicesDT = styled.div`
     margin-top: 35px;
     
   }
-  
-  
-  .cardItem {
-    border-radius: 5px;
-    box-shadow: 0 0 5px 0 rgb(0 0 50 / 25%);
-    &:hover {
-      box-shadow: 5px 10px 10px 2px rgb(0 0 50 / 25%);
-      transform: translate(0, -7px);
-      transition: box-shadow 0.3s ease-out, transform 0.3s ease-out;
-    }
-    @media only screen and (max-width: 480px) {
-      padding: 25px 25px 30px;
-    }
-  }
-
   .content {
     padding: 20px;
   }
@@ -478,7 +714,6 @@ export const GridServicesRelated = styled.div`
       padding: 25px 25px 30px;
     }
   }
-
   .content {
     padding: 20px;
   }

@@ -91,6 +91,10 @@ const Navbar = () => {
       url: "/services"
     },
     {
+      title: "Catalog",
+      url: "/catalog"
+    },
+    {
       title: "Printshop",
       url: "#",
       submenu: [

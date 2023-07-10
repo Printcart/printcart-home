@@ -23,7 +23,7 @@ const Pagination = ({ page }) => {
 
     Router.push({
       pathname: path,
-      query: query,
+      query: query
     });
   };
 

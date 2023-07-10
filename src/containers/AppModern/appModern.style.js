@@ -160,7 +160,7 @@ export const SectionHeader = styled.header`
   .titleSlogan {
     color: #ddd;
     font-size: 32px;
-    margin-bottom: 48px;
+    margin-bottom: 27px;
     font-weight: 500;
     line-height: 36px;
     text-align: center;
