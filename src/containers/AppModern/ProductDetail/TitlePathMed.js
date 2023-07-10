@@ -1,7 +1,6 @@
 import Box from "common/components/Box";
-import React from "react";
-import { Breadcrumb } from "../ServiceDetail/TitlePath";
 import Link from "next/link";
+import { Breadcrumb } from "../ServiceDetail/TitlePath";
 
 const TitlePathMed = (props) => {
   const { currentCat } = props;

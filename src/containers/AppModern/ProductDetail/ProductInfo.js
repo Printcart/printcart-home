@@ -1,6 +1,5 @@
 import Box from "common/components/Box";
 import Heading from "common/components/Heading";
-import Link from "next/link";
 import ReactHtmlParser from "react-html-parser";
 import styled from "styled-components";
 
