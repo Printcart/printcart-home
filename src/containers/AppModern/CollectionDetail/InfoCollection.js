@@ -243,9 +243,9 @@ const InfoCollection = (props) => {
                 <p>
                   All measurements in the table refer to product dimensions.
                 </p>
-                <TableHeader>
+                {/* <TableHeader>
                   <p>Imperial</p>
-                </TableHeader>
+                </TableHeader> */}
                 <Table>
                   <thead>
                     <tr>
@@ -262,7 +262,7 @@ const InfoCollection = (props) => {
                   <tbody>
                     <React.Fragment>
                       <tr>
-                        <td className="pcTitle">Width,in</td>
+                        <td className="pcTitle">Width</td>
                         {widthSize.map((items, index) => (
                           <td className="value" key={index}>
                             {items}
@@ -270,7 +270,7 @@ const InfoCollection = (props) => {
                         ))}
                       </tr>
                       <tr>
-                        <td className="pcTitle">Length,in</td>
+                        <td className="pcTitle">Length</td>
                         {heightSize.map((items, index) => (
                           <td className="value" key={index}>
                             {items}
