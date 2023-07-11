@@ -129,8 +129,13 @@ const InfoCollection = (props) => {
   const { collection } = props;
   const formatSizeWidth = collection?.metadata?.widthSize;
   const widthSize = formatSizeWidth?.split(",");
+
   const formatSizeHeight = collection?.metadata?.heightSize;
   const heightSize = formatSizeHeight?.split(",");
+
+  const formatDepthSize = collection?.metadata?.depthSize;
+  const depthSize = formatDepthSize?.split(",");
+
   const formatSize = collection?.metadata?.size;
   const sizeNew = formatSize?.split(",");
   const features = [
@@ -231,36 +236,33 @@ const InfoCollection = (props) => {
           </BoxWrapper>
         </BoxFeatureContainer>
       )}
-      {collection?.metadata?.widthSize &&
-        collection?.metadata?.heightSize &&
-        collection?.metadata?.size && (
-          <BoxFeatureContainer>
-            <BoxWrapper>
-              <BoxTitle>
-                <h3>Size guide</h3>
-              </BoxTitle>
-              <BoxWrapContent>
-                <p>
-                  All measurements in the table refer to product dimensions.
-                </p>
-                {/* <TableHeader>
+      {collection?.metadata?.size && (
+        <BoxFeatureContainer>
+          <BoxWrapper>
+            <BoxTitle>
+              <h3>Size guide</h3>
+            </BoxTitle>
+            <BoxWrapContent>
+              <p>All measurements in the table refer to product dimensions.</p>
+              {/* <TableHeader>
                   <p>Imperial</p>
                 </TableHeader> */}
-                <Table>
-                  <thead>
-                    <tr>
-                      <th></th>
-                      {sizeNew.map((item, index) => (
-                        <th className="align-top" key={index}>
-                          <div className="cover-content">
-                            <div className="content-one">{item}</div>
-                          </div>
-                        </th>
-                      ))}
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <React.Fragment>
+              <Table>
+                <thead>
+                  <tr>
+                    <th></th>
+                    {sizeNew.map((item, index) => (
+                      <th className="align-top" key={index}>
+                        <div className="cover-content">
+                          <div className="content-one">{item}</div>
+                        </div>
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  <React.Fragment>
+                    {widthSize?.length > 0 && (
                       <tr>
                         <td className="pcTitle">Width</td>
                         {widthSize.map((items, index) => (
@@ -269,6 +271,8 @@ const InfoCollection = (props) => {
                           </td>
                         ))}
                       </tr>
+                    )}
+                    {heightSize?.length > 0 && (
                       <tr>
                         <td className="pcTitle">Length</td>
                         {heightSize.map((items, index) => (
@@ -277,13 +281,24 @@ const InfoCollection = (props) => {
                           </td>
                         ))}
                       </tr>
-                    </React.Fragment>
-                  </tbody>
-                </Table>
-              </BoxWrapContent>
-            </BoxWrapper>
-          </BoxFeatureContainer>
-        )}
+                    )}
+                    {depthSize?.length > 0 && (
+                      <tr>
+                        <td className="pcTitle">Depth</td>
+                        {depthSize?.map((items, index) => (
+                          <td className="value" key={index}>
+                            {items}
+                          </td>
+                        ))}
+                      </tr>
+                    )}
+                  </React.Fragment>
+                </tbody>
+              </Table>
+            </BoxWrapContent>
+          </BoxWrapper>
+        </BoxFeatureContainer>
+      )}
     </>
   );
 };

@@ -28,7 +28,7 @@ import {
 const TagsFilter = ({ dataFilter, status, title }) => {
   return (
     <ContainerBox>
-      {dataFilter && (
+      {dataFilter.length > 0 && (
         <>
           <HeaderBox>
             <TitleBox>
