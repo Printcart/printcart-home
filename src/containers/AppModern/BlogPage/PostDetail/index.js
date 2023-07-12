@@ -275,6 +275,9 @@ const ContenBox = styled(Box)`
     max-width: 100%;
     margin-bottom: 30px;
   }
+  & li {
+    list-style-type: unset;
+  }
 `;
 
 const GridBlog = styled.div`
