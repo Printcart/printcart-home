@@ -10,7 +10,7 @@ const ServiceCategory = (props) => {
     setQty((e) => e + 18);
   };
   const handleShowLess = () => {
-    setQty((e) => e - qty + 18);
+    setQty(18);
   };
   return (
     <Box className="containerServices">

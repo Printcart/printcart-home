@@ -91,8 +91,8 @@ const Navbar = () => {
       url: "/services"
     },
     {
-      title: "Blog",
-      url: "/blog"
+      title: "Catalog",
+      url: "/catalog"
     },
     {
       title: "Printshop",

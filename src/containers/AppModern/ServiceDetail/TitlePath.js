@@ -28,6 +28,7 @@ export const Breadcrumb = styled.div`
     }
   }
 `;
+
 const TitlePath = (props) => {
   const { currentCat, data } = props;
 
