@@ -207,10 +207,10 @@ const TableOfContent = ({ content }) => {
                 onClick={transferTo}
                 className={
                   (checkOffset || checkId) === item?.label
-                    ? item?.label?.slice(0, 5) === "text2"
+                    ? item?.label?.slice(0, 4) === "text2"
                       ? "textChoose_h3"
                       : "textChoose_h2"
-                    : item?.label?.slice(0, 5) === "text2"
+                    : item?.label?.slice(0, 4) === "text2"
                     ? block?.length === 0
                       ? "text_h3n"
                       : block?.map((e) =>
