@@ -17,7 +17,7 @@ const Blog = (props) => {
     <ThemeProvider theme={theme}>
       <React.Fragment>
         <Head>
-          <title>Printcart | Blog</title>
+          <title>Printcart | Tutorial</title>
           <meta name="theme-color" content="#2563FF" />
           <link
             href="https://fonts.googleapis.com/css?family=Heebo:300,400,500,700&display=swap"
