@@ -2,11 +2,10 @@ import Box from "common/components/Box";
 import Container from "common/components/UI/Container";
 import Link from "next/link";
 import React from "react";
+import ReactHtmlParser from "react-html-parser";
 import Icon from "react-icons-kit";
 import { ic_remove_red_eye } from "react-icons-kit/md/ic_remove_red_eye";
-import styled from "styled-components";
 import SectionWrapperServices from "../InfoServices/GridServices";
-import ReactHtmlParser from "react-html-parser";
 import { SectionHeader } from "../appModern.style";
 import GridPost, {
   AuthorPost,
@@ -30,12 +29,12 @@ const BlogPage = ({ resPosts }) => {
         <SectionHeader>
           <Box className="containerSlogan">
             <Container>
-              <h1 className="titleSlogan">Printcart's Tutorial page</h1>
+              <h1 className="titleSlogan">Printcart POD Tutorials</h1>
               <p>
                 Welcome to Printcart, your ultimate destination for all things
                 printing! Whether you're a printing professional, graphic
                 designer, or simply passionate about the print industry, this
-                tutorial is your go-to resource for valuable insights, expert
+                tutorials is your go-to resource for valuable insights, expert
                 tips, and inspiring content.
               </p>
             </Container>

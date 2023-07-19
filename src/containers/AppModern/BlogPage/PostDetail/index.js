@@ -3,10 +3,8 @@ import Heading from "common/components/Heading";
 import Container from "common/components/UI/Container";
 import WrapperServices from "containers/AppModern/ServiceDetail/WrapperService";
 import Link from "next/link";
-import { useEffect, useState } from "react";
 import ReactHtmlParser from "react-html-parser";
 import { ic_remove_red_eye } from "react-icons-kit/md/ic_remove_red_eye";
-import { useInView } from "react-intersection-observer";
 import styled from "styled-components";
 import ImageLogo from "../../../../../src/common/assets/image/favicon.png";
 import BlogPath from "../BlogPath";
@@ -24,6 +22,7 @@ import GridPost, {
   TitleUser
 } from "../blogPage.style";
 
+import { ContentWrapper } from "containers/AppModern/appModern.style";
 import Icon from "react-icons-kit";
 import TableOfContent from "./TableOfContent";
 
@@ -306,6 +305,7 @@ const GridBlog = styled.div`
   }
 `;
 const WrapRelated = styled(Box)`
+  margin-left: 1rem;
   padding-top: 50px;
   margin-bottom: 50px;
   border-top: 1px solid rgb(0 0 50 / 15%);
@@ -313,6 +313,7 @@ const WrapRelated = styled(Box)`
 const RelatedHeading = styled(Heading)`
   font-size: 35px;
   color: #444;
+  padding: 0 10px;
   font-weight: 500;
   margin-bottom: 50px;
 `;
@@ -331,7 +332,7 @@ const PostDetail = (props) => {
     ?.replace(/<img/g, `<img alt="image ${topicId}"`);
 
   return (
-    <>
+    <ContentWrapper>
       <WrapperServices>
         <BlogPath postData={postData} />
         <WrapBox>
@@ -420,7 +421,7 @@ const PostDetail = (props) => {
             </GridBlog>
             {relatedData?.data?.length > 0 && (
               <WrapRelated>
-                <RelatedHeading content="Related Tutorial" />
+                <RelatedHeading content="Related Tutorials" />
                 <GridPost>
                   {relatedData?.data.map((items, index) => (
                     <GridItem key={index}>
@@ -520,7 +521,7 @@ const PostDetail = (props) => {
           </Container>
         </WrapContainer>
       </WrapperServices>
-    </>
+    </ContentWrapper>
   );
 };
 

@@ -105,7 +105,7 @@ const Navbar = () => {
         },
         {
           title: "POD Tutorials",
-          url: "/tutorial"
+          url: "/tutorials"
         },
         {
           title: "API Documentation",

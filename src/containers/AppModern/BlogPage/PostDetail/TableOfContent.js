@@ -196,7 +196,7 @@ const TableOfContent = ({ content }) => {
   return (
     <>
       <WrapRight>
-        <TableHeading content="On this Page" />
+        <TableHeading content="Table of Content" />
         <BoxRecap>
           {data.length > 0 ? (
             data.map((item, index) => (

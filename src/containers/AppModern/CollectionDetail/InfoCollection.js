@@ -29,6 +29,7 @@ const iconCare = [
 ];
 export const BoxFeatureContainer = styled(Box)`
   padding-top: 40px;
+  padding-left: 10px;
   padding-bottom: 40px;
   display: block;
   border-bottom: 1px solid #e3e4e5;
@@ -122,6 +123,7 @@ const FeatureDesc = styled.p`
 const AboutCollection = styled(Box)`
   padding-top: 40px;
   padding-bottom: 40px;
+  padding-left: 10px;
   display: block;
   border-bottom: 1px solid #e3e4e5;
 `;

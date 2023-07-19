@@ -1,6 +1,7 @@
 import Box from "common/components/Box";
 import Button from "common/components/Button";
 import Heading from "common/components/Heading";
+import Link from "next/link";
 import { BannerWrapper } from "./productspod.style";
 
 const Banner = () => {
@@ -21,7 +22,11 @@ const Banner = () => {
           personalized products that your customers will love and cherish
         </p>
         <Box className="footer">
-          <Button title="Get Started" className="btn-getstart" />
+          <Link href="https://dashboard.printcart.com/">
+            <a target="_blank">
+              <Button title="Get Started" className="btn-getstart" />
+            </a>
+          </Link>
           <Button title="How It Works" className="btn-howitworks" />
         </Box>
       </Box>
@@ -42,9 +47,7 @@ const Banner = () => {
           <img
             className="imageBanner"
             alt="Image Banner"
-            src={
-              "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=800&q=80"
-            }
+            src="/Banner_catalog.jpg"
           />
         </Box>
       </Box>

@@ -29,11 +29,8 @@ export const WrappInfo = styled(Box)`
   margin-top: 3.5rem;
   margin-bottom: 3.5rem;
 `;
-const RelatedHeading = styled(Heading)`
-  margin-top: 0px;
-`;
-const BoxRelated = styled(Box)`
-  margin: 3.5rem 0;
+export const BoxRelated = styled(Box)`
+  margin: 3.5rem 1rem;
 `;
 
 const ProductDetail = (props) => {
@@ -51,7 +48,7 @@ const ProductDetail = (props) => {
           <InfoCollection collection={product?.collection} />
           {/**RELATED PRODUCTS */}
           <BoxRelated>
-            <RelatedHeading mb="0px" content="You May Also Like" />
+            <Heading mb="0px" content="You May Also Like" />
             <WrapperProduct>
               <GridFilter>
                 {productsRelated.map(
