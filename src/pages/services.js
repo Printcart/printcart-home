@@ -57,12 +57,12 @@ export async function getStaticProps() {
   const res = await fetch(`${process.env.STRAPI_2_API_URL}services?pagination[pageSize]=100` + filProjectCat + filAgency);
   const result = await res.json();
 
-  const mergearray = uniqueValue.concat(
+  const mergeArray = uniqueValue.concat(
     result.data.map((items) =>
       items.attributes.project_cat.map((item) => item)
     )
   );
-  const delDuplicate = mergearray.flat();
+  const delDuplicate = mergeArray.flat();
   const data = delDuplicate.filter((element) => {
     const isDuplicate = delDuplicate.includes(element.value);
     if (!isDuplicate) {

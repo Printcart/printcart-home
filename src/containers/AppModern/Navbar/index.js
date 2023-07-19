@@ -95,6 +95,26 @@ const Navbar = () => {
       url: "/catalog"
     },
     {
+      title: "Resources",
+      url: "#",
+      submenu: [
+        {
+          title: "Web2Print Community",
+          url: "https://solution.printcart.com/web/shopify-printshop-website",
+          target: "_blank"
+        },
+        {
+          title: "POD Tutorials",
+          url: "/tutorial"
+        },
+        {
+          title: "API Documentation",
+          url: "https://docs.printcart.com/",
+          target: "_blank"
+        }
+      ]
+    },
+    {
       title: "Printshop",
       url: "#",
       submenu: [
@@ -150,16 +170,6 @@ const Navbar = () => {
           target: "_blank"
         }
       ]
-    },
-    {
-      title: "Community",
-      url: "https://solution.printcart.com/community/",
-      target: "_blank"
-    },
-    {
-      title: "Documentation",
-      url: "https://docs.printcart.com/",
-      target: "_blank"
     }
   ];
 

@@ -11,7 +11,7 @@ import TitlePath from "./TitlePath";
 import WrapperServices, {
   ContainerServicesDT,
   GridServicesDT,
-  GridServicesRelated,
+  GridServicesRelated
 } from "./WrapperService";
 
 const ServiceDetail = (props) => {
@@ -19,7 +19,7 @@ const ServiceDetail = (props) => {
   const title = character.attributes.name ?? character.attributes.title;
   const data = {
     name: "service",
-    alias: "services",
+    alias: "services"
   };
 
   return (

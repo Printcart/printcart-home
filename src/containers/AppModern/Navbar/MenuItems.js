@@ -17,7 +17,7 @@ const MenuItems = ({ items }) => {
             <Icon
               icon={ic_keyboard_arrow_down}
               size={20}
-              style={{ margin: "0px", position: "absolute" }}
+              style={{ marginLeft: "-5px" }}
             />
           </a>
 
