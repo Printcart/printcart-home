@@ -321,12 +321,12 @@ const WrapContainer = styled(Box)`
 `;
 const PostDetail = (props) => {
   const { postData, relatedData } = props;
-  const topicId = postData?.attributes?.post_type?.data?.id;
+  const topicId = postData?.id;
   const content = postData?.attributes?.content
     ?.replace(/&nbsp;?/gi, "")
-    ?.replace(/<h1/g, '<h1 class="texttitle"')
-    ?.replace(/<h2/g, '<h2 class="texttitle"')
-    ?.replace(/<h3/g, '<h3 class="texttitle"')
+    ?.replace(/<h1/g, '<h1 class="text2"')
+    ?.replace(/<h2/g, '<h2 class="text2"')
+    ?.replace(/<h3/g, '<h3 class="text2"')
     ?.replace(/<a/g, '<a rel="nofollow" target="_blank"')
     ?.replace(/<img/g, `<img alt="image ${topicId}"`);
 
@@ -426,7 +426,7 @@ const PostDetail = (props) => {
                     <GridItem key={index}>
                       <ContainerPost>
                         <Box>
-                          <Link href={`/blog/${items?.attributes?.alias}`}>
+                          <Link href={`/tutorial/${items?.attributes?.alias}`}>
                             <a title={`View to ${items?.attributes?.title}`}>
                               <h3>{items?.attributes?.title}</h3>
                             </a>
@@ -495,7 +495,9 @@ const PostDetail = (props) => {
                               )}
                             </LeftContent>
                             <Box>
-                              <Link href={`/blog/${items?.attributes?.alias}`}>
+                              <Link
+                                href={`/tutorial/${items?.attributes?.alias}`}
+                              >
                                 <a>
                                   <ButtonRead>
                                     <Icon

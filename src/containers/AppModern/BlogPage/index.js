@@ -30,13 +30,13 @@ const BlogPage = ({ resPosts }) => {
         <SectionHeader>
           <Box className="containerSlogan">
             <Container>
-              <h1 className="titleSlogan">Printcart's blog page</h1>
+              <h1 className="titleSlogan">Printcart's Tutorial page</h1>
               <p>
                 Welcome to Printcart, your ultimate destination for all things
                 printing! Whether you're a printing professional, graphic
                 designer, or simply passionate about the print industry, this
-                blog is your go-to resource for valuable insights, expert tips,
-                and inspiring content.
+                tutorial is your go-to resource for valuable insights, expert
+                tips, and inspiring content.
               </p>
             </Container>
           </Box>
@@ -47,7 +47,7 @@ const BlogPage = ({ resPosts }) => {
               <GridItem key={index}>
                 <ContainerPost>
                   <Box>
-                    <Link href={`/blog/${items?.attributes?.alias}`}>
+                    <Link href={`/tutorial/${items?.attributes?.alias}`}>
                       <a title={`View to ${items?.attributes?.title}`}>
                         <h3 style={{ lineHeight: "1.5", height: "64px" }}>
                           {items?.attributes?.title}
@@ -115,7 +115,7 @@ const BlogPage = ({ resPosts }) => {
                         )}
                       </LeftContent>
                       <Box>
-                        <Link href={`/blog/${items?.attributes?.alias}`}>
+                        <Link href={`/tutorial/${items?.attributes?.alias}`}>
                           <a>
                             <ButtonRead>
                               <Icon

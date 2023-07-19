@@ -128,7 +128,7 @@ const TableOfContent = ({ content }) => {
       setBlock([]);
       for (let i = 0; i < data?.length; i++) {
         if (i > id) {
-          if (data[i].label.slice(0, 9) === "texttitle") {
+          if (data[i].label.slice(0, 5) === "text2") {
             setBlock((e) => [...e, data[i]]);
           } else {
             break;
@@ -154,9 +154,7 @@ const TableOfContent = ({ content }) => {
 
   const handleScroll = () => {
     const headings = Array.from(
-      document.querySelectorAll(
-        ".texttitle[id^=content-], .texttitle[id^=texttitle-]"
-      )
+      document.querySelectorAll(".text2[id^=content-], .text2[id^=text2-]")
     );
     const firstVisibleHeading = headings.find((heading) => {
       const headingRect = heading.getBoundingClientRect();
@@ -177,14 +175,14 @@ const TableOfContent = ({ content }) => {
 
   useEffect(() => {
     if (typeof document !== "undefined" && typeof window !== "undefined") {
-      const paragraph = document.getElementsByClassName("texttitle");
+      const paragraph = document.getElementsByClassName("text2");
       setData([]);
 
       for (let index = 0; index < paragraph.length; index++) {
         paragraph[index].id =
           paragraph[index].localName === "h2"
             ? `content-${index}`
-            : `texttitle-${index}`;
+            : `text2-${index}`;
         setData((e) => [
           ...e,
           { label: paragraph[index].id, value: paragraph[index].textContent }
@@ -204,19 +202,19 @@ const TableOfContent = ({ content }) => {
             data.map((item, index) => (
               <p
                 key={index}
-                ref={checkOffset === item.label ? ref : null}
+                ref={checkOffset === item?.label ? ref : null}
                 id={item.label}
                 onClick={transferTo}
                 className={
-                  (checkOffset || checkId) === item.label
-                    ? item.label.slice(0, 4) === "texttitle"
+                  (checkOffset || checkId) === item?.label
+                    ? item?.label?.slice(0, 5) === "text2"
                       ? "textChoose_h3"
                       : "textChoose_h2"
-                    : item.label.slice(0, 4) === "texttitle"
-                    ? block.length === 0
+                    : item?.label?.slice(0, 5) === "text2"
+                    ? block?.length === 0
                       ? "text_h3n"
-                      : block.map((e) =>
-                          e.label === item.label ? "text_h3b" : "text_h3n"
+                      : block?.map((e) =>
+                          e.label === item?.label ? "text_h3b" : "text_h3n"
                         )
                     : "text_h2"
                 }
