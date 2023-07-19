@@ -18,8 +18,8 @@ const BlogPath = ({ postData }) => {
               <a className="textTitle">Printcart</a>
             </Link>
             {" - "}
-            <Link href="/blog">
-              <a className="textTitle">Blog</a>
+            <Link href="/tutorial">
+              <a className="textTitle">Tutorial</a>
             </Link>
             {postData?.attributes?.title && (
               <>
