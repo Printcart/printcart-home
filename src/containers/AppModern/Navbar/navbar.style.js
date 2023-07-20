@@ -4,13 +4,15 @@ import searchIcon from "common/assets/image/appModern/search.svg";
 
 const NavbarWrapper = styled.nav`
   width: 100%;
-  padding: 25px 0 26px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.102);
   position: fixed;
   z-index: 9999;
   transition: all 0.3s ease;
   @media only screen and (max-width: 1366px) {
-    padding: 20px 0 21px;
+    padding: 0 21px;
+  }
+  @media only screen and (max-width: 991px) {
+    padding: 21px 21px;
   }
   > div.container {
     width: 100%;

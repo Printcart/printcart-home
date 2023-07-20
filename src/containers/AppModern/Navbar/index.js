@@ -100,7 +100,7 @@ const Navbar = () => {
       submenu: [
         {
           title: "Web2Print Community",
-          url: "https://solution.printcart.com/web/shopify-printshop-website",
+          url: "https://solution.printcart.com/community/",
           target: "_blank"
         },
         {
@@ -194,7 +194,7 @@ const Navbar = () => {
           {/* <ScrollSpyMenu className="menu" menuItems={navMenu} offset={-84} /> */}
           {/* end of main menu */}
           <nav>
-            <div className="nav-wrapper">
+            <div className="nav-wrapper" style={{ marginRight: "15px" }}>
               <ul id="nav-mobile" className="menu">
                 {menuItems.map((menu, index) => (
                   <MenuItems items={menu} key={index} />

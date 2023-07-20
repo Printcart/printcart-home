@@ -53,11 +53,14 @@ export const AppWrapper = styled.div`
 
   .sticky-active {
     .navbar {
-      padding: 20px 0 21px;
+      padding: 0px 21px;
       background-color: ${themeGet("colors.white", "#ffffff")};
       box-shadow: 0px 3px 8px 0px rgba(43, 83, 135, 0.08);
       @media only screen and (max-width: 1366px) {
-        padding: 15px 0 16px;
+        padding: 0 21px;
+      }
+      @media only screen and (max-width: 991px) {
+        padding: 21px 21px;
       }
       .main-logo {
         display: none;
