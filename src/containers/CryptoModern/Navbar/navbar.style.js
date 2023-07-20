@@ -1,6 +1,6 @@
-import styled from 'styled-components';
-import { themeGet } from '@styled-system/theme-get';
-import searchIcon from 'common/assets/image/cryptoModern/search.svg';
+import styled from "styled-components";
+import { themeGet } from "@styled-system/theme-get";
+import searchIcon from "common/assets/image/cryptoModern/search.svg";
 
 const NavbarWrapper = styled.nav`
   width: 100%;
@@ -9,9 +9,6 @@ const NavbarWrapper = styled.nav`
   position: fixed;
   z-index: 9999;
   transition: all 0.3s ease;
-  @media only screen and (max-width: 1366px) {
-    padding: 20px 0 21px;
-  }
   > div.container {
     width: 100%;
     display: flex;
@@ -32,7 +29,7 @@ const NavbarWrapper = styled.nav`
   ul {
     li {
       a {
-        color: ${themeGet('colors.menu', '#fff')};
+        color: ${themeGet("colors.menu", "#fff")};
         font-size: 16px;
         font-weight: 400;
         transition: all 0.3s ease;
@@ -115,7 +112,7 @@ export const MenuArea = styled.div`
         svg {
           width: 22px;
           height: auto;
-          stroke: ${themeGet('colors.menu', '0D233E')};
+          stroke: ${themeGet("colors.menu", "0D233E")};
           @media only screen and (max-width: 991px) {
             width: 24px;
           }
@@ -172,8 +169,8 @@ export const Search = styled.div`
     border-radius: 5px;
     border: 1px solid rgba(0, 0, 0, 0.05);
     font-size: 15px;
-    color: ${themeGet('colors.menu', '0D233E')};
-    background-color: ${themeGet('colors.light', '#FAFBFF')};
+    color: ${themeGet("colors.menu", "0D233E")};
+    background-color: ${themeGet("colors.light", "#FAFBFF")};
     background-image: url(${searchIcon?.src});
     background-repeat: no-repeat;
     background-position: calc(100% - 15px) center;
@@ -181,10 +178,10 @@ export const Search = styled.div`
     z-index: 1;
     transition: all 0.3s ease 0.1s;
     &::placeholder {
-      color: ${themeGet('colors.textColor', 'rgba(52, 61, 72, 0.8)')};
+      color: ${themeGet("colors.textColor", "rgba(52, 61, 72, 0.8)")};
     }
     &:focus {
-      border-color: ${themeGet('colors.primary', '#2563FF')};
+      border-color: ${themeGet("colors.primary", "#2563FF")};
     }
   }
 `;
@@ -201,14 +198,14 @@ export const MobileMenu = styled.div`
     position: absolute;
     top: 82px;
     flex-direction: column;
-    background-color: ${themeGet('colors.white', '#ffffff')};
+    background-color: ${themeGet("colors.white", "#ffffff")};
     transition: all 0.3s ease;
-    color: ${themeGet('colors.secondary', '#000')};
+    color: ${themeGet("colors.secondary", "#000")};
     &.active {
       opacity: 1;
       visibility: visible;
       box-shadow: 0 3px 12px
-        ${themeGet('colors.shadow', 'rgba(38, 78, 118, 0.1)')};
+        ${themeGet("colors.shadow", "rgba(38, 78, 118, 0.1)")};
     }
     .container {
       width: 100%;
@@ -225,12 +222,12 @@ export const MobileMenu = styled.div`
           padding: 13px 0;
           border-radius: 5px;
           transition: all 0.3s ease;
-          color: ${themeGet('colors.secondary', '#000')};
+          color: ${themeGet("colors.secondary", "#000")};
         }
         &:hover {
           a {
             padding: 13px 15px;
-            color: ${themeGet('colors.primary')};
+            color: ${themeGet("colors.primary")};
           }
         }
       }

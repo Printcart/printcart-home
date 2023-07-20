@@ -3,11 +3,17 @@ import styled, { css } from "styled-components";
 const WrapperServices = styled.section`
   padding: 88px 0 0;
   overflow: hidden;
-  @media only screen and (max-width: 1366px) {
-    padding: 76px 0 0;
+  @media only screen and (max-width: 1400px) {
+    padding: 87px 0 0;
+  }
+  @media only screen and (max-width: 1200px) {
+    padding: 87px 0;
+  }
+  @media only screen and (max-width: 992px) {
+    padding: 87px 0 0;
   }
   @media only screen and (max-width: 768px) {
-    padding: 76px 0 0;
+    padding: 87px 0 0;
   }
   .contentMain {
     position: relative;
