@@ -18,13 +18,13 @@ export const Breadcrumb = styled.div`
   }
 
   .container-text {
-    max-width: 1168px;
+    max-width: 1160px;
     margin: 0 auto;
     @media only screen and (max-width: 1400px) {
-      margin-left: 100px;
+      margin-left: 125px;
     }
     @media only screen and (max-width: 1200px) {
-      margin-left: 100px;
+      margin-left: 125px;
     }
   }
 `;
