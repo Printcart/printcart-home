@@ -29,10 +29,19 @@ const iconCare = [
 ];
 export const BoxFeatureContainer = styled(Box)`
   padding-top: 40px;
-  padding-left: 10px;
   padding-bottom: 40px;
   display: block;
+  margin-left: 17px;
+  margin-right: 17px;
   border-bottom: 1px solid #e3e4e5;
+  @media only screen and (max-width: 1440px) {
+    margin-left: 17px;
+    margin-right: 17px;
+  }
+  @media only screen and (max-width: 1366px) {
+    margin-left: 30px;
+    margin-right: 30px;
+  }
 `;
 export const BoxWrapper = styled(Box)`
   display: flex;
@@ -120,13 +129,6 @@ const FeatureDesc = styled.p`
   font-weight: 400;
 `;
 
-const AboutCollection = styled(Box)`
-  padding-top: 40px;
-  padding-bottom: 40px;
-  padding-left: 10px;
-  display: block;
-  border-bottom: 1px solid #e3e4e5;
-`;
 const InfoCollection = (props) => {
   const { collection } = props;
   const formatSizeWidth = collection?.metadata?.widthSize;
@@ -165,7 +167,7 @@ const InfoCollection = (props) => {
   return (
     <>
       {collection?.metadata?.about && (
-        <AboutCollection>
+        <BoxFeatureContainer>
           <BoxWrapper>
             <BoxTitle>
               <h3>About</h3>
@@ -174,7 +176,7 @@ const InfoCollection = (props) => {
               <p>{collection?.metadata?.about}</p>
             </BoxAbout>
           </BoxWrapper>
-        </AboutCollection>
+        </BoxFeatureContainer>
       )}
       {/* {collection?.metadata?.short_description && (
         <BoxFeatureContainer>
@@ -224,13 +226,13 @@ const InfoCollection = (props) => {
               <h3>Care instructions</h3>
             </BoxTitle>
             <BoxWrapContent>
-              <CareIcon>
+              {/* <CareIcon>
                 {iconCare.map((items, index) => (
                   <IconImage key={index}>
                     <Image src={items.image} alt="Icon Care" />
                   </IconImage>
                 ))}
-              </CareIcon>
+              </CareIcon> */}
               <Box>
                 <p>{collection?.metadata?.careinstructions}</p>
               </Box>

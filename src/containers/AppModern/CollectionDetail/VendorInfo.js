@@ -155,6 +155,16 @@ const DescProce = styled.p`
 `;
 const ContainerBox = styled(Box)`
   margin-bottom: 1.5rem;
+  margin-left: 17px;
+  margin-right: 17px;
+  @media only screen and (max-width: 1440px) {
+    margin-left: 25px;
+    margin-right: 25px;
+  }
+  @media only screen and (max-width: 1366px) {
+    margin-left: 30px;
+    margin-right: 30px;
+  }
 `;
 const BoxStyleText = styled(Box)`
   text-align: center;

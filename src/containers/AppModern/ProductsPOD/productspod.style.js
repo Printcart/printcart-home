@@ -62,9 +62,11 @@ export const BannerWrapper = styled.div`
     width: calc(100% / 2 - 34px);
     @media only screen and (max-width: 1440px) {
       width: calc(100% / 2 - 34px);
+      margin: 0 17px;
     }
     @media only screen and (max-width: 1366px) {
       width: calc(100% / 2 - 34px);
+      margin: 0 17px;
     }
     @media only screen and (max-width: 991px) {
       width: calc(100% / 1 - 0px);
@@ -180,6 +182,7 @@ export const ContainerPP = styled.div`
 export const ContainerBox = styled(Box)`
   margin-bottom: 3.5rem;
   display: block;
+  margin: 0 17px;
 `;
 export const HeaderBox = styled(Box)`
   align-items: center;

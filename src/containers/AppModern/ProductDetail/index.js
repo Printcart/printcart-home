@@ -24,13 +24,33 @@ export const WrappInfo = styled(Box)`
   align-items: center;
   display: flex;
   flex-wrap: wrap;
-  margin-left: 1rem;
-  margin-right: 1rem;
+  margin-left: 17px;
+  margin-right: 17px;
   margin-top: 3.5rem;
   margin-bottom: 3.5rem;
+  @media only screen and (max-width: 1440px) {
+    margin-left: 17px;
+    margin-right: 17px;
+    margin-top: 3.5rem;
+    margin-bottom: 3.5rem;
+  }
+  @media only screen and (max-width: 1366px) {
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-top: 3.5rem;
+    margin-bottom: 3.5rem;
+  }
 `;
 export const BoxRelated = styled(Box)`
   margin: 3.5rem 1rem;
+  @media only screen and (max-width: 1440px) {
+    margin-left: 17px;
+    margin-right: 17px;
+  }
+  @media only screen and (max-width: 1366px) {
+    margin-left: 30px;
+    margin-right: 30px;
+  }
 `;
 
 const ProductDetail = (props) => {
