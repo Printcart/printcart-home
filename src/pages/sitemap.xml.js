@@ -1,23 +1,22 @@
 const URL_SERVICES = `https://data2.cloodo.com/api/services?populate=image&filters[$and][0][service_agency][$contains]=568427`;
 const URL_CATALOG = `https://podbackend-8wl1.onrender.com/admin/products?status=published`;
 const URL_TUTORIALS =
-  "https://strapi4.cloodo.com/api/posts?filters[channels][name][$eq]=Printcart";
+  "https://strapi4.cloodo.com/api/posts?filters[channels][name][$eq]=Printcart&pagination[pageSize]=100";
 
 function generateSiteMap(resultServices, resultCatalog, resultTutorials) {
   const URL_PRINTCART = "https://printcart.com/";
-  console.log(resultTutorials.data);
   return `<?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
       <!--We manually set the two URLs we know already-->
       <url>
-        <loc>https://printcart.com/</loc>
+        <loc>https://printcart.com</loc>
       </url>
       <url>
         <loc>https://printcart.com/catalog</loc>
       </url>
       <url>
-      <loc>https://printcart.com/tutorials</loc>
-    </url>
+        <loc>https://printcart.com/tutorials</loc>
+      </url>
       <url>
         <loc>https://printcart.com/services</loc>
       </url>
@@ -26,7 +25,7 @@ function generateSiteMap(resultServices, resultCatalog, resultTutorials) {
         resultServices.data.map((item) => {
           return `<url>
             <loc>${`${URL_PRINTCART}service/${item.attributes.alias}`}</loc>
-        </url>`;
+          </url>`;
         })
       }
       ${
