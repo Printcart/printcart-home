@@ -12,7 +12,7 @@ import React from "react";
 import { ThemeProvider } from "styled-components";
 
 const Blog = (props) => {
-  const { resPosts } = props;
+  const { resPosts, pages } = props;
   return (
     <ThemeProvider theme={theme}>
       <React.Fragment>
@@ -31,7 +31,7 @@ const Blog = (props) => {
             <Navbar />
           </div>
           <ContentWrapper>
-            <BlogPage resPosts={resPosts} />
+            <BlogPage resPosts={resPosts} pages={pages} />
           </ContentWrapper>
           <Footer />
         </AppWrapper>
@@ -46,7 +46,7 @@ export async function getStaticProps() {
   const setUrl = new URL("posts", baseUrl);
   setUrl.searchParams.set("filters[channels][name][$eq]", "Printcart");
   setUrl.searchParams.set("populate", "*");
-  setUrl.searchParams.set("pagination[limit]", "20");
+  setUrl.searchParams.set("pagination[pageSize]", "100");
   const newUrl = setUrl.href;
 
   const fetchData = await fetch(newUrl);
@@ -55,6 +55,7 @@ export async function getStaticProps() {
   if (results.data.length > 0) {
     return {
       props: {
+        pages: results["meta"],
         resPosts: results["data"]
       },
       revalidate: 1
