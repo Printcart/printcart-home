@@ -169,7 +169,6 @@ export const BannerWrapper = styled.div`
 `;
 export const ContainerPP = styled.div`
   display: flex;
-  width: 100%;
   height: 250px;
   margin-left: 17px;
   margin-right: 17px;

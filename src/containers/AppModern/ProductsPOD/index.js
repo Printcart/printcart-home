@@ -6,15 +6,9 @@ import SectionWrapper from "containers/AppModern/Features/features.style";
 import Link from "next/link";
 import styled from "styled-components";
 import Container from "../../../common/components/UI/Container";
-import { GridServices } from "../InfoServices/GridServices";
 import Banner from "./Banner";
 import TagsFilter from "./TagsFilter";
-import {
-  ContainerPP,
-  HeaderBox,
-  TitleBox,
-  TitleHead
-} from "./productspod.style";
+import { ContainerPP } from "./productspod.style";
 
 const CardCus = styled(Card)`
   border-radius: 5px;
@@ -188,7 +182,11 @@ const ProductsPOD = (props) => {
                   Bridge the Gap Between Selling and Production
                 </PDescription>
                 <Box className="btnSee">
-                  <ButtonProvider title="Create POD Printer store" />
+                  <Link href="https://dashboard.printcart.com/">
+                    <a target="_blank">
+                      <ButtonProvider title="Create POD Printer store" />
+                    </a>
+                  </Link>
                 </Box>
               </WrappBox>
             </WrappProvider>
