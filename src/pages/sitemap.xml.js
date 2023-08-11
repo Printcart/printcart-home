@@ -1,8 +1,3 @@
-const URL_SERVICES = `https://data2.cloodo.com/api/services?populate=image&filters[$and][0][service_agency][$contains]=568427`;
-const URL_CATALOG = `https://podbackend-8wl1.onrender.com/admin/products?status=published`;
-const URL_TUTORIALS =
-  "https://strapi4.cloodo.com/api/posts?filters[channels][name][$eq]=Printcart&pagination[pageSize]=100";
-
 function generateSiteMap(resultServices, resultCatalog, resultTutorials) {
   const URL_PRINTCART = "https://printcart.com/";
   return `<?xml version="1.0" encoding="UTF-8"?>
@@ -22,27 +17,33 @@ function generateSiteMap(resultServices, resultCatalog, resultTutorials) {
       </url>
       ${
         resultServices &&
-        resultServices.data.map((item) => {
-          return `<url>
-            <loc>${`${URL_PRINTCART}service/${item.attributes.alias}`}</loc>
+        resultServices?.data
+          .map((item) => {
+            return `<url>
+            <loc>${`${URL_PRINTCART}service/${item?.attributes?.alias}`}</loc>
           </url>`;
-        })
+          })
+          .join("")
       }
       ${
         resultCatalog &&
-        resultCatalog.products.map((item) => {
-          return `<url>
-            <loc>${`${URL_PRINTCART}product/${item.id}`}</loc>
+        resultCatalog?.products
+          .map((item) => {
+            return `<url>
+            <loc>${`${URL_PRINTCART}product/${item?.id}`}</loc>
         </url>`;
-        })
+          })
+          .join("")
       }
       ${
         resultTutorials &&
-        resultTutorials.data.map((items) => {
-          return `<url>
-            <loc>${`${URL_PRINTCART}tutorial/${items.attributes.alias}`}</loc>
+        resultTutorials?.data
+          .map((items) => {
+            return `<url>
+            <loc>${`${URL_PRINTCART}tutorial/${items?.attributes?.alias}`}</loc>
         </url>`;
-        })
+          })
+          .join("")
       }
       
     </urlset>
@@ -50,6 +51,10 @@ function generateSiteMap(resultServices, resultCatalog, resultTutorials) {
 }
 function SiteMap() {}
 export async function getServerSideProps({ res }) {
+  const URL_SERVICES = `https://data2.cloodo.com/api/services?populate=image&filters[$and][0][service_agency][$contains]=568427`;
+  const URL_CATALOG = `https://podbackend-8wl1.onrender.com/admin/products?status=published`;
+  const URL_TUTORIALS =
+    "https://strapi4.cloodo.com/api/posts?filters[channels][name][$eq]=Printcart&pagination[pageSize]=100";
   const token = process.env.TOKEN_AUTH;
   const parameter = {
     method: "GET",
