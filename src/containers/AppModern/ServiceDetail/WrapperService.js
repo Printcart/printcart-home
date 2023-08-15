@@ -2,7 +2,6 @@ import styled, { css } from "styled-components";
 
 const WrapperServices = styled.section`
   padding: 88px 0 0;
-  overflow: hidden;
   @media only screen and (max-width: 1400px) {
     padding: 87px 0 0;
   }

@@ -330,7 +330,6 @@ const PostDetail = (props) => {
     ?.replace(/<h3/g, '<h3 class="text2"')
     ?.replace(/<a/g, '<a rel="nofollow" target="_blank"')
     ?.replace(/<img/g, `<img alt="image ${topicId}"`);
-
   return (
     <ContentWrapper>
       <WrapperServices>

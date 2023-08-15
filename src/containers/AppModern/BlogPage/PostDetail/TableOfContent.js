@@ -6,7 +6,7 @@ import styled from "styled-components";
 
 const WrapRight = styled(Box)`
   position: sticky;
-  top: 25px;
+  top: 100px;
   padding: 25px;
   border-radius: 5px;
   box-shadow: 5px 5px 10px 4px rgb(0 0 50 / 5%);
@@ -44,7 +44,6 @@ const BoxRecap = styled(Box)`
   }
   .textChoose_h3 {
     cursor: pointer;
-    line-height: 1.4px;
     font-size: 16px;
     font-weight: 500;
     margin-top: 10px;
@@ -58,7 +57,7 @@ const BoxRecap = styled(Box)`
     -webkit-line-clamp: 2;
   }
   .textChoose_h2 {
-    cusor: pointer;
+    cursor: pointer;
     font-size: 16px;
     font-weight: 500;
     margin-top: 15px;
@@ -78,7 +77,6 @@ const BoxRecap = styled(Box)`
   .text_h3n {
     cursor: pointer;
     display: none;
-    line-height: 1.4px;
     font-size: 16px;
     font-weight: 400;
     margin-top: 10px;
@@ -92,7 +90,6 @@ const BoxRecap = styled(Box)`
   }
   .text_h3b {
     cusor: pointer;
-    line-height: 1.4px;
     font-size: 16px;
     font-weight: 400;
     margin-top: 10px;
@@ -192,7 +189,6 @@ const TableOfContent = ({ content }) => {
       return () => window.removeEventListener("scroll", handleScroll);
     }
   }, [content, checkOffset]);
-
   return (
     <>
       <WrapRight>
@@ -202,20 +198,22 @@ const TableOfContent = ({ content }) => {
             data.map((item, index) => (
               <p
                 key={index}
-                ref={checkOffset === item?.label ? ref : null}
+                ref={checkOffset === item.label ? ref : null}
                 id={item.label}
                 onClick={transferTo}
                 className={
-                  (checkOffset || checkId) === item?.label
-                    ? item?.label?.slice(0, 4) === "text2"
+                  (checkOffset || checkId) === item.label
+                    ? item.label.slice(0, 5) === "text2"
                       ? "textChoose_h3"
                       : "textChoose_h2"
-                    : item?.label?.slice(0, 4) === "text2"
+                    : item.label.slice(0, 5) === "text2"
                     ? block?.length === 0
                       ? "text_h3n"
-                      : block?.map((e) =>
-                          e.label === item?.label ? "text_h3b" : "text_h3n"
-                        )
+                      : block
+                          .map((e) =>
+                            e.label === item.label ? "text_h3b" : "text_h3n"
+                          )
+                          .join(" ")
                     : "text_h2"
                 }
               >
