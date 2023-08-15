@@ -19,7 +19,7 @@ const ThumbnailImage = styled(Box)`
   display: flex;
   row-gap: 1rem;
   flex-direction: column;
-  top: 5rem;
+  top: 6rem;
   position: sticky;
 `;
 const ButtonChange = styled.button`

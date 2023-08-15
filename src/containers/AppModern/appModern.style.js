@@ -46,7 +46,6 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 export const AppWrapper = styled.div`
-  overflow: hidden;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -114,7 +113,6 @@ export const AppWrapper = styled.div`
 export const ContentWrapper = styled.div`
   flex: 1 0 auto;
   width: 100%;
-  overflow: hidden;
 `;
 
 export const SectionHeader = styled.header`
