@@ -269,7 +269,7 @@ const VendorInfo = (props) => {
                   lineHeight="1.25rem"
                   fontWeight="400"
                 />
-                <p>{showPrint?.join(", ")}</p>
+                <p>{showPrint?.join(", ") || "Updating..."}</p>
               </Box>
               <Box>
                 <HeadingTitle
@@ -296,7 +296,7 @@ const VendorInfo = (props) => {
                   lineHeight="1.25rem"
                   fontWeight="400"
                 />
-                <p>{getVariants?.join(", ") || "Updating"}</p>
+                <p>{getVariants?.join(", ") || "Updating..."}</p>
               </Box>
             </ContainerVendor>
           </BoxVendor>
