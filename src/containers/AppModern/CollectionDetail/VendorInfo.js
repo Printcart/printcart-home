@@ -174,6 +174,8 @@ const VendorInfo = (props) => {
   const getVariants = data?.variants?.map((item) => item?.title);
   const getSize = data?.collection?.metadata?.size;
   const showSize = getSize?.split(",");
+  const printAreas = data?.collection?.metadata?.printAreas;
+  const showPrint = printAreas?.split(",");
 
   return (
     <>
@@ -262,16 +264,16 @@ const VendorInfo = (props) => {
               </Box> */}
               <Box>
                 <HeadingTitle
-                  content="Print Areas * 2"
+                  content={`Print Areas * ${showPrint?.length || 0}`}
                   mb="8px"
                   lineHeight="1.25rem"
                   fontWeight="400"
                 />
-                <p>Front side, back side</p>
+                <p>{showPrint?.join(", ") || "Updating..."}</p>
               </Box>
               <Box>
                 <HeadingTitle
-                  content={`Size * ${showSize?.length || "0"}`}
+                  content={`Size * ${showSize?.length || 0}`}
                   mb="8px"
                   lineHeight="1.25rem"
                   fontWeight="400"
@@ -294,7 +296,7 @@ const VendorInfo = (props) => {
                   lineHeight="1.25rem"
                   fontWeight="400"
                 />
-                <p>{getVariants?.join(", ") || "Updating"}</p>
+                <p>{getVariants?.join(", ") || "Updating..."}</p>
               </Box>
             </ContainerVendor>
           </BoxVendor>

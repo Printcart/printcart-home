@@ -131,6 +131,9 @@ const FeatureDesc = styled.p`
 
 const InfoCollection = (props) => {
   const { collection } = props;
+  const formatSize = collection?.metadata?.size;
+  const sizeNew = formatSize?.split(",");
+
   const formatSizeWidth = collection?.metadata?.widthSize;
   const widthSize = formatSizeWidth?.split(",");
 
@@ -140,8 +143,15 @@ const InfoCollection = (props) => {
   const formatDepthSize = collection?.metadata?.depthSize;
   const depthSize = formatDepthSize?.split(",");
 
-  const formatSize = collection?.metadata?.size;
-  const sizeNew = formatSize?.split(",");
+  const formatCircumSize = collection?.metadata?.circum;
+  const circum = formatCircumSize?.split(",");
+
+  const formatBillHeight = collection?.metadata?.billLength;
+  const billLength = formatBillHeight?.split(",");
+
+  const formatCrownheight = collection?.metadata?.crownHeight;
+  const crownHeight = formatCrownheight?.split(",");
+
   const features = [
     {
       media: `${collection?.metadata?.icon1 ?? ""}`,
@@ -290,6 +300,36 @@ const InfoCollection = (props) => {
                       <tr>
                         <td className="pcTitle">Depth</td>
                         {depthSize?.map((items, index) => (
+                          <td className="value" key={index}>
+                            {items}
+                          </td>
+                        ))}
+                      </tr>
+                    )}
+                    {circum?.length > 0 && (
+                      <tr>
+                        <td className="pcTitle">Circumference</td>
+                        {circum?.map((items, index) => (
+                          <td className="value" key={index}>
+                            {items}
+                          </td>
+                        ))}
+                      </tr>
+                    )}
+                    {billLength?.length > 0 && (
+                      <tr>
+                        <td className="pcTitle">Bill length</td>
+                        {billLength?.map((items, index) => (
+                          <td className="value" key={index}>
+                            {items}
+                          </td>
+                        ))}
+                      </tr>
+                    )}
+                    {crownHeight?.length > 0 && (
+                      <tr>
+                        <td className="pcTitle">Crown height</td>
+                        {crownHeight?.map((items, index) => (
                           <td className="value" key={index}>
                             {items}
                           </td>
