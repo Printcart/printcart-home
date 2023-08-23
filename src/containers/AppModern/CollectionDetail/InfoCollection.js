@@ -115,11 +115,6 @@ const IconImage = styled(Box)`
 const TableHeader = styled(Box)`
   p {
     color: #424dc6;
-    border: 1px solid #424dc6;
-    width: 10%;
-    text-align: center;
-    border-radius: 5px;
-    cursor: pointer;
   }
 `;
 const FeatureDesc = styled.p`
@@ -258,9 +253,9 @@ const InfoCollection = (props) => {
             </BoxTitle>
             <BoxWrapContent>
               <p>All measurements in the table refer to product dimensions.</p>
-              {/* <TableHeader>
-                  <p>Imperial</p>
-                </TableHeader> */}
+              <TableHeader>
+                <p>Metric</p>
+              </TableHeader>
               <Table>
                 <thead>
                   <tr>

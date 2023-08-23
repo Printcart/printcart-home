@@ -147,8 +147,8 @@ const HeadingTitle = styled(Heading)`
   color: #686f71;
   font-size: 0.875em;
 `;
-const DescProce = styled.p`
-  color: #29ab51;
+const PricePrintcart = styled.p`
+  color: #424dc6;
   font-size: 0.875em;
   line-height: 1.25rem;
   font-weight: 400;
@@ -166,8 +166,10 @@ const ContainerBox = styled(Box)`
     margin-right: 30px;
   }
 `;
-const BoxStyleText = styled(Box)`
-  text-align: center;
+const SingleColumn = styled(Box)`
+  & p {
+    margin: 0px;
+  }
 `;
 const VendorInfo = (props) => {
   const { data } = props;
@@ -214,7 +216,7 @@ const VendorInfo = (props) => {
               </BoxHeaderRight>
             </Grid>
             <ContainerVendor>
-              <Box>
+              <SingleColumn>
                 <HeadingTitle
                   content="Location"
                   mb="8px"
@@ -227,42 +229,58 @@ const VendorInfo = (props) => {
                     <Box>Flag</Box>
                   </Box> */}
                 </Box>
-              </Box>
-              {/* <Box>
-                <HeadingTitle
-                  content="Price"
-                  mb="8px"
-                  lineHeight="1.25rem"
-                  fontWeight="400"
-                />
-                <Box>
-                  <p>From USD 15.57</p>
-                  <Box>
-                    <DescProce>From USD 11.99 with Printify Premium</DescProce>
-                  </Box>
-                </Box>
-              </Box> */}
-              {/* <Box>
-                <HeadingTitle
-                  content="Shipping"
-                  mb="8px"
-                  lineHeight="1.25rem"
-                  fontWeight="400"
-                />
-                <Box>
-                  <p>From USD 6.09</p>
-                </Box>
-              </Box> */}
-              {/* <Box>
-                <HeadingTitle
-                  content="Avg.production"
-                  mb="8px"
-                  lineHeight="1.25rem"
-                  fontWeight="400"
-                />
-                <p>2.9 business days</p>
-              </Box> */}
-              <Box>
+              </SingleColumn>
+              {data?.collection?.metadata?.priceBase && (
+                <>
+                  <SingleColumn>
+                    <HeadingTitle
+                      content="Price"
+                      mb="8px"
+                      lineHeight="1.25rem"
+                      fontWeight="400"
+                    />
+                    <Box>
+                      <p>{data.collection.metadata.priceBase}</p>
+                      <Box>
+                        <PricePrintcart>
+                          {data.collection.metadata.pricePrintcart
+                            ? data.collection.metadata.pricePrintcart
+                            : ""}
+                        </PricePrintcart>
+                      </Box>
+                    </Box>
+                  </SingleColumn>
+                </>
+              )}
+              {data?.collection?.metadata?.shipping && (
+                <>
+                  <SingleColumn>
+                    <HeadingTitle
+                      content="Shipping"
+                      mb="8px"
+                      lineHeight="1.25rem"
+                      fontWeight="400"
+                    />
+                    <Box>
+                      <p>{data.collection.metadata.shipping}</p>
+                    </Box>
+                  </SingleColumn>
+                </>
+              )}
+              {data?.collection?.metadata?.productionTime && (
+                <>
+                  <SingleColumn>
+                    <HeadingTitle
+                      content="Avg.production"
+                      mb="8px"
+                      lineHeight="1.25rem"
+                      fontWeight="400"
+                    />
+                    <p>{data.collection.metadata.productionTime}</p>
+                  </SingleColumn>
+                </>
+              )}
+              <SingleColumn>
                 <HeadingTitle
                   content={`Print Areas * ${showPrint?.length || 0}`}
                   mb="8px"
@@ -270,8 +288,8 @@ const VendorInfo = (props) => {
                   fontWeight="400"
                 />
                 <p>{showPrint?.join(", ") || "Updating..."}</p>
-              </Box>
-              <Box>
+              </SingleColumn>
+              <SingleColumn>
                 <HeadingTitle
                   content={`Size * ${showSize?.length || 0}`}
                   mb="8px"
@@ -286,10 +304,10 @@ const VendorInfo = (props) => {
                     showSize[showSize?.length - 1]
                   }`}</p>
                 ) : (
-                  "Updating"
+                  <p>Updating... </p>
                 )}
-              </Box>
-              <Box>
+              </SingleColumn>
+              <SingleColumn>
                 <HeadingTitle
                   content={`Color * ${getVariants?.length || "0"}`}
                   mb="8px"
@@ -297,7 +315,7 @@ const VendorInfo = (props) => {
                   fontWeight="400"
                 />
                 <p>{getVariants?.join(", ") || "Updating..."}</p>
-              </Box>
+              </SingleColumn>
             </ContainerVendor>
           </BoxVendor>
         </Box>
