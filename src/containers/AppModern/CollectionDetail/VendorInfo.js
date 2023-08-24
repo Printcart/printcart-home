@@ -1,6 +1,8 @@
+import React from "react";
 import Box from "common/components/Box";
 import Heading from "common/components/Heading";
 import Link from "next/link";
+import Designtool from "../Designtool";
 import styled from "styled-components";
 
 export const Grid = styled.div`
@@ -174,6 +176,7 @@ const VendorInfo = (props) => {
   const getVariants = data?.variants?.map((item) => item?.title);
   const getSize = data?.collection?.metadata?.size;
   const showSize = getSize?.split(",");
+  const [showStartSelling, setShowStartSelling] = React.useState(false);
 
   return (
     <>
@@ -192,7 +195,7 @@ const VendorInfo = (props) => {
               <BoxHeaderRight>
                 <BoxButton>
                   <BtnMoreDetail>
-                    <Link href={`${data?.vendor?.shop_url ?? "#"}`}>
+                    <Link href={`${"" ?? "#"}`}>
                       <a
                         target={`${data?.vendor?.shop_url ? "_blank" : ""}`}
                         title="Visit Store"
@@ -203,11 +206,8 @@ const VendorInfo = (props) => {
                   </BtnMoreDetail>
                 </BoxButton>
                 <ContainerDesign>
-                  <a target="_blank" href="https://dashboard.printcart.com/">
-                    <Box>
-                      <ButtonDesign>Start Selling</ButtonDesign>
-                    </Box>
-                  </a>
+                  <ButtonDesign>Start Selling</ButtonDesign>
+                  <Designtool />
                 </ContainerDesign>
               </BoxHeaderRight>
             </Grid>
