@@ -14,7 +14,7 @@ import {
   TwitterIcon,
   TwitterShareButton,
   VKIcon,
-  VKShareButton,
+  VKShareButton
 } from "react-share";
 
 const Breadcrumb = (props) => {
@@ -76,23 +76,23 @@ const Breadcrumb = (props) => {
         <Box className="shareone">
           <FacebookShareButton
             children={<FacebookIcon />}
-            url={`${process.env.PRINTCART_URL}` + url}
+            url={`${process.env.NEXT_PUBLIC_PRINTCART_URL}` + url}
           />
           <LinkedinShareButton
             children={<LinkedinIcon />}
-            url={`${process.env.CLOODO_URL}` + url}
+            url={`${process.env.NEXT_PUBLIC_PRINTCART_URL}` + url}
           />
           <TwitterShareButton
             children={<TwitterIcon />}
-            url={`${process.env.CLOODO_URL}` + url}
+            url={`${process.env.NEXT_PUBLIC_PRINTCART_URL}` + url}
           />
           <VKShareButton
             children={<VKIcon />}
-            url={`${process.env.CLOODO_URL}` + url}
+            url={`${process.env.NEXT_PUBLIC_PRINTCART_URL}` + url}
           />
           <TelegramShareButton
             children={<TelegramIcon />}
-            url={`${process.env.CLOODO_URL}` + url}
+            url={`${process.env.NEXT_PUBLIC_PRINTCART_URL}` + url}
           />
         </Box>
       </Box>
