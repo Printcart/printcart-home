@@ -70,7 +70,6 @@ export async function getStaticProps({ params }) {
 export async function getStaticPaths() {
   const baseUrl = process.env.STRAPI_API_URL;
   const setUrl = new URL("posts", baseUrl);
-  setUrl.searchParams.set("pagination[limit]", 1);
   const newUrl = setUrl.href;
 
   const fetchData = await fetch(newUrl);
