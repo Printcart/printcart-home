@@ -267,7 +267,7 @@ const InfoCollection = (props) => {
               <Table>
                 <tr>
                   <th></th>
-                  {sizeNew.length > 1 ? (
+                  {sizeNew?.length > 1 ? (
                     sizeNew.map((item, index) => (
                       <th className="align-top" key={index}>
                         <div className="cover-content">
@@ -279,7 +279,9 @@ const InfoCollection = (props) => {
                     <th
                       className="align-top"
                       colSpan={
-                        eurSize.length || usSize.length || insoleLength.length
+                        eurSize?.length ||
+                        usSize?.length ||
+                        insoleLength?.length
                       }
                     >
                       <div className="cover-content">
