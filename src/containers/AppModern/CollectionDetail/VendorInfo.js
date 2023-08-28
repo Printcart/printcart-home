@@ -173,10 +173,10 @@ const SingleColumn = styled(Box)`
 `;
 const VendorInfo = (props) => {
   const { data } = props;
-  const getVariants = data?.variants?.map((item) => item?.title);
-  const getSize = data?.collection?.metadata?.size;
+  const getVariants = data[0]?.variants?.map((item) => item?.title);
+  const getSize = data[0]?.collection?.metadata?.size;
   const showSize = getSize?.split(",");
-  const printAreas = data?.collection?.metadata?.printAreas;
+  const printAreas = data[0]?.collection?.metadata?.printAreas;
   const showPrint = printAreas?.split(",");
 
   return (
@@ -187,7 +187,7 @@ const VendorInfo = (props) => {
             <Grid>
               <BoxVendorHeader>
                 <HeadingVendor
-                  content={data?.vendor?.store_name}
+                  content={data[0]?.vendor?.store_name}
                   lineHeight="2rem"
                   fontWeight="700"
                   mb="0"
@@ -196,9 +196,9 @@ const VendorInfo = (props) => {
               <BoxHeaderRight>
                 <BoxButton>
                   <BtnMoreDetail>
-                    <Link href={`${data?.vendor?.shop_url ?? "#"}`}>
+                    <Link href={`${data[0]?.vendor?.shop_url ?? "#"}`}>
                       <a
-                        target={`${data?.vendor?.shop_url ? "_blank" : ""}`}
+                        target={`${data[0]?.vendor?.shop_url ? "_blank" : ""}`}
                         title="Visit Store"
                       >
                         Visit Store{" "}
@@ -224,13 +224,13 @@ const VendorInfo = (props) => {
                   fontWeight="400"
                 />
                 <Box>
-                  <p>{data?.origin_country}</p>
+                  <p>{data[0]?.origin_country}</p>
                   {/* <Box>
                     <Box>Flag</Box>
                   </Box> */}
                 </Box>
               </SingleColumn>
-              {data?.collection?.metadata?.priceBase && (
+              {data[0]?.collection?.metadata?.priceBase && (
                 <>
                   <SingleColumn>
                     <HeadingTitle
@@ -240,11 +240,11 @@ const VendorInfo = (props) => {
                       fontWeight="400"
                     />
                     <Box>
-                      <p>{data.collection.metadata.priceBase}</p>
+                      <p>{data[0].collection.metadata.priceBase}</p>
                       <Box>
                         <PricePrintcart>
-                          {data.collection.metadata.pricePrintcart
-                            ? data.collection.metadata.pricePrintcart
+                          {data[0].collection.metadata.pricePrintcart
+                            ? data[0].collection.metadata.pricePrintcart
                             : ""}
                         </PricePrintcart>
                       </Box>
@@ -252,7 +252,7 @@ const VendorInfo = (props) => {
                   </SingleColumn>
                 </>
               )}
-              {data?.collection?.metadata?.shipping && (
+              {data[0]?.collection?.metadata?.shipping && (
                 <>
                   <SingleColumn>
                     <HeadingTitle
@@ -267,7 +267,7 @@ const VendorInfo = (props) => {
                   </SingleColumn>
                 </>
               )}
-              {data?.collection?.metadata?.productionTime && (
+              {data[0]?.collection?.metadata?.productionTime && (
                 <>
                   <SingleColumn>
                     <HeadingTitle

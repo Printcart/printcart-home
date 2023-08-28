@@ -46,8 +46,9 @@ export async function getStaticProps({ params }) {
       "Content-Type": "application/json"
     }
   };
-  const setUrlProducts = new URL(`products/${params.id}`, baseUrl);
+  const setUrlProducts = new URL(`products?handle=${params.handle}`, baseUrl);
   const urlProducts = setUrlProducts.href;
+
   const setUrlRelated = new URL("products", baseUrl);
   setUrlRelated.searchParams.set("status", "published");
   setUrlRelated.searchParams.set("limit", 4);
@@ -68,7 +69,7 @@ export async function getStaticProps({ params }) {
 
   return {
     props: {
-      product: result?.product || {},
+      product: result?.products || {},
       productsRelated: resultRelated.products || {}
     },
     revalidate: 1
@@ -87,6 +88,7 @@ export async function getStaticPaths() {
     }
   };
   const newUrlPath = new URL("products", baseUrl);
+  newUrlPath.searchParams.set("status", "published");
   const fetchPath = newUrlPath.href;
 
   const res = await fetch(fetchPath, paramsProduct);
@@ -96,7 +98,7 @@ export async function getStaticPaths() {
     return {
       paths: result.products.map((product) => {
         return {
-          params: { id: product.id }
+          params: { handle: product.handle }
         };
       }),
       fallback: "blocking"

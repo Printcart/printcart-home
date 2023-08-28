@@ -65,7 +65,7 @@ const ProductDetail = (props) => {
             <ProductInfo product={product} />
           </WrappInfo>
           <VendorInfo data={product} />
-          <InfoCollection collection={product?.collection} />
+          <InfoCollection collection={product[0]?.collection} />
           {/**RELATED PRODUCTS */}
           <BoxRelated>
             <Heading mb="0px" content="You May Also Like" />
@@ -77,7 +77,7 @@ const ProductDetail = (props) => {
                       <CardItems key={items?.id}>
                         <Box>
                           <WrapImage>
-                            <Link href={`/product/${items?.id}`}>
+                            <Link href={`/product/${items?.handle}`}>
                               <a>
                                 <img
                                   style={{
@@ -97,7 +97,7 @@ const ProductDetail = (props) => {
                             </Link>
                           </WrapImage>
                           <WrapContent>
-                            <Link href={`/product/${items?.id}`}>
+                            <Link href={`/product/${items?.handle}`}>
                               <a title={`View to ${items?.title}`}>
                                 <PTitle>{items?.title}</PTitle>
                               </a>
