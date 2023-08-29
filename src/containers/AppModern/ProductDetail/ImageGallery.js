@@ -109,7 +109,7 @@ const ImageGallery = (props) => {
                       <ThumbnailItems src={image?.url ?? ""} alt="Thumbnail" />
                     </span>
                   </ButtonChange>
-                )) ?? ""
+                )) || ""
             )}
           </ThumbnailImage>
           <MainImage>
@@ -119,7 +119,10 @@ const ImageGallery = (props) => {
             // id={image.id}
             >
               <span>
-                <ImageBig src={product[0]?.thumbnail} alt="Image Product" />
+                <ImageBig
+                  src={product[0]?.thumbnail || ""}
+                  alt="Image Product"
+                />
               </span>
             </WrapBigImage>
           </MainImage>

@@ -122,6 +122,11 @@ const FeatureDesc = styled.p`
   line-height: 1.25rem;
   font-weight: 400;
 `;
+const WrappTable = styled(Box)`
+  display: block;
+  margin-top: 16px;
+  overflow-x: auto;
+`;
 
 const InfoCollection = (props) => {
   const { collection } = props;
@@ -264,123 +269,131 @@ const InfoCollection = (props) => {
               <TableHeader>
                 <p>Metric</p>
               </TableHeader>
-              <Table>
-                <tr>
-                  <th></th>
-                  {sizeNew?.length > 1 ? (
-                    sizeNew.map((item, index) => (
-                      <th className="align-top" key={index}>
-                        <div className="cover-content">
-                          <div className="content-one">{item}</div>
-                        </div>
-                      </th>
-                    ))
-                  ) : (
-                    <th
-                      className="align-top"
-                      colSpan={
-                        eurSize?.length ||
-                        usSize?.length ||
-                        insoleLength?.length
-                      }
-                    >
-                      <div className="cover-content">
-                        <div className="content-one">{sizeNew}</div>
-                      </div>
-                    </th>
-                  )}
-                </tr>
-                {widthSize?.length > 0 && (
-                  <tr>
-                    <td className="pcTitle">Width</td>
-                    {widthSize.map((items, index) => (
-                      <td className="value" key={index}>
-                        {items}
-                      </td>
-                    ))}
-                  </tr>
-                )}
-                {heightSize?.length > 0 && (
-                  <tr>
-                    <td className="pcTitle">Length</td>
-                    {heightSize.map((items, index) => (
-                      <td className="value" key={index}>
-                        {items}
-                      </td>
-                    ))}
-                  </tr>
-                )}
-                {depthSize?.length > 0 && (
-                  <tr>
-                    <td className="pcTitle">Depth</td>
-                    {depthSize?.map((items, index) => (
-                      <td className="value" key={index}>
-                        {items}
-                      </td>
-                    ))}
-                  </tr>
-                )}
-                {circum?.length > 0 && (
-                  <tr>
-                    <td className="pcTitle">Circumference</td>
-                    {circum?.map((items, index) => (
-                      <td className="value" key={index}>
-                        {items}
-                      </td>
-                    ))}
-                  </tr>
-                )}
-                {billLength?.length > 0 && (
-                  <tr>
-                    <td className="pcTitle">Bill length</td>
-                    {billLength?.map((items, index) => (
-                      <td className="value" key={index}>
-                        {items}
-                      </td>
-                    ))}
-                  </tr>
-                )}
-                {crownHeight?.length > 0 && (
-                  <tr>
-                    <td className="pcTitle">Crown height</td>
-                    {crownHeight?.map((items, index) => (
-                      <td className="value" key={index}>
-                        {items}
-                      </td>
-                    ))}
-                  </tr>
-                )}
-                {eurSize?.length > 0 && (
-                  <tr>
-                    <td className="pcTitle">EUR Size</td>
-                    {eurSize?.map((items, index) => (
-                      <td className="value" key={index}>
-                        {items}
-                      </td>
-                    ))}
-                  </tr>
-                )}
-                {usSize?.length > 0 && (
-                  <tr>
-                    <td className="pcTitle">US Size</td>
-                    {usSize?.map((items, index) => (
-                      <td className="value" key={index}>
-                        {items}
-                      </td>
-                    ))}
-                  </tr>
-                )}
-                {insoleLength?.length > 0 && (
-                  <tr>
-                    <td className="pcTitle">Insole Length</td>
-                    {insoleLength?.map((items, index) => (
-                      <td className="value" key={index}>
-                        {items}
-                      </td>
-                    ))}
-                  </tr>
-                )}
-              </Table>
+              <WrappTable>
+                <Box>
+                  <Table>
+                    <thead>
+                      <tr>
+                        <th></th>
+                        {sizeNew?.length > 1 ? (
+                          sizeNew.map((item, index) => (
+                            <th className="align-top" key={index}>
+                              <div className="cover-content">
+                                <div className="content-one">{item}</div>
+                              </div>
+                            </th>
+                          ))
+                        ) : (
+                          <th
+                            className="align-top"
+                            colSpan={
+                              eurSize?.length ||
+                              usSize?.length ||
+                              insoleLength?.length
+                            }
+                          >
+                            <div className="cover-content">
+                              <div className="content-one">{sizeNew}</div>
+                            </div>
+                          </th>
+                        )}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {widthSize?.length > 0 && (
+                        <tr>
+                          <td className="pcTitle">Width</td>
+                          {widthSize.map((items, index) => (
+                            <td className="value" key={index}>
+                              {items}
+                            </td>
+                          ))}
+                        </tr>
+                      )}
+                      {heightSize?.length > 0 && (
+                        <tr>
+                          <td className="pcTitle">Length</td>
+                          {heightSize.map((items, index) => (
+                            <td className="value" key={index}>
+                              {items}
+                            </td>
+                          ))}
+                        </tr>
+                      )}
+                      {depthSize?.length > 0 && (
+                        <tr>
+                          <td className="pcTitle">Depth</td>
+                          {depthSize?.map((items, index) => (
+                            <td className="value" key={index}>
+                              {items}
+                            </td>
+                          ))}
+                        </tr>
+                      )}
+                      {circum?.length > 0 && (
+                        <tr>
+                          <td className="pcTitle">Circumference</td>
+                          {circum?.map((items, index) => (
+                            <td className="value" key={index}>
+                              {items}
+                            </td>
+                          ))}
+                        </tr>
+                      )}
+                      {billLength?.length > 0 && (
+                        <tr>
+                          <td className="pcTitle">Bill length</td>
+                          {billLength?.map((items, index) => (
+                            <td className="value" key={index}>
+                              {items}
+                            </td>
+                          ))}
+                        </tr>
+                      )}
+                      {crownHeight?.length > 0 && (
+                        <tr>
+                          <td className="pcTitle">Crown height</td>
+                          {crownHeight?.map((items, index) => (
+                            <td className="value" key={index}>
+                              {items}
+                            </td>
+                          ))}
+                        </tr>
+                      )}
+                      {eurSize?.length > 0 && (
+                        <tr>
+                          <td className="pcTitle">EUR Size</td>
+                          {eurSize?.map((items, index) => (
+                            <td className="value" key={index}>
+                              {items}
+                            </td>
+                          ))}
+                        </tr>
+                      )}
+                      {usSize?.length > 0 && (
+                        <tr>
+                          <td className="pcTitle">US Size</td>
+                          {usSize?.map((items, index) => (
+                            <td className="value" key={index}>
+                              {items}
+                            </td>
+                          ))}
+                        </tr>
+                      )}
+                      {insoleLength?.length > 0 && (
+                        <tr>
+                          <td className="pcTitle">Insole Length</td>
+                          {insoleLength?.map((items, index) => (
+                            <td className="value" key={index}>
+                              {items}
+                            </td>
+                          ))}
+                        </tr>
+                      )}
+                    </tbody>
+                  </Table>
+                </Box>
+              </WrappTable>
             </BoxWrapContent>
           </BoxWrapper>
         </BoxFeatureContainer>

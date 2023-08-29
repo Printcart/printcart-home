@@ -262,7 +262,7 @@ const VendorInfo = (props) => {
                       fontWeight="400"
                     />
                     <Box>
-                      <p>{data.collection.metadata.shipping}</p>
+                      <p>{data[0]?.collection?.metadata?.shipping}</p>
                     </Box>
                   </SingleColumn>
                 </>
@@ -276,7 +276,7 @@ const VendorInfo = (props) => {
                       lineHeight="1.25rem"
                       fontWeight="400"
                     />
-                    <p>{data.collection.metadata.productionTime}</p>
+                    <p>{data[0]?.collection?.metadata?.productionTime}</p>
                   </SingleColumn>
                 </>
               )}

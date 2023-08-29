@@ -1,6 +1,7 @@
 import Box from "common/components/Box";
 import Link from "next/link";
 import { Breadcrumb } from "../ServiceDetail/TitlePath";
+import React from "react";
 
 const TitlePathMed = (props) => {
   const { currentCat } = props;
@@ -29,7 +30,7 @@ const TitlePathMed = (props) => {
         )} */}
         {currentCat &&
           currentCat.map((item) => (
-            <>
+            <React.Fragment key={item?.id}>
               {" - "}
               <Link
                 prefetch={false}
@@ -41,7 +42,7 @@ const TitlePathMed = (props) => {
               >
                 <a className="text">{item.title}</a>
               </Link>
-            </>
+            </React.Fragment>
           ))}
         {/* {currentCat?.name_subcat ? (
           <>

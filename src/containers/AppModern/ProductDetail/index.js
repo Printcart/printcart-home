@@ -91,7 +91,7 @@ const ProductDetail = (props) => {
                                     borderTopLeftRadius: "5px",
                                     borderTopRightRadius: "5px"
                                   }}
-                                  src={items?.thumbnail ?? ""}
+                                  src={items?.thumbnail || ""}
                                 />
                               </a>
                             </Link>
