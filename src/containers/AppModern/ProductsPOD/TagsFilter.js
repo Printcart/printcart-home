@@ -1,7 +1,5 @@
 import Box from "common/components/Box";
 import Link from "next/link";
-import Icon from "react-icons-kit";
-import { ic_keyboard_arrow_right } from "react-icons-kit/md/ic_keyboard_arrow_right";
 import {
   BoxLabel,
   CardItems,
@@ -9,17 +7,11 @@ import {
   GridFilter,
   HeaderBox,
   PByVendor,
-  PDiscount,
-  PPrice,
   PTitle,
-  RedirectAll,
   SmallEco,
   SmallNew,
-  SpanLink,
-  TagA,
   TitleBox,
   TitleHead,
-  VendorPrice,
   WrapContent,
   WrapImage,
   WrapperProduct
