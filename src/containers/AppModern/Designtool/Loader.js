@@ -40,7 +40,7 @@ const Loader = (props) => {
 
   return (
     <StyleLoaderWrap>
-      <StyleLoader class="loader" />
+      <StyleLoader />
       {label && <StyleLoaderLabel>{label}</StyleLoaderLabel>}
     </StyleLoaderWrap>
   );

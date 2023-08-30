@@ -1,57 +1,23 @@
-import React from "react";
 import Input from "common/components/Input";
-import Alert from "common/components/Alert";
-import Loader from "./Loader";
+import React from "react";
 import {
-  FormControl,
   Button,
-  StyleLoginForm,
+  FormControl,
   StyleCreateAccount,
-  StyleAlertForm,
+  StyleLoginForm,
 } from "./pc.style";
 
-const Store = () => {};
+const LoginForm = (props) => {
+  const { setAlert, setToken } = props;
 
-const AlertForm = (props) => {
-  const { status = "success", children } = props;
-
-  let alertClass = "alert-success";
-
-  switch (status) {
-    case "success":
-      alertClass = "alert-success";
-      break;
-    case "danger":
-      alertClass = "alert-danger";
-      break;
-    case "warning":
-      alertClass = "alert-warning";
-      break;
-    default:
-      break;
-  }
-
-  return (
-    <StyleAlertForm role="alert" className={alertClass}>
-      This is a danger alert—check it out!
-    </StyleAlertForm>
-  );
-};
-
-const LoginForm = () => {
-  const [isLoading, setLoading] = React.useState(false);
-  const [alert, setAlert] = React.useState({
-    status: "success",
-    mess: "",
-    active: true,
-  });
+  const [isLoading, setIsLoading] = React.useState(false);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     setAlert((old) => {
       return { ...old, active: false };
     });
-    setLoading(true);
+    setIsLoading(true);
 
     const printcartUrl = process.env.NEXT_PUBLIC_PRINTCART_REST_API;
 
@@ -84,12 +50,22 @@ const LoginForm = () => {
 
     const result = await response.json();
 
-    if (result) console.log(result);
+    const accessToken = result?.data?.access_token;
+    if (accessToken) {
+      localStorage.setItem("_pc-t", accessToken);
+      setToken(accessToken);
+    } else {
+      setAlert({
+        status: "error",
+        mess: result?.error.message || "Somethings error",
+        active: true,
+      });
+    }
+    setIsLoading(false);
   };
 
   return (
     <StyleLoginForm>
-      {alert.active && <AlertForm>Muathuvang</AlertForm>}
       <form onSubmit={handleSubmit}>
         <FormControl>
           <Input

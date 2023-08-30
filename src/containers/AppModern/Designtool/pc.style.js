@@ -27,6 +27,10 @@ export const Row = styled.div`
   }
 `;
 
+export const StyleForm = styled.form`
+  margin-top: 12px;
+`;
+
 export const FormControl = styled.div`
   display: flex;
   align-items: flex-end;
@@ -66,6 +70,7 @@ export const FormControl = styled.div`
           font-size: 14px;
           color: #626266;
           font-weight: 600;
+          top: -12px;
         }
         .highlight {
           background: #626266;
@@ -143,7 +148,7 @@ export const StyleCreateAccount = styled.div`
   margin-top: 32px;
 `;
 
-export const StyleAlertForm = styled.div`
+export const StyleAlert = styled.div`
   padding: 1rem;
   margin-bottom: 1rem;
   border-radius: 6px;
@@ -164,4 +169,34 @@ export const StyleAlertForm = styled.div`
     color: #052c65;
     border-color: #ffe69c;
   }
+`;
+
+export const StyleLoadingWrap = styled.div`
+  margin-bottom: 12px;
+`;
+
+export const StyleStoreList = styled.div`
+  padding-top: 1rem;
+  grid-gap: 1rem;
+  gap: 1rem;
+  display: grid;
+`;
+export const StyleStore = styled.button`
+  display: inline-block;
+  font-weight: 600;
+  line-height: 1.5;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  border: 0.0625rem solid #f1f5f9;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  color: #0f172a;
+  background-color: #f1f5f9;
+  box-shadow: inset 0 1px 0 rgba(249, 250, 251, 0.15),
+    0 1px 1px rgba(0, 0, 0, 0.075);
 `;

@@ -28,7 +28,6 @@ const StyleModal = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
-  width: 100%;
   outline: transparent solid 2px;
   outline-offset: 2px;
   border-radius: 10px;
@@ -37,9 +36,13 @@ const StyleModal = styled.div`
   background: #fff;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
     rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
-  max-width: 448px;
+  width: 448px;
   animation-name: ${animatetop};
   animation-duration: 0.4s;
+  &.isFull {
+    width: 100vw;
+    height: 100vh;
+  }
 `;
 
 const StyleButonClose = styled.button`
@@ -62,6 +65,10 @@ const StyleButonClose = styled.button`
   background-color: #fff;
   :hover {
     background-color: #cfcfcf;
+  }
+  &.iConLeft {
+    right: 100%;
+    left: 20px;
   }
 `;
 
@@ -115,7 +122,7 @@ const Body = (props) => {
 };
 
 const Modal = (props) => {
-  const { show, onClose, children } = props;
+  const { show, onClose, children, isFullScreen, showClose } = props;
   const [isBrowser, setIsBrowser] = React.useState(show);
   const modalRef = React.useRef(null);
 
@@ -133,6 +140,12 @@ const Modal = (props) => {
 
   React.useEffect(() => {
     setIsBrowser(show);
+
+    if (show) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
 
     const handleOutsideClick = (e) => {
       if (modalRef.current && !modalRef.current.contains(e.target)) {
@@ -152,15 +165,18 @@ const Modal = (props) => {
 
   const modalContent = (
     <StyleModalOverlay>
-      <StyleModal ref={modalRef}>
-        <StyleButonClose
-          onClick={(e) => {
-            setIsBrowser(false);
-            onClose && onClose(e);
-          }}
-        >
-          <IconClose />
-        </StyleButonClose>
+      <StyleModal ref={modalRef} className={isFullScreen ? "isFull" : ""}>
+        {showClose && (
+          <StyleButonClose
+            className={isFullScreen ? "iConLeft" : ""}
+            onClick={(e) => {
+              setIsBrowser(false);
+              onClose && onClose(e);
+            }}
+          >
+            <IconClose />
+          </StyleButonClose>
+        )}
         {children}
       </StyleModal>
     </StyleModalOverlay>
