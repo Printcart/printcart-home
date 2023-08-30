@@ -147,20 +147,20 @@ const Modal = (props) => {
       document.body.style.overflow = "unset";
     }
 
-    const handleOutsideClick = (e) => {
-      if (modalRef.current && !modalRef.current.contains(e.target)) {
-        onClose && onClose(e);
-        setIsBrowser(false);
-      }
-    };
+    // const handleOutsideClick = (e) => {
+    //   if (modalRef.current && !modalRef.current.contains(e.target)) {
+    //     onClose && onClose(e);
+    //     setIsBrowser(false);
+    //   }
+    // };
 
-    if (modalRef) {
-      document.addEventListener("click", handleOutsideClick, false);
-    }
+    // if (modalRef) {
+    //   document.addEventListener("click", handleOutsideClick, false);
+    // }
 
-    return () => {
-      document.removeEventListener("click", handleOutsideClick);
-    };
+    // return () => {
+    //   document.removeEventListener("click", handleOutsideClick);
+    // };
   }, [show]);
 
   const modalContent = (
