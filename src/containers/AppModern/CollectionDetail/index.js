@@ -3,10 +3,6 @@ import CheckBox from "common/components/Checkbox";
 import Heading from "common/components/Heading";
 import Container from "common/components/UI/Container";
 import styled from "styled-components";
-import { WrappInfo } from "../ProductDetail";
-import ImageGallery from "../ProductDetail/ImageGallery";
-import ProductInfo from "../ProductDetail/ProductInfo";
-import TitlePathMed from "../ProductDetail/TitlePathMed";
 import WrapperServices from "../ServiceDetail/WrapperService";
 import { ContentWrapper, SectionHeader } from "../appModern.style";
 import VendorInfo from "./VendorInfo";
@@ -155,7 +151,7 @@ const CollectionDetail = (props) => {
   return (
     <ContentWrapper>
       <WrapperServices>
-        <TitlePathMed currentCat={collection} />
+        {/* <TitlePathMed currentCat={collection} /> */}
         <SectionHeader>
           <BoxSlogan>
             <Container>
@@ -181,12 +177,12 @@ const CollectionDetail = (props) => {
               />
             </BoxHeader>
             <Box>{collection?.metadata?.short_description}</Box>
-            {products && (
+            {/* {products && (
               <WrappInfo>
                 <ImageGallery product={dataProduct} />
                 <ProductInfo product={collection} />
               </WrappInfo>
-            )}
+            )} */}
             <WrapVendor>
               {dataVendor.map((item) => (
                 <VendorInfo key={item.id} data={item} />

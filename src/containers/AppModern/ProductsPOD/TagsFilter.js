@@ -46,7 +46,7 @@ const TagsFilter = ({ dataFilter, status, title }) => {
                     <CardItems key={index}>
                       <Box>
                         <WrapImage>
-                          <Link href={`/product/${item?.id}`}>
+                          <Link href={`/product/${item?.handle}`}>
                             <a>
                               <img
                                 style={{
@@ -75,7 +75,7 @@ const TagsFilter = ({ dataFilter, status, title }) => {
                           )}
                         </WrapImage>
                         <WrapContent>
-                          <Link href={`/product/${item?.id}`}>
+                          <Link href={`/product/${item?.handle}`}>
                             <a title={`View to ${item.title}`}>
                               <PTitle>{item.title}</PTitle>
                             </a>

@@ -98,16 +98,19 @@ const ImageGallery = (props) => {
       <WrappImage>
         <Container>
           <ThumbnailImage>
-            {product?.images?.map((image, index) => (
-              <ButtonChange
-                key={index}
-                onClick={() => handleScrollTo(image?.id)}
-              >
-                <span>
-                  <ThumbnailItems src={image?.url ?? ""} alt="Thumbnail" />
-                </span>
-              </ButtonChange>
-            )) ?? ""}
+            {product.map(
+              (item) =>
+                item?.images?.map((image, index) => (
+                  <ButtonChange
+                    key={index}
+                    onClick={() => handleScrollTo(image?.id)}
+                  >
+                    <span>
+                      <ThumbnailItems src={image?.url ?? ""} alt="Thumbnail" />
+                    </span>
+                  </ButtonChange>
+                )) || ""
+            )}
           </ThumbnailImage>
           <MainImage>
             <WrapBigImage
@@ -116,7 +119,10 @@ const ImageGallery = (props) => {
             // id={image.id}
             >
               <span>
-                <ImageBig src={product?.thumbnail ?? ""} alt="Image Product" />
+                <ImageBig
+                  src={product[0]?.thumbnail || ""}
+                  alt="Image Product"
+                />
               </span>
             </WrapBigImage>
           </MainImage>

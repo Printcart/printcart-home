@@ -1,5 +1,6 @@
 import Box from "common/components/Box";
 import Heading from "common/components/Heading";
+import React from "react";
 import ReactHtmlParser from "react-html-parser";
 import styled from "styled-components";
 
@@ -34,7 +35,9 @@ const PTags = styled.p`
 `;
 const ProductInfo = (props) => {
   const { product } = props;
-  const getTags = product?.tags?.map((item) => item.value || {});
+  const getTags = product.map((item) =>
+    item?.tags.map((item) => item?.value || {})
+  );
   return (
     <>
       <WrapperInfo>
@@ -45,16 +48,20 @@ const ProductInfo = (props) => {
             </Link>
           )} */}
           <PTags>{getTags?.join(", ") || ""}</PTags>
-          <ProductHeading
-            content={product?.title || product?.collection?.title}
-            lineHeight="2.5rem"
-          />
-          <PDescription>
-            {ReactHtmlParser(
-              product?.collection?.metadata?.short_description ||
-                product?.metadata?.short_description
-            )}
-          </PDescription>
+          {product.map((item, index) => (
+            <React.Fragment key={index}>
+              <ProductHeading
+                content={item?.title || item?.collection?.title}
+                lineHeight="2.5rem"
+              />
+              <PDescription>
+                {ReactHtmlParser(
+                  item?.collection?.metadata?.short_description ||
+                    item?.metadata?.short_description
+                )}
+              </PDescription>
+            </React.Fragment>
+          ))}
           {/**Select Size */}
           {/* {product?.product?.variants?.length > 0 && (
                         <Box className="selectSize">
