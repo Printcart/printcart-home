@@ -91,7 +91,10 @@ const LoginForm = (props) => {
       </form>
       <StyleCreateAccount>
         Not registered?{" "}
-        <a href="https://dashboard.printcart.com/signup" target="_blank">
+        <a
+          href={`${process.env.NEXT_PUBLIC_PRINTCART_DASHBOARD}signup`}
+          target="_blank"
+        >
           Create account
         </a>
       </StyleCreateAccount>

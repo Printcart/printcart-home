@@ -42,6 +42,7 @@ const StyleModal = styled.div`
   &.isFull {
     width: 100vw;
     height: 100vh;
+    border-radius: 0;
   }
 `;
 
