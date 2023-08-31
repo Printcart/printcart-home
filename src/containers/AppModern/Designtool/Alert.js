@@ -1,11 +1,14 @@
 import { StyleAlert } from "./pc.style";
 
 const Alert = (props) => {
-  const { status = "success", children } = props;
+  const { status = "primary ", html, children } = props;
 
-  let alertClass = "alert-success";
+  let alertClass = "alert-primary ";
 
   switch (status) {
+    case "primary ":
+      alertClass = "alert-primary ";
+      break;
     case "success":
       alertClass = "alert-success";
       break;
@@ -20,12 +23,13 @@ const Alert = (props) => {
   }
 
   const markupChildren = {
-    __html: children,
+    __html: html,
   };
 
   return (
     <StyleAlert role="alert" className={alertClass}>
-      <span dangerouslySetInnerHTML={markupChildren} />
+      {html && <span dangerouslySetInnerHTML={markupChildren} />}
+      {children}
     </StyleAlert>
   );
 };

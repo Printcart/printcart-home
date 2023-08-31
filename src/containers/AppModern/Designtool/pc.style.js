@@ -154,6 +154,11 @@ export const StyleAlert = styled.div`
   border-radius: 6px;
   border-width: 1px;
   border-style: solid;
+  &.alert-primary {
+    background-color: #cfe2ff;
+    color: #052c65;
+    border-color: #9ec5fe;
+  }
   &.alert-success {
     background-color: #d1e7dd;
     color: #0a3622;
@@ -172,13 +177,15 @@ export const StyleAlert = styled.div`
 `;
 
 export const StyleLoadingWrap = styled.div`
-  margin-bottom: 12px;
+  margin: 12px 0;
 `;
 
 export const StyleStoreList = styled.div`
-  padding-top: 1rem;
+  max-height: 450px;
+  overflow-y: auto;
+  padding: 0.5rem 0;
   grid-gap: 1rem;
-  gap: 1rem;
+  gap: 0.5rem;
   display: grid;
 `;
 export const StyleStore = styled.button`
@@ -199,4 +206,38 @@ export const StyleStore = styled.button`
   background-color: #f1f5f9;
   box-shadow: inset 0 1px 0 rgba(249, 250, 251, 0.15),
     0 1px 1px rgba(0, 0, 0, 0.075);
+`;
+
+export const StyleStoreTitle = styled.span`
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5;
+  margin-bottom: 4px;
+`;
+export const StyleInputSearch = styled.input`
+  display: block;
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 31px;
+  color: #334155;
+  background-color: #f9fafb;
+  background-clip: padding-box;
+  border: 0.0625rem solid #cbd5e1;
+  border-radius: 0.25rem;
+`;
+export const StyleStoreDetailWrap = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+export const StyleStoreName = styled.div``;
+export const StyleLogout = styled.a`
+  text-decoration: underline;
+  cursor: pointer;
+  color: #f00;
+`;
+export const StyleCreateStore = styled.div`
+  margin: 12px 0;
 `;

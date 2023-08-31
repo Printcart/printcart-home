@@ -30,7 +30,6 @@ const StyleLoader = styled.div`
 `;
 
 const StyleLoaderLabel = styled.span`
-  text-transform: capitalize;
   color: #6b6b6f;
   font-weight: 500;
 `;

@@ -4,7 +4,13 @@ import Loader from "./Loader";
 import LoginForm from "./LoginForm";
 import Modal from "./Modal";
 import StoreList from "./StoreList";
-import { Button } from "./pc.style";
+import {
+  Button,
+  StyleStoreTitle,
+  StyleStoreDetailWrap,
+  StyleStoreName,
+  StyleLogout,
+} from "./pc.style";
 
 const Authentication = (props) => {
   const { handlerVerify, setAlert } = props;
@@ -15,15 +21,27 @@ const Authentication = (props) => {
   const [sid, setSid] = React.useState(
     typeof window !== "undefined" ? localStorage.getItem("_pc-s") : ""
   );
+  const [store, setStore] = React.useState({});
   const [loading, setLoading] = React.useState({
     active: false,
     label: "Loading...",
   });
 
+  const handlerContinue = () => {
+    handlerVerify(true);
+  };
+
+  const handlerLogout = () => {
+    localStorage.removeItem("_pc-s");
+    localStorage.removeItem("_pc-t");
+    setSid("");
+    setToken("");
+    setStore({});
+    handlerVerify(false);
+  };
+
   React.useEffect(() => {
     const printcartUrl = process.env.NEXT_PUBLIC_PRINTCART_REST_API;
-    const token = localStorage.getItem("_pc-t");
-    const sid = localStorage.getItem("_pc-s");
 
     let headers = {};
 
@@ -46,8 +64,9 @@ const Authentication = (props) => {
       })
         .then((res) => res.json())
         .then((data) => {
+          console.log(data);
           if (data?.data?.unauth_token) {
-            handlerVerify(true);
+            setStore(data.data);
           } else {
             localStorage.removeItem("_pc-s");
             localStorage.removeItem("_pc-t");
@@ -67,7 +86,19 @@ const Authentication = (props) => {
 
   return (
     <>
+      {store?.id && (
+        <Alert>
+          <StyleStoreDetailWrap>
+            <StyleStoreName>
+              <StyleStoreTitle>Store name: </StyleStoreTitle>
+              <span>{store.name}</span>
+            </StyleStoreName>
+            <StyleLogout onClick={handlerLogout}>Logout</StyleLogout>
+          </StyleStoreDetailWrap>
+        </Alert>
+      )}
       {token && <StoreList token={token} handlerVerify={handlerVerify} />}
+      {store?.id && <Button onClick={handlerContinue}>Continue</Button>}
       {!token && <LoginForm setAlert={setAlert} setToken={setToken} />}
     </>
   );
@@ -259,7 +290,7 @@ const Designtool = (props) => {
             </Modal.Header>
             <Modal.Body>
               {alert.active && alert.mess && (
-                <Alert status={alert.status}>{alert.mess}</Alert>
+                <Alert status={alert.status} html={alert.mess} />
               )}
               {loading.active && <Loader label={loading.label} />}
               {!verify && (
