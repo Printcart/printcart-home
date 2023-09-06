@@ -71,6 +71,12 @@ const StyleButonClose = styled.button`
     right: 100%;
     left: 20px;
   }
+  &.iConFull {
+    top: 0;
+    right: 2px;
+    background-color: transparent;
+    color: #fff;
+  }
 `;
 
 const StyleModalBody = styled.div`
@@ -104,6 +110,19 @@ const StyleModalFooter = styled.div`
   padding-bottom: 16px;
 `;
 
+const StyleModalHeaderWithouTitle = styled.div`
+  height: 34px;
+  width: 100%;
+  border-bottom: 1px solid #e3e4e5;
+  background-color: #424dc6;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  color: #fff;
+  font-weight: 500;
+  padding-left: 10px;
+`;
+
 const Header = (props) => {
   const { children } = props;
 
@@ -123,7 +142,7 @@ const Body = (props) => {
 };
 
 const Modal = (props) => {
-  const { show, onClose, children, isFullScreen, showClose } = props;
+  const { show, onClose, children, isFullScreen, titleFullScreen = "" } = props;
   const [isBrowser, setIsBrowser] = React.useState(show);
   const modalRef = React.useRef(null);
 
@@ -167,16 +186,19 @@ const Modal = (props) => {
   const modalContent = (
     <StyleModalOverlay>
       <StyleModal ref={modalRef} className={isFullScreen ? "isFull" : ""}>
-        {showClose && (
-          <StyleButonClose
-            className={isFullScreen ? "iConLeft" : ""}
-            onClick={(e) => {
-              setIsBrowser(false);
-              onClose && onClose(e);
-            }}
-          >
-            <IconClose />
-          </StyleButonClose>
+        <StyleButonClose
+          className={isFullScreen ? "iConFull" : ""}
+          onClick={(e) => {
+            setIsBrowser(false);
+            onClose && onClose(e);
+          }}
+        >
+          <IconClose />
+        </StyleButonClose>
+        {isFullScreen && (
+          <StyleModalHeaderWithouTitle>
+            {titleFullScreen}
+          </StyleModalHeaderWithouTitle>
         )}
         {children}
       </StyleModal>

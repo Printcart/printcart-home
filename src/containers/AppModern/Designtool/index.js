@@ -277,7 +277,7 @@ const Designtool = (props) => {
       <Button onClick={() => handlerShow(true)}>Start Selling</Button>
       <Modal
         isFullScreen={activeTool}
-        showClose={!activeTool}
+        titleFullScreen="Create design"
         show={show}
         onClose={() => handlerShow(false)}
       >
@@ -285,7 +285,7 @@ const Designtool = (props) => {
           <>
             <Modal.Header>
               {!loading.active
-                ? "Authentication Printcart dashboard"
+                ? "Please log-in to your store"
                 : "Creating product"}
             </Modal.Header>
             <Modal.Body>
