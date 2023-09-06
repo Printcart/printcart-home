@@ -200,6 +200,7 @@ const Designtool = (props) => {
               active: true,
             });
           }
+          setVerify(true);
         });
     }
   };
@@ -238,6 +239,7 @@ const Designtool = (props) => {
             allowed_file_types: product.allowed_file_types,
             enable_design: product.enable_design,
             enable_upload: product.enable_upload,
+            enable_pod: true,
             max_file_upload: product.max_file_upload,
             min_jpg_dpi: product.min_jpg_dpi,
           };
