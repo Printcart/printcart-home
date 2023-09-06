@@ -16,7 +16,7 @@ export default function CustomApp({ Component, pageProps }) {
     <Modal>
       <iframe
         id="chatco_popup"
-        src="https://club.cmsmart.net/tool/popup_chat.php?integrity=zUG421pvjBDS5Bcjf4Pj"
+        src="https://api.cloodo.com/v1/popup_chat/?integrity=zUG421pvjBDS5Bcjf4Pj"
         width="0"
         height="0"
       ></iframe>
