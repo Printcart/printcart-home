@@ -166,6 +166,9 @@ const Modal = (props) => {
     } else {
       document.body.style.overflow = "unset";
     }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
 
     // const handleOutsideClick = (e) => {
     //   if (modalRef.current && !modalRef.current.contains(e.target)) {
