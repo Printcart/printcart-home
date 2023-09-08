@@ -80,6 +80,7 @@ const LoginForm = (props) => {
           <Input
             inputType="password"
             label="Your Password"
+            passwordShowHide={true}
             iconPosition="right"
             isMaterial={true}
             className="password_input"

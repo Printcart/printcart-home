@@ -24,7 +24,8 @@ const Input = ({
   });
 
   // toggle function
-  const handleToggle = () => {
+  const handleToggle = (e) => {
+    e.preventDefault();
     setState({
       ...state,
       toggle: !state.toggle,

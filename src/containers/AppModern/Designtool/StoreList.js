@@ -158,7 +158,7 @@ const StoreList = (props) => {
           ))}
         </StyleStoreList>
       )}
-      {loading.active && !storeList?.length && (
+      {!loading.active && !storeList?.length && (
         <StyleCreateStore>
           There are no stores.{" "}
           <a
