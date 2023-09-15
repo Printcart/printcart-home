@@ -160,6 +160,15 @@ const InfoCollection = (props) => {
   const formatInsoleLength = collection?.metadata?.insoleLength;
   const insoleLength = formatInsoleLength?.split(",");
 
+  const formatBustSize = collection?.metadata?.bustSize;
+  const bustSize = formatBustSize?.split(",");
+
+  const formatWaistSize = collection?.metadata?.waistSize;
+  const waistSize = formatWaistSize?.split(",");
+
+  const formatHipSize = collection?.metadata?.hipSize;
+  const hipSize = formatHipSize?.split(",");
+
   const features = [
     {
       media: `${collection?.metadata?.icon1 ?? ""}`,
@@ -384,6 +393,36 @@ const InfoCollection = (props) => {
                         <tr>
                           <td className="pcTitle">Insole Length</td>
                           {insoleLength?.map((items, index) => (
+                            <td className="value" key={index}>
+                              {items}
+                            </td>
+                          ))}
+                        </tr>
+                      )}
+                      {bustSize?.length > 0 && (
+                        <tr>
+                          <td className="pcTitle">Bust</td>
+                          {bustSize?.map((items, index) => (
+                            <td className="value" key={index}>
+                              {items}
+                            </td>
+                          ))}
+                        </tr>
+                      )}
+                      {waistSize?.length > 0 && (
+                        <tr>
+                          <td className="pcTitle">Waist</td>
+                          {waistSize?.map((items, index) => (
+                            <td className="value" key={index}>
+                              {items}
+                            </td>
+                          ))}
+                        </tr>
+                      )}
+                      {hipSize?.length > 0 && (
+                        <tr>
+                          <td className="pcTitle">Hip</td>
+                          {hipSize?.map((items, index) => (
                             <td className="value" key={index}>
                               {items}
                             </td>
