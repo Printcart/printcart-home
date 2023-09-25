@@ -64,7 +64,6 @@ const Authentication = (props) => {
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
           if (data?.data?.unauth_token) {
             setStore(data.data);
           } else {
@@ -205,67 +204,103 @@ const Designtool = (props) => {
     }
   };
 
-  const postImageFromUrl = async (imageUrl, fileName) => {
+  const postBatchImageFromUrl = async (images) => {
     const headers = getHeader(false);
+    const fetchImage = async (url, name, alt) => {
+      const res = await fetch(url);
+      const blob = await res.blob();
+      const file = new File([blob], name, { type: blob.type });
+      const formData = new FormData();
+      formData.append("file", file, name);
+      formData.append("alt", alt);
 
-    const res = await fetch(imageUrl);
-    const blob = await res.blob();
-    const file = new File([blob], fileName, { type: blob.type });
-    const formData = new FormData();
-    formData.append("file", file, fileName);
-
-    const resImage = await fetch(`${printcartUrl}images`, {
-      method: "POST",
-      headers,
-      body: formData,
+      const resImage = await fetch(`${printcartUrl}images`, {
+        method: "POST",
+        headers,
+        body: formData,
+      });
+      return await resImage.json();
+    };
+    let promises = [];
+    images.forEach((image) => {
+      const imageUrl = image.url;
+      const imageName = image.name;
+      const alt = image.alt;
+      promises.push(fetchImage(imageUrl, imageName, alt));
     });
-    return await resImage.json();
+
+    return await Promise.all(promises);
   };
 
-  React.useEffect(() => {
-    const handlerFinished = async (event) => {
-      if (event.data && event.data.message === "finishProcess") {
-        if (event?.data?.data?.data && event?.data?.data?.data[0]) {
-          const designs = event.data.data.data[0];
-          const product = designs?.product;
-          const productImage = designs?.preview_image.url;
-          const productImageName = designs?.preview_image.name;
-          const productForm = {
-            name: product.name,
-            dynamic_side: product.dynamic_side,
-            dpi: product.dpi,
-            dimension_unit: product.dimension_unit,
-            status: product.status,
-            allowed_file_types: product.allowed_file_types,
-            enable_design: product.enable_design,
-            enable_upload: product.enable_upload,
-            enable_pod: true,
-            max_file_upload: product.max_file_upload,
-            min_jpg_dpi: product.min_jpg_dpi,
-          };
-          if (productImage && productImageName) {
-            setActiveTool(false);
-            setLoading({
-              active: true,
-              label: "Creating product image...",
+  const handlerFinished = async (event) => {
+    if (!event) return;
+    if (event.data && event.data.message === "finishProcess") {
+      if (event?.data?.data?.data) {
+        const designs = event.data.data.data;
+        const designImages = [];
+        let firstDesign = true;
+        let productForm = null;
+        designs.forEach((design) => {
+          const product = design?.product;
+          designImages.push({
+            name: design?.preview_image.name,
+            url: design?.preview_image.url,
+            alt: design?.side.name,
+          });
+          if (firstDesign) {
+            productForm = {
+              name: product.name,
+              dynamic_side: product.dynamic_side,
+              dpi: product.dpi,
+              dimension_unit: product.dimension_unit,
+              status: product.status,
+              allowed_file_types: product.allowed_file_types,
+              enable_design: product.enable_design,
+              enable_upload: product.enable_upload,
+              enable_pod: true,
+              max_file_upload: product.max_file_upload,
+              min_jpg_dpi: product.min_jpg_dpi,
+            };
+            firstDesign = false;
+          }
+        });
+        if (productForm && designImages.length > 0) {
+          setActiveTool(false);
+          setLoading({
+            active: true,
+            label: "Creating product image...",
+          });
+          const productImage = await postBatchImageFromUrl(designImages);
+
+          if (productImage.length > 0) {
+            let firstImage = true;
+            const productGallery = [];
+            productImage.forEach((img) => {
+              if (firstImage && img?.data?.id) {
+                productForm["product_image_id"] = img.data.id;
+                firstImage = false;
+              } else if (img?.data?.id) {
+                productGallery.push(img.data.id);
+              }
             });
-            const image = await postImageFromUrl(
-              productImage,
-              productImageName
-            );
-            if (image?.data?.id) {
-              productForm["product_image_id"] = image.data.id;
-              createProduct(productForm);
+            if (productGallery.length > 0) {
+              productForm["image_gallery_ids"] = productGallery;
             }
+
+            createProduct(productForm);
           }
         }
       }
-    };
-    const handlerClose = (event) => {
-      if (event.data && event.data.message === messageClose) {
-        handlerShow(false);
-      }
-    };
+    }
+  };
+
+  const handlerClose = (event) => {
+    if (event.data && event.data.message === messageClose) {
+      handlerShow(false);
+    }
+  };
+
+  React.useEffect(() => {
     window.addEventListener("message", handlerFinished, false);
     window.addEventListener("message", handlerClose, false);
     return () => {
