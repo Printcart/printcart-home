@@ -189,7 +189,7 @@ const Designtool = (props) => {
           if (data?.data?.id) {
             setAlert({
               status: "success",
-              mess: `Created product successfully <a href="${process.env.NEXT_PUBLIC_PRINTCART_DASHBOARD}product/${data.data.id}" target="_blank">View product</a>`,
+              mess: `Created product successfully <a href="${process.env.NEXT_PUBLIC_PRINTCART_DASHBOARD}pod-product/${data.data.id}" target="_blank">View product</a>`,
               active: true,
             });
           } else {
