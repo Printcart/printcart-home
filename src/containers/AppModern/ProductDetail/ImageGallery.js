@@ -2,6 +2,7 @@ import Box from "common/components/Box";
 import Image from "common/components/Image";
 import React, { useState } from "react";
 import styled from "styled-components";
+import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
 
 const WrappImage = styled(Box)`
   position: relative;
@@ -30,7 +31,7 @@ const ThumbnailCarousel = styled(Box)`
   min-height: 54px;
 `;
 
-const ListItems = styled(Box)`
+const ListItems = styled("div")`
   flex-direction: column;
   overflow-x: hidden;
   scroll-snap-type: y mandatory;
@@ -48,7 +49,7 @@ const ThumbnailItem = styled(Box)`
   height: 20%;
   min-width: 0;
   width: calc(64px + 8px);
-  padding: 4px 0;
+  padding: -4px 0;
   display: block;
   overflow: hidden;
   scroll-snap-align: start;
@@ -77,6 +78,28 @@ const ButtonChange = styled.button`
   height: 3.5rem;
   position: relative;
   cursor: pointer;
+`;
+
+const ButtonChangeArrow = styled.button`
+  &:hover {
+    background-color: #f1efef;
+    border-color: #c4c7c8;
+    transition: 0.7s;
+    padding: 0.5rem;
+    border-radius: 50%;
+  }
+  overflow-x: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background: none;
+  position: relative;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  margin: auto;
+  border-radius: 50%;
 `;
 const ThumbnailImages = styled(Image)`
   position: absolute;
@@ -173,13 +196,90 @@ const MainImage = (props) => {
 const ImageGallery = (props) => {
   const { product } = props;
   const [indexImage, setIndexImage] = useState(0);
+
+  const refListItems = React.useRef(null);
+
+  //Make scroll to Top in thumbnail
+  const scrollUp = () => {
+    if (refListItems.current) {
+      const listHeight = refListItems.current.offsetHeight;
+      const remainingScroll = refListItems.current.scrollTop;
+
+      if (remainingScroll === 0) {
+        // Scroll to bottom when clicking at the minimum size
+        const scrollHeight = refListItems.current.scrollHeight;
+        refListItems.current.scrollTo({
+          top: scrollHeight,
+          behavior: "smooth",
+        });
+      } else {
+        animateScroll(refListItems.current, remainingScroll - listHeight);
+      }
+    }
+  };
+
+  //Make scroll to Down in thumbnail
+  const scrollDown = () => {
+    if (refListItems.current) {
+      const listHeight = refListItems.current.offsetHeight;
+      const remainingScroll =
+        refListItems.current.scrollHeight -
+        refListItems.current.scrollTop -
+        listHeight;
+
+      if (remainingScroll === 0) {
+        // Scroll to top when clicking at the maximum size
+        refListItems.current.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      } else {
+        animateScroll(
+          refListItems.current,
+          refListItems.current.scrollTop + listHeight
+        );
+      }
+    }
+  };
+
+  //Create smooth slider scroll animation
+  const animateScroll = (element, targetScrollPosition) => {
+    const startScrollPosition = element.scrollTop;
+    const distance = targetScrollPosition - startScrollPosition;
+    const duration = 10;
+    const startTime = performance.now();
+
+    const scrollStep = (timestamp) => {
+      const elapsed = timestamp - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const easing = easeOutCubic(progress);
+      const scrollTop = startScrollPosition + distance * easing;
+
+      element.scrollTop = scrollTop;
+
+      if (elapsed < duration) {
+        requestAnimationFrame(scrollStep);
+      }
+    };
+
+    requestAnimationFrame(scrollStep);
+  };
+
+  //Create easing function
+  const easeOutCubic = (progress) => {
+    return 1 - Math.pow(1 - progress, 3);
+  };
+
   return (
     <>
       <WrappImage>
         <Container>
           <ThumbnailImage>
+            <ButtonChangeArrow onClick={scrollUp}>
+              <IoIosArrowUp size={"1.15rem"} />
+            </ButtonChangeArrow>
             <ThumbnailCarousel>
-              <ListItems>
+              <ListItems ref={refListItems}>
                 <NavbarImage
                   product={product}
                   setIndexImage={setIndexImage}
@@ -187,6 +287,9 @@ const ImageGallery = (props) => {
                 />
               </ListItems>
             </ThumbnailCarousel>
+            <ButtonChangeArrow onClick={scrollDown}>
+              <IoIosArrowDown size={"1.15rem"} />
+            </ButtonChangeArrow>
           </ThumbnailImage>
           <ImageWrap>
             <MainImage product={product} indexImage={indexImage} />
