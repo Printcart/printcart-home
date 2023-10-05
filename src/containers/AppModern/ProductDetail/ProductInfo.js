@@ -22,11 +22,6 @@ const ProductHeading = styled(Heading)`
 const PDescription = styled.p`
   margin-top: 0px;
   color: #444;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
 `;
 const PTags = styled.p`
   color: #9fa4a5;
