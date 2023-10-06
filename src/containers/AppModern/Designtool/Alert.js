@@ -1,13 +1,13 @@
 import { StyleAlert } from "./pc.style";
 
 const Alert = (props) => {
-  const { status = "primary ", html, children } = props;
+  const { status = "primary", html, children } = props;
 
-  let alertClass = "alert-primary ";
+  let alertClass = "alert-primary";
 
   switch (status) {
-    case "primary ":
-      alertClass = "alert-primary ";
+    case "primary":
+      alertClass = "alert-primary";
       break;
     case "success":
       alertClass = "alert-success";
