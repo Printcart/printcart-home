@@ -176,7 +176,7 @@ const MainImage = (props) => {
   const { product, indexImage } = props;
   return (
     <>
-      <ImageBig src={product[0]?.thumbnail} />
+      <ImageBig src={product[0]?.thumbnail} alt="Thumbnail" />
       {product.map(
         (item) =>
           item?.images?.map((image, index) => (
