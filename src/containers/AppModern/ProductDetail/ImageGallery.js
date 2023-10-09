@@ -194,6 +194,14 @@ const ImageGallery = (props) => {
   const [indexImage, setIndexImage] = useState(0);
 
   const refListItems = React.useRef(null);
+  const [showArrows, setShowArrows] = useState(true);
+
+  //Check if the product not have scroll
+  React.useEffect(() => {
+    if (product && product.length > 0) {
+      setShowArrows(product[0]?.images?.length > 4);
+    }
+  }, [product]);
 
   //Make scroll to Top in thumbnail
   const scrollUp = () => {
@@ -271,9 +279,11 @@ const ImageGallery = (props) => {
       <WrappImage>
         <Container>
           <ThumbnailImage>
-            <ButtonChangeArrow onClick={scrollUp}>
-              <IoIosArrowUp size={"1.2rem"} />
-            </ButtonChangeArrow>
+            {showArrows && (
+              <ButtonChangeArrow onClick={scrollDown}>
+                <IoIosArrowUp size={"1.2rem"} />
+              </ButtonChangeArrow>
+            )}
             <ThumbnailCarousel>
               <ListItems ref={refListItems}>
                 <NavbarImage
@@ -283,9 +293,11 @@ const ImageGallery = (props) => {
                 />
               </ListItems>
             </ThumbnailCarousel>
-            <ButtonChangeArrow onClick={scrollDown}>
-              <IoIosArrowDown size={"1.2rem"} />
-            </ButtonChangeArrow>
+            {showArrows && (
+              <ButtonChangeArrow onClick={scrollDown}>
+                <IoIosArrowDown size={"1.2rem"} />
+              </ButtonChangeArrow>
+            )}
           </ThumbnailImage>
           <ImageWrap>
             <MainImage product={product} indexImage={indexImage} />
