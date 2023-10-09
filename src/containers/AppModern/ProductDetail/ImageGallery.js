@@ -85,8 +85,7 @@ const ButtonChangeArrow = styled.button`
     background-color: #f1efef;
     border-color: #c4c7c8;
     transition: 0.7s;
-    padding: 0.5rem;
-    border-radius: 50%;
+    border-radius: 20%;
   }
   overflow-x: hidden;
   display: flex;
@@ -96,10 +95,7 @@ const ButtonChangeArrow = styled.button`
   background: none;
   position: relative;
   cursor: pointer;
-  width: 40px;
-  height: 40px;
   margin: auto;
-  border-radius: 50%;
 `;
 const ThumbnailImages = styled(Image)`
   position: absolute;
@@ -276,7 +272,7 @@ const ImageGallery = (props) => {
         <Container>
           <ThumbnailImage>
             <ButtonChangeArrow onClick={scrollUp}>
-              <IoIosArrowUp size={"1.15rem"} />
+              <IoIosArrowUp size={"1.2rem"} />
             </ButtonChangeArrow>
             <ThumbnailCarousel>
               <ListItems ref={refListItems}>
@@ -288,7 +284,7 @@ const ImageGallery = (props) => {
               </ListItems>
             </ThumbnailCarousel>
             <ButtonChangeArrow onClick={scrollDown}>
-              <IoIosArrowDown size={"1.15rem"} />
+              <IoIosArrowDown size={"1.2rem"} />
             </ButtonChangeArrow>
           </ThumbnailImage>
           <ImageWrap>
