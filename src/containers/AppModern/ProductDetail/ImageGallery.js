@@ -199,7 +199,7 @@ const ImageGallery = (props) => {
   //Check if the product not have scroll
   React.useEffect(() => {
     if (product && product.length > 0) {
-      setShowArrows(product[0]?.images?.length > 4);
+      setShowArrows(product[0]?.images?.length > 5);
     }
   }, [product]);
 
