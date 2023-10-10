@@ -11,11 +11,21 @@ const WrappImage = styled(Box)`
   box-sizing: border-box;
   flex: 0 0 60%;
   max-width: 60%;
+  @media (max-width: 768px) {  
+    flex: 1 0 100%;
+    max-width : 100%;
+  }
 `;
 const Container = styled(Box)`
   align-items: center;
   display: flex;
   flex-wrap: wrap;
+
+  @media (max-width: 768px) {
+    flex-direction : column;
+    flex-wrap: nowrap;
+    align-items: stretch;
+  }
 `;
 const ThumbnailImage = styled(Box)`
   position: relative;
@@ -23,12 +33,23 @@ const ThumbnailImage = styled(Box)`
   flex: 0 0 auto;
   width: auto;
   max-width: none;
+  @media (max-width: 768px) {
+    
+    
+  }
 `;
 const ThumbnailCarousel = styled(Box)`
   height: 424px;
   position: relative;
   display: block;
   min-height: 54px;
+
+  @media (max-width: 768px) {
+    width:100%;
+    height: 220px;
+    diplay:flex;
+    scroll-behavior:smooth;
+  }
 `;
 
 const ListItems = styled("div")`
@@ -43,6 +64,11 @@ const ListItems = styled("div")`
   list-style: none;
   scroll-behavior: smooth;
   align-items: flex-start;
+
+  @media (max-width: 768px) {
+    flex-direction: row;
+    overflow-x: scroll;
+  }
 `;
 const ThumbnailItem = styled(Box)`
   flex: 0 0 20%;
@@ -57,6 +83,10 @@ const ThumbnailItem = styled(Box)`
   max-width: 100%;
   box-sizing: border-box;
   min-height: 1px;
+  @media (max-width: 768px) {
+    height: 100%;
+    flex: 0 0 30%;
+  }
 `;
 const ThumbnailItemInner = styled(Box)`
   height: 100%;
@@ -69,6 +99,9 @@ const ThumbnailItemInner = styled(Box)`
   overflow: hidden;
   &.active {
     border: 3px solid #424dc6;
+  }
+  @media (max-width: 768px) {
+    height: 100%;
   }
 `;
 
@@ -96,6 +129,28 @@ const ButtonChangeArrow = styled.button`
   position: relative;
   cursor: pointer;
   margin: auto;
+  @media (max-width: 768px) {
+  position: absolute;
+  top: 0;
+  transform: rotate(-90deg);
+  top: 40%;
+  right: 0;
+  border-radius: 20%;
+  background-color: #fff;
+  }
+`;
+
+const IoIosArrow = styled(IoIosArrowDown)`
+  transform: rotate(-180deg);
+  @media (max-width: 768px) {
+    left: 0;
+  }
+`;
+
+const IosArrowDown = styled(IoIosArrowDown)`
+  @media (max-width: 768px) {
+    right:0;
+  }
 `;
 const ThumbnailImages = styled(Image)`
   position: absolute;
@@ -104,6 +159,9 @@ const ThumbnailImages = styled(Image)`
   transform: translate(-50%, -50%);
   max-width: 100%;
   width: 100%;
+  @media (max-width: 768px) {
+    height:100%;
+  }
 `;
 const ImageWrap = styled(Box)`
   margin-left: 2rem;
@@ -116,6 +174,10 @@ const ImageWrap = styled(Box)`
   flex-direction: column;
   flex: 1 1 0%;
   display: flex;
+  @media (max-width: 768px) {
+    max-width: 100%;
+    
+  }
 `;
 const WrapBigImage = styled(Box)`
   position: relative;
@@ -124,6 +186,9 @@ const WrapBigImage = styled(Box)`
   overflow: hidden;
   &.active {
     display: block;
+  }
+  @media (max-width: 768px) {
+    padding-top: 0%;
   }
 `;
 const ImageBig = styled(Image)`
@@ -142,6 +207,9 @@ const ImageBig = styled(Image)`
   min-height: 100%;
   max-height: 100%;
   object-fit: contain;
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const NavbarImage = (props) => {
@@ -279,9 +347,9 @@ const ImageGallery = (props) => {
       <WrappImage>
         <Container>
           <ThumbnailImage>
-            {showArrows && (
-              <ButtonChangeArrow onClick={scrollDown}>
-                <IoIosArrowUp size={"1.2rem"} />
+          {showArrows && (
+              <ButtonChangeArrow onClick={scrollUp}>
+                <IoIosArrow size={"1.2rem"} />
               </ButtonChangeArrow>
             )}
             <ThumbnailCarousel>
@@ -295,7 +363,7 @@ const ImageGallery = (props) => {
             </ThumbnailCarousel>
             {showArrows && (
               <ButtonChangeArrow onClick={scrollDown}>
-                <IoIosArrowDown size={"1.2rem"} />
+                <IosArrowDown size={"1.2rem"} />
               </ButtonChangeArrow>
             )}
           </ThumbnailImage>

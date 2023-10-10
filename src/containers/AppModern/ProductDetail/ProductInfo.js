@@ -18,6 +18,9 @@ const ProductHeading = styled(Heading)`
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
+  @media(max-width: 768px){
+    font-size: 1.5rem;
+  }
 `;
 const PDescription = styled.p`
   margin-top: 0px;
