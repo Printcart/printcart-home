@@ -3,7 +3,7 @@ import Image from "common/components/Image";
 import React, { useState } from "react";
 import styled from "styled-components";
 import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
-
+import { useMediaQuery } from "react-responsive";
 const WrappImage = styled(Box)`
   position: relative;
   max-width: fit-content;
@@ -83,7 +83,11 @@ const ThumbnailItem = styled(Box)`
   min-height: 1px;
   @media (max-width: 768px) {
     height: 100%;
-    flex: 0 0 30%;
+    flex: 0 0 calc(100% / 3);
+  }
+  @media (max-width: 600px){
+    height: 100%;
+    flex: 0 0 50%;
   }
 `;
 const ThumbnailItemInner = styled(Box)`
@@ -111,7 +115,7 @@ const ButtonChange = styled.button`
   cursor: pointer;
 `;
 
-const ButtonChangeArrow = styled.button`
+const ButtonChangeArrowUp = styled.button`
   &:hover {
     background-color: #f1efef;
     border-color: #c4c7c8;
@@ -129,25 +133,39 @@ const ButtonChangeArrow = styled.button`
   margin: auto;
   @media (max-width: 768px) {
     position: absolute;
-    top: 0;
-    transform: rotate(-90deg);
-    top: 40%;
-    right: 0;
+    transform: translateY(-50%) rotate(-90deg);
     border-radius: 20%;
+    top: 50%;
+    left: 0;
+    z-index: 1;
     background-color: #fff;
   }
 `;
 
-const IoIosArrow = styled(IoIosArrowDown)`
-  transform: rotate(-180deg);
-  @media (max-width: 768px) {
-    left: 0;
+const ButtonChangeArrowDown = styled.button`
+  &:hover {
+    background-color: #f1efef;
+    border-color: #c4c7c8;
+    transition: 0.7s;
+    border-radius: 20%;
   }
-`;
-
-const IosArrowDown = styled(IoIosArrowDown)`
+  overflow-x: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background: none;
+  position: relative;
+  cursor: pointer;
+  margin: auto;
   @media (max-width: 768px) {
+    position: absolute;
+    transform: translateY(-50%) rotate(-90deg);
+    border-radius: 20%;
+    top: 50%;
     right: 0;
+    z-index: 1;
+    background-color: #fff;
   }
 `;
 const ThumbnailImages = styled(Image)`
@@ -210,7 +228,7 @@ const ImageBig = styled(Image)`
 `;
 
 const NavbarImage = (props) => {
-  const { images, setIndexImage, indexImage } = props;
+  const { images, setIndexImage, indexImage, refListItems } = props;
 
   return (
     <ThumbnailCarousel>
@@ -254,13 +272,16 @@ const MainImage = (props) => {
 const ImageGallery = (props) => {
   const { product } = props;
 
-  const [indexImage, setIndexImage] = useState(0);
-
   const refListItems = React.useRef(null);
 
-  const [showArrows, setShowArrows] = useState(true);
+  const [indexImage, setIndexImage] = useState(0);
 
   const images = product[0]?.images || [];
+
+  const isMobile = useMediaQuery({ query: `(max-width: 768px)` });
+
+  const showArrows =
+    product && product.length > 0 && images?.length > 5 ? true : isMobile;
 
   const easeOutCubic = (progress) => {
     return 1 - Math.pow(1 - progress, 3);
@@ -268,38 +289,38 @@ const ImageGallery = (props) => {
 
   const scrollUp = () => {
     if (refListItems?.current) {
-      const listHeight = refListItems.current.offsetHeight;
-      const remainingScroll = refListItems.current.scrollTop;
+      const listHeight = refListItems?.current.offsetHeight;
+      const remainingScroll = refListItems?.current.scrollTop;
 
       if (remainingScroll === 0) {
-        const scrollHeight = refListItems.current.scrollHeight;
-        refListItems.current.scrollTo({
+        const scrollHeight = refListItems?.current.scrollHeight;
+        refListItems?.current.scrollTo({
           top: scrollHeight,
           behavior: "smooth",
         });
       } else {
-        animateScroll(refListItems.current, remainingScroll - listHeight);
+        animateScroll(refListItems?.current, remainingScroll - listHeight);
       }
     }
   };
 
   const scrollDown = () => {
     if (refListItems?.current) {
-      const listHeight = refListItems.current.offsetHeight;
+      const listHeight = refListItems?.current.offsetHeight;
       const remainingScroll =
-        refListItems.current.scrollHeight -
-        refListItems.current.scrollTop -
+        refListItems?.current.scrollHeight -
+        refListItems?.current.scrollTop -
         listHeight;
 
       if (remainingScroll === 0) {
-        refListItems.current.scrollTo({
+        refListItems?.current.scrollTo({
           top: 0,
           behavior: "smooth",
         });
       } else {
         animateScroll(
-          refListItems.current,
-          refListItems.current.scrollTop + listHeight
+          refListItems?.current,
+          refListItems?.current.scrollTop + listHeight
         );
       }
     }
@@ -327,31 +348,26 @@ const ImageGallery = (props) => {
     requestAnimationFrame(scrollStep);
   };
 
-  React.useEffect(() => {
-    if (product && product.length > 0) {
-      setShowArrows(product[0]?.images?.length > 1);
-    }
-  }, [product]);
-
   return (
     <>
       <WrappImage>
         <Container>
           <ThumbnailImage>
             {showArrows && (
-              <ButtonChangeArrow onClick={scrollUp}>
-                <IoIosArrow size={"1.2rem"} />
-              </ButtonChangeArrow>
+              <ButtonChangeArrowUp onClick={scrollUp}>
+                <IoIosArrowUp size={"1.2rem"} />
+              </ButtonChangeArrowUp>
             )}
             <NavbarImage
               images={images}
               setIndexImage={setIndexImage}
               indexImage={indexImage}
+              refListItems={refListItems}
             />
             {showArrows && (
-              <ButtonChangeArrow onClick={scrollDown}>
-                <IosArrowDown size={"1.2rem"} />
-              </ButtonChangeArrow>
+              <ButtonChangeArrowDown onClick={scrollDown}>
+                <IoIosArrowDown size={"1.2rem"} />
+              </ButtonChangeArrowDown>
             )}
           </ThumbnailImage>
           <ImageWrap>
