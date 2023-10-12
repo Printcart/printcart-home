@@ -11,9 +11,9 @@ const WrappImage = styled(Box)`
   box-sizing: border-box;
   flex: 0 0 60%;
   max-width: 60%;
-  @media (max-width: 768px) {  
+  @media (max-width: 768px) {
     flex: 1 0 100%;
-    max-width : 100%;
+    max-width: 100%;
   }
 `;
 const Container = styled(Box)`
@@ -22,7 +22,7 @@ const Container = styled(Box)`
   flex-wrap: wrap;
 
   @media (max-width: 768px) {
-    flex-direction : column;
+    flex-direction: column;
     flex-wrap: nowrap;
     align-items: stretch;
   }
@@ -34,8 +34,6 @@ const ThumbnailImage = styled(Box)`
   width: auto;
   max-width: none;
   @media (max-width: 768px) {
-    
-    
   }
 `;
 const ThumbnailCarousel = styled(Box)`
@@ -45,10 +43,10 @@ const ThumbnailCarousel = styled(Box)`
   min-height: 54px;
 
   @media (max-width: 768px) {
-    width:100%;
+    width: 100%;
     height: 220px;
-    diplay:flex;
-    scroll-behavior:smooth;
+    diplay: flex;
+    scroll-behavior: smooth;
   }
 `;
 
@@ -130,13 +128,13 @@ const ButtonChangeArrow = styled.button`
   cursor: pointer;
   margin: auto;
   @media (max-width: 768px) {
-  position: absolute;
-  top: 0;
-  transform: rotate(-90deg);
-  top: 40%;
-  right: 0;
-  border-radius: 20%;
-  background-color: #fff;
+    position: absolute;
+    top: 0;
+    transform: rotate(-90deg);
+    top: 40%;
+    right: 0;
+    border-radius: 20%;
+    background-color: #fff;
   }
 `;
 
@@ -149,7 +147,7 @@ const IoIosArrow = styled(IoIosArrowDown)`
 
 const IosArrowDown = styled(IoIosArrowDown)`
   @media (max-width: 768px) {
-    right:0;
+    right: 0;
   }
 `;
 const ThumbnailImages = styled(Image)`
@@ -160,7 +158,7 @@ const ThumbnailImages = styled(Image)`
   max-width: 100%;
   width: 100%;
   @media (max-width: 768px) {
-    height:100%;
+    height: 100%;
   }
 `;
 const ImageWrap = styled(Box)`
@@ -176,7 +174,6 @@ const ImageWrap = styled(Box)`
   display: flex;
   @media (max-width: 768px) {
     max-width: 100%;
-    
   }
 `;
 const WrapBigImage = styled(Box)`
@@ -213,72 +210,68 @@ const ImageBig = styled(Image)`
 `;
 
 const NavbarImage = (props) => {
-  const { product, setIndexImage, indexImage } = props;
+  const { images, setIndexImage, indexImage } = props;
+
   return (
-    <>
-      {product.map(
-        (item) =>
-          item?.images?.map((image, index) => (
-            <React.Fragment key={index}>
-              <ThumbnailItem>
-                <ThumbnailItemInner
-                  className={`item ${index === indexImage ? "active" : ""}`}
-                >
-                  <picture onClick={() => setIndexImage(index)}>
-                    <ThumbnailImages src={image?.url || ""} alt="Thumbnail" />
-                  </picture>
-                </ThumbnailItemInner>
-              </ThumbnailItem>
-            </React.Fragment>
-          )) || ""
-      )}
-    </>
+    <ThumbnailCarousel>
+      <ListItems ref={refListItems}>
+        {images.map((image, index) => (
+          <React.Fragment key={index}>
+            <ThumbnailItem>
+              <ThumbnailItemInner
+                className={`item ${index === indexImage ? "active" : ""}`}
+              >
+                <picture onClick={() => setIndexImage(index)}>
+                  <ThumbnailImages src={image?.url || ""} alt="Thumbnail" />
+                </picture>
+              </ThumbnailItemInner>
+            </ThumbnailItem>
+          </React.Fragment>
+        ))}
+      </ListItems>
+    </ThumbnailCarousel>
   );
 };
 
 const MainImage = (props) => {
-  const { product, indexImage } = props;
+  const { images, indexImage } = props;
+
   return (
     <>
-      <ImageBig src={product[0]?.thumbnail} alt="Thumbnail" />
-      {product.map(
-        (item) =>
-          item?.images?.map((image, index) => (
-            <React.Fragment key={index}>
-              <WrapBigImage
-                className={`item ${index === indexImage ? "active" : ""}`}
-              >
-                <ImageBig src={image?.url || ""} alt="Image Product" />
-              </WrapBigImage>
-            </React.Fragment>
-          )) || ""
-      )}
+      {images.map((image, index) => (
+        <React.Fragment key={index}>
+          <WrapBigImage
+            className={`item ${index === indexImage ? "active" : ""}`}
+          >
+            <ImageBig src={image?.url || ""} alt="Image Product" />
+          </WrapBigImage>
+        </React.Fragment>
+      ))}
     </>
   );
 };
 
 const ImageGallery = (props) => {
   const { product } = props;
+
   const [indexImage, setIndexImage] = useState(0);
 
   const refListItems = React.useRef(null);
+
   const [showArrows, setShowArrows] = useState(true);
 
-  //Check if the product not have scroll
-  React.useEffect(() => {
-    if (product && product.length > 0) {
-      setShowArrows(product[0]?.images?.length > 5);
-    }
-  }, [product]);
+  const images = product[0]?.images || [];
 
-  //Make scroll to Top in thumbnail
+  const easeOutCubic = (progress) => {
+    return 1 - Math.pow(1 - progress, 3);
+  };
+
   const scrollUp = () => {
-    if (refListItems.current) {
+    if (refListItems?.current) {
       const listHeight = refListItems.current.offsetHeight;
       const remainingScroll = refListItems.current.scrollTop;
 
       if (remainingScroll === 0) {
-        // Scroll to bottom when clicking at the minimum size
         const scrollHeight = refListItems.current.scrollHeight;
         refListItems.current.scrollTo({
           top: scrollHeight,
@@ -290,9 +283,8 @@ const ImageGallery = (props) => {
     }
   };
 
-  //Make scroll to Down in thumbnail
   const scrollDown = () => {
-    if (refListItems.current) {
+    if (refListItems?.current) {
       const listHeight = refListItems.current.offsetHeight;
       const remainingScroll =
         refListItems.current.scrollHeight -
@@ -300,7 +292,6 @@ const ImageGallery = (props) => {
         listHeight;
 
       if (remainingScroll === 0) {
-        // Scroll to top when clicking at the maximum size
         refListItems.current.scrollTo({
           top: 0,
           behavior: "smooth",
@@ -314,9 +305,8 @@ const ImageGallery = (props) => {
     }
   };
 
-  //Create smooth slider scroll animation
   const animateScroll = (element, targetScrollPosition) => {
-    const startScrollPosition = element.scrollTop;
+    const startScrollPosition = element?.scrollTop || 0;
     const distance = targetScrollPosition - startScrollPosition;
     const duration = 10;
     const startTime = performance.now();
@@ -337,30 +327,27 @@ const ImageGallery = (props) => {
     requestAnimationFrame(scrollStep);
   };
 
-  //Create easing function
-  const easeOutCubic = (progress) => {
-    return 1 - Math.pow(1 - progress, 3);
-  };
+  React.useEffect(() => {
+    if (product && product.length > 0) {
+      setShowArrows(product[0]?.images?.length > 1);
+    }
+  }, [product]);
 
   return (
     <>
       <WrappImage>
         <Container>
           <ThumbnailImage>
-          {showArrows && (
+            {showArrows && (
               <ButtonChangeArrow onClick={scrollUp}>
                 <IoIosArrow size={"1.2rem"} />
               </ButtonChangeArrow>
             )}
-            <ThumbnailCarousel>
-              <ListItems ref={refListItems}>
-                <NavbarImage
-                  product={product}
-                  setIndexImage={setIndexImage}
-                  indexImage={indexImage}
-                />
-              </ListItems>
-            </ThumbnailCarousel>
+            <NavbarImage
+              images={images}
+              setIndexImage={setIndexImage}
+              indexImage={indexImage}
+            />
             {showArrows && (
               <ButtonChangeArrow onClick={scrollDown}>
                 <IosArrowDown size={"1.2rem"} />
@@ -368,7 +355,7 @@ const ImageGallery = (props) => {
             )}
           </ThumbnailImage>
           <ImageWrap>
-            <MainImage product={product} indexImage={indexImage} />
+            <MainImage images={images} indexImage={indexImage} />
           </ImageWrap>
         </Container>
       </WrappImage>
