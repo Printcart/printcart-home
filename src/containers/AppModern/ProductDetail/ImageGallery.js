@@ -85,7 +85,7 @@ const ThumbnailItem = styled(Box)`
     height: 100%;
     flex: 0 0 calc(100% / 3);
   }
-  @media (max-width: 600px){
+  @media (max-width: 600px) {
     height: 100%;
     flex: 0 0 50%;
   }
@@ -326,6 +326,41 @@ const ImageGallery = (props) => {
     }
   };
 
+  const scrollLeft = () => {
+    if (refListItems?.current) {
+      if (refListItems.current.scrollLeft === 0) {
+        const scrollWidth = refListItems?.current.scrollWidth;
+        refListItems?.current.scrollTo({
+          left: scrollWidth,
+          behavior: "smooth",
+        });
+      } else {
+        animateScrollMobile(
+          refListItems.current,
+          refListItems.current.scrollLeft - refListItems.current.offsetWidth
+        );
+      }
+    }
+  };
+
+  const scrollRight = () => {
+    if (refListItems?.current) {
+      const listWidth = refListItems?.current.offsetWidth;
+      const remainingScroll = refListItems?.current.scrollWidth - listWidth;
+      if (refListItems.current.scrollLeft === remainingScroll) {
+        refListItems?.current.scrollTo({
+          left: 0,
+          behavior: "smooth",
+        });
+      } else {
+        animateScrollMobile(
+          refListItems.current,
+          refListItems.current.scrollLeft + refListItems.current.offsetWidth
+        );
+      }
+    }
+  };
+
   const animateScroll = (element, targetScrollPosition) => {
     const startScrollPosition = element?.scrollTop || 0;
     const distance = targetScrollPosition - startScrollPosition;
@@ -337,7 +372,6 @@ const ImageGallery = (props) => {
       const progress = Math.min(elapsed / duration, 1);
       const easing = easeOutCubic(progress);
       const scrollTop = startScrollPosition + distance * easing;
-
       element.scrollTop = scrollTop;
 
       if (elapsed < duration) {
@@ -348,27 +382,58 @@ const ImageGallery = (props) => {
     requestAnimationFrame(scrollStep);
   };
 
+  const animateScrollMobile = (element, targetScrollPosition) => {
+    const startScrollPosition = element?.scrollLeft || 0;
+    const distance = targetScrollPosition - startScrollPosition;
+    const duration = 10;
+    const startTime = performance.now();
+
+    const scrollStep = (timestamp) => {
+      const elapsed = timestamp - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const easing = easeOutCubic(progress);
+      const scrollLeft = startScrollPosition + distance * easing;
+
+      element.scrollLeft = scrollLeft;
+
+      if (elapsed < duration) {
+        requestAnimationFrame(scrollStep);
+      }
+    };
+
+    requestAnimationFrame(scrollStep);
+  };
   return (
     <>
       <WrappImage>
         <Container>
           <ThumbnailImage>
-            {showArrows && (
-              <ButtonChangeArrowUp onClick={scrollUp}>
-                <IoIosArrowUp size={"1.2rem"} />
-              </ButtonChangeArrowUp>
-            )}
+            {showArrows &&
+              (isMobile ? (
+                <ButtonChangeArrowUp onClick={scrollLeft}>
+                  <IoIosArrowUp size={"1.2rem"} />
+                </ButtonChangeArrowUp>
+              ) : (
+                <ButtonChangeArrowUp onClick={scrollUp}>
+                  <IoIosArrowUp size={"1.2rem"} />
+                </ButtonChangeArrowUp>
+              ))}
             <NavbarImage
               images={images}
               setIndexImage={setIndexImage}
               indexImage={indexImage}
               refListItems={refListItems}
             />
-            {showArrows && (
-              <ButtonChangeArrowDown onClick={scrollDown}>
-                <IoIosArrowDown size={"1.2rem"} />
-              </ButtonChangeArrowDown>
-            )}
+            {showArrows &&
+              (isMobile ? (
+                <ButtonChangeArrowDown onClick={scrollRight}>
+                  <IoIosArrowDown size={"1.2rem"} />
+                </ButtonChangeArrowDown>
+              ) : (
+                <ButtonChangeArrowDown onClick={scrollDown}>
+                  <IoIosArrowDown size={"1.2rem"} />
+                </ButtonChangeArrowDown>
+              ))}
           </ThumbnailImage>
           <ImageWrap>
             <MainImage images={images} indexImage={indexImage} />
