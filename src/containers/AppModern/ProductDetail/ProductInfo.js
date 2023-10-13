@@ -10,6 +10,10 @@ const WrapperInfo = styled(Box)`
   box-sizing: border-box;
   flex: 0 0 40%;
   max-width: 40%;
+  @media only screen and (max-width: 768px) {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
 `;
 const ProductHeading = styled(Heading)`
   font-size: 2em;
@@ -18,7 +22,7 @@ const ProductHeading = styled(Heading)`
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
-  @media(max-width: 768px){
+  @media (max-width: 768px) {
     font-size: 1.5rem;
   }
 `;
@@ -30,6 +34,9 @@ const PDescription = styled.p`
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
+  @media only screen and (max-width: 768px) {
+    overflow: unset;
+  }
 `;
 const PTags = styled.p`
   color: #9fa4a5;

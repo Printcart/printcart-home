@@ -26,6 +26,10 @@ export const Breadcrumb = styled.div`
     @media only screen and (max-width: 1200px) {
       margin-left: 125px;
     }
+
+    @media only screen and (max-width: 599px) {
+      margin-left: 60px;
+    }
   }
 `;
 
