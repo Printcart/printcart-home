@@ -269,95 +269,85 @@ const MainImage = (props) => {
   );
 };
 
-const ImageGallery = (props) => {
-  const { product } = props;
-
-  const refListItems = React.useRef(null);
-
-  const [indexImage, setIndexImage] = useState(0);
+const ThumbnailSlider = (props) => {
+  const { product, setIndexImage, indexImage, refListItems } = props;
 
   const images = product[0]?.images || [];
 
   const isMobile = useMediaQuery({ query: `(max-width: 768px)` });
 
   const showArrows =
-    product && product.length > 0 && images?.length > 5 ? true : isMobile && product && product.length > 0 && images?.length > 2;
+    product && product.length > 0 && images?.length > 5
+      ? true
+      : isMobile && product && product.length > 0 && images?.length > 2;
 
-  const easeOutCubic = (progress) => {
-    return 1 - Math.pow(1 - progress, 3);
-  };
+  const handleScroll = (direction) => {
+    const element = refListItems.current;
 
-  const scrollUp = () => {
-    if (refListItems?.current) {
-      const listHeight = refListItems?.current.offsetHeight;
-      const remainingScroll = refListItems?.current.scrollTop;
+    if (!element) return;
 
-      if (remainingScroll === 0) {
-        const scrollHeight = refListItems?.current.scrollHeight;
-        refListItems?.current.scrollTo({
-          top: scrollHeight,
-          behavior: "smooth",
-        });
-      } else {
-        animateScroll(refListItems?.current, remainingScroll - listHeight);
-      }
-    }
-  };
+    const listHeight = element.offsetHeight;
+    const listWidth = element.offsetWidth;
 
-  const scrollDown = () => {
-    if (refListItems?.current) {
-      const listHeight = refListItems?.current.offsetHeight;
-      const remainingScroll =
-        refListItems?.current.scrollHeight -
-        refListItems?.current.scrollTop -
-        listHeight;
+    switch (direction) {
+      case "up":
+        const remainingScrollUp = element.scrollTop;
 
-      if (remainingScroll === 0) {
-        refListItems?.current.scrollTo({
-          top: 0,
-          behavior: "smooth",
-        });
-      } else {
-        animateScroll(
-          refListItems?.current,
-          refListItems?.current.scrollTop + listHeight
-        );
-      }
-    }
-  };
+        if (remainingScrollUp === 0) {
+          const scrollHeight = element.scrollHeight;
+          element.scrollTo({
+            top: scrollHeight,
+            behavior: "smooth",
+          });
+        } else {
+          animateScroll(element, element.scrollTop - listHeight);
+        }
+        break;
 
-  const scrollLeft = () => {
-    if (refListItems?.current) {
-      if (refListItems.current.scrollLeft === 0) {
-        const scrollWidth = refListItems?.current.scrollWidth;
-        refListItems?.current.scrollTo({
-          left: scrollWidth,
-          behavior: "smooth",
-        });
-      } else {
-        animateScrollMobile(
-          refListItems.current,
-          refListItems.current.scrollLeft - refListItems.current.offsetWidth
-        );
-      }
-    }
-  };
+      case "down":
+        const remainingScrollDown =
+          element.scrollHeight - element.scrollTop - listHeight;
 
-  const scrollRight = () => {
-    if (refListItems?.current) {
-      const listWidth = refListItems?.current.offsetWidth;
-      const remainingScroll = refListItems?.current.scrollWidth - listWidth;
-      if (refListItems.current.scrollLeft === remainingScroll) {
-        refListItems?.current.scrollTo({
-          left: 0,
-          behavior: "smooth",
-        });
-      } else {
-        animateScrollMobile(
-          refListItems.current,
-          refListItems.current.scrollLeft + refListItems.current.offsetWidth
-        );
-      }
+        if (remainingScrollDown === 0) {
+          element.scrollTo({
+            top: 0,
+            behavior: "smooth",
+          });
+        } else {
+          animateScroll(element, element.scrollTop + listHeight);
+        }
+        break;
+
+      case "left":
+        const remainingScrollLeft = element.scrollLeft;
+
+        if (remainingScrollLeft === 0) {
+          const scrollWidth = element.scrollWidth;
+          element.scrollTo({
+            left: scrollWidth,
+            behavior: "smooth",
+          });
+        } else {
+          animateScrollMobile(element, element.scrollLeft - listWidth);
+        }
+        break;
+
+      case "right":
+        const remainingScrollRight =
+          element.scrollWidth - element.scrollLeft - listWidth;
+
+        if (remainingScrollRight === 0) {
+          element.scrollTo({
+            left: 0,
+            behavior: "smooth",
+          });
+        } else {
+          animateScrollMobile(element, element.scrollLeft + listWidth);
+        }
+        break;
+
+      default:
+        break;
     }
   };
 
@@ -366,6 +356,10 @@ const ImageGallery = (props) => {
     const distance = targetScrollPosition - startScrollPosition;
     const duration = 10;
     const startTime = performance.now();
+
+    const easeOutCubic = (progress) => {
+      return 1 - Math.pow(1 - progress, 3);
+    };
 
     const scrollStep = (timestamp) => {
       const elapsed = timestamp - startTime;
@@ -388,6 +382,10 @@ const ImageGallery = (props) => {
     const duration = 10;
     const startTime = performance.now();
 
+    const easeOutCubic = (progress) => {
+      return 1 - Math.pow(1 - progress, 3);
+    };
+
     const scrollStep = (timestamp) => {
       const elapsed = timestamp - startTime;
       const progress = Math.min(elapsed / duration, 1);
@@ -404,37 +402,58 @@ const ImageGallery = (props) => {
     requestAnimationFrame(scrollStep);
   };
   return (
+    <ThumbnailImage>
+      {showArrows &&
+        (isMobile ? (
+          <ButtonChangeArrowUp onClick={() => handleScroll("left")}>
+            <IoIosArrowUp size={"1.2rem"} />
+          </ButtonChangeArrowUp>
+        ) : (
+          <ButtonChangeArrowUp onClick={() => handleScroll("up")}>
+            <IoIosArrowUp size={"1.2rem"} />
+          </ButtonChangeArrowUp>
+        ))}
+
+      <NavbarImage
+        images={images}
+        setIndexImage={setIndexImage}
+        indexImage={indexImage}
+        refListItems={refListItems}
+      />
+      {showArrows &&
+        (isMobile ? (
+          <ButtonChangeArrowDown onClick={() => handleScroll("right")}>
+            <IoIosArrowDown size={"1.2rem"} />
+          </ButtonChangeArrowDown>
+        ) : (
+          <ButtonChangeArrowDown onClick={() => handleScroll("down")}>
+            <IoIosArrowDown size={"1.2rem"} />
+          </ButtonChangeArrowDown>
+        ))}
+    </ThumbnailImage>
+  );
+};
+
+const ImageGallery = (props) => {
+  const { product } = props;
+
+  const refListItems = React.useRef(null);
+
+  const [indexImage, setIndexImage] = useState(0);
+
+  const images = product[0]?.images || [];
+
+  return (
     <>
       <WrappImage>
         <Container>
-          <ThumbnailImage>
-            {showArrows &&
-              (isMobile ? (
-                <ButtonChangeArrowUp onClick={scrollLeft}>
-                  <IoIosArrowUp size={"1.2rem"} />
-                </ButtonChangeArrowUp>
-              ) : (
-                <ButtonChangeArrowUp onClick={scrollUp}>
-                  <IoIosArrowUp size={"1.2rem"} />
-                </ButtonChangeArrowUp>
-              ))}
-            <NavbarImage
-              images={images}
-              setIndexImage={setIndexImage}
-              indexImage={indexImage}
-              refListItems={refListItems}
-            />
-            {showArrows &&
-              (isMobile ? (
-                <ButtonChangeArrowDown onClick={scrollRight}>
-                  <IoIosArrowDown size={"1.2rem"} />
-                </ButtonChangeArrowDown>
-              ) : (
-                <ButtonChangeArrowDown onClick={scrollDown}>
-                  <IoIosArrowDown size={"1.2rem"} />
-                </ButtonChangeArrowDown>
-              ))}
-          </ThumbnailImage>
+          <ThumbnailSlider
+            product={product}
+            images={images}
+            setIndexImage={setIndexImage}
+            indexImage={indexImage}
+            refListItems={refListItems}
+          ></ThumbnailSlider>
           <ImageWrap>
             <MainImage images={images} indexImage={indexImage} />
           </ImageWrap>
