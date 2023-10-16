@@ -282,72 +282,55 @@ const ThumbnailSlider = (props) => {
       : isMobile && product && product.length > 0 && images?.length > 2;
 
   const handleScroll = (direction) => {
-    const element = refListItems.current;
-
-    if (!element) return;
-
+    const element = refListItems?.current;
     const listHeight = element.offsetHeight;
     const listWidth = element.offsetWidth;
 
+    let remainingScroll;
+    let scrollToValue;
+    let animateScrollValue;
+
     switch (direction) {
       case "up":
-        const remainingScrollUp = element.scrollTop;
-
-        if (remainingScrollUp === 0) {
-          const scrollHeight = element.scrollHeight;
-          element.scrollTo({
-            top: scrollHeight,
-            behavior: "smooth",
-          });
-        } else {
-          animateScroll(element, element.scrollTop - listHeight);
-        }
+        remainingScroll = element.scrollTop;
+        scrollToValue = element.scrollHeight;
+        animateScrollValue = element.scrollTop - listHeight;
         break;
 
       case "down":
-        const remainingScrollDown =
-          element.scrollHeight - element.scrollTop - listHeight;
-
-        if (remainingScrollDown === 0) {
-          element.scrollTo({
-            top: 0,
-            behavior: "smooth",
-          });
-        } else {
-          animateScroll(element, element.scrollTop + listHeight);
-        }
+        remainingScroll = element.scrollHeight - element.scrollTop - listHeight;
+        scrollToValue = 0;
+        animateScrollValue = element.scrollTop + listHeight;
         break;
 
       case "left":
-        const remainingScrollLeft = element.scrollLeft;
-
-        if (remainingScrollLeft === 0) {
-          const scrollWidth = element.scrollWidth;
-          element.scrollTo({
-            left: scrollWidth,
-            behavior: "smooth",
-          });
-        } else {
-          animateScrollMobile(element, element.scrollLeft - listWidth);
-        }
+        remainingScroll = element.scrollLeft;
+        scrollToValue = element.scrollWidth;
+        animateScrollValue = element.scrollLeft - listWidth;
         break;
 
       case "right":
-        const remainingScrollRight =
-          element.scrollWidth - element.scrollLeft - listWidth;
-
-        if (remainingScrollRight === 0) {
-          element.scrollTo({
-            left: 0,
-            behavior: "smooth",
-          });
-        } else {
-          animateScrollMobile(element, element.scrollLeft + listWidth);
-        }
+        remainingScroll = element.scrollWidth - element.scrollLeft - listWidth;
+        scrollToValue = 0;
+        animateScrollValue = element.scrollLeft + listWidth;
         break;
 
       default:
         break;
+    }
+
+    if (remainingScroll === 0) {
+      element.scrollTo({
+        top: scrollToValue,
+        left: scrollToValue,
+        behavior: "smooth",
+      });
+    } else {
+      if (direction === "left" || direction === "right") {
+        animateScrollMobile(element, animateScrollValue);
+      } else {
+        animateScroll(element, animateScrollValue);
+      }
     }
   };
 
@@ -403,16 +386,13 @@ const ThumbnailSlider = (props) => {
   };
   return (
     <ThumbnailImage>
-      {showArrows &&
-        (isMobile ? (
-          <ButtonChangeArrowUp onClick={() => handleScroll("left")}>
-            <IoIosArrowUp size={"1.2rem"} />
-          </ButtonChangeArrowUp>
-        ) : (
-          <ButtonChangeArrowUp onClick={() => handleScroll("up")}>
-            <IoIosArrowUp size={"1.2rem"} />
-          </ButtonChangeArrowUp>
-        ))}
+      {showArrows && (
+        <ButtonChangeArrowUp
+          onClick={() => handleScroll(isMobile ? "left" : "up")}
+        >
+          <IoIosArrowUp size={"1.2rem"} />
+        </ButtonChangeArrowUp>
+      )}
 
       <NavbarImage
         images={images}
@@ -420,16 +400,13 @@ const ThumbnailSlider = (props) => {
         indexImage={indexImage}
         refListItems={refListItems}
       />
-      {showArrows &&
-        (isMobile ? (
-          <ButtonChangeArrowDown onClick={() => handleScroll("right")}>
-            <IoIosArrowDown size={"1.2rem"} />
-          </ButtonChangeArrowDown>
-        ) : (
-          <ButtonChangeArrowDown onClick={() => handleScroll("down")}>
-            <IoIosArrowDown size={"1.2rem"} />
-          </ButtonChangeArrowDown>
-        ))}
+      {showArrows && (
+        <ButtonChangeArrowDown
+          onClick={() => handleScroll(isMobile ? "right" : "down")}
+        >
+          <IoIosArrowDown size={"1.2rem"} />
+        </ButtonChangeArrowDown>
+      )}
     </ThumbnailImage>
   );
 };
