@@ -277,9 +277,38 @@ const ThumbnailSlider = (props) => {
   const isMobile = useMediaQuery({ query: `(max-width: 768px)` });
 
   const showArrows =
-    product && product.length > 0 && images?.length > 5
-      ? true
-      : isMobile && product && product.length > 0 && images?.length > 2;
+    (product && product.length > 0 && images.length > 5) ||
+    (isMobile && product && product.length > 0 && images.length > 2);
+
+  const easeOutCubic = (progress) => 1 - Math.pow(1 - progress, 3);
+
+  const animateScroll = (
+    element,
+    targetScrollPosition,
+    isMobile,
+    duration = 10
+  ) => {
+    const startScrollPosition = isMobile
+      ? element.scrollLeft || 0
+      : element.scrollTop || 0;
+    const distance = targetScrollPosition - startScrollPosition;
+    const startTime = performance.now();
+
+    const scrollStep = (timestamp) => {
+      const elapsed = timestamp - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const easing = easeOutCubic(progress);
+      isMobile
+        ? element.scrollTo({ left: startScrollPosition + distance * easing })
+        : element.scrollTo({ top: startScrollPosition + distance * easing });
+
+      if (progress < 1) {
+        requestAnimationFrame(scrollStep);
+      }
+    };
+
+    requestAnimationFrame(scrollStep);
+  };
 
   const handleScroll = (direction) => {
     const element = refListItems?.current;
@@ -292,6 +321,7 @@ const ThumbnailSlider = (props) => {
     let remainingScroll = 0;
     let scrollToValue = 0;
     let animateScrollValue = 0;
+    let isMobile = true;
 
     switch (direction) {
       case "up":
@@ -329,61 +359,10 @@ const ThumbnailSlider = (props) => {
         behavior: "smooth",
       });
     } else if (direction === "left" || direction === "right") {
-      animateScrollMobile(element, animateScrollValue);
+      animateScroll(element, animateScrollValue, isMobile);
     } else {
       animateScroll(element, animateScrollValue);
     }
-  };
-
-  const animateScroll = (element, targetScrollPosition) => {
-    const startScrollPosition = element?.scrollTop || 0;
-    const distance = targetScrollPosition - startScrollPosition;
-    const duration = 10;
-    const startTime = performance.now();
-
-    const easeOutCubic = (progress) => {
-      return 1 - Math.pow(1 - progress, 3);
-    };
-
-    const scrollStep = (timestamp) => {
-      const elapsed = timestamp - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      const easing = easeOutCubic(progress);
-      const scrollTop = startScrollPosition + distance * easing;
-      element.scrollTop = scrollTop;
-
-      if (elapsed < duration) {
-        requestAnimationFrame(scrollStep);
-      }
-    };
-
-    requestAnimationFrame(scrollStep);
-  };
-
-  const animateScrollMobile = (element, targetScrollPosition) => {
-    const startScrollPosition = element?.scrollLeft || 0;
-    const distance = targetScrollPosition - startScrollPosition;
-    const duration = 10;
-    const startTime = performance.now();
-
-    const easeOutCubic = (progress) => {
-      return 1 - Math.pow(1 - progress, 3);
-    };
-
-    const scrollStep = (timestamp) => {
-      const elapsed = timestamp - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      const easing = easeOutCubic(progress);
-      const scrollLeft = startScrollPosition + distance * easing;
-
-      element.scrollLeft = scrollLeft;
-
-      if (elapsed < duration) {
-        requestAnimationFrame(scrollStep);
-      }
-    };
-
-    requestAnimationFrame(scrollStep);
   };
   return (
     <ThumbnailImage>
