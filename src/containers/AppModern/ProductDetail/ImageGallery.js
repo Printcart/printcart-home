@@ -281,7 +281,7 @@ const ImageGallery = (props) => {
   const isMobile = useMediaQuery({ query: `(max-width: 768px)` });
 
   const showArrows =
-    product && product.length > 0 && images?.length > 5 ? true : isMobile;
+    product && product.length > 0 && images?.length > 5 ? true : isMobile && product && product.length > 0 && images?.length > 2;
 
   const easeOutCubic = (progress) => {
     return 1 - Math.pow(1 - progress, 3);
