@@ -283,12 +283,15 @@ const ThumbnailSlider = (props) => {
 
   const handleScroll = (direction) => {
     const element = refListItems?.current;
+
+    if (!element) return;
+
     const listHeight = element.offsetHeight;
     const listWidth = element.offsetWidth;
 
-    let remainingScroll;
-    let scrollToValue;
-    let animateScrollValue;
+    let remainingScroll = 0;
+    let scrollToValue = 0;
+    let animateScrollValue = 0;
 
     switch (direction) {
       case "up":
@@ -325,12 +328,10 @@ const ThumbnailSlider = (props) => {
         left: scrollToValue,
         behavior: "smooth",
       });
+    } else if (direction === "left" || direction === "right") {
+      animateScrollMobile(element, animateScrollValue);
     } else {
-      if (direction === "left" || direction === "right") {
-        animateScrollMobile(element, animateScrollValue);
-      } else {
-        animateScroll(element, animateScrollValue);
-      }
+      animateScroll(element, animateScrollValue);
     }
   };
 
