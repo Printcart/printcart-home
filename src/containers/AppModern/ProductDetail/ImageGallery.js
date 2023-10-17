@@ -274,9 +274,9 @@ const ThumbnailSlider = (props) => {
 
   const isMobile = useMediaQuery({ query: `(max-width: 768px)` });
 
-  const showArrowsMobile = isMobile && images.length > 0 && images.length > 2;
+  const showArrowsMobile = isMobile && images?.length > 0 && images?.length > 2;
 
-  const showArrowsDesktop = images.length > 0 && images.length > 5;
+  const showArrowsDesktop = images?.length > 0 && images?.length > 5;
 
   const showArrows = showArrowsMobile || showArrowsDesktop;
 
@@ -314,32 +314,32 @@ const ThumbnailSlider = (props) => {
     const listHeight = element?.offsetHeight || 0;
     const listWidth = element?.offsetWidth || 0;
 
+    const scrollTop = element?.scrollTop || 0;
+    const scrollLeft = element?.scrollLeft || 0;
+    const scrollHeight = element?.scrollHeight || 0;
+    const scrollWidth = element?.scrollWidth || 0;
+
     let remainingScroll = 0;
     let scrollToValue = 0;
     let animateScrollValue = 0;
 
-    const scrollToTop = element.scrollTop || 0;
-    const scrollToLeft = element.scrollLeft || 0;
-    const scrollToHeight = element.scrollHeight || 0;
-    const scrollToWidth = element.scrollWidth || 0;
-
     switch (direction) {
       case "up":
-        remainingScroll = scrollToTop;
-        scrollToValue = scrollToHeight;
-        animateScrollValue = scrollToTop - remainingScroll;
+        remainingScroll = scrollTop;
+        scrollToValue = scrollHeight;
+        animateScrollValue = scrollTop - remainingScroll;
         break;
 
       case "down":
-        remainingScroll = scrollToHeight - scrollToTop - listHeight;
+        remainingScroll = scrollHeight - scrollTop - listHeight;
         scrollToValue = 0;
-        animateScrollValue = scrollToTop + listHeight;
+        animateScrollValue = scrollTop + listHeight;
         break;
 
       case "left":
-        remainingScroll = scrollToLeft;
-        scrollToValue = scrollToWidth;
-        animateScrollValue = scrollToLeft - listWidth;
+        remainingScroll = scrollLeft;
+        scrollToValue = scrollWidth;
+        animateScrollValue = scrollLeft - listWidth;
         break;
 
       case "right":
