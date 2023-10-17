@@ -270,26 +270,23 @@ const MainImage = (props) => {
 };
 
 const ThumbnailSlider = (props) => {
-  const { product, setIndexImage, indexImage, refListItems } = props;
-
-  const images = product[0]?.images || [];
+  const { images, setIndexImage, indexImage, refListItems } = props;
 
   const isMobile = useMediaQuery({ query: `(max-width: 768px)` });
 
-  const showArrows =
-    (product && product.length > 0 && images.length > 5) ||
-    (isMobile && product && product.length > 0 && images.length > 2);
+  const showArrowsMobile = isMobile && images.length > 0 && images.length > 2;
+
+  const showArrowsDesktop = images.length > 0 && images.length > 5;
+
+  const showArrows = showArrowsMobile || showArrowsDesktop;
 
   const easeOutCubic = (progress) => 1 - Math.pow(1 - progress, 3);
 
-  const animateScroll = (
-    element,
-    targetScrollPosition,
-    duration = 10
-  ) => {
-    const startScrollPosition = isMobile
-      ? element.scrollLeft || 0
-      : element.scrollTop || 0;
+  const animateScroll = (element, targetScrollPosition, duration = 10) => {
+    const scrollLeft = element.scrollLeft || 0;
+    const scrollTop = element.scrollTop || 0;
+    const startScrollPosition = isMobile ? scrollLeft : scrollTop;
+
     const distance = targetScrollPosition - startScrollPosition;
     const startTime = performance.now();
 
@@ -314,36 +311,41 @@ const ThumbnailSlider = (props) => {
 
     if (!element) return;
 
-    const listHeight = element.offsetHeight;
-    const listWidth = element.offsetWidth;
+    const listHeight = element?.offsetHeight || 0;
+    const listWidth = element?.offsetWidth || 0;
 
     let remainingScroll = 0;
     let scrollToValue = 0;
     let animateScrollValue = 0;
 
+    const scrollToTop = element.scrollTop || 0;
+    const scrollToLeft = element.scrollLeft || 0;
+    const scrollToHeight = element.scrollHeight || 0;
+    const scrollToWidth = element.scrollWidth || 0;
+
     switch (direction) {
       case "up":
-        remainingScroll = element.scrollTop;
-        scrollToValue = element.scrollHeight;
-        animateScrollValue = element.scrollTop - listHeight;
+        remainingScroll = scrollToTop;
+        scrollToValue = scrollToHeight;
+        animateScrollValue = scrollToTop - remainingScroll;
         break;
 
       case "down":
-        remainingScroll = element.scrollHeight - element.scrollTop - listHeight;
+        remainingScroll = scrollToHeight - scrollToTop - listHeight;
         scrollToValue = 0;
-        animateScrollValue = element.scrollTop + listHeight;
+        animateScrollValue = scrollToTop + listHeight;
         break;
 
       case "left":
-        remainingScroll = element.scrollLeft;
-        scrollToValue = element.scrollWidth;
-        animateScrollValue = element.scrollLeft - listWidth;
+        remainingScroll = scrollToLeft;
+        scrollToValue = scrollToWidth;
+        animateScrollValue = scrollToLeft - listWidth;
         break;
 
       case "right":
-        remainingScroll = element.scrollWidth - element.scrollLeft - listWidth;
+        remainingScroll = scrollToWidth - scrollToLeft - listWidth;
         scrollToValue = 0;
-        animateScrollValue = element.scrollLeft + listWidth;
+        animateScrollValue = scrollToLeft + listWidth;
         break;
 
       default:
@@ -401,7 +403,6 @@ const ImageGallery = (props) => {
       <WrappImage>
         <Container>
           <ThumbnailSlider
-            product={product}
             images={images}
             setIndexImage={setIndexImage}
             indexImage={indexImage}
