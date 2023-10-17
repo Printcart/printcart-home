@@ -343,9 +343,9 @@ const ThumbnailSlider = (props) => {
         break;
 
       case "right":
-        remainingScroll = scrollToWidth - scrollToLeft - listWidth;
+        remainingScroll = scrollWidth - scrollLeft - listWidth;
         scrollToValue = 0;
-        animateScrollValue = scrollToLeft + listWidth;
+        animateScrollValue = scrollLeft + listWidth;
         break;
 
       default:
