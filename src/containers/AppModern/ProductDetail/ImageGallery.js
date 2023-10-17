@@ -285,7 +285,6 @@ const ThumbnailSlider = (props) => {
   const animateScroll = (
     element,
     targetScrollPosition,
-    isMobile,
     duration = 10
   ) => {
     const startScrollPosition = isMobile
@@ -321,7 +320,6 @@ const ThumbnailSlider = (props) => {
     let remainingScroll = 0;
     let scrollToValue = 0;
     let animateScrollValue = 0;
-    let isMobile = true;
 
     switch (direction) {
       case "up":
@@ -358,8 +356,6 @@ const ThumbnailSlider = (props) => {
         left: scrollToValue,
         behavior: "smooth",
       });
-    } else if (direction === "left" || direction === "right") {
-      animateScroll(element, animateScrollValue, isMobile);
     } else {
       animateScroll(element, animateScrollValue);
     }
