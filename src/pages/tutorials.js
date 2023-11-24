@@ -45,9 +45,15 @@ export async function getStaticProps() {
   const baseUrl = process.env.STRAPI_API_URL;
   const setUrl = new URL("posts", baseUrl);
   setUrl.searchParams.set("filters[channels][name][$eq]", "Printcart");
-  setUrl.searchParams.set("populate", "*");
   setUrl.searchParams.set("pagination[pageSize]", "100");
-  const newUrl = setUrl.href;
+  setUrl.searchParams.set("fields[0]", "alias");
+  setUrl.searchParams.set("fields[1]", "title");
+  setUrl.searchParams.set("fields[2]", "createdAt");
+  setUrl.searchParams.set("fields[3]", "short_intro");
+  setUrl.searchParams.set("populate[0]", "user_profile");
+  setUrl.searchParams.set("populate[tags][fields][0]", "name");
+  setUrl.searchParams.set("populate[tags][fields][1]", "alias");
+  const newUrl = setUrl.href
 
   const fetchData = await fetch(newUrl);
   const results = await fetchData.json();
