@@ -50,9 +50,10 @@ export async function getStaticProps() {
   setUrl.searchParams.set("fields[1]", "title");
   setUrl.searchParams.set("fields[2]", "createdAt");
   setUrl.searchParams.set("fields[3]", "short_intro");
-  setUrl.searchParams.set("populate[0]", "user_profile");
+  setUrl.searchParams.set("populate[user_profile]", "*");
   setUrl.searchParams.set("populate[tags][fields][0]", "name");
   setUrl.searchParams.set("populate[tags][fields][1]", "alias");
+  setUrl.searchParams.set("sort[0]", "createdAt:desc");
   const newUrl = setUrl.href
 
   const fetchData = await fetch(newUrl);
