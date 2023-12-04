@@ -18,7 +18,7 @@ import GridPost, {
   LogoAuthor,
   TagBox,
   TimeUser,
-  TitleUser
+  TitleUser,
 } from "./blogPage.style";
 import { useRouter } from "next/router";
 import Pagination from "common/components/Pagination";
@@ -60,7 +60,10 @@ const BlogPage = ({ resPosts, pages }) => {
                   <GridItem key={index}>
                     <ContainerPost>
                       <Box>
-                        <Link href={`/tutorial/${items?.attributes?.alias}`}>
+                        <Link
+                          prefetch={false}
+                          href={`/tutorial/${items?.attributes?.alias}`}
+                        >
                           <a title={`View to ${items?.attributes?.title}`}>
                             <h3 style={{ lineHeight: "1.5", height: "64px" }}>
                               {items?.attributes?.title}
@@ -93,7 +96,7 @@ const BlogPage = ({ resPosts, pages }) => {
                                         height: "100%",
                                         textAlign: "center",
                                         objectFit: "cover",
-                                        textIndent: "10000px"
+                                        textIndent: "10000px",
                                       }}
                                       alt="Avatar"
                                       src={
