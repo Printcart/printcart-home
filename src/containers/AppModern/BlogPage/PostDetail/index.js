@@ -19,7 +19,7 @@ import GridPost, {
   LogoAuthor,
   TagBox,
   TimeUser,
-  TitleUser
+  TitleUser,
 } from "../blogPage.style";
 
 import { ContentWrapper } from "containers/AppModern/appModern.style";
@@ -357,7 +357,7 @@ const PostDetail = (props) => {
                                   height: "100%",
                                   textAlign: "center",
                                   objectFit: "cover",
-                                  textIndent: "10000px"
+                                  textIndent: "10000px",
                                 }}
                                 alt="Avatar"
                                 src={
@@ -400,6 +400,10 @@ const PostDetail = (props) => {
         <WrapContainer>
           <Container>
             <GridBlog>
+              <Image
+                src={postData?.attributes?.banner?.data?.attributes?.url}
+                alt={postData?.attributes?.banner?.data?.attributes?.name}
+              />
               <LeftDesc>
                 {postData?.attributes?.feature_image?.data && (
                   <Image
@@ -459,7 +463,7 @@ const PostDetail = (props) => {
                                           height: "100%",
                                           textAlign: "center",
                                           objectFit: "cover",
-                                          textIndent: "10000px"
+                                          textIndent: "10000px",
                                         }}
                                         alt="Avatar"
                                         src={
