@@ -104,7 +104,14 @@ const Authentication = (props) => {
 };
 
 const Designtool = (props) => {
-  const { productId, apiKeyVendor } = props;
+  const {
+    printcartProductId,
+    apiKeyVendor,
+    productId,
+    shippingOptionId,
+    regionId,
+  } = props;
+
   const printcartUrl = process.env.NEXT_PUBLIC_PRINTCART_REST_API;
   const designtoolUrl = process.env.NEXT_PUBLIC_DESIGNTOOL_URL;
   const messageClose = "closeDesignTool";
@@ -151,7 +158,7 @@ const Designtool = (props) => {
     if (!action) {
       const token = localStorage.getItem("_pc-t");
       const sid = localStorage.getItem("_pc-s");
-      if (token && sid && productId && apiKeyVendor) {
+      if (token && sid && printcartProductId && apiKeyVendor) {
         setActiveTool(true);
       } else {
         setVerify(false);
@@ -234,12 +241,17 @@ const Designtool = (props) => {
 
   const handlerFinished = async (event) => {
     if (!event) return;
+
+    if (event?.data?.return && event?.data?.return !== shippingOptionId) return;
+
     if (event.data && event.data.message === "finishProcess") {
       if (event?.data?.data?.data) {
         const designs = event.data.data.data;
         const designImages = [];
         let firstDesign = true;
         let productForm = null;
+        const designIds = [];
+
         designs.forEach((design) => {
           const product = design?.product;
           designImages.push({
@@ -263,6 +275,7 @@ const Designtool = (props) => {
             };
             firstDesign = false;
           }
+          designIds.push(design.id);
         });
         if (productForm && designImages.length > 0) {
           setActiveTool(false);
@@ -286,6 +299,13 @@ const Designtool = (props) => {
             if (productGallery.length > 0) {
               productForm["image_gallery_ids"] = productGallery;
             }
+            if (designIds.length > 0) {
+              productForm["design_ids"] = designIds;
+              productForm["parent_id"] = printcartProductId;
+              productForm["medusa_product_id"] = productId;
+              productForm["medusa_region_id"] = regionId;
+              productForm["medusa_shipping_option_id"] = shippingOptionId;
+            }
 
             createProduct(productForm);
           }
@@ -301,11 +321,11 @@ const Designtool = (props) => {
   };
 
   React.useEffect(() => {
-    window.addEventListener("message", handlerFinished, false);
-    window.addEventListener("message", handlerClose, false);
+    window.addEventListener(`message`, handlerFinished, false);
+    window.addEventListener(`message`, handlerClose, false);
     return () => {
-      window.removeEventListener("message", handlerFinished);
-      window.removeEventListener("message", handlerClose);
+      window.removeEventListener(`message`, handlerFinished);
+      window.removeEventListener(`message`, handlerClose);
     };
   }, []);
 
@@ -339,7 +359,7 @@ const Designtool = (props) => {
             </Modal.Body>
           </>
         )}
-        {activeTool && apiKeyVendor && productId && (
+        {activeTool && apiKeyVendor && printcartProductId && (
           <iframe
             id="onlinedesigner-designer"
             width="100%"
@@ -349,7 +369,7 @@ const Designtool = (props) => {
             allowFullScreen=""
             mozallowfullscreen="true"
             webkitallowfullscreen="true"
-            src={`${designtoolUrl}?api_key=${apiKeyVendor}&product_id=${productId}&parentUrl=${window.location.origin}&closeEvent=${messageClose}`}
+            src={`${designtoolUrl}?api_key=${apiKeyVendor}&product_id=${printcartProductId}&parentUrl=${window.location.origin}&closeEvent=${messageClose}&return=${shippingOptionId}`}
           />
         )}
       </Modal>

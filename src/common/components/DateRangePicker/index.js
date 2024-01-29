@@ -120,7 +120,7 @@ class DateRangePickerBox extends Component {
     // } else {
     //   moment.locale('en');
     // }
-    // console.log(datePickerPropsOptions, 'datePickerPropsOptions');
+
     return (
       <Fragment>
         <DateRangePickerStyle className={addAllClasses.join(' ')}>

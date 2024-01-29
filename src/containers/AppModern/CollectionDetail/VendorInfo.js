@@ -4,6 +4,7 @@ import Heading from "common/components/Heading";
 import Link from "next/link";
 import Designtool from "../Designtool";
 import styled from "styled-components";
+import "flag-icons/css/flag-icons.min.css";
 
 export const Grid = styled.div`
   display: grid;
@@ -20,6 +21,7 @@ const BoxVendor = styled(Box)`
   border: 1px solid #e3e4e5;
   border-radius: 3px;
   background-color: #f7f7f7;
+  margin-bottom: 10px;
 `;
 const BoxVendorHeader = styled(Box)`
   display: flex;
@@ -173,155 +175,213 @@ const SingleColumn = styled(Box)`
     margin: 0px;
   }
 `;
-const VendorInfo = (props) => {
-  const { data: product } = props;
-  const data = product[0] || {};
+
+const StyledPrice = styled(Box)`
+  display: inline-block;
+`;
+
+const Flag = (props) => {
+  const { countryCode } = props;
+
+  if (!countryCode) return null;
+
+  return (
+    <span
+      className={`fi fi-${countryCode.toLowerCase()}`}
+      title={countryCode}
+    ></span>
+  );
+};
+
+const Price = (props) => {
+  const { price, currency } = props;
+
+  const priceFormat = (price / 100).toFixed(2);
+
+  return (
+    <StyledPrice>
+      From {currency.toUpperCase()} {priceFormat}
+    </StyledPrice>
+  );
+};
+
+const Provider = (props) => {
+  const { data, shippingOption, currency } = props;
   const getVariants = data?.variants?.map((item) => item?.title);
   const getSize = data?.collection?.metadata?.size;
   const showSize = getSize?.split(",");
-  const printAreas = data?.collection?.metadata?.printAreas;
-  const showPrint = printAreas?.split(",");
 
   return (
     <>
-      <ContainerBox>
-        <Box>
-          <BoxVendor>
-            <Grid>
-              <BoxVendorHeader>
-                <HeadingVendor
-                  content={data?.vendor?.store_name}
-                  lineHeight="2rem"
-                  fontWeight="700"
-                  mb="0"
-                />
-              </BoxVendorHeader>
-              <BoxHeaderRight>
-                <BoxButton>
-                  <BtnMoreDetail>
-                    <Link href={`${data?.vendor?.shop_url ?? "#"}`}>
-                      <a
-                        target={`${data?.vendor?.shop_url ? "_blank" : ""}`}
-                        title="Visit Store"
-                      >
-                        Visit Store{" "}
-                      </a>
-                    </Link>
-                  </BtnMoreDetail>
-                </BoxButton>
-                <ContainerDesign>
-                  {data?.printcart_product_uuid && data?.vendor?.api_token && (
-                    <Designtool
-                      productId={data.printcart_product_uuid}
-                      apiKeyVendor={data.vendor.api_token}
-                    />
-                  )}
-                </ContainerDesign>
-              </BoxHeaderRight>
-            </Grid>
-            <ContainerVendor>
+      <BoxVendor>
+        <Grid>
+          <BoxVendorHeader>
+            <HeadingVendor
+              content={data?.vendor?.store_name}
+              lineHeight="2rem"
+              fontWeight="700"
+              mb="0"
+            />
+          </BoxVendorHeader>
+          <BoxHeaderRight>
+            <BoxButton>
+              <BtnMoreDetail>
+                <Link href={`${data?.vendor?.shop_url ?? "#"}`}>
+                  <a
+                    target={`${data?.vendor?.shop_url ? "_blank" : ""}`}
+                    title="Visit Store"
+                  >
+                    Visit Store
+                  </a>
+                </Link>
+              </BtnMoreDetail>
+            </BoxButton>
+            <ContainerDesign>
+              {data?.printcart_product_uuid &&
+                data?.vendor?.api_token &&
+                data?.variants[0]?.id && (
+                  <Designtool
+                    productId={data?.variants[0]?.id}
+                    printcartProductId={data.printcart_product_uuid}
+                    apiKeyVendor={data.vendor.api_token}
+                    shippingOptionId={shippingOption.id}
+                    regionId={shippingOption.region_id}
+                  />
+                )}
+            </ContainerDesign>
+          </BoxHeaderRight>
+        </Grid>
+        <ContainerVendor>
+          <SingleColumn>
+            <HeadingTitle
+              content="Location"
+              mb="8px"
+              lineHeight="1.25rem"
+              fontWeight="400"
+            />
+            <Box>
+              <Flag countryCode={data?.origin_country} />
+            </Box>
+          </SingleColumn>
+          {data?.variants[0]?.prices[0] && (
+            <>
               <SingleColumn>
                 <HeadingTitle
-                  content="Location"
+                  content="Price"
                   mb="8px"
                   lineHeight="1.25rem"
                   fontWeight="400"
                 />
                 <Box>
-                  <p>{data?.origin_country}</p>
-                  {/* <Box>
-                    <Box>Flag</Box>
-                  </Box> */}
+                  <Price
+                    price={data?.variants[0]?.prices[0].amount}
+                    currency={data?.variants[0]?.prices[0].currency_code}
+                  />
+                  <p>{data?.collection?.metadata?.priceBase}</p>
+                  <Box>
+                    <PricePrintcart>
+                      {data?.collection?.metadata?.pricePrintcart
+                        ? data.collection.metadata.pricePrintcart
+                        : ""}
+                    </PricePrintcart>
+                  </Box>
                 </Box>
               </SingleColumn>
-              {data?.collection?.metadata?.priceBase && (
-                <>
-                  <SingleColumn>
-                    <HeadingTitle
-                      content="Price"
-                      mb="8px"
-                      lineHeight="1.25rem"
-                      fontWeight="400"
-                    />
-                    <Box>
-                      <p>{data.collection.metadata.priceBase}</p>
-                      <Box>
-                        <PricePrintcart>
-                          {data.collection.metadata.pricePrintcart
-                            ? data.collection.metadata.pricePrintcart
-                            : ""}
-                        </PricePrintcart>
-                      </Box>
-                    </Box>
-                  </SingleColumn>
-                </>
-              )}
-              {data?.collection?.metadata?.shipping && (
-                <>
-                  <SingleColumn>
-                    <HeadingTitle
-                      content="Shipping"
-                      mb="8px"
-                      lineHeight="1.25rem"
-                      fontWeight="400"
-                    />
-                    <Box>
-                      <p>{data?.collection?.metadata?.shipping}</p>
-                    </Box>
-                  </SingleColumn>
-                </>
-              )}
-              {data?.collection?.metadata?.productionTime && (
-                <>
-                  <SingleColumn>
-                    <HeadingTitle
-                      content="Avg.production"
-                      mb="8px"
-                      lineHeight="1.25rem"
-                      fontWeight="400"
-                    />
-                    <p>{data?.collection?.metadata?.productionTime}</p>
-                  </SingleColumn>
-                </>
-              )}
+            </>
+          )}
+          {data?.collection?.metadata?.shipping && (
+            <>
               <SingleColumn>
                 <HeadingTitle
-                  content={`Print Areas * ${showPrint?.length || 0}`}
+                  content="Shipping"
                   mb="8px"
                   lineHeight="1.25rem"
                   fontWeight="400"
                 />
-                <p>{showPrint?.join(", ") || "Updating..."}</p>
+                <Box>
+                  <p>{data?.collection?.metadata?.shipping}</p>
+                </Box>
               </SingleColumn>
+            </>
+          )}
+          {data?.collection?.metadata?.productionTime && (
+            <>
               <SingleColumn>
                 <HeadingTitle
-                  content={`Size * ${showSize?.length || 0}`}
+                  content="Avg.production"
                   mb="8px"
                   lineHeight="1.25rem"
                   fontWeight="400"
                 />
+                <p>{data?.collection?.metadata?.productionTime}</p>
+              </SingleColumn>
+            </>
+          )}
+          <SingleColumn>
+            <HeadingTitle
+              content="Shipping"
+              mb="8px"
+              lineHeight="1.25rem"
+              fontWeight="400"
+            />
+            <p>
+              {`${shippingOption.name} `}
+              <Price price={shippingOption.amount} currency={currency} />
+            </p>
+          </SingleColumn>
+          <SingleColumn>
+            <HeadingTitle
+              content={`Size * ${showSize?.length || 0}`}
+              mb="8px"
+              lineHeight="1.25rem"
+              fontWeight="400"
+            />
 
-                {showSize && showSize?.length === 1 ? (
-                  <p className="size-detail">{`${showSize[0]} `}</p>
-                ) : showSize?.length > 1 ? (
-                  <p className="size-detail">{`${showSize[0]} - ${
-                    showSize[showSize?.length - 1]
-                  }`}</p>
-                ) : (
-                  <p>Updating... </p>
-                )}
-              </SingleColumn>
-              <SingleColumn>
-                <HeadingTitle
-                  content={`Color * ${getVariants?.length || "0"}`}
-                  mb="8px"
-                  lineHeight="1.25rem"
-                  fontWeight="400"
-                />
-                <p>{getVariants?.join(", ") || "Updating..."}</p>
-              </SingleColumn>
-            </ContainerVendor>
-          </BoxVendor>
+            {showSize && showSize?.length === 1 ? (
+              <p className="size-detail">{`${showSize[0]} `}</p>
+            ) : showSize?.length > 1 ? (
+              <p className="size-detail">{`${showSize[0]} - ${
+                showSize[showSize?.length - 1]
+              }`}</p>
+            ) : (
+              <p>Updating... </p>
+            )}
+          </SingleColumn>
+          <SingleColumn>
+            <HeadingTitle
+              content={`Color * ${getVariants?.length || "0"}`}
+              mb="8px"
+              lineHeight="1.25rem"
+              fontWeight="400"
+            />
+            <p>{getVariants?.join(", ") || "Updating..."}</p>
+          </SingleColumn>
+        </ContainerVendor>
+      </BoxVendor>
+    </>
+  );
+};
+
+const VendorInfo = (props) => {
+  const { data: product, dataShipping } = props;
+
+  const shippingOption = dataShipping.shippingOptions[0] || {};
+
+  const data = product[0] || {};
+
+  return (
+    <>
+      <ContainerBox>
+        <Box>
+          {/* TODO array of shipping options */}
+          {shippingOption?.id && (
+            <Provider
+              data={data}
+              shippingOption={shippingOption}
+              currency={dataShipping?.currency}
+              key={shippingOption?.id}
+            />
+          )}
         </Box>
       </ContainerBox>
     </>

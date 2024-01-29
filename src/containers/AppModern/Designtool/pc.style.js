@@ -106,6 +106,37 @@ export const FormControl = styled.div`
   }
 `;
 
+export const ButtonOutline = styled.button`
+  padding: calc(0.5rem - 1px) calc(1.5rem - 1px);
+  height: 40px;
+  color: #424dc6;
+  background-color: #fff;
+  width: 100%;
+  display: inline-block;
+  position: relative;
+  border: 1px solid #424dc6;
+  text-align: center;
+  border-radius: 3px;
+  font-size: 1em;
+  font-weight: 500;
+  cursor: pointer;
+  overflow: hidden;
+  transition: 0.15s;
+  vertical-align: top;
+  line-height: 1.5rem;
+  font-family: inherit;
+  white-space: nowrap;
+  outline: none;
+  :disabled {
+    pointer-events: none;
+    opacity: 0.65;
+    box-shadow: none;
+  }
+  :hover {
+    background-color: #d1d5fb;
+  }
+`;
+
 export const Button = styled.button`
   padding: calc(0.5rem - 1px) calc(1.5rem - 1px);
   height: 40px;

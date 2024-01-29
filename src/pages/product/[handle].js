@@ -8,7 +8,7 @@ import Head from "next/head";
 import { ThemeProvider } from "styled-components";
 
 const Product = (props) => {
-  const { product, productsRelated } = props;
+  const { product, productsRelated, dataShipping } = props;
 
   return (
     <ThemeProvider theme={theme}>
@@ -27,7 +27,11 @@ const Product = (props) => {
           <div className="sticky-active">
             <Navbar />
           </div>
-          <ProductDetail product={product} productsRelated={productsRelated} />
+          <ProductDetail
+            product={product}
+            productsRelated={productsRelated}
+            dataShipping={dataShipping}
+          />
           <Footer />
         </AppWrapper>
       </>
@@ -37,58 +41,77 @@ const Product = (props) => {
 export default Product;
 
 export async function getStaticProps({ params }) {
-  const baseUrl = process.env.MEDUSA_API_ADMIN_URL;
-  const token = process.env.TOKEN_AUTH;
+  const baseUrl = process.env.MEDUSA_API_URL;
   const paramsProduct = {
     method: "GET",
     headers: {
-      Authorization: `Bearer ${token}`,
-      "Content-Type": "application/json"
-    }
+      "Content-Type": "application/json",
+    },
   };
   const setUrlProducts = new URL(`products?handle=${params.handle}`, baseUrl);
   const urlProducts = setUrlProducts.href;
 
   const setUrlRelated = new URL("products", baseUrl);
-  setUrlRelated.searchParams.set("status", "published");
   setUrlRelated.searchParams.set("limit", 4);
   const urlRelated = setUrlRelated.href;
 
   const fetchProducts = fetch(urlProducts, paramsProduct);
+
   const fetchProductsRelated = fetch(urlRelated, paramsProduct);
 
   const [res, resRelated] = await Promise.all([
     fetchProducts,
-    fetchProductsRelated
+    fetchProductsRelated,
   ]);
 
   const [result, resultRelated] = await Promise.all([
     res.json(),
-    resRelated.json()
+    resRelated.json(),
   ]);
+
+  const dataShipping = {
+    shippingOptions: [],
+    currency: "usd",
+  };
+
+  const productId = result?.products[0]?.id;
+
+  if (productId) {
+    const url = new URL(`pc-product/${productId}/shipping-options`, baseUrl);
+
+    const dataShippingOptions = await fetch(url).then((response) =>
+      response.json()
+    );
+
+    if (dataShippingOptions?.shipping_options) {
+      dataShipping.shippingOptions = dataShippingOptions.shipping_options;
+    }
+
+    if (dataShippingOptions?.currency) {
+      dataShipping.currency = dataShippingOptions.currency;
+    }
+  }
 
   return {
     props: {
       product: result?.products || {},
-      productsRelated: resultRelated.products || {}
+      productsRelated: resultRelated.products || {},
+      dataShipping: dataShipping,
     },
-    revalidate: 1
+    revalidate: 1,
   };
 }
 
 export async function getStaticPaths() {
-  const baseUrl = process.env.MEDUSA_API_ADMIN_URL;
-  const token = process.env.TOKEN_AUTH;
+  const baseUrl = process.env.MEDUSA_API_URL;
 
   const paramsProduct = {
     method: "GET",
     headers: {
-      Authorization: `Bearer ${token}`,
-      "Content-Type": "application/json"
-    }
+      "Content-Type": "application/json",
+    },
   };
   const newUrlPath = new URL("products", baseUrl);
-  newUrlPath.searchParams.set("status", "published");
   const fetchPath = newUrlPath.href;
 
   const res = await fetch(fetchPath, paramsProduct);
@@ -98,10 +121,10 @@ export async function getStaticPaths() {
     return {
       paths: result.products.map((product) => {
         return {
-          params: { handle: product.handle }
+          params: { handle: product.handle },
         };
       }),
-      fallback: "blocking"
+      fallback: "blocking",
     };
   }
 }

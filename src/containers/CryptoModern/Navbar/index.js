@@ -1,26 +1,26 @@
-import React, { useState, useRef } from 'react';
-import Fade from 'react-reveal/Fade';
-import ScrollSpyMenu from 'common/components/ScrollSpyMenu';
-import Scrollspy from 'react-scrollspy';
-import AnchorLink from 'react-anchor-link-smooth-scroll';
-import { Icon } from 'react-icons-kit';
-import { menu } from 'react-icons-kit/feather/menu';
-import { x } from 'react-icons-kit/feather/x';
-import { search } from 'react-icons-kit/feather/search';
-import Logo from 'common/components/UIElements/Logo';
-import Button from 'common/components/Button';
-import Container from 'common/components/UI/Container';
-import useOnClickOutside from 'common/hooks/useOnClickOutside';
-import NavbarWrapper, { MenuArea, MobileMenu, Search } from './navbar.style';
-import LogoImage from 'common/assets/image/cryptoModern/logo-white.png';
-import LogoImageAlt from 'common/assets/image/cryptoModern/logo.png';
+import React, { useState, useRef } from "react";
+import Fade from "react-reveal/Fade";
+import ScrollSpyMenu from "common/components/ScrollSpyMenu";
+import Scrollspy from "react-scrollspy";
+import AnchorLink from "react-anchor-link-smooth-scroll";
+import { Icon } from "react-icons-kit";
+import { menu } from "react-icons-kit/feather/menu";
+import { x } from "react-icons-kit/feather/x";
+import { search } from "react-icons-kit/feather/search";
+import Logo from "common/components/UIElements/Logo";
+import Button from "common/components/Button";
+import Container from "common/components/UI/Container";
+import useOnClickOutside from "common/hooks/useOnClickOutside";
+import NavbarWrapper, { MenuArea, MobileMenu, Search } from "./navbar.style";
+import LogoImage from "common/assets/image/cryptoModern/logo-white.png";
+import LogoImageAlt from "common/assets/image/cryptoModern/logo.png";
 
-import { navbar } from 'common/data/CryptoModern';
+import { navbar } from "common/data/CryptoModern";
 
 const Navbar = () => {
   const { navMenu } = navbar;
   const [state, setState] = useState({
-    search: '',
+    search: "",
     searchToggle: false,
     mobileMenu: false,
   });
@@ -31,16 +31,16 @@ const Navbar = () => {
   );
 
   const toggleHandler = (type) => {
-    if (type === 'search') {
+    if (type === "search") {
       setState({
         ...state,
-        search: '',
+        search: "",
         searchToggle: !state.searchToggle,
         mobileMenu: false,
       });
     }
 
-    if (type === 'menu') {
+    if (type === "menu") {
       setState({
         ...state,
         mobileMenu: !state.mobileMenu,
@@ -58,15 +58,11 @@ const Navbar = () => {
   const handleSearchForm = (event) => {
     event.preventDefault();
 
-    if (state.search !== '') {
-      console.log('search data: ', state.search);
-
+    if (state.search !== "") {
       setState({
         ...state,
-        search: '',
+        search: "",
       });
-    } else {
-      console.log('Please fill this field.');
     }
   };
 
@@ -100,7 +96,7 @@ const Navbar = () => {
         />
         {/* end of logo */}
 
-        <MenuArea className={state.searchToggle ? 'active' : ''}>
+        <MenuArea className={state.searchToggle ? "active" : ""}>
           <ScrollSpyMenu className="menu" menuItems={navMenu} offset={-84} />
           {/* end of main menu */}
 
@@ -117,7 +113,7 @@ const Navbar = () => {
               className="text"
               variant="textButton"
               icon={<Icon icon={state.searchToggle ? x : search} />}
-              onClick={() => toggleHandler('search')}
+              onClick={() => toggleHandler("search")}
             />
           </Search>
           {/* end of search */}
@@ -139,13 +135,13 @@ const Navbar = () => {
             }
             color="#0F2137"
             variant="textButton"
-            onClick={() => toggleHandler('menu')}
+            onClick={() => toggleHandler("menu")}
           />
         </MenuArea>
       </Container>
 
       {/* start mobile menu */}
-      <MobileMenu className={`mobile-menu ${state.mobileMenu ? 'active' : ''}`}>
+      <MobileMenu className={`mobile-menu ${state.mobileMenu ? "active" : ""}`}>
         <Container>
           <Scrollspy
             className="menu"

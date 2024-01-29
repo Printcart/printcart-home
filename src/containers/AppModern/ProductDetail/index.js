@@ -12,7 +12,7 @@ import {
   PTitle,
   WrapContent,
   WrapImage,
-  WrapperProduct
+  WrapperProduct,
 } from "../ProductsPOD/productspod.style";
 import WrapperServices from "../ServiceDetail/WrapperService";
 import { ContentWrapper } from "../appModern.style";
@@ -54,7 +54,7 @@ export const BoxRelated = styled(Box)`
 `;
 
 const ProductDetail = (props) => {
-  const { product, productsRelated } = props;
+  const { product, productsRelated, dataShipping } = props;
   return (
     <ContentWrapper>
       <WrapperServices>
@@ -64,7 +64,7 @@ const ProductDetail = (props) => {
             <ImageGallery product={product} />
             <ProductInfo product={product} />
           </WrappInfo>
-          <VendorInfo data={product} />
+          <VendorInfo data={product} dataShipping={dataShipping} />
           <InfoCollection collection={product[0]?.collection} />
           {/**RELATED PRODUCTS */}
           <BoxRelated>
@@ -89,7 +89,7 @@ const ProductDetail = (props) => {
                                     backgroundColor: "#f7f7f7",
                                     objectFit: "contain",
                                     borderTopLeftRadius: "5px",
-                                    borderTopRightRadius: "5px"
+                                    borderTopRightRadius: "5px",
                                   }}
                                   src={items?.thumbnail || ""}
                                 />

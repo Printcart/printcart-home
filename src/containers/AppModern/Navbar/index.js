@@ -58,14 +58,10 @@ const Navbar = () => {
     event.preventDefault();
 
     if (state.search !== "") {
-      console.log("search data: ", state.search);
-
       setState({
         ...state,
         search: ""
       });
-    } else {
-      console.log("Please fill this field.");
     }
   };
 

@@ -16,6 +16,7 @@ import {
   StyleStoreList,
   StyleStoreTitle,
   StyleInputSearch,
+  ButtonOutline,
 } from "./pc.style";
 
 const StoreBtn = (props) => {
@@ -69,6 +70,7 @@ const StoreBtn = (props) => {
 const StoreList = (props) => {
   const { handlerVerify } = props;
   const [storeList, setStoreList] = React.useState();
+  const [showStoreList, setShowStoreList] = React.useState(false);
   const [search, setSearch] = React.useState("");
   const [loading, setLoading] = React.useState({
     active: false,
@@ -88,6 +90,8 @@ const StoreList = (props) => {
   }, []);
 
   React.useEffect(() => {
+    if (!showStoreList) return;
+
     const printcartUrl = process.env.NEXT_PUBLIC_PRINTCART_REST_API;
     const token = localStorage.getItem("_pc-t");
 
@@ -123,13 +127,24 @@ const StoreList = (props) => {
           }
         });
     }
-  }, [search]);
+  }, [search, showStoreList]);
 
   React.useEffect(() => {
     return () => {
       debouncedResults.cancel();
     };
   });
+
+  if (!showStoreList) {
+    return (
+      <ButtonOutline
+        onClick={() => setShowStoreList(true)}
+        style={{ marginBottom: "8px" }}
+      >
+        Switch store
+      </ButtonOutline>
+    );
+  }
 
   return (
     <>
