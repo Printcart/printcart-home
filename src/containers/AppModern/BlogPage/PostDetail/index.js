@@ -400,10 +400,12 @@ const PostDetail = (props) => {
         <WrapContainer>
           <Container>
             <GridBlog>
-              <Image
-                src={postData?.attributes?.banner?.data?.attributes?.url}
-                alt={postData?.attributes?.banner?.data?.attributes?.name}
-              />
+              {postData?.attributes?.banner?.data?.attributes?.url && (
+                <Image
+                  src={postData?.attributes?.banner?.data?.attributes?.url}
+                  alt={postData?.attributes?.banner?.data?.attributes?.name}
+                />
+              )}
               <LeftDesc>
                 {postData?.attributes?.feature_image?.data && (
                   <Image
