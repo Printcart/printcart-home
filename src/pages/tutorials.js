@@ -5,7 +5,7 @@ import Footer from "containers/AppModern/Footer";
 import Navbar from "containers/AppModern/Navbar";
 import GlobalStyle, {
   AppWrapper,
-  ContentWrapper
+  ContentWrapper,
 } from "containers/AppModern/appModern.style";
 import Head from "next/head";
 import React from "react";
@@ -13,6 +13,7 @@ import { ThemeProvider } from "styled-components";
 
 const Blog = (props) => {
   const { resPosts, pages } = props;
+
   return (
     <ThemeProvider theme={theme}>
       <React.Fragment>
@@ -53,19 +54,20 @@ export async function getStaticProps() {
   setUrl.searchParams.set("populate[user_profile]", "*");
   setUrl.searchParams.set("populate[tags][fields][0]", "name");
   setUrl.searchParams.set("populate[tags][fields][1]", "alias");
+  setUrl.searchParams.set("populate[banner][fields][0]", "formats");
   setUrl.searchParams.set("sort[0]", "createdAt:desc");
-  const newUrl = setUrl.href
+  const newUrl = setUrl.href;
 
   const fetchData = await fetch(newUrl);
   const results = await fetchData.json();
 
-  if (results.data.length > 0) {
+  if (results?.data?.length > 0) {
     return {
       props: {
         pages: results["meta"],
-        resPosts: results["data"]
+        resPosts: results["data"],
       },
-      revalidate: 1
+      revalidate: 1,
     };
   }
 }

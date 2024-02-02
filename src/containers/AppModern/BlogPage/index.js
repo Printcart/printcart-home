@@ -1,10 +1,13 @@
 import Box from "common/components/Box";
+import Pagination from "common/components/Pagination";
 import Container from "common/components/UI/Container";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import React from "react";
 import ReactHtmlParser from "react-html-parser";
 import Icon from "react-icons-kit";
 import { ic_remove_red_eye } from "react-icons-kit/md/ic_remove_red_eye";
+import styled from "styled-components";
 import SectionWrapperServices from "../InfoServices/GridServices";
 import { SectionHeader } from "../appModern.style";
 import GridPost, {
@@ -20,8 +23,14 @@ import GridPost, {
   TimeUser,
   TitleUser,
 } from "./blogPage.style";
-import { useRouter } from "next/router";
-import Pagination from "common/components/Pagination";
+
+const Image = styled.img`
+  width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+  onbject-fit: contain;
+  box-shadow: 0 0px 10px 1px rgb(0 0 50 / 10%);
+`;
 
 const BlogPage = ({ resPosts, pages }) => {
   const router = useRouter();
@@ -33,6 +42,8 @@ const BlogPage = ({ resPosts, pages }) => {
     start = (query.page - 1) * end - 1;
     end = query.page * end;
   }
+  console.log(resPosts);
+
   return (
     <React.Fragment>
       <SectionWrapperServices>
@@ -57,7 +68,7 @@ const BlogPage = ({ resPosts, pages }) => {
               (items, index) =>
                 index > start &&
                 index < end && (
-                  <GridItem key={index}>
+                  <GridItem key={items?.id || index}>
                     <ContainerPost>
                       <Box>
                         <Link
@@ -71,6 +82,19 @@ const BlogPage = ({ resPosts, pages }) => {
                           </a>
                         </Link>
                       </Box>
+                      {items?.attributes?.banner?.data?.attributes?.formats
+                        ?.small?.url && (
+                        <Image
+                          src={
+                            items?.attributes?.banner?.data?.attributes?.formats
+                              ?.small?.url
+                          }
+                          alt={
+                            items?.attributes?.banner?.data?.attributes?.formats
+                              ?.small?.name
+                          }
+                        />
+                      )}
                       <DesBox>
                         {ReactHtmlParser(items?.attributes?.short_intro)}
                       </DesBox>
