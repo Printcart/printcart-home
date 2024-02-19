@@ -429,7 +429,7 @@ const PostDetail = (props) => {
                 <RelatedHeading content="Related Tutorials" />
                 <GridPost>
                   {relatedData?.data.map((items, index) => (
-                    <GridItem key={index}>
+                    <GridItem key={items?.id || index}>
                       <ContainerPost>
                         <Box>
                           <Link href={`/tutorial/${items?.attributes?.alias}`}>
@@ -438,6 +438,19 @@ const PostDetail = (props) => {
                             </a>
                           </Link>
                         </Box>
+                        {items?.attributes?.banner?.data?.attributes?.formats
+                          ?.small?.url && (
+                          <Image
+                            src={
+                              items?.attributes?.banner?.data?.attributes
+                                ?.formats?.small?.url
+                            }
+                            alt={
+                              items?.attributes?.banner?.data?.attributes
+                                ?.formats?.small?.name
+                            }
+                          />
+                        )}
                         <DesBox>
                           {ReactHtmlParser(items?.attributes?.short_intro)}
                         </DesBox>
