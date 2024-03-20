@@ -14,6 +14,13 @@ export const Grid = styled.div`
   padding: 0px 0px 16px;
   margin-left: 10px;
   margin-right: 10px;
+
+  @media only screen and (max-width: 599px) {
+    grid-template-columns: none;
+  }
+  @media only screen and (max-width: 768px) {
+    grid-template-rows: none;
+  }
 `;
 const BoxVendor = styled(Box)`
   display: block;
@@ -72,6 +79,10 @@ const BoxHeaderRight = styled(Box)`
   min-height: 1px;
   flex-basis: 0;
   flex-grow: 1;
+  @media only screen and(max-width: 768px) {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
 `;
 const BoxButton = styled(Box)`
   margin-top: 16px;
@@ -106,6 +117,9 @@ const BtnMoreDetail = styled.button`
       color: #424dc6;
     }
   }
+  @media (max-width: 768px) {
+    padding: calc(0.5rem - 1px) calc(1rem - 1px);
+  }
 `;
 const ContainerDesign = styled(Box)`
   margin-left: 1rem;
@@ -132,6 +146,10 @@ const ButtonDesign = styled.button`
   font-family: inherit;
   white-space: nowrap;
   outline: none;
+
+  @media (max-width: 768px) {
+    padding: calc(0.5rem - 1px) calc(1rem - 1px);
+  }
 `;
 const ContainerVendor = styled(Box)`
   grid-auto-columns: 1fr;
@@ -143,6 +161,10 @@ const ContainerVendor = styled(Box)`
   padding: 16px 19px;
   border-top: 1px solid #e3e4e5;
   overflow: hidden;
+
+  @media only screen and (max-width: 768px) {
+    display: block;
+  }
 `;
 const HeadingTitle = styled(Heading)`
   white-space: nowrap;

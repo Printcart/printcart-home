@@ -137,6 +137,10 @@ export const Button = styled.button`
     background-color: #2869d3;
     border-color: #2662c6;
   }
+
+  @media (max-width: 768px) {
+    padding: calc(0.5rem - 1px) calc(1rem - 1px);
+  }
 `;
 
 export const StyleLoginForm = styled.div`

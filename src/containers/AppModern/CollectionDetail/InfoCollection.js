@@ -11,20 +11,20 @@ import styled from "styled-components";
 
 const iconCare = [
   {
-    image: CareImage1.src
+    image: CareImage1.src,
   },
   {
-    image: CareImage2.src
+    image: CareImage2.src,
   },
   {
-    image: CareImage3.src
+    image: CareImage3.src,
   },
   {
-    image: CareImage4.src
+    image: CareImage4.src,
   },
   {
-    image: CareImage5.src
-  }
+    image: CareImage5.src,
+  },
 ];
 export const BoxFeatureContainer = styled(Box)`
   padding-top: 40px;
@@ -57,6 +57,9 @@ export const BoxTitle = styled(Box)`
   position: relative;
   flex: 0 0 33.3%;
   max-width: 33.3%;
+  @media only screen and (max-width: 768px) {
+    max-width: 100%;
+  }
 `;
 export const BoxAbout = styled(Box)`
   margin-top: 0;
@@ -64,6 +67,10 @@ export const BoxAbout = styled(Box)`
   width: 100%;
   flex: 0 0 66.6%;
   max-width: 66.6%;
+  @media only screen and (max-width: 768px) {
+    flex: none;
+    max-width: 100%;
+  }
 `;
 const BoxWrapContent = styled(Box)`
   margin-top: 0;
@@ -71,6 +78,10 @@ const BoxWrapContent = styled(Box)`
   width: 100%;
   flex: 0 0 66.6%;
   max-width: 66.6%;
+
+  @media only screen and (max-width: 768px){
+    max-width: 100%;
+  }
 `;
 const DescFeature = styled(Box)`
   margin-bottom: -2rem;
@@ -89,6 +100,12 @@ const DescWrapp = styled(Box)`
   max-width: 50%;
   padding-left: 1rem;
   padding-right: 1rem;
+
+  @media only screen and (max-width: 768px){
+    margin-left:10px;
+    flex: 2 0 50%;
+    max-width: 100%;
+  }
 `;
 const FeatureImage = styled(Image)`
   display: block;
@@ -173,23 +190,23 @@ const InfoCollection = (props) => {
     {
       media: `${collection?.metadata?.icon1 ?? ""}`,
       title: `${collection?.metadata?.feature1 ?? ""}`,
-      description: `${collection?.metadata?.featureDesc1 ?? ""}`
+      description: `${collection?.metadata?.featureDesc1 ?? ""}`,
     },
     {
       media: `${collection?.metadata?.icon2 ?? ""}`,
       title: `${collection?.metadata?.feature2 ?? ""}`,
-      description: `${collection?.metadata?.featureDesc2 ?? ""}`
+      description: `${collection?.metadata?.featureDesc2 ?? ""}`,
     },
     {
       media: `${collection?.metadata?.icon3 ?? ""}`,
       title: `${collection?.metadata?.feature3 ?? ""}`,
-      description: `${collection?.metadata?.featureDesc3 ?? ""}`
+      description: `${collection?.metadata?.featureDesc3 ?? ""}`,
     },
     {
       media: `${collection?.metadata?.icon4 ?? ""}`,
       title: `${collection?.metadata?.feature4 ?? ""}`,
-      description: `${collection?.metadata?.featureDesc4 ?? ""}`
-    }
+      description: `${collection?.metadata?.featureDesc4 ?? ""}`,
+    },
   ];
   return (
     <>
