@@ -29,4 +29,4 @@ Error.getInitialProps = ({ res, err }) => {
   return { statusCode };
 };
 
-export const config = { runtime: "edge" };
+
