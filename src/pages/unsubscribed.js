@@ -1,93 +1,29 @@
-import ResetCSS from "common/assets/css/style";
-import { theme } from "common/theme/appModern";
-import Footer from "containers/AppModern/Footer";
-import Navbar from "containers/AppModern/Navbar";
-import GlobalStyle, { AppWrapper } from "containers/AppModern/appModern.style";
-import Head from "next/head";
-import React from "react";
-import { ThemeProvider } from "styled-components";
-import Box from "common/components/Box";
-import Card from "common/components/Card";
-import Link from "next/link";
+import React from 'react';
+import Image from 'next/image';
+import mailError from 'common/assets/image/mailError.jpg';
 
-const UnsubscribedComponent = () => {
-  const styles = {
-    cardItem: {
-      backgroundColor: "#f8f9fa",
-      padding: "20px",
-      borderRadius: "10px",
-      boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-      textAlign: "center",
-      margin: "200px auto",
-    },
-    thankYouMessage: {
-      fontSize: "18px",
-      color: "#333",
-      marginBottom: "20px",
-    },
-    resubscribeMessage: {
-      fontSize: "16px",
-      color: "#555",
-      marginBottom: "20px",
-    },
-    resubscribeLink: {
-      display: "inline-block",
-      padding: "10px 20px",
-      backgroundColor: "#007bff",
-      color: "#fff",
-      textDecoration: "none",
-      borderRadius: "5px",
-      transition: "background-color 0.3s ease",
-    },
-    resubscribeLinkHover: {
-      backgroundColor: "#0056b3",
-    },
-  };
-
-  return React.createElement(
-    Card,
-    { style: styles.cardItem },
-    React.createElement(
-      Box,
-      null,
-      React.createElement(
-        "div",
-        { style: styles.thankYouMessage },
-        "You have unsubscribed email from Printcart."
-      ),
-      React.createElement(
-        "div",
-        { style: styles.resubscribeMessage },
-        "If you change your mind, you can resubscribe to receive our emails at any time by contact our support."
-      )
-    )
-  );
-};
-
-const Unsubscribed = () => {
+const UnsubscribeForm = () => {
   return (
-    <ThemeProvider theme={theme}>
-      <React.Fragment>
-        <Head>
-          <title>Printcart | Tutorials</title>
-          <meta name="theme-color" content="#2563FF" />
-          <link
-            href="https://fonts.googleapis.com/css?family=Heebo:300,400,500,700&display=swap"
-            rel="stylesheet"
-          />
-        </Head>
-        <ResetCSS />
-        <GlobalStyle />
-        <AppWrapper>
-          <div className="sticky-active">
-            <Navbar />
-          </div>
-          <UnsubscribedComponent />
-          <Footer />
-        </AppWrapper>
-      </React.Fragment>
-    </ThemeProvider>
+    <div
+      style={{
+        maxWidth: '500px',
+        margin: '300px auto',
+        padding: '1rem',
+        border: '1px solid #ccc',
+        borderRadius: '8px',
+        textAlign: 'center'
+      }}
+    >
+      <Image
+        src={mailError}
+        alt="Mail Error"
+        style={{ maxWidth: '100%', marginBottom: '1rem' }}
+      />
+      <h2 style={{ marginBottom: '0.5rem' }}>Successful unsubscribe from Printcart</h2>
+      <p style={{ fontSize: '1.2rem', marginBottom: '0' }}>You won't receive mail from our system anymore.</p>
+      <p>If this is a mistake, you can subscribe again by contacting us.</p>
+    </div>
   );
 };
 
-export default Unsubscribed;
+export default UnsubscribeForm;
