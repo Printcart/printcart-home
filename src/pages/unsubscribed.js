@@ -7,7 +7,7 @@ const UnsubscribeForm = () => {
     <div
       style={{
         maxWidth: '500px',
-        margin: '300px auto',
+        margin: '200px auto',
         padding: '1rem',
         border: '1px solid #ccc',
         borderRadius: '8px',
