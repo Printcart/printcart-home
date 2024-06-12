@@ -60,8 +60,8 @@ export async function getServerSideProps({ res }) {
     method: "GET",
     headers: {
       Authorization: `Bearer ${token}`,
-      "Content-Type": "application/json"
-    }
+      "Content-Type": "application/json",
+    },
   };
   // We make an API call to gather the URLs for our site
   const fetchServices = fetch(URL_SERVICES);
@@ -71,12 +71,12 @@ export async function getServerSideProps({ res }) {
   const [resServices, resCatalog, resTutorials] = await Promise.all([
     fetchServices,
     fetchCatalog,
-    fetchTutorials
+    fetchTutorials,
   ]);
   const [resultServices, resultCatalog, resultTutorials] = await Promise.all([
     resServices.json(),
     resCatalog.json(),
-    resTutorials.json()
+    resTutorials.json(),
   ]);
 
   // We generate the XML sitemap with the posts data
@@ -92,8 +92,10 @@ export async function getServerSideProps({ res }) {
   res.end();
 
   return {
-    props: {}
+    props: {},
   };
 }
 
 export default SiteMap;
+
+export const runtime = "edge";

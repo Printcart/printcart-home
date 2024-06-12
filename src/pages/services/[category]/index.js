@@ -66,7 +66,9 @@ export async function getServerSideProps({ query }) {
   const filSort = `&sort=createdAt:DESC`;
   const limit = `&pagination[pageSize]=100`;
 
-  const res = await fetch(`${urlStrapi}project-categories?sort=updatedAt:DESC&filters[$and][0][alias][$eq]=${alias}`);
+  const res = await fetch(
+    `${urlStrapi}project-categories?sort=updatedAt:DESC&filters[$and][0][alias][$eq]=${alias}`
+  );
   const results = await res.json();
 
   if (results.data.length > 0) {
@@ -74,10 +76,23 @@ export async function getServerSideProps({ query }) {
     const alias_cat = results.data[0].attributes.alias;
     const currentCat = { name_cat, alias_cat };
 
-    const fetchListService = fetch(`${newUrl}&filters[project_cat][$containsi]=${name_cat}` + filAgency + filSort);
-    const fetchServiceRealted = fetch(`${newUrl}&filters[project_cat][$notContainsi]=${name_cat}&pagination[limit]=9` + filSort + filAgency);
-    const fetchSubCat = fetch(`${urlStrapi}project-categories?populate=parent.parent&filters[parent][alias][$eq]=${alias}&sort=service_count:DESC` + limit);
-    const fetchFAQ = fetch(`${urlStrapi}faqs?filters[$and][0][project_cat][$contains]="20956"`);
+    const fetchListService = fetch(
+      `${newUrl}&filters[project_cat][$containsi]=${name_cat}` +
+        filAgency +
+        filSort
+    );
+    const fetchServiceRealted = fetch(
+      `${newUrl}&filters[project_cat][$notContainsi]=${name_cat}&pagination[limit]=9` +
+        filSort +
+        filAgency
+    );
+    const fetchSubCat = fetch(
+      `${urlStrapi}project-categories?populate=parent.parent&filters[parent][alias][$eq]=${alias}&sort=service_count:DESC` +
+        limit
+    );
+    const fetchFAQ = fetch(
+      `${urlStrapi}faqs?filters[$and][0][project_cat][$contains]="20956"`
+    );
 
     const [
       promiseListServices,
@@ -114,3 +129,5 @@ export async function getServerSideProps({ query }) {
     notFound: true,
   };
 }
+
+export const runtime = "edge";

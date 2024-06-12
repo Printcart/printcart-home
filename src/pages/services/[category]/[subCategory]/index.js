@@ -65,7 +65,9 @@ export async function getServerSideProps({ query }) {
   const filSort = `&sort=createdAt:DESC`;
   const limit = `&pagination[pageSize]=100`;
 
-  const res = await fetch(`${urlStrapi}project-categories?populate=parent&filters[parent][parent][alias][$null]=true&filters[parent][alias][$notNull]=true&filters[alias][$eq]=${aliasSub}`);
+  const res = await fetch(
+    `${urlStrapi}project-categories?populate=parent&filters[parent][parent][alias][$null]=true&filters[parent][alias][$notNull]=true&filters[alias][$eq]=${aliasSub}`
+  );
   const results = await res.json();
 
   if (results.data.length > 0) {
@@ -75,10 +77,23 @@ export async function getServerSideProps({ query }) {
     const alias_cat = results.data[0].attributes.parent.data.attributes.alias;
     const currentCat = { name_subcat, alias_subcat, name_cat, alias_cat };
 
-    const fetchListService = fetch(`${newUrl}&filters[project_cat][$containsi]=${name_subcat}` + filAgency + filSort);
-    const fetchServiceRealted = fetch(`${newUrl}&filters[project_cat][$notContainsi]=${name_subcat}&filters[project_cat][$containsi]=${name_cat}` + filSort + filAgency);
-    const fetchSubCat = fetch(`${urlStrapi}project-categories?populate=parent.parent&filters[parent][alias][$eq]=${aliasSub}&sort=service_count:DESC` +limit);
-    const fetchFAQ = fetch(`${urlStrapi}faqs?filters[$and][0][project_cat][$contains]="20956"`);
+    const fetchListService = fetch(
+      `${newUrl}&filters[project_cat][$containsi]=${name_subcat}` +
+        filAgency +
+        filSort
+    );
+    const fetchServiceRealted = fetch(
+      `${newUrl}&filters[project_cat][$notContainsi]=${name_subcat}&filters[project_cat][$containsi]=${name_cat}` +
+        filSort +
+        filAgency
+    );
+    const fetchSubCat = fetch(
+      `${urlStrapi}project-categories?populate=parent.parent&filters[parent][alias][$eq]=${aliasSub}&sort=service_count:DESC` +
+        limit
+    );
+    const fetchFAQ = fetch(
+      `${urlStrapi}faqs?filters[$and][0][project_cat][$contains]="20956"`
+    );
 
     const [
       promiseListServices,
@@ -115,3 +130,5 @@ export async function getServerSideProps({ query }) {
     notFound: true,
   };
 }
+
+export const runtime = "edge";

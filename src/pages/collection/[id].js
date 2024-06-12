@@ -45,8 +45,8 @@ export async function getStaticProps({ params }) {
     method: "GET",
     headers: {
       Authorization: `Bearer ${token}`,
-      "Content-Type": "application/json"
-    }
+      "Content-Type": "application/json",
+    },
   };
 
   const setUrlCollections = new URL(`collections/${params.id}`, baseUrlAdmin);
@@ -62,20 +62,20 @@ export async function getStaticProps({ params }) {
 
   const [resCollection, resProducts] = await Promise.all([
     fetchCollection,
-    fetchProducts
+    fetchProducts,
   ]);
 
   const [resultCollection, resultProducts] = await Promise.all([
     resCollection.json(),
-    resProducts.json()
+    resProducts.json(),
   ]);
 
   return {
     props: {
       collection: resultCollection?.collection || {},
-      products: resultProducts?.products || {}
+      products: resultProducts?.products || {},
     },
-    revalidate: 1
+    revalidate: 1,
   };
 }
 
@@ -86,8 +86,8 @@ export async function getStaticPaths() {
     method: "GET",
     headers: {
       Authorization: `Bearer ${token}`,
-      "Content-Type": "application/json"
-    }
+      "Content-Type": "application/json",
+    },
   };
   const resAdmin = await fetch(`${baseUrlAdmin}collections`, parameter);
   const result = await resAdmin.json();
@@ -96,10 +96,12 @@ export async function getStaticPaths() {
     return {
       paths: result.collections.map((collection) => {
         return {
-          params: { id: collection.id }
+          params: { id: collection.id },
         };
       }),
-      fallback: "blocking"
+      fallback: "blocking",
     };
   }
 }
+
+export const runtime = "edge";
