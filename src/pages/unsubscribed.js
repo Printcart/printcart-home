@@ -6,20 +6,27 @@ const UnsubscribeForm = () => {
   return (
     <div
       style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
+        display: 'block',
+        width: '100vw',
         height: '100vh',
+        backgroundColor: '#f0f0f0',
+        position: 'relative'
       }}
     >
       <div
         style={{
           maxWidth: '500px',
           width: '100%',
+          margin: 'auto',
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
           padding: '1rem',
           border: '1px solid #ccc',
           borderRadius: '8px',
-          textAlign: 'center'
+          textAlign: 'center',
+          backgroundColor: '#fff'
         }}
       >
         <Image
