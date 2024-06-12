@@ -102,4 +102,4 @@ export async function getStaticPaths() {
   }
 }
 
-export const runtime = "edge";
+export const config = { runtime: "edge" };

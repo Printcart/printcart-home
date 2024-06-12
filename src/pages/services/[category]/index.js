@@ -130,4 +130,4 @@ export async function getServerSideProps({ query }) {
   };
 }
 
-export const runtime = "edge";
+export const config = { runtime: "edge" };
