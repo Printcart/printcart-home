@@ -28,7 +28,7 @@ const SupportDetail = (props) => {
                 alt="Total Revies"
               />
             </a>
-            <p className="total">1878 reviews</p>
+            <p className="total">2334 reviews</p>
           </Box>
         </Box>
         <Box className="containerReviews">
@@ -67,7 +67,8 @@ const SupportDetail = (props) => {
         </Box>
         {/* Button Request */}
         <a
-          href={`https://solution.printcart.com/support_ticket/?idsv=${character.id}`}
+          href={`https://dashboard.printcart.com/projects/tickets`}
+          target="_blank"
         >
           <Button className="buttonRequest" title="REQUEST SUPPORT" />
         </a>
