@@ -193,6 +193,7 @@ export const TitleHead = styled.h4`
   margin: 0;
   font-size: 24px;
   line-height: 2rem;
+  width: 800px
   font-weight: 700;
   text-transform: capitalize;
 `;
@@ -378,4 +379,36 @@ export const SpanLink = styled.span`
     color: #0013e7;
     text-decoration: underline;
   }
+`;
+
+export const Container = styled.div`
+  display: flex;
+  align-items: center;
+  width: 1125px;
+  margin-left 31px;
+  flex-direction: column;
+  margin-top:-20px;
+`;
+
+export const CardContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 27px;
+`;
+
+export const CardText = styled.p`
+  color: #333;
+  margin-left: 20px;
+  padding-right: 5px;
+`;
+
+export const MaximumCard = styled.div`
+  background-color: #f9f9f9;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  flex: 1;
+  min-width: 195px;
+  min-height: 350px;
+  margin-bottom: 50px;
 `;

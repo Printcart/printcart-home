@@ -14,7 +14,10 @@ const Banner = () => {
             content="Connect Printer,"
             className="heading-first"
           />
-          <Heading content="everywhere !" className="heading-second" />
+          <Heading
+            content="Product Catalog for POD Seller"
+            className="heading-second"
+          />
         </Box>
         <p className="description">
           Browse our POD Catalog today and embark on a remarkable printing

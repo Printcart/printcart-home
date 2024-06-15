@@ -17,7 +17,7 @@ import {
   WrapperProduct
 } from "./productspod.style";
 
-const TagsFilter = ({ dataFilter, status, title }) => {
+const TagsFilter = ({ dataFilter, status, title, description }) => {
   return (
     <ContainerBox>
       {dataFilter.length > 0 && (
@@ -25,6 +25,7 @@ const TagsFilter = ({ dataFilter, status, title }) => {
           <HeaderBox>
             <TitleBox>
               <TitleHead>{title}</TitleHead>
+              <p>{description}</p>
             </TitleBox>
             {/* <RedirectAll>
             <Box>
