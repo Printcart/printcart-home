@@ -8,21 +8,40 @@ const StepNumber = styled.div`
   font-size: 24px;
 `;
 
-const MaximumStepCard = ({ stepNumber, title, src, alt, width, height, text }) => {
+const ImageWrapper = styled.div`
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 100%;
+  overflow: hidden;
+`;
+
+const StyledImage = styled(Image)`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+`;
+
+const MaximumStepCard = ({ stepNumber, title, src, alt, text }) => {
   return (
     <MaximumCard>
-      <Image src={src} alt={alt} width={width} height={height} style={{ overflow: 'hidden'}} />
+      <ImageWrapper>
+        <StyledImage src={src} alt={alt} layout="fill" />
+      </ImageWrapper>
       <CardText>
-          <StepNumber>{stepNumber}.</StepNumber>
-          <div>
-            <b>{title}</b>
-            <br />
-            <br />
-            {text}
-          </div>
+        <StepNumber>{stepNumber}.</StepNumber>
+        <div>
+          <b>{title}</b>
+          <br />
+          <br />
+          {text}
+        </div>
       </CardText>
     </MaximumCard>
   );
 };
 
-export default MaximumStepCard ;
+export default MaximumStepCard;

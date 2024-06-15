@@ -10,6 +10,7 @@ import Banner from "./Banner";
 import TagsFilter from "./TagsFilter";
 import { ContainerPP } from "./productspod.style";
 import MaximumStep from "./MaximumStep";
+import FAQ from "./FAQ";
 
 const CardCus = styled(Card)`
   border-radius: 5px;
@@ -186,6 +187,7 @@ const ProductsPOD = (props) => {
             description="Covers a variety of miscellaneous products that don't fit into the main groups, ensuring you don't miss out on any items."
           />
           <MaximumStep />
+          <FAQ />
           <ContainerPP>
             <WrappProvider>
               <WrappBox>

@@ -22,8 +22,6 @@ const MaximumStep = () => {
           title="Design and Create"
           src={designImage}
           alt="Design and Create"
-          width={800}
-          height={800}
           text="Use Printcart's tools to customize and design your products with graphics, text, and images."
         />
         <MaximumStepCard
@@ -31,8 +29,6 @@ const MaximumStep = () => {
           title="List and Sell"
           src={sellingImage}
           alt="List and Sell"
-          width={800}
-          height={800}
           text="Add your customized products to your online store or Printcart's marketplace, setting prices and descriptions."
         />
         <MaximumStepCard
@@ -40,8 +36,6 @@ const MaximumStep = () => {
           title="Order Processing"
           src={processingImage}
           alt="Order Processing"
-          width={800}
-          height={800}
           text="When a customer places an order, Printcart handles production, quality control, packaging, and shipping."
         />
         <MaximumStepCard
@@ -49,8 +43,6 @@ const MaximumStep = () => {
           title="Profit and Growth"
           src={profitImage}
           alt="Profit and Growth"
-          height={1000}
-          width={1000}
           text="Receive your profits from each sale and use analytics to refine your business strategy and expand your product offerings."
         />
       </CardContainer>

@@ -5,7 +5,7 @@ import Navbar from "containers/AppModern/Navbar";
 import ProductsPOD from "containers/AppModern/ProductsPOD";
 import GlobalStyle, {
   AppWrapper,
-  ContentWrapper
+  ContentWrapper,
 } from "containers/AppModern/appModern.style";
 import Head from "next/head";
 import { ThemeProvider } from "styled-components";
@@ -17,7 +17,7 @@ const Catalog = (props) => {
     <ThemeProvider theme={theme}>
       <>
         <Head>
-          <title>Printcart | Categories</title>
+          <title>Print on Demand Product catalogs</title>
           <meta name="theme-color" content="#2563FF" />
           <link
             href="https://fonts.googleapis.com/css?family=Heebo:300,400,500,700&display=swap"
@@ -55,8 +55,8 @@ export async function getStaticProps() {
     method: "GET",
     headers: {
       Authorization: `Bearer ${token}`,
-      "Content-Type": "application/json"
-    }
+      "Content-Type": "application/json",
+    },
   };
   // const today = new Date();
   // const curentDay = today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
@@ -104,14 +104,14 @@ export async function getStaticProps() {
     resFilter,
     resFilter2,
     resFilter3,
-    resFilter4
+    resFilter4,
   ] = await Promise.all([
     fetchCollections,
     fetchProducts,
     fetchFilter,
     fetchFilter2,
     fetchFilter3,
-    fetchFilter4
+    fetchFilter4,
   ]);
 
   const [
@@ -120,14 +120,14 @@ export async function getStaticProps() {
     resultEcoFilter,
     resultAOPfilter,
     resultNeckFilter,
-    resultOtherFilter
+    resultOtherFilter,
   ] = await Promise.all([
     resCollections.json(),
     resProducts.json(),
     resFilter.json(),
     resFilter2.json(),
     resFilter3.json(),
-    resFilter4.json()
+    resFilter4.json(),
   ]);
 
   return {
@@ -137,8 +137,8 @@ export async function getStaticProps() {
       ecoData: resultEcoFilter.products || {},
       aopData: resultAOPfilter.products || {},
       neckData: resultNeckFilter.products || {},
-      otherData: resultOtherFilter.products || {}
+      otherData: resultOtherFilter.products || {},
     },
-    revalidate: 1
+    revalidate: 1,
   };
 }
