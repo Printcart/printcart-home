@@ -3,8 +3,9 @@ import { themeGet } from '@styled-system/theme-get';
 
 const FooterArea = styled.footer`
   padding: 96px 0 60px;
+  padding-right: 300px;
   background-color: ${themeGet('colors.secondary', '#09142E')};
-  @media only screen and (max-width: 1366px) {
+  @media only screen and (max-width: 1800px) {
     padding-top: 80px;
   }
   @media only screen and (max-width: 667px) {
@@ -19,49 +20,43 @@ const FooterArea = styled.footer`
   }
 `;
 
-export const WidgetArea = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  max-width: 1008px;
-  width: 100%;
-  margin: 0 auto;
+export const WidgetAreaLeft = styled.div`
+  margin-bottom: 20px;
+  padding: 0 10px;
+  box-sizing: border-box;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 
+    .title {
+    color: ${themeGet('colors.white', '#ffffff')};
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: left;
+  }
+   a {
+      text-decoration: none;
+      color: inherit;
+    }
+
   .col {
-    width: calc(100% / 3);
-    text-align: center;
-    padding: 0 21px;
-    margin-bottom: 50px;
-    @media only screen and (max-width: 991px) {
+    text-align: left;
+    margin-bottom: 5px;
+    width: 40%;
+    
+    @media only screen and (max-width: 400px) {
       padding: 0 15px;
     }
     @media only screen and (max-width: 667px) {
-      width: calc(100% / 2);
       padding: 0 20px;
-    }
-    @media only screen and (max-width: 480px) {
-      width: 100%;
-    }
-
-    img {
-      display: inline-block;
-      height: 41px;
-      width: auto;
-      margin-bottom: 27px;
-      @media only screen and (max-width: 1366px) {
-        height: 35px;
-      }
-      @media only screen and (max-width: 1366px) {
-        margin-bottom: 20px;
-      }
     }
 
     h3 {
       color: ${themeGet('colors.white', '#ffffff')};
-      font-size: 18px;
-      line-height: 24px;
-      font-weight: 500;
-      @media only screen and (max-width: 1366px) {
+      font-size: 16px;
+      line-height: 22px;
+      font-weight: 400;
+      width: 280px;
+      @media only screen and (max-width: 1866px) {
         font-size: 16px;
         line-height: 20px;
       }
@@ -83,12 +78,78 @@ export const WidgetArea = styled.div`
   }
 `;
 
+export const WidgetAreaRight = styled.div`
+  margin-bottom: 20px;
+  padding: 0 10px;
+  box-sizing: border-box;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+    .title {
+    color: ${themeGet('colors.white', '#ffffff')};
+    font-size: 24px;
+    font-weight: bold;
+    padding-left: 600px;
+    margin-bottom: 20px;
+    text-align: left;
+  }
+   a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+  .col {
+    text-align: left;
+    margin-bottom: 5px;
+    width: 40%;
+    padding-left: 600px;
+    
+    @media only screen and (max-width: 400px) {
+      padding: 0 15px;
+    }
+    @media only screen and (max-width: 667px) {
+      padding: 0 20px;
+    }
+
+    h3 {
+      color: ${themeGet('colors.white', '#ffffff')};
+      font-size: 16px;
+      line-height: 22px;
+      font-weight: 400;
+      width: 280px;
+      @media only screen and (max-width: 1866px) {
+        font-size: 16px;
+        line-height: 20px;
+      }
+      @media only screen and (max-width: 480px) {
+        font-size: 18px;
+      }
+    }
+
+    p {
+      color: rgba(255, 255, 255, 0.4);
+      font-size: 14px;
+      line-height: 24px;
+      margin-bottom: 0;
+      @media only screen and (max-width: 480px) {
+        font-size: 15px;
+        line-height: 26px;
+      }
+    }
+  }
+`;
+
+export const WidgetAreaContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
 export const MenuArea = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding-top: 30px;
+  padding-left: 350px;
   @media only screen and (max-width: 1366px) {
     padding-top: 50px;
   }
