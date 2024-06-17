@@ -10,39 +10,39 @@ export const navbar = {
       id: 1,
       label: "Home",
       path: "#home",
-      offset: "84"
+      offset: "84",
     },
     {
       id: 2,
       label: "Services",
       path: "#home",
-      offset: "81"
+      offset: "81",
     },
     {
       id: 3,
       label: "Printshop",
       path: "#home",
-      offset: "81"
+      offset: "81",
     },
     {
       id: 4,
       label: "Integration",
       path: "#home",
-      offset: "81"
+      offset: "81",
     },
     {
       id: 5,
       label: "Community",
       path: "#home",
-      offset: "81"
+      offset: "81",
     },
     {
       id: 6,
       label: "Documentation",
       path: "#home",
-      offset: "81"
-    }
-  ]
+      offset: "81",
+    },
+  ],
 };
 
 /* ------------------------------------ */
@@ -57,23 +57,23 @@ export const client = [
   {
     id: 1,
     image: client1,
-    title: "The new york times"
+    title: "The new york times",
   },
   {
     id: 2,
     image: client2,
-    title: "amazon"
+    title: "amazon",
   },
   {
     id: 3,
     image: client3,
-    title: "evernote"
+    title: "evernote",
   },
   {
     id: 4,
     image: client4,
-    title: "the verge"
-  }
+    title: "the verge",
+  },
 ];
 
 /* ------------------------------------ */
@@ -94,7 +94,7 @@ export const features = {
       icon: featureIcon1,
       title: "Mission",
       description:
-        "Printcart helps Print shops and Print companies sell Custom Printing Products globally."
+        "Printcart helps Print shops and Print companies sell Custom Printing Products globally.",
     },
     {
       id: 2,
@@ -102,7 +102,7 @@ export const features = {
       icon: featureIcon2,
       title: "How it services",
       description:
-        "Buyer in the world can customize their print products and gets products in a few weeks."
+        "Buyer in the world can customize their print products and gets products in a few weeks.",
     },
     {
       id: 3,
@@ -110,7 +110,7 @@ export const features = {
       icon: featureIcon3,
       title: "Target client",
       description:
-        "Printcart is the solution for any Traditional print business and printing startups need to change."
+        "Printcart is the solution for any Traditional print business and printing startups need to change.",
     },
     {
       id: 4,
@@ -118,9 +118,9 @@ export const features = {
       icon: featureIcon4,
       title: "Business Model",
       description:
-        "Printcart.com provides B2B SaaS services for all Print shop owners and developers globally. "
-    }
-  ]
+        "Printcart.com provides B2B SaaS services for all Print shop owners and developers globally. ",
+    },
+  ],
 };
 
 /* ------------------------------------ */
@@ -131,48 +131,48 @@ export const filterServices = [
   {
     id: 1,
     name: "All",
-    color: "red"
+    color: "red",
   },
   {
     id: 2,
     name: "Leadee Services",
-    color: "orange"
+    color: "orange",
   },
   {
     id: 3,
     name: "Design & Branding",
-    color: "blue"
+    color: "blue",
   },
   {
     id: 4,
     name: "Development & IT",
-    color: "green"
+    color: "green",
   },
   {
     id: 5,
     name: "Digital Marketing",
-    color: "aqua"
+    color: "aqua",
   },
   {
     id: 6,
     name: "Writing & Translation",
-    color: "violet"
+    color: "violet",
   },
   {
     id: 7,
     name: "Ecommerce Partners",
-    color: "pink"
+    color: "pink",
   },
   {
     id: 8,
     name: "Business Administration",
-    color: "teal"
+    color: "teal",
   },
   {
     id: 9,
     name: "Specific Industry",
-    color: "black"
-  }
+    color: "black",
+  },
 ];
 /* ------------------------------------ */
 // App slider data section
@@ -187,18 +187,18 @@ export const appSlider = {
     {
       id: 1,
       image: appSlide1,
-      title: "App Slide 1"
+      title: "App Slide 1",
     },
     {
       id: 2,
       image: appSlide2,
-      title: "App Slide 2"
+      title: "App Slide 2",
     },
     {
       id: 3,
       image: appSlide3,
-      title: "App Slide 3"
-    }
+      title: "App Slide 3",
+    },
   ],
   title: "The Re-Invention of Printing Industry",
   description:
@@ -209,23 +209,23 @@ export const appSlider = {
       icon: appIcon,
       title: "Cloud Print API Techology",
       description:
-        "Manage entire print job workflow seamlessly from product, project, design on a Dashboard"
+        "Manage entire print job workflow seamlessly from product, project, design on a Dashboard",
     },
     {
       id: 2,
       icon: appIcon,
       title: "Print Ecommerce Storefront",
       description:
-        "Sell any printing product via omni- channels with custom designer, pricing matrix or order upload"
+        "Sell any printing product via omni- channels with custom designer, pricing matrix or order upload",
     },
     {
       id: 3,
       icon: appIcon,
       title: "Shipping & Fullfillment API",
       description:
-        "Simplify the connection between POD partner with designer, marketer and printshop agency"
-    }
-  ]
+        "Simplify the connection between POD partner with designer, marketer and printshop agency",
+    },
+  ],
 };
 
 /* ------------------------------------ */
@@ -238,7 +238,7 @@ export const designAndBuilt = {
   slogan: "PRINTJOB WORKFLOW",
   title: "Custom Printjob Workflow Development",
   description:
-    "Printcart team is open with any customization and automation workflow project"
+    "Printcart team is open with any customization and automation workflow project",
 };
 
 /* ------------------------------------ */
@@ -251,7 +251,7 @@ export const designAndBuiltBefore = {
   slogan: "PRINTSHOP STOREFRONT SOLUTION",
   title: "Supply a ready Storefront Website for Printer",
   description:
-    "The Complete Web 2 Print Management System. Ready To Streamline Your Business."
+    "The Complete Web 2 Print Management System. Ready To Streamline Your Business.",
 };
 
 /* ------------------------------------ */
@@ -264,7 +264,7 @@ export const designAndBuiltBefore3 = {
   slogan: "COMMERCIAL PRINTING PRODUCTS",
   title: "Personalize Any Product and send them to printing",
   description:
-    "Allows your users to design the products as per their needs and purchase them in your Printshop."
+    "Allows your users to design the products as per their needs and purchase them in your Printshop.",
 };
 
 /* ------------------------------------ */
@@ -277,7 +277,7 @@ export const designAndBuiltBefore4 = {
   slogan: "API FIRST COMMERCE",
   title: "",
   description:
-    "You can build applications to manage the commerce features of a merchant site"
+    "You can build applications to manage the commerce features of a merchant site",
 };
 
 /* ------------------------------------ */
@@ -290,7 +290,7 @@ export const designAndBuiltcode = {
   slogan: "PRINTCART REST API",
   title: "Interact with data from your Printcart account.",
   description:
-    "The Printcart API uses predictable resource-oriented URLs, standard HTTP verbs, and response codes, and accepts and returns JSON-encoded request and response bodies."
+    "The Printcart API uses predictable resource-oriented URLs, standard HTTP verbs, and response codes, and accepts and returns JSON-encoded request and response bodies.",
 };
 
 /* ------------------------------------ */
@@ -308,41 +308,41 @@ export const productData = {
       id: 1,
       thumb_url: slide1,
       link: "#1",
-      title: "slide 1"
+      title: "slide 1",
     },
     {
       id: 2,
       thumb_url: slide2,
       link: "#1",
-      title: "slide 2"
+      title: "slide 2",
     },
     {
       id: 3,
       thumb_url: slide3,
       link: "#1",
-      title: "slide 3"
+      title: "slide 3",
     },
 
     {
       id: 4,
       thumb_url: slide1,
       link: "#1",
-      title: "slide 4"
+      title: "slide 4",
     },
 
     {
       id: 5,
       thumb_url: slide3,
       link: "#1",
-      title: "slide 5"
+      title: "slide 5",
     },
     {
       id: 6,
       thumb_url: slide2,
       link: "#1",
-      title: "slide 6"
-    }
-  ]
+      title: "slide 6",
+    },
+  ],
 };
 
 /* ------------------------------------ */
@@ -361,21 +361,21 @@ export const pricing = {
       features: [
         {
           id: 1,
-          text: "Online design Tool"
+          text: "Online design Tool",
         },
         {
           id: 2,
-          text: "1,000's of Templates"
+          text: "1,000's of Templates",
         },
         {
           id: 3,
-          text: "Blog Support Tools"
+          text: "Blog Support Tools",
         },
         {
           id: 4,
-          text: "eCommerce Store "
-        }
-      ]
+          text: "eCommerce Store ",
+        },
+      ],
     },
     {
       id: 2,
@@ -388,21 +388,21 @@ export const pricing = {
       features: [
         {
           id: 1,
-          text: "Online design Tool"
+          text: "Online design Tool",
         },
         {
           id: 2,
-          text: "1,000's of Templates"
+          text: "1,000's of Templates",
         },
         {
           id: 3,
-          text: "Blog Support Tools"
+          text: "Blog Support Tools",
         },
         {
           id: 4,
-          text: "eCommerce Store "
-        }
-      ]
+          text: "eCommerce Store ",
+        },
+      ],
     },
     {
       id: 3,
@@ -415,23 +415,23 @@ export const pricing = {
       features: [
         {
           id: 1,
-          text: "Online design Tool"
+          text: "Online design Tool",
         },
         {
           id: 2,
-          text: "1,000's of Templates"
+          text: "1,000's of Templates",
         },
         {
           id: 3,
-          text: "Blog Support Tools"
+          text: "Blog Support Tools",
         },
         {
           id: 4,
-          text: "eCommerce Store "
-        }
-      ]
-    }
-  ]
+          text: "eCommerce Store ",
+        },
+      ],
+    },
+  ],
 };
 
 /* ------------------------------------ */
@@ -454,39 +454,39 @@ export const teamportfolio = {
     {
       id: 1,
       img: member1,
-      text: "David Nguyen"
+      text: "David Nguyen",
     },
     {
       id: 2,
       img: member2,
-      text: "Shopia Ho"
+      text: "Shopia Ho",
     },
     {
       id: 3,
       img: member3,
-      text: "Bach Pham"
+      text: "Bach Pham",
     },
     {
       id: 4,
       img: member4,
-      text: "Daniel Vu"
+      text: "Daniel Vu",
     },
     {
       id: 5,
       img: member5,
-      text: "Cong Nguyen"
+      text: "Cong Nguyen",
     },
     {
       id: 6,
       img: member6,
-      text: "Vu Tuan"
+      text: "Vu Tuan",
     },
     {
       id: 7,
       img: member7,
-      text: "Binh Nguyen"
-    }
-  ]
+      text: "Binh Nguyen",
+    },
+  ],
 };
 
 /* ------------------------------------ */
@@ -505,7 +505,7 @@ export const testimonial = {
         "https://pbs.twimg.com/profile_images/974736784906248192/gPZwCbdS.jpg",
       name: "Jon Doe",
       designation: "CEO of RedQ Inc.",
-      review: 4
+      review: 4,
     },
     {
       id: 2,
@@ -515,7 +515,7 @@ export const testimonial = {
       avatar: "https://randomuser.me/api/portraits/women/44.jpg",
       name: "Vanessa Acook",
       designation: "Asistant Manager",
-      review: 5
+      review: 5,
     },
     {
       id: 3,
@@ -525,99 +525,77 @@ export const testimonial = {
       avatar: "https://randomuser.me/api/portraits/men/44.jpg",
       name: "Inez T. Hughes",
       designation: "Leadership Group",
-      review: 5
-    }
-  ]
+      review: 5,
+    },
+  ],
 };
 
 /* ------------------------------------ */
 // Footer data section
 /* ------------------------------------ */
-import chat from "common/assets/image/appModern/chat.svg";
-import group from "common/assets/image/appModern/group.svg";
-import github from "common/assets/image/appModern/github.svg";
-import linkedin from "common/assets/image/appModern/linkedin.svg";
-import discord from "common/assets/image/appModern/discord.svg";
-import support from "common/assets/image/appModern/support.svg";
 import footerLogo from "common/assets/image/appModern/Logo-printcart-white.png";
 
 export const footer = {
-  widgets: [
-    {
-      id: 1,
-      icon: chat,
-      title: "Visit our user guide documents",
-      description:
-        "You will find out everything you need to start Printing Business with PRINTCART Technology Solution",
-      url: "https://docs.printcart.com/"
-    },
-    {
-      id: 2,
-      icon: group,
-      title: "Join in Chat Community",
-      description:
-        "Join our social networking community to discuss the best solution for your printing business.",
-      url: "https://t.me/printcart"
-    },
-    {
-      id: 3,
-      icon: github,
-      title: "Github Access",
-      description:
-        "Join discuss, build and develop technology to bring the best solution for the printing business.",
-      url: "https://github.com/printcart"
-    },
-    {
-      id: 4,
-      icon: linkedin,
-      title: "Shop Owners Support",
-      description:
-        "You can contact and require support everything you need to start Printing Business with Printcart Solution",
-      url: "https://www.linkedin.com/groups/14069135/"
-    },
-    {
-      id: 5,
-      icon: discord,
-      title: "Developers Support",
-      description:
-        "Join our Discord Social to discuss the Technology solution for printing business with Printcart API",
-      url: "https://discord.gg/YFxK4AQ6bF"
-    },
-    {
-      id: 6,
-      icon: support,
-      title: "Investment",
-      description:
-        "Read Our Pitch Desk to Understand Vision and Mision of Printcart. Let develop online printing business community with us.",
-      url: "https://www.linkedin.com/feed/update/urn:li:activity:6896778333812604928/"
-    }
+  widgetsPartner: [
+    { id: 1, title: 'For Printer Partners', url: 'https://docs.printcart.com/docs/users-manual/get-started' },
+    { id: 2, title: 'Web2Print Solution', url: '/' },
+    { id: 3, title: 'Consultant & Development Services', url: '/' },
+    { id: 4, title: 'Magento Web2Print Solution', url: 'https://solution.printcart.com/web/magento-printshop-website?_gl=1*1rst7jj*_ga*MTA0ODcyNTIxMC4xNzA4OTE3MTUy*_ga_QPKLJRNMFZ*MTcxODU5NzIzMS4yMC4xLjE3MTg1OTczNTcuMC4wLjA.' },
+    { id: 5, title: 'Wordpress Web2Print Solution', url: 'https://solution.printcart.com/web/wordpress-printshop-website?_gl=1*cmn84b*_ga*MTA0ODcyNTIxMC4xNzA4OTE3MTUy*_ga_QPKLJRNMFZ*MTcxODU5NzIzMS4yMC4xLjE3MTg1OTczNTcuMC4wLjA.' },
+    { id: 6, title: 'Web2Print with Wix', url: 'https://solution.printcart.com/community/setting-up-your-wix-e-commerce-website-with-printcart-api-online-design-tool-a-step-by-step-guide' },
+    { id: 7, title: 'Web2Print with Shopify', url: 'https://solution.printcart.com/app/web-to-print-shopify?_gl=1*pwtbda*_ga*MTA0ODcyNTIxMC4xNzA4OTE3MTUy*_ga_QPKLJRNMFZ*MTcxODU5NzIzMS4yMC4xLjE3MTg1OTczNTcuMC4wLjA.' },
+    { id: 8, title: 'Laravel Web2Print Development', url: '#' },
+    { id: 9, title: 'Web2Print Cloud API Solution', url: '/' },
+    { id: 10, title: 'Web2Print Marketplace Development', url: '/' },
+    { id: 11, title: 'Product Designer for Wordpress', url: '/' },
+    { id: 12, title: 'Web2Print Mobile App', url: '/' },
+    { id: 13, title: 'POD & Fulfillment solution', url: '/' },
+    { id: 14, title: 'Meet our Consultant Partners', url: '/' },
+    { id: 15, title: 'Request a Demo', url: '/' },
+    { id: 16, title: 'Case Studies', url: '/' },
+    { id: 17, title: 'Testimonials', url: '/' },
+    { id: 18, title: 'Web2Print Tutorials', url: '/tutprias' },
+    { id: 19, title: 'Support Ticket', url: 'https://dashboard.printcart.com/projects/tickets' }
+  ],
+  widgetsPOD: [
+    { id: 1, title: 'Become a POD seller', url: '/' },
+    { id: 2, title: 'POD business tutorials', url: '/' },
+    { id: 3, title: 'Product Catalog', url: '/' },
+    { id: 4, title: 'Support Services for POD Seller', url: '/' },
+    { id: 5, title: 'POD Dashboard', url: '/' },
+    { id: 6, title: 'Sell POD on Etsy', url: '#' },
+    { id: 7, title: 'Sell POD on Wix', url: '#' },
+    { id: 8, title: 'Sell POD on Shopify', url: '#' },
+    { id: 9, title: 'Sell POD on Wordpress', url: '#' },
+    { id: 10, title: 'Sell POD on Magento', url: '#' },
+    { id: 11, title: 'Sell POD with custom website', url: '#' },
+    { id: 12, title: 'Sell POD on WhatsApp', url: '#' },
+    { id: 13, title: 'Sell POD on Facebook', url: '#' },
+    { id: 14, title: 'Sell POD on Telegram', url: '#' },
+    { id: 15, title: 'Order & Payment', url: '#' },
+    { id: 16, title: 'Shipping & Return', url: '#' },
+    { id: 17, title: 'POD policies', url: '#' }
+  ],
+  widgetsPrintcart: [
+    { id: 1, title: 'How we work', url: '#' },
+    { id: 2, title: 'Contact Us', url: '#' },
+    { id: 3, title: 'Request a Demo', url: '#' },
+    { id: 4, title: 'Help Desk', url: '#' },
+    { id: 5, title: 'Testimonials', url: '#' },
+    { id: 6, title: 'Site Map', url: '#' },
+    { id: 7, title: 'Term of Services', url: '#' }
   ],
   logo: footerLogo,
   menu: [
     {
       id: 1,
       text: "Home",
-      link: "#"
+      link: "#",
     },
     {
       id: 2,
       text: "Documentation",
-      link: "https://docs.printcart.com/"
-    }
-    // {
-    //   id: 3,
-    //   text: 'Github',
-    //   link: 'https://github.com/printcart',
-    // },
-    // {
-    //   id: 4,
-    //   text: 'Linkedin',
-    //   link: 'https://www.linkedin.com/company/printcart/',
-    // },
-    // {
-    //   id: 5,
-    //   text: 'Discord',
-    //   link: 'https://discord.gg/sy4RxH35',
-    // },
-  ]
+      link: "https://docs.printcart.com/",
+    },
+  ],
 };
