@@ -7,7 +7,7 @@ import Navbar from "containers/AppModern/Navbar";
 import Head from "next/head";
 import { ThemeProvider } from "styled-components";
 
-export const config = { runtime: "edge" };
+export const config = { runtime: "experimental-edge" };
 
 const ServicesCategory = (props) => {
   const {
