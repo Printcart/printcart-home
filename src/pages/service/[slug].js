@@ -7,7 +7,7 @@ import ServiceDetail from "containers/AppModern/ServiceDetail";
 import Head from "next/head";
 import { ThemeProvider } from "styled-components";
 
-export const runtime = "edge";
+export const config = { runtime: "edge" };
 
 const Service = (props) => {
   const { character, related, fetchAlias } = props;

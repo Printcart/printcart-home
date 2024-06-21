@@ -7,7 +7,7 @@ import GlobalStyle, { AppWrapper } from "containers/AppModern/appModern.style";
 import Head from "next/head";
 import { ThemeProvider } from "styled-components";
 
-export const runtime = "edge";
+export const config = { runtime: "edge" };
 
 const DetailPage = (props) => {
   const { postData, relatedData } = props;
