@@ -8,6 +8,7 @@ const nextConfig = {
       "media-cloodo.s3.amazonaws.com",
       "play.google.com",
     ],
+    unoptimized: true,
   },
   async redirects() {
     return [
