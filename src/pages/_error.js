@@ -3,7 +3,7 @@ import Head from "next/head";
 import ErrorSec from "containers/Error";
 import ResetCSS from "common/assets/css/style";
 
-export const config = { runtime: "experimental-edge" };
+export const runtime = "edge";
 
 export default function Error({ statusCode }) {
   return (
