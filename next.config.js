@@ -9,6 +9,9 @@ const nextConfig = {
       "play.google.com",
     ],
   },
+  experimental: {
+    runtime: "edge",
+  },
   async redirects() {
     return [
       {
