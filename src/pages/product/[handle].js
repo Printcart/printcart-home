@@ -7,6 +7,8 @@ import ProductDetail from "containers/AppModern/ProductDetail";
 import Head from "next/head";
 import { ThemeProvider } from "styled-components";
 
+export const runtime = "experimental-edge";
+
 const Product = (props) => {
   const { product, productsRelated } = props;
 

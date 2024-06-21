@@ -2,6 +2,9 @@ import React, { Fragment } from "react";
 import Head from "next/head";
 import ErrorSec from "containers/Error";
 import ResetCSS from "common/assets/css/style";
+
+export const runtime = "experimental-edge";
+
 export default function Error({ statusCode }) {
   return (
     <Fragment>
@@ -28,5 +31,3 @@ Error.getInitialProps = ({ res, err }) => {
   const statusCode = res ? res.statusCode : err ? err.statusCode : 404;
   return { statusCode };
 };
-
-

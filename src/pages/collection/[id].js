@@ -7,6 +7,8 @@ import Navbar from "containers/AppModern/Navbar";
 import Head from "next/head";
 import { ThemeProvider } from "styled-components";
 
+export const runtime = "experimental-edge";
+
 const Collection = (props) => {
   const { collection, vendors, products } = props;
   return (
@@ -103,5 +105,3 @@ export async function getStaticPaths() {
     };
   }
 }
-
-

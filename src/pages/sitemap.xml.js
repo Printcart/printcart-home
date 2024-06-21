@@ -96,6 +96,6 @@ export async function getServerSideProps({ res }) {
   };
 }
 
+export const runtime = "experimental-edge";
+
 export default SiteMap;
-
-
