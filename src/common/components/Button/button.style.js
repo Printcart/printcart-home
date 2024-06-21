@@ -55,6 +55,11 @@ const ButtonStyle = styled.button`
     }
   }
 
+  /* Hover effect */
+  &:hover {
+    background-color: ${themeGet('colors.primaryWithBg', '#1E4FDB')};
+  }
+
   /* Style system support */
   ${alignItems}
   ${boxShadow}

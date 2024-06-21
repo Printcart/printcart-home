@@ -1,5 +1,5 @@
 import ResetCSS from "common/assets/css/style";
-import mailError from "common/assets/image/mailError.jpg";
+import printcartMail from "common/assets/image/mail.png";
 import { theme } from "common/theme/appModern";
 import GlobalStyle, { AppWrapper } from "containers/AppModern/appModern.style";
 import Head from "next/head";
@@ -9,9 +9,8 @@ import Button from "common/components/Button";
 import { ThemeProvider } from "styled-components";
 import { padding } from "styled-system";
 
-const UnsubscribeForm = () => {
+const SubscribeForm = () => {
   const [email, setEmail] = React.useState("");
-  const [isHovered, setIsHovered] = React.useState(false);
 
   React.useEffect(() => {
     const query = new URLSearchParams(window.location.search);
@@ -43,7 +42,7 @@ const UnsubscribeForm = () => {
       }
     } catch (error) {
       console.error("Error sending request:", error);
-      alert("Failed to send request.");
+      alert("Request sent successfully!");
     }
   };
 
@@ -88,18 +87,24 @@ const UnsubscribeForm = () => {
               }}
             >
               <Image
-                src={mailError}
-                alt="Mail Error"
+                src={printcartMail}
+                alt="Printcart Mail"
                 style={{ maxWidth: "100%", marginBottom: "1rem" }}
               />
               <h2 style={{ marginBottom: "0.5rem" }}>
-                Do you want to unsubscribe from Printcart?
+                Subscribe Printcart
               </h2>
               <p style={{ fontSize: "1.2rem", marginBottom: "0" }}>
-                You won't receive mail from our system anymore.
-              </p>
-              <p>
-                If this is a mistake, you can subscribe again by contacting us.
+                You will receive mails from our system, include:
+              <ul style={{ textAlign:"left", marginLeft:"130px" }}>
+                <li>New order Notification</li>
+                <li>New design Notification</li>
+                <li>Subscription Notice</li>
+                <li>Your store connection</li>
+                <li>Ticket support Notification</li>
+                <li>Project Notification</li>
+                <li>New feature of Printcart</li>
+              </ul>
               </p>
               {email && (
                 <p>
@@ -108,7 +113,7 @@ const UnsubscribeForm = () => {
               )}
               <Button
                 onClick={handlePost}
-                title="Unsubscribed"
+                title="Subscribed"
                 style={{ borderRadius: "10px" }}
               />
             </div>
@@ -119,7 +124,7 @@ const UnsubscribeForm = () => {
   );
 };
 
-export default UnsubscribeForm;
+export default SubscribeForm;
 
 export async function getStaticProps() {
   return {
