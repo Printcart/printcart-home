@@ -43,8 +43,8 @@ export async function getStaticProps({ params }) {
     method: "GET",
     headers: {
       Authorization: `Bearer ${token}`,
-      "Content-Type": "application/json"
-    }
+      "Content-Type": "application/json",
+    },
   };
   const setUrlProducts = new URL(`products?handle=${params.handle}`, baseUrl);
   const urlProducts = setUrlProducts.href;
@@ -59,20 +59,20 @@ export async function getStaticProps({ params }) {
 
   const [res, resRelated] = await Promise.all([
     fetchProducts,
-    fetchProductsRelated
+    fetchProductsRelated,
   ]);
 
   const [result, resultRelated] = await Promise.all([
     res.json(),
-    resRelated.json()
+    resRelated.json(),
   ]);
 
   return {
     props: {
       product: result?.products || {},
-      productsRelated: resultRelated.products || {}
+      productsRelated: resultRelated.products || {},
     },
-    revalidate: 1
+    revalidate: 1,
   };
 }
 
@@ -84,8 +84,8 @@ export async function getStaticPaths() {
     method: "GET",
     headers: {
       Authorization: `Bearer ${token}`,
-      "Content-Type": "application/json"
-    }
+      "Content-Type": "application/json",
+    },
   };
   const newUrlPath = new URL("products", baseUrl);
   newUrlPath.searchParams.set("status", "published");
@@ -98,12 +98,10 @@ export async function getStaticPaths() {
     return {
       paths: result.products.map((product) => {
         return {
-          params: { handle: product.handle }
+          params: { handle: product.handle },
         };
       }),
-      fallback: "blocking"
+      fallback: "blocking",
     };
   }
 }
-
-export const runtime = 'edge'

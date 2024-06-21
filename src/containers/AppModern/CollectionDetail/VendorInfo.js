@@ -210,12 +210,15 @@ const VendorInfo = (props) => {
                   </BtnMoreDetail>
                 </BoxButton>
                 <ContainerDesign>
-                  {data?.printcart_product_uuid && data?.vendor?.api_token && (
-                    <Designtool
-                      productId={data.printcart_product_uuid}
-                      apiKeyVendor={data.vendor.api_token}
-                    />
-                  )}
+                  <>
+                    {data?.printcart_product_uuid &&
+                      data?.vendor?.api_token && (
+                        <Designtool
+                          productId={data.printcart_product_uuid}
+                          apiKeyVendor={data.vendor.api_token}
+                        />
+                      )}
+                  </>
                 </ContainerDesign>
               </BoxHeaderRight>
             </Grid>
