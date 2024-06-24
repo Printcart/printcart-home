@@ -73,7 +73,6 @@
     "tsparticles": "^1.35.2"
   },
   "devDependencies": {
-    "@cloudflare/next-on-pages": "^0.0.0-705a95b",
     "babel-plugin-styled-components": "^1.11.1",
     "firebase-tools": "^9.10.0",
     "imagemin-optipng": "^8.0.0",
