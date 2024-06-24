@@ -3,9 +3,7 @@ import Head from "next/head";
 import ErrorSec from "containers/Error";
 import ResetCSS from "common/assets/css/style";
 
-export const runtime = "edge";
-
-export default function Error({ statusCode }) {
+export default function Error() {
   return (
     <Fragment>
       <Head>
@@ -17,17 +15,8 @@ export default function Error({ statusCode }) {
       </Head>
       <ResetCSS />
       <div>
-        {statusCode ? (
-          `An error ${statusCode} occurred on server`
-        ) : (
-          <ErrorSec />
-        )}
+        An error occurred on server : <ErrorSec />
       </div>
     </Fragment>
   );
 }
-
-Error.getInitialProps = ({ res, err }) => {
-  const statusCode = res ? res.statusCode : err ? err.statusCode : 404;
-  return { statusCode };
-};
