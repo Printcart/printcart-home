@@ -9,6 +9,7 @@ import { ThemeProvider } from "styled-components";
 
 const DetailPage = (props) => {
   const { postData, relatedData } = props;
+
   return (
     <ThemeProvider theme={theme}>
       <>
@@ -52,7 +53,16 @@ export async function getStaticProps({ params }) {
   relatedURL.searchParams.set("filters[id][$notIn]", notIdUser);
   relatedURL.searchParams.set("pagination[limit]", 6);
   relatedURL.searchParams.set("filters[post_type][id]", 3);
-  relatedURL.searchParams.set("populate", "*");
+  relatedURL.searchParams.set("fields[0]", "alias");
+  relatedURL.searchParams.set("fields[1]", "title");
+  relatedURL.searchParams.set("fields[2]", "createdAt");
+  relatedURL.searchParams.set("fields[3]", "short_intro");
+  relatedURL.searchParams.set("populate[user_profile]", "*");
+  relatedURL.searchParams.set("populate[tags][fields][0]", "name");
+  relatedURL.searchParams.set("populate[tags][fields][1]", "alias");
+  relatedURL.searchParams.set("populate[banner][fields][0]", "formats");
+  relatedURL.searchParams.set("sort[0]", "createdAt:desc");
+
   const newUrlRelated = relatedURL.href;
 
   const fetchRelated = await fetch(newUrlRelated);
