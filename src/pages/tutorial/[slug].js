@@ -71,7 +71,7 @@ export async function getStaticPaths() {
   const baseUrl = process.env.STRAPI_API_URL;
   const setUrl = new URL("posts", baseUrl);
   setUrl.searchParams.set("filters[channels][name][$eq]", "Printcart");
-  setUrl.searchParams.set("pagination[pageSize]", "100");
+  setUrl.searchParams.set("pagination[pageSize]", "10");
   setUrl.searchParams.set("fields[0]", "alias");
   setUrl.searchParams.set("sort[0]", "createdAt:desc");
   const newUrl = setUrl.href;
