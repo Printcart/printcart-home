@@ -63,7 +63,7 @@ export async function getServerSideProps({ query }) {
   const newUrl = `${urlData2}?${params.toString()}`;
   const filAgency = `&filters[$and][0][service_agency][$contains]=568427`;
   const filSort = `&sort=createdAt:DESC`;
-  const limit = `&pagination[pageSize]=100`;
+  const limit = `&pagination[pageSize]=10`;
 
   const res = await fetch(
     `${urlStrapi}project-categories?populate=parent&filters[parent][parent][alias][$null]=true&filters[parent][alias][$notNull]=true&filters[alias][$eq]=${aliasSub}`

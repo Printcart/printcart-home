@@ -5,7 +5,7 @@ import Navbar from "containers/AppModern/Navbar";
 import ProductsPOD from "containers/AppModern/ProductsPOD";
 import GlobalStyle, {
   AppWrapper,
-  ContentWrapper
+  ContentWrapper,
 } from "containers/AppModern/appModern.style";
 import Head from "next/head";
 import { ThemeProvider } from "styled-components";
@@ -55,39 +55,43 @@ export async function getStaticProps() {
     method: "GET",
     headers: {
       Authorization: `Bearer ${token}`,
-      "Content-Type": "application/json"
-    }
+      "Content-Type": "application/json",
+    },
   };
   // const today = new Date();
   // const curentDay = today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
 
   const urlCollection = new URL("collections", baseUrlAdmin);
-  urlCollection.searchParams.set("limit", 30);
+  urlCollection.searchParams.set("limit", 10);
   const paramsCollection = urlCollection.href;
 
   const urlFilter = new URL("products", baseUrlAdmin);
   urlFilter.searchParams.set("status", "published");
+  urlFilter.searchParams.set("limit", 10);
   urlFilter.searchParams.set("tags[]", "ptag_01H4JEYNQ52B0KW1K4NZMNVN1Q");
   const newUrlFilter = urlFilter.href;
 
   const urlFilter2 = new URL("products", baseUrlAdmin);
   urlFilter2.searchParams.set("status", "published");
+  urlFilter2.searchParams.set("limit", 10);
   urlFilter2.searchParams.set("tags[]", "ptag_01H4ZCAWFGG4H67NE29Z28T0XM");
   const newUrlFilter2 = urlFilter2.href;
 
   const urlFilter3 = new URL("products", baseUrlAdmin);
   urlFilter3.searchParams.set("status", "published");
+  urlFilter3.searchParams.set("limit", "10");
   urlFilter3.searchParams.set("tags[]", "ptag_01H3XV3ZSP0YAZ9N4E4QTD88XN");
   const newUrlFilter3 = urlFilter3.href;
 
   const urlFilter4 = new URL("products", baseUrlAdmin);
   urlFilter4.searchParams.set("status", "published");
+  urlFilter4.searchParams.set("limit", 10);
   urlFilter4.searchParams.set("tags[]", "ptag_01H4ZGW9MFKMMRQ6BF64BE616Q");
   const newUrlFilter4 = urlFilter4.href;
 
   const urlProduct = new URL("products", baseUrlAdmin);
   urlProduct.searchParams.set("status", "published");
-  // urlProduct.searchParams.set("limit", 500);
+  urlProduct.searchParams.set("limit", 10);
   // urlProduct.searchParams.set("updated_at[lte]", curentDay);
   const paramsProduct = urlProduct.href;
 
@@ -104,14 +108,14 @@ export async function getStaticProps() {
     resFilter,
     resFilter2,
     resFilter3,
-    resFilter4
+    resFilter4,
   ] = await Promise.all([
     fetchCollections,
     fetchProducts,
     fetchFilter,
     fetchFilter2,
     fetchFilter3,
-    fetchFilter4
+    fetchFilter4,
   ]);
 
   const [
@@ -120,14 +124,14 @@ export async function getStaticProps() {
     resultEcoFilter,
     resultAOPfilter,
     resultNeckFilter,
-    resultOtherFilter
+    resultOtherFilter,
   ] = await Promise.all([
     resCollections.json(),
     resProducts.json(),
     resFilter.json(),
     resFilter2.json(),
     resFilter3.json(),
-    resFilter4.json()
+    resFilter4.json(),
   ]);
 
   return {
@@ -137,8 +141,8 @@ export async function getStaticProps() {
       ecoData: resultEcoFilter.products || {},
       aopData: resultAOPfilter.products || {},
       neckData: resultNeckFilter.products || {},
-      otherData: resultOtherFilter.products || {}
+      otherData: resultOtherFilter.products || {},
     },
-    revalidate: 1
+    revalidate: 1,
   };
 }

@@ -89,7 +89,7 @@ export async function getStaticPaths() {
   };
   const newUrlPath = new URL("products", baseUrl);
   newUrlPath.searchParams.set("status", "published");
-  newUrlPath.searchParams.set("limit", 20);
+  newUrlPath.searchParams.set("limit", 1);
   const fetchPath = newUrlPath.href;
 
   const res = await fetch(fetchPath, paramsProduct);
