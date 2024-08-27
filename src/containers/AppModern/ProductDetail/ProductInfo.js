@@ -1,7 +1,7 @@
 import Box from "common/components/Box";
 import Heading from "common/components/Heading";
 import React from "react";
-import ReactHtmlParser from "react-html-parser";
+import parser from "html-react-parser";
 import styled from "styled-components";
 
 const WrapperInfo = styled(Box)`
@@ -50,7 +50,7 @@ const ProductInfo = (props) => {
                 lineHeight="2.5rem"
               />
               <PDescription>
-                {ReactHtmlParser(
+                {parser(
                   item?.collection?.metadata?.short_description ||
                     item?.metadata?.short_description
                 )}

@@ -4,7 +4,7 @@ import Container from "common/components/UI/Container";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
-import ReactHtmlParser from "react-html-parser";
+import parser from "html-react-parser";
 import Icon from "react-icons-kit";
 import { ic_remove_red_eye } from "react-icons-kit/md/ic_remove_red_eye";
 import styled from "styled-components";
@@ -42,7 +42,6 @@ const BlogPage = ({ resPosts, pages }) => {
     start = (query.page - 1) * end - 1;
     end = query.page * end;
   }
-  console.log(resPosts);
 
   return (
     <React.Fragment>
@@ -96,7 +95,7 @@ const BlogPage = ({ resPosts, pages }) => {
                         />
                       )}
                       <DesBox>
-                        {ReactHtmlParser(items?.attributes?.short_intro)}
+                        {parser(items?.attributes?.short_intro)}
                       </DesBox>
                       <Box>
                         <TagBox>

@@ -11,14 +11,14 @@ const Pagination = ({ page }) => {
   }
 
   //Next Page
-  const handlePagination = (page) => {
+  const handlePagination = (e) => {
     const path = Router.pathname;
     const query = Router.query;
-    if (isNaN(parseFloat(page.selected)) || page.selected == 0) {
-      page.selected = 0;
+    if (isNaN(parseFloat(e.selected)) || e.selected == 0) {
+      e.selected = 0;
       delete query.page;
     } else {
-      query.page = page.selected + 1;
+      query.page = e.selected + 1;
     }
 
     Router.push({
@@ -39,7 +39,6 @@ const Pagination = ({ page }) => {
       pageCount={count}
       onPageChange={handlePagination}
       disableInitialCallback={true}
-      selectedPageRel
       subContainerClassName={"paginate-inner"}
       pageClassName={"paginate-li"}
       pageLinkClassName={"paginate-a"}

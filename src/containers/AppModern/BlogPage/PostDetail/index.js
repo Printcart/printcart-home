@@ -3,7 +3,7 @@ import Heading from "common/components/Heading";
 import Container from "common/components/UI/Container";
 import WrapperServices from "containers/AppModern/ServiceDetail/WrapperService";
 import Link from "next/link";
-import ReactHtmlParser from "react-html-parser";
+import parser from "html-react-parser";
 import { ic_remove_red_eye } from "react-icons-kit/md/ic_remove_red_eye";
 import styled from "styled-components";
 import ImageLogo from "../../../../../src/common/assets/image/favicon.png";
@@ -418,7 +418,7 @@ const PostDetail = (props) => {
                     }
                   />
                 )}
-                <ContenBox>{ReactHtmlParser(content)}</ContenBox>
+                <ContenBox>{parser(content)}</ContenBox>
               </LeftDesc>
               <RightDesc>
                 <TableOfContent content={content} />
@@ -452,7 +452,7 @@ const PostDetail = (props) => {
                           />
                         )}
                         <DesBox>
-                          {ReactHtmlParser(items?.attributes?.short_intro)}
+                          {parser(items?.attributes?.short_intro)}
                         </DesBox>
                         <Box>
                           <TagBox>

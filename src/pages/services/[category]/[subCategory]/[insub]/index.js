@@ -161,3 +161,7 @@ export async function getServerSideProps({ query }) {
     notFound: true,
   };
 }
+
+export const config = {
+  runtime: "edge",
+};

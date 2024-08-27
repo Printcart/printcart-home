@@ -2,7 +2,6 @@ import Box from "common/components/Box";
 import Button from "common/components/Button";
 import Card from "common/components/Card";
 import Link from "next/link";
-import ReactHtmlParser from "react-html-parser";
 import ReactMarkdown from "react-markdown";
 
 export const NewDate = (number) => {
