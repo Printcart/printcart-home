@@ -1,5 +1,8 @@
+export const config = {
+  runtime: "experimental-edge",
+};
+
 import ResetCSS from "common/assets/css/style";
-import Box from "common/components/Box";
 import { theme } from "common/theme/appModern";
 import GlobalStyle, { AppWrapper } from "containers/AppModern/appModern.style";
 import Footer from "containers/AppModern/Footer";
@@ -129,7 +132,3 @@ export async function getServerSideProps({ query }) {
     notFound: true,
   };
 }
-
-export const config = {
-  runtime: "experimental-edge",
-};

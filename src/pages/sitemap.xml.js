@@ -1,3 +1,7 @@
+export const config = {
+  runtime: "experimental-edge",
+};
+
 function generateSiteMap(resultServices, resultCatalog, resultTutorials) {
   const URL_PRINTCART = "https://printcart.com/";
   return `<?xml version="1.0" encoding="UTF-8"?>
@@ -97,7 +101,3 @@ export async function getServerSideProps({ res }) {
 }
 
 export default SiteMap;
-
-export const config = {
-  runtime: "experimental-edge",
-};

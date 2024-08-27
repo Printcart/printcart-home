@@ -1,7 +1,3 @@
-export const config = {
-  runtime: "experimental-edge",
-};
-
 import ResetCSS from "common/assets/css/style";
 import { theme } from "common/theme/appModern";
 import PostDetail from "containers/AppModern/BlogPage/PostDetail";
