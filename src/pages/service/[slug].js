@@ -7,8 +7,6 @@ import ServiceDetail from "containers/AppModern/ServiceDetail";
 import Head from "next/head";
 import { ThemeProvider } from "styled-components";
 
-export const runtime = "edge";
-
 const Service = (props) => {
   const { character, related, fetchAlias } = props;
   return (
@@ -103,3 +101,7 @@ export async function getStaticPaths() {
     };
   }
 }
+
+export const config = {
+  runtime: "experimental-edge",
+};

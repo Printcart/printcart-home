@@ -7,8 +7,6 @@ import Navbar from "containers/AppModern/Navbar";
 import Head from "next/head";
 import { ThemeProvider } from "styled-components";
 
-export const runtime = "edge";
-
 const ServicesCategory = (props) => {
   const {
     total,
@@ -163,5 +161,5 @@ export async function getServerSideProps({ query }) {
 }
 
 export const config = {
-  runtime: "edge",
+  runtime: "experimental-edge",
 };
