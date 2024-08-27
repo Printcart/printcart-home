@@ -92,7 +92,7 @@ export async function getStaticPaths() {
 
   if (result.data) {
     return {
-      paths: result.data.map((_service) => {
+      paths: result.data.slice(0, 1).map((_service) => {
         return {
           params: { slug: _service.attributes.alias },
         };
