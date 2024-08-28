@@ -8,6 +8,7 @@ const nextConfig = {
       "media-cloodo.s3.amazonaws.com",
       "play.google.com",
     ],
+    unoptimized: true,
   },
   async redirects() {
     return [
@@ -64,8 +65,6 @@ const nextConfig = {
   },
 };
 
-module.exports = withPlugins([], nextConfig);
-
 const withMDX = require("@next/mdx")({
   extension: /\.mdx?$/,
   options: {
@@ -75,7 +74,12 @@ const withMDX = require("@next/mdx")({
     // providerImportSource: "@mdx-js/react",
   },
 });
-module.exports = withMDX({
-  // Append the default value with md extensions
-  pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
-});
+// module.exports = withMDX({
+//   // Append the default value with md extensions
+//   pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
+// });
+
+module.exports = withPlugins(
+  [[withMDX, { pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"] }]],
+  nextConfig
+);
