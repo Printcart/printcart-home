@@ -8,12 +8,12 @@ const TitlePathMed = (props) => {
   return (
     <Breadcrumb>
       <Box className="container-text">
-        <Link href="/">
-          <a className="text">Printcart</a>
+        <Link href="/" className="text">
+          Printcart
         </Link>
         {" - "}
-        <Link href="/catalog">
-          <a className="text">Catalog</a>
+        <Link href="/catalog" className="text">
+          Catalog
         </Link>
         {/* {currentCat?.collection ? (
           <>
@@ -39,8 +39,9 @@ const TitlePathMed = (props) => {
                     ? `/collection/${item.handle}`
                     : `/product/${item.handle}`
                 }
+                className="text"
               >
-                <a className="text">{item.title}</a>
+                {item.title}
               </Link>
             </React.Fragment>
           ))}

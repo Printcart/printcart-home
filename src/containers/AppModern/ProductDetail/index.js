@@ -12,7 +12,7 @@ import {
   PTitle,
   WrapContent,
   WrapImage,
-  WrapperProduct
+  WrapperProduct,
 } from "../ProductsPOD/productspod.style";
 import WrapperServices from "../ServiceDetail/WrapperService";
 import { ContentWrapper } from "../appModern.style";
@@ -78,29 +78,28 @@ const ProductDetail = (props) => {
                         <Box>
                           <WrapImage>
                             <Link href={`/product/${items?.handle}`}>
-                              <a>
-                                <img
-                                  style={{
-                                    position: "absolute",
-                                    width: "100%",
-                                    height: "100%",
-                                    top: "0",
-                                    left: "0",
-                                    backgroundColor: "#f7f7f7",
-                                    objectFit: "contain",
-                                    borderTopLeftRadius: "5px",
-                                    borderTopRightRadius: "5px"
-                                  }}
-                                  src={items?.thumbnail || ""}
-                                />
-                              </a>
+                              <img
+                                style={{
+                                  position: "absolute",
+                                  width: "100%",
+                                  height: "100%",
+                                  top: "0",
+                                  left: "0",
+                                  backgroundColor: "#f7f7f7",
+                                  objectFit: "contain",
+                                  borderTopLeftRadius: "5px",
+                                  borderTopRightRadius: "5px",
+                                }}
+                                src={items?.thumbnail || ""}
+                              />
                             </Link>
                           </WrapImage>
                           <WrapContent>
-                            <Link href={`/product/${items?.handle}`}>
-                              <a title={`View to ${items?.title}`}>
-                                <PTitle>{items?.title}</PTitle>
-                              </a>
+                            <Link
+                              href={`/product/${items?.handle}`}
+                              title={`View to ${items?.title}`}
+                            >
+                              <PTitle>{items?.title}</PTitle>
                             </Link>
                             <PByVendor>
                               By {items?.vendor?.store_name}

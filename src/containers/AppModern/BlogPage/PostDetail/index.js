@@ -349,43 +349,43 @@ const PostDetail = (props) => {
                     <LeftContent>
                       <LogoAuthor>
                         <Link href={"#"}>
-                          <a>
-                            <AvatarAuthor>
-                              <img
-                                style={{
-                                  width: "100%",
-                                  height: "100%",
-                                  textAlign: "center",
-                                  objectFit: "cover",
-                                  textIndent: "10000px",
-                                }}
-                                alt="Avatar"
-                                src={
-                                  postData?.attributes?.user_profile?.data
-                                    ?.attributes?.avatar ?? ImageLogo.src
-                                }
-                              />
-                            </AvatarAuthor>
-                          </a>
+                          <AvatarAuthor>
+                            <img
+                              style={{
+                                width: "100%",
+                                height: "100%",
+                                textAlign: "center",
+                                objectFit: "cover",
+                                textIndent: "10000px",
+                              }}
+                              alt="Avatar"
+                              src={
+                                postData?.attributes?.user_profile?.data
+                                  ?.attributes?.avatar ?? ImageLogo.src
+                              }
+                            />
+                          </AvatarAuthor>
                         </Link>
                       </LogoAuthor>
                       {postData?.attributes?.user_profile && (
                         <Box>
                           <TitleUser>
-                            <Link href={"#"}>
-                              <a style={{ color: "#fff", fontSize: "18px" }}>
-                                {postData?.attributes?.user_profile?.data
-                                  ?.attributes?.name ?? "Printcart"}
-                              </a>
+                            <Link
+                              href={"#"}
+                              style={{ color: "#fff", fontSize: "18px" }}
+                            >
+                              {postData?.attributes?.user_profile?.data
+                                ?.attributes?.name ?? "Printcart"}
                             </Link>
                           </TitleUser>
                           <TimeUser>
-                            <Link href={"#"}>
-                              <a style={{ color: "#fff", fontSize: "18px" }}>
-                                {new Date(
-                                  postData?.attributes?.createdAt
-                                ).toLocaleString()}
-                              </a>
+                            <Link
+                              href={"#"}
+                              style={{ color: "#fff", fontSize: "18px" }}
+                            >
+                              {new Date(
+                                postData?.attributes?.createdAt
+                              ).toLocaleString()}
                             </Link>
                           </TimeUser>
                         </Box>
@@ -432,10 +432,11 @@ const PostDetail = (props) => {
                     <GridItem key={items?.id || index}>
                       <ContainerPost>
                         <Box>
-                          <Link href={`/tutorial/${items?.attributes?.alias}`}>
-                            <a title={`View to ${items?.attributes?.title}`}>
-                              <h3>{items?.attributes?.title}</h3>
-                            </a>
+                          <Link
+                            href={`/tutorial/${items?.attributes?.alias}`}
+                            title={`View to ${items?.attributes?.title}`}
+                          >
+                            <h3>{items?.attributes?.title}</h3>
                           </Link>
                         </Box>
                         {items?.attributes?.banner?.data?.attributes?.formats
@@ -459,7 +460,7 @@ const PostDetail = (props) => {
                             {items?.attributes?.tags?.data.map(
                               (tags, index) => (
                                 <Link href="#" key={index}>
-                                  <a>#{tags?.attributes?.alias}</a>
+                                  #{tags?.attributes?.alias}
                                 </Link>
                               )
                             )}
@@ -470,44 +471,38 @@ const PostDetail = (props) => {
                             <LeftContent>
                               <LogoAuthor>
                                 <Link href={"#"}>
-                                  <a>
-                                    <AvatarAuthor>
-                                      <img
-                                        style={{
-                                          width: "100%",
-                                          height: "100%",
-                                          textAlign: "center",
-                                          objectFit: "cover",
-                                          textIndent: "10000px",
-                                        }}
-                                        alt="Avatar"
-                                        src={
-                                          items?.attributes?.user_profile?.data
-                                            ?.attributes?.avatar ??
-                                          "https://media-cloodo.s3.amazonaws.com/thumbnail_Icon_2d75277193.png"
-                                        }
-                                      />
-                                    </AvatarAuthor>
-                                  </a>
+                                  <AvatarAuthor>
+                                    <img
+                                      style={{
+                                        width: "100%",
+                                        height: "100%",
+                                        textAlign: "center",
+                                        objectFit: "cover",
+                                        textIndent: "10000px",
+                                      }}
+                                      alt="Avatar"
+                                      src={
+                                        items?.attributes?.user_profile?.data
+                                          ?.attributes?.avatar ??
+                                        "https://media-cloodo.s3.amazonaws.com/thumbnail_Icon_2d75277193.png"
+                                      }
+                                    />
+                                  </AvatarAuthor>
                                 </Link>
                               </LogoAuthor>
                               {items?.attributes?.user_profile && (
                                 <Box>
                                   <TitleUser>
                                     <Link href={"#"}>
-                                      <a>
-                                        {items?.attributes?.user_profile?.data
-                                          .attributes?.name ?? "Printcart"}
-                                      </a>
+                                      {items?.attributes?.user_profile?.data
+                                        .attributes?.name ?? "Printcart"}
                                     </Link>
                                   </TitleUser>
                                   <TimeUser>
                                     <Link href={"#"}>
-                                      <a>
-                                        {new Date(
-                                          items?.attributes?.user_profile?.data.attributes?.publishedAt
-                                        ).toLocaleString()}
-                                      </a>
+                                      {new Date(
+                                        items?.attributes?.user_profile?.data.attributes?.publishedAt
+                                      ).toLocaleString()}
                                     </Link>
                                   </TimeUser>
                                 </Box>
@@ -517,15 +512,13 @@ const PostDetail = (props) => {
                               <Link
                                 href={`/tutorial/${items?.attributes?.alias}`}
                               >
-                                <a>
-                                  <ButtonRead>
-                                    <Icon
-                                      icon={ic_remove_red_eye}
-                                      style={{ marginRight: "10px" }}
-                                    />
-                                    Read Tutorial
-                                  </ButtonRead>
-                                </a>
+                                <ButtonRead>
+                                  <Icon
+                                    icon={ic_remove_red_eye}
+                                    style={{ marginRight: "10px" }}
+                                  />
+                                  Read Tutorial
+                                </ButtonRead>
                               </Link>
                             </Box>
                           </AuthorPost>

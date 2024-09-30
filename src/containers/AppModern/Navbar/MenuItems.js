@@ -9,12 +9,12 @@ const MenuItems = ({ items }) => {
       style={{
         position: "relative",
         verticalAlign: "middle",
-        padding: "30px 0"
+        padding: "30px 0",
       }}
     >
       {items.submenu ? (
         <>
-          <a
+          <Link
             href={items.url}
             target={items.target ? "_blank" : null}
             offset={84}
@@ -25,15 +25,17 @@ const MenuItems = ({ items }) => {
               size={20}
               style={{ marginLeft: "0px", position: "fixed" }}
             />
-          </a>
+          </Link>
 
           <Dropdown submenus={items.submenu} />
         </>
       ) : (
-        <Link href={items.url}>
-          <a target={items.target ? "_blank" : null} offset={84}>
-            {items.title}
-          </a>
+        <Link
+          href={items.url}
+          target={items.target ? "_blank" : null}
+          offset={84}
+        >
+          {items.title}
         </Link>
       )}
     </li>

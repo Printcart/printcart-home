@@ -1,20 +1,17 @@
-import React from 'react';
-import Link from 'next/link';
-import Box from 'common/components/Box';
-import Text from 'common/components/Text';
-import Image from 'common/components/Image';
-import Logo from 'common/components/UIElements/Logo';
-import Heading from 'common/components/Heading';
-import Container from 'common/components/UI/Container';
+import Box from "common/components/Box";
+import Heading from "common/components/Heading";
+import Image from "common/components/Image";
+import Text from "common/components/Text";
+import Container from "common/components/UI/Container";
+import Logo from "common/components/UIElements/Logo";
+import Link from "next/link";
 import FooterArea, {
-  WidgetArea,
-  MenuArea,
-  Menu,
-  MenuItem,
   CopyrightText,
-} from './footer.style';
+  MenuArea,
+  WidgetArea,
+} from "./footer.style";
 
-import { footer } from 'common/data/AppModern';
+import { footer } from "common/data/AppModern";
 
 const Footer = () => {
   const { logo, menu, widgets } = footer;
@@ -27,10 +24,11 @@ const Footer = () => {
         <WidgetArea>
           {widgets.map((item) => (
             <Box className="col" key={`footer-widget--key${item.id}`}>
-              <a href={item.url} target="_blank" rel="nofollow">
+              <Link href={item.url} target="_blank" rel="nofollow">
                 <Image src={item.icon?.src} alt={item.title} />
-              <Heading as="h3" content={item.title} />
-              <Text content={item.description} /></a>
+                <Heading as="h3" content={item.title} />
+                <Text content={item.description} />
+              </Link>
             </Box>
           ))}
         </WidgetArea>

@@ -21,23 +21,21 @@ const ServicesList = (props) => {
           prefetch={false}
           href={`/service/${serviceList.attributes.alias}`}
         >
-          <a>
-            <img
-              style={{
-                width: "100%",
-                height: "200px",
-                borderTopLeftRadius: "5px",
-                borderTopRightRadius: "5px",
-              }}
-              src={
-                serviceList.attributes?.image?.data?.length > 0
-                  ? `${serviceList?.attributes?.image?.data[0]?.attributes?.url}`
-                  : `${serviceList?.attributes?.image?.data?.map(
-                      (items) => items?.attributes?.url
-                    )}`
-              }
-            />
-          </a>
+          <img
+            style={{
+              width: "100%",
+              height: "200px",
+              borderTopLeftRadius: "5px",
+              borderTopRightRadius: "5px",
+            }}
+            src={
+              serviceList.attributes?.image?.data?.length > 0
+                ? `${serviceList?.attributes?.image?.data[0]?.attributes?.url}`
+                : `${serviceList?.attributes?.image?.data?.map(
+                    (items) => items?.attributes?.url
+                  )}`
+            }
+          />
         </Link>
         <Box className="content">
           <Link
@@ -45,9 +43,7 @@ const ServicesList = (props) => {
             prefetch={false}
             href={`/service/${serviceList.attributes.alias}`}
           >
-            <a title={`View to ${serviceList.attributes.title}`}>
-              <h3 className="title">{serviceList.attributes.title}</h3>
-            </a>
+            <h3 className="title">{serviceList.attributes.title}</h3>
           </Link>
           <Box className="text">
             <ReactMarkdown>{serviceList.attributes.description}</ReactMarkdown>
@@ -79,13 +75,9 @@ const ServicesList = (props) => {
             <Link
               prefetch={false}
               href={`/service/${serviceList.attributes.alias}`}
+              title={`View to ${serviceList.attributes.title}`}
             >
-              <a title={`View to ${serviceList.attributes.title}`}>
-                <Button
-                  style={{ borderRadius: "5px" }}
-                  title="Request Support"
-                />
-              </a>
+              <Button style={{ borderRadius: "5px" }} title="Request Support" />
             </Link>
           </Box>
         </Box>

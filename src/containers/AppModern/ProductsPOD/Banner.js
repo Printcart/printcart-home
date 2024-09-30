@@ -22,10 +22,8 @@ const Banner = () => {
           personalized products that your customers will love and cherish
         </p>
         <Box className="footer">
-          <Link href="https://dashboard.printcart.com/">
-            <a target="_blank">
-              <Button title="Get Started" className="btn-getstart" />
-            </a>
+          <Link href="https://dashboard.printcart.com/" target="_blank">
+            <Button title="Get Started" className="btn-getstart" />
           </Link>
           <Button title="How It Works" className="btn-howitworks" />
         </Box>

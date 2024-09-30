@@ -1,12 +1,10 @@
-import Box from "common/components/Box";
-import ContainerFAQ, { FAQHeader } from "./faq.style";
-import { chevronUp } from "react-icons-kit/fa/chevronUp";
-import { chevronDown } from "react-icons-kit/fa/chevronDown";
-import ReactMarkdown from "react-markdown";
-import Icon from "react-icons-kit";
-import { useState } from "react";
-import Container from "common/components/UI/Container";
 import { Disclosure } from "@headlessui/react";
+import Box from "common/components/Box";
+import Container from "common/components/UI/Container";
+import Link from "next/link";
+import Icon from "react-icons-kit";
+import { chevronDown } from "react-icons-kit/fa/chevronDown";
+import ContainerFAQ, { FAQHeader } from "./faq.style";
 
 const FAQfeature = (props) => {
   const { dataFAQ } = props;
@@ -31,18 +29,18 @@ const FAQfeature = (props) => {
                   <Box key={index} className="panel-default">
                     <Disclosure>
                       <Disclosure.Button className="panel-title">
-                        <a className="collapsed">
+                        <Link className="collapsed">
                           {items.attributes.question}
                           <Box className="iconcustom">
                             <Icon icon={chevronDown} />
                           </Box>
-                        </a>
+                        </Link>
                       </Disclosure.Button>
                       <Disclosure.Panel className="text-gray-500">
                         <div
                           className="answer"
                           dangerouslySetInnerHTML={{
-                            __html: items.attributes.answer
+                            __html: items.attributes.answer,
                           }}
                         ></div>
                       </Disclosure.Panel>
@@ -60,18 +58,18 @@ const FAQfeature = (props) => {
                     <Box className="titlequestion">
                       <Disclosure>
                         <Disclosure.Button className="panel-title">
-                          <a className="collapsed">
+                          <Link className="collapsed">
                             {items.attributes.question}
                             <Box className="iconcustom">
                               <Icon icon={chevronDown} />
                             </Box>
-                          </a>
+                          </Link>
                         </Disclosure.Button>
                         <Disclosure.Panel className="text-gray-500">
                           <div
                             className="answer"
                             dangerouslySetInnerHTML={{
-                              __html: items.attributes.answer
+                              __html: items.attributes.answer,
                             }}
                           />
                         </Disclosure.Panel>

@@ -1,6 +1,6 @@
-import Input from "common/components/Input";
 import debounce from "lodash.debounce";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 import Loader from "./Loader";
 import codecanyonLogo from "./logo/codecanyon.png";
@@ -11,11 +11,11 @@ import wixLogo from "./logo/wix-icon.svg";
 import woocommerceLogo from "./logo/woocommerce-plain.svg";
 import {
   StyleCreateStore,
+  StyleInputSearch,
   StyleLoadingWrap,
   StyleStore,
   StyleStoreList,
   StyleStoreTitle,
-  StyleInputSearch,
 } from "./pc.style";
 
 const StoreBtn = (props) => {
@@ -161,12 +161,12 @@ const StoreList = (props) => {
       {!loading.active && !storeList?.length && (
         <StyleCreateStore>
           There are no stores.{" "}
-          <a
+          <Link
             href={`${process.env.NEXT_PUBLIC_PRINTCART_DASHBOARD}signup`}
             target="_blank"
           >
             Create store
-          </a>
+          </Link>
         </StyleCreateStore>
       )}
     </>

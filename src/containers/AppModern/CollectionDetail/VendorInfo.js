@@ -199,13 +199,12 @@ const VendorInfo = (props) => {
               <BoxHeaderRight>
                 <BoxButton>
                   <BtnMoreDetail>
-                    <Link href={`${data?.vendor?.shop_url ?? "#"}`}>
-                      <a
-                        target={`${data?.vendor?.shop_url ? "_blank" : ""}`}
-                        title="Visit Store"
-                      >
-                        Visit Store{" "}
-                      </a>
+                    <Link
+                      href={`${data?.vendor?.shop_url ?? "#"}`}
+                      target={`${data?.vendor?.shop_url ? "_blank" : ""}`}
+                      title="Visit Store"
+                    >
+                      Visit Store{" "}
                     </Link>
                   </BtnMoreDetail>
                 </BoxButton>

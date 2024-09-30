@@ -22,12 +22,11 @@ const SupportDetail = (props) => {
         <Box>
           <h2 className="sumReviews">Printcart Support</h2>
           <Box className="totalreviews">
-            <a>
-              <img
-                src="https://cmsmart.net/templates/cmsmart/images/ratting-start_5.png"
-                alt="Total Revies"
-              />
-            </a>
+            <img
+              src="https://cmsmart.net/templates/cmsmart/images/ratting-start_5.png"
+              alt="Total Revies"
+            />
+
             <p className="total">1878 reviews</p>
           </Box>
         </Box>
@@ -66,11 +65,11 @@ const SupportDetail = (props) => {
           </Box>
         </Box>
         {/* Button Request */}
-        <a
+        <Link
           href={`https://solution.printcart.com/support_ticket/?idsv=${character.id}`}
         >
           <Button className="buttonRequest" title="REQUEST SUPPORT" />
-        </a>
+        </Link>
       </Box>
       {/* P2 */}
       <Box className="ItemCard">
@@ -85,10 +84,8 @@ const SupportDetail = (props) => {
           />
           <Box className="boxTopPA">
             <Link prefetch={false} href="#">
-              <a>
-                {character.attributes.users_permissions_user?.data?.attributes
-                  ?.name ?? "Printcart"}
-              </a>
+              {character.attributes.users_permissions_user?.data?.attributes
+                ?.name ?? "Printcart"}
             </Link>
             <p>Developer</p>
             <Box
@@ -131,9 +128,7 @@ const SupportDetail = (props) => {
             {fetchAlias?.map((items, index) => (
               <Box key={index}>
                 <Link href={`/services/` + items?.attributes?.alias + "/"}>
-                  <a>
-                    <button>{items?.attributes?.name}</button>
-                  </a>
+                  <button>{items?.attributes?.name}</button>
                 </Link>
               </Box>
             ))}

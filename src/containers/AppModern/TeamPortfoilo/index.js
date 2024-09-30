@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
-import Fade from 'react-reveal/Fade';
-import Text from 'common/components/Text';
-import Heading from 'common/components/Heading';
-import Button from 'common/components/Button';
-import NextImage from 'common/components/NextImage';
-import Container from 'common/components/UI/Container';
-import SectionWrapper, { ContentWrapper } from './teamPortfolio.style';
+import React, { useState } from "react";
+import Fade from "react-reveal/Fade";
+import Text from "common/components/Text";
+import Heading from "common/components/Heading";
+import Button from "common/components/Button";
+import NextImage from "common/components/NextImage";
+import Container from "common/components/UI/Container";
+import SectionWrapper, { ContentWrapper } from "./teamPortfolio.style";
 
-import { teamportfolio } from 'common/data/AppModern';
+import { teamportfolio } from "common/data/AppModern";
+import Link from "next/link";
 
 const TeamPortfolioSection = () => {
   const { title, description, teammember } = teamportfolio;
@@ -30,7 +31,7 @@ const TeamPortfolioSection = () => {
               <Fade up key={index}>
                 <div
                   className={`item_wrapper ${
-                    hover.active === index ? 'active' : ''
+                    hover.active === index ? "active" : ""
                   }`}
                   key={index}
                   onMouseEnter={() => {
@@ -55,9 +56,13 @@ const TeamPortfolioSection = () => {
           <div className="content">
             <Heading content={title} />
             <Text content={description} />
-            <a href="https://solution.printcart.com/contact/" target="_blank" offset={84}>
-            <Button title="Contact Us" />
-            </a>
+            <Link
+              href="https://solution.printcart.com/contact/"
+              target="_blank"
+              offset={84}
+            >
+              <Button title="Contact Us" />
+            </Link>
           </div>
         </ContentWrapper>
       </Container>

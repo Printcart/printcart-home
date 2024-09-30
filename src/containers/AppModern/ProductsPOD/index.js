@@ -182,10 +182,8 @@ const ProductsPOD = (props) => {
                   Bridge the Gap Between Selling and Production
                 </PDescription>
                 <Box className="btnSee">
-                  <Link href="https://dashboard.printcart.com/">
-                    <a target="_blank">
-                      <ButtonProvider title="Create POD Printer store" />
-                    </a>
+                  <Link href="https://dashboard.printcart.com/" target="_blank">
+                    <ButtonProvider title="Create POD Printer store" />
                   </Link>
                 </Box>
               </WrappBox>

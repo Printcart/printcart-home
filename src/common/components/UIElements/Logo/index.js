@@ -1,8 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Text from 'common/components/Text';
-import Link from 'common/components/Link';
-import Image from 'common/components/Image';
+import React from "react";
+import PropTypes from "prop-types";
+import Text from "common/components/Text";
+import Link from "common/components/Link";
+import Image from "common/components/Image";
 
 const Logo = ({
   logoWrapperStyle,
@@ -16,13 +16,13 @@ const Logo = ({
 }) => (
   <Link {...props} {...logoWrapperStyle}>
     {withAnchor ? (
-      <a {...anchorProps}>
+      <Link {...anchorProps}>
         {logoSrc ? (
           <Image src={logoSrc.src} alt={title} {...logoStyle} />
         ) : (
           <Text content={title} {...titleStyle} />
         )}
-      </a>
+      </Link>
     ) : (
       <>
         {logoSrc ? (
@@ -47,18 +47,18 @@ Logo.propTypes = {
 
 Logo.defaultProps = {
   logoWrapperStyle: {
-    display: 'inline-flex',
-    alignItems: 'center',
-    mr: '1rem',
-    'a:hover,a:focus': {
-      textDecoration: 'none',
+    display: "inline-flex",
+    alignItems: "center",
+    mr: "1rem",
+    "a:hover,a:focus": {
+      textDecoration: "none",
     },
   },
   titleStyle: {
-    display: 'inline-block',
-    fontSize: '2rem',
-    lineHeight: 'inherit',
-    whiteSpace: 'nowrap',
+    display: "inline-block",
+    fontSize: "2rem",
+    lineHeight: "inherit",
+    whiteSpace: "nowrap",
   },
 };
 export default Logo;

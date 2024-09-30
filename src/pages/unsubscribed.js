@@ -1,9 +1,7 @@
 import ResetCSS from "common/assets/css/style";
 import mailError from "common/assets/image/mailError.jpg";
 import { theme } from "common/theme/appModern";
-import GlobalStyle, {
-  AppWrapper
-} from "containers/AppModern/appModern.style";
+import GlobalStyle, { AppWrapper } from "containers/AppModern/appModern.style";
 import Head from "next/head";
 import Image from "next/image";
 import React from "react";
@@ -53,7 +51,11 @@ const UnsubscribeForm = () => {
               <Image
                 src={mailError}
                 alt="Mail Error"
-                style={{ maxWidth: "100%", marginBottom: "1rem" }}
+                style={{
+                  maxWidth: "100%",
+                  height: "auto",
+                  marginBottom: "1rem",
+                }}
               />
               <h2 style={{ marginBottom: "0.5rem" }}>
                 Successful unsubscribe from Printcart
@@ -73,10 +75,3 @@ const UnsubscribeForm = () => {
 };
 
 export default UnsubscribeForm;
-
-export async function getStaticProps() {
-  return {
-    props: {},
-    revalidate: 1,
-  };
-}

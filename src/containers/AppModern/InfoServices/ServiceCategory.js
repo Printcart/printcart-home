@@ -14,8 +14,8 @@ const ServiceCategory = (props) => {
   };
   return (
     <Box className="containerServices">
-      <Link href={`/services`}>
-        <a className="btncategory">All</a>
+      <Link href={`/services`} className="btncategory">
+        All
       </Link>
       {dataNew.length > 0 && <Box className="space">{""}</Box>}
       {dataNew.map(
@@ -34,14 +34,11 @@ const ServiceCategory = (props) => {
                   : "") +
                 items.attributes.alias
               }
+              className={
+                choice === items.attributes.alias ? "choice" : "btncategory"
+              }
             >
-              <a
-                className={
-                  choice === items.attributes.alias ? "choice" : "btncategory"
-                }
-              >
-                {items?.attributes.name}
-              </a>
+              {items?.attributes.name}
             </Link>
           )
       )}

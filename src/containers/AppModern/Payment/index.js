@@ -7,6 +7,7 @@ import { check } from "react-icons-kit/fa/check";
 import { Table } from "../../../common/components/Table/styleTable";
 import Container from "../../../common/components/UI/Container";
 import HeaderPayment from "./payment.style";
+import Link from "next/link";
 
 const contact = "https://solution.printcart.com/home/teams/#contact";
 const tiers = [
@@ -15,32 +16,32 @@ const tiers = [
     value: "free",
     price: "0",
     button: {
-      label: "Contact"
-    }
+      label: "Contact",
+    },
   },
   {
     name: "Premium",
     value: "premium",
     price: "49",
     button: {
-      label: "Contact"
-    }
+      label: "Contact",
+    },
   },
   {
     name: "Advanced",
     value: "advanced",
     price: "99",
     button: {
-      label: "Contact"
-    }
+      label: "Contact",
+    },
   },
   {
     name: "Enterprise",
     value: "enterprise",
     button: {
-      label: "Contact"
-    }
-  }
+      label: "Contact",
+    },
+  },
 ];
 const pricings = [
   {
@@ -53,8 +54,8 @@ const pricings = [
           { value: "yes" },
           { value: "yes" },
           { value: "yes" },
-          { value: "yes" }
-        ]
+          { value: "yes" },
+        ],
       },
       {
         name: "Intergration with your website (via plugins or API)",
@@ -63,8 +64,8 @@ const pricings = [
           { value: "yes" },
           { value: "yes" },
           { value: "yes" },
-          { value: "yes" }
-        ]
+          { value: "yes" },
+        ],
       },
       {
         name: "Integrated Product Customization Tool",
@@ -73,8 +74,8 @@ const pricings = [
           { value: "yes" },
           { value: "yes" },
           { value: "yes" },
-          { value: "yes" }
-        ]
+          { value: "yes" },
+        ],
       },
       {
         name: "Print-ready files [PNG, SVG]",
@@ -83,8 +84,8 @@ const pricings = [
           { value: "yes" },
           { value: "yes" },
           { value: "yes" },
-          { value: "yes" }
-        ]
+          { value: "yes" },
+        ],
       },
       {
         name: "Unlimited product views and print areas per product",
@@ -93,8 +94,8 @@ const pricings = [
           { value: "yes" },
           { value: "yes" },
           { value: "yes" },
-          { value: "yes" }
-        ]
+          { value: "yes" },
+        ],
       },
       {
         name: "Unlimited download and edit Client Designs",
@@ -103,8 +104,8 @@ const pricings = [
           { value: "yes" },
           { value: "yes" },
           { value: "yes" },
-          { value: "yes" }
-        ]
+          { value: "yes" },
+        ],
       },
       {
         name: "Rest API Access",
@@ -112,8 +113,8 @@ const pricings = [
           { value: "yes" },
           { value: "yes" },
           { value: "yes" },
-          { value: "yes" }
-        ]
+          { value: "yes" },
+        ],
       },
       {
         name: "Setting your Product Customizer Branding",
@@ -122,9 +123,9 @@ const pricings = [
           { value: "no" },
           { value: "yes" },
           { value: "yes" },
-          { value: "yes" }
+          { value: "yes" },
         ],
-        isComingSoon: true
+        isComingSoon: true,
       },
       {
         name: "Export to PDF",
@@ -132,8 +133,8 @@ const pricings = [
           { value: "no" },
           { value: "yes" },
           { value: "yes" },
-          { value: "yes" }
-        ]
+          { value: "yes" },
+        ],
       },
       {
         name: "Up your own Mock-Up",
@@ -142,10 +143,10 @@ const pricings = [
           { value: "Unlimited" },
           { value: "Unlimited" },
           { value: "Unlimited" },
-          { value: "Unlimited" }
-        ]
-      }
-    ]
+          { value: "Unlimited" },
+        ],
+      },
+    ],
   },
   {
     name: "Storage",
@@ -156,9 +157,9 @@ const pricings = [
           { value: "50MB" },
           { value: "500MB" },
           { value: "5GB" },
-          { value: "Contact" }
+          { value: "Contact" },
         ],
-        isComingSoon: true
+        isComingSoon: true,
       },
       {
         name: "Number of Orders per month",
@@ -166,8 +167,8 @@ const pricings = [
           { value: "10" },
           { value: "100" },
           { value: "1000" },
-          { value: "Contact" }
-        ]
+          { value: "Contact" },
+        ],
       },
       {
         name: "Cloud Media File Storage",
@@ -175,8 +176,8 @@ const pricings = [
           { value: "10GB" },
           { value: "100GB" },
           { value: "1TB" },
-          { value: "Contact" }
-        ]
+          { value: "Contact" },
+        ],
       },
       {
         name: "Number of Products per store",
@@ -184,11 +185,11 @@ const pricings = [
           { value: "5" },
           { value: "Unlimited" },
           { value: "Unlimited" },
-          { value: "Unlimited" }
-        ]
-      }
-    ]
-  }
+          { value: "Unlimited" },
+        ],
+      },
+    ],
+  },
 ];
 
 const Payment = () => {
@@ -216,9 +217,9 @@ const Payment = () => {
                       {tier.price ? `$${tier.price} / month` : "-"}
                     </div>
                     {tier?.button && tier?.button?.label && (
-                      <a className="btnContact" href={contact}>
+                      <Link className="btnContact" href={contact}>
                         {tier.button.label}
-                      </a>
+                      </Link>
                     )}
                   </div>
                 </th>
@@ -256,9 +257,9 @@ const Payment = () => {
                           )}
                         {(value.value === "Contact" ||
                           value.value === "contact") && (
-                          <a className="btnContact" href={contact}>
+                          <Link className="btnContact" href={contact}>
                             {value.value}
-                          </a>
+                          </Link>
                         )}
                       </td>
                     ))}

@@ -15,13 +15,14 @@ import Scrollspy from "react-scrollspy";
 import NavbarWrapper, { MenuArea, MobileMenu, Search } from "./navbar.style";
 import { navbar } from "common/data/AppModern";
 import MenuItems from "./MenuItems";
+import Link from "next/link";
 
 const Navbar = () => {
   const { navMenu } = navbar;
   const [state, setState] = useState({
     search: "",
     searchToggle: false,
-    mobileMenu: false
+    mobileMenu: false,
   });
 
   const searchRef = useRef(null);
@@ -35,14 +36,14 @@ const Navbar = () => {
         ...state,
         search: "",
         searchToggle: !state.searchToggle,
-        mobileMenu: false
+        mobileMenu: false,
       });
     }
 
     if (type === "menu") {
       setState({
         ...state,
-        mobileMenu: !state.mobileMenu
+        mobileMenu: !state.mobileMenu,
       });
     }
   };
@@ -50,7 +51,7 @@ const Navbar = () => {
   const handleOnChange = (event) => {
     setState({
       ...state,
-      search: event.target.value
+      search: event.target.value,
     });
   };
 
@@ -62,7 +63,7 @@ const Navbar = () => {
 
       setState({
         ...state,
-        search: ""
+        search: "",
       });
     } else {
       console.log("Please fill this field.");
@@ -78,21 +79,21 @@ const Navbar = () => {
   const handleRemoveMenu = () => {
     setState({
       ...state,
-      mobileMenu: false
+      mobileMenu: false,
     });
   };
   const menuItems = [
     {
       title: "Home",
-      url: "/"
+      url: "/",
     },
     {
       title: "Services",
-      url: "/services"
+      url: "/services",
     },
     {
       title: "Catalog",
-      url: "/catalog"
+      url: "/catalog",
     },
     {
       title: "Resources",
@@ -101,18 +102,18 @@ const Navbar = () => {
         {
           title: "Web2Print Community",
           url: "https://solution.printcart.com/community/",
-          target: "_blank"
+          target: "_blank",
         },
         {
           title: "POD Tutorials",
-          url: "/tutorials"
+          url: "/tutorials",
         },
         {
           title: "API Documentation",
           url: "https://docs.printcart.com/",
-          target: "_blank"
-        }
-      ]
+          target: "_blank",
+        },
+      ],
     },
     {
       title: "Printshop",
@@ -121,29 +122,29 @@ const Navbar = () => {
         {
           title: "Shopify PrintShop",
           url: "https://solution.printcart.com/web/shopify-printshop-website",
-          target: "_blank"
+          target: "_blank",
         },
         {
           title: "Magento Printmart",
           url: "https://solution.printcart.com/web/magento-printshop-website",
-          target: "_blank"
+          target: "_blank",
         },
         {
           title: "Wordpress Printshop",
           url: "https://solution.printcart.com/web/wordpress-printshop-website",
-          target: "_blank"
+          target: "_blank",
         },
         {
           title: "T-shirt Website",
           url: "https://solution.printcart.com/web/tshirt-website-template",
-          target: "_blank"
+          target: "_blank",
         },
         {
           title: "T-shirt Shopify",
           url: "https://solution.printcart.com/web/shopify-tshirt-website",
-          target: "_blank"
-        }
-      ]
+          target: "_blank",
+        },
+      ],
     },
     {
       title: "Integration",
@@ -152,25 +153,25 @@ const Navbar = () => {
         {
           title: "Premium Printcart API",
           url: "https://solution.printcart.com/app/premium-printcart-api",
-          target: "_blank"
+          target: "_blank",
         },
         {
           title: "Web To Print Shopify",
           url: "https://solution.printcart.com/app/web-to-print-shopify",
-          target: "_blank"
+          target: "_blank",
         },
         {
           title: "Mangento Online Design",
           url: "https://solution.printcart.com/app/magento-premium-online-product-designer-extension",
-          target: "_blank"
+          target: "_blank",
         },
         {
           title: "WP Product Designer",
           url: "https://solution.printcart.com/app/wordpress-web-2-print-product-designer-plugin",
-          target: "_blank"
-        }
-      ]
-    }
+          target: "_blank",
+        },
+      ],
+    },
   ];
 
   return (
@@ -220,13 +221,13 @@ const Navbar = () => {
           </Search>
           {/* end of search */}
 
-          <a
+          <Link
             href="https://dashboard.printcart.com/"
             target="_blank"
             offset={84}
           >
             <Button className="trail" title="Dashboard" />
-          </a>
+          </Link>
 
           <Button
             className="menubar"

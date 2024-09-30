@@ -14,7 +14,7 @@ import {
   TitleHead,
   WrapContent,
   WrapImage,
-  WrapperProduct
+  WrapperProduct,
 } from "./productspod.style";
 
 const TagsFilter = ({ dataFilter, status, title }) => {
@@ -47,22 +47,20 @@ const TagsFilter = ({ dataFilter, status, title }) => {
                       <Box>
                         <WrapImage>
                           <Link href={`/product/${item?.handle}`}>
-                            <a>
-                              <img
-                                style={{
-                                  position: "absolute",
-                                  width: "100%",
-                                  height: "100%",
-                                  top: "0",
-                                  left: "0",
-                                  backgroundColor: "#f7f7f7",
-                                  borderTopLeftRadius: "5px",
-                                  objectFit: "contain",
-                                  borderTopRightRadius: "5px"
-                                }}
-                                src={item?.thumbnail}
-                              />
-                            </a>
+                            <img
+                              style={{
+                                position: "absolute",
+                                width: "100%",
+                                height: "100%",
+                                top: "0",
+                                left: "0",
+                                backgroundColor: "#f7f7f7",
+                                borderTopLeftRadius: "5px",
+                                objectFit: "contain",
+                                borderTopRightRadius: "5px",
+                              }}
+                              src={item?.thumbnail}
+                            />
                           </Link>
                           {status && (
                             <BoxLabel>
@@ -75,10 +73,11 @@ const TagsFilter = ({ dataFilter, status, title }) => {
                           )}
                         </WrapImage>
                         <WrapContent>
-                          <Link href={`/product/${item?.handle}`}>
-                            <a title={`View to ${item.title}`}>
-                              <PTitle>{item.title}</PTitle>
-                            </a>
+                          <Link
+                            href={`/product/${item?.handle}`}
+                            title={`View to ${item.title}`}
+                          >
+                            <PTitle>{item.title}</PTitle>
                           </Link>
                           <PByVendor>By {item?.vendor?.store_name}</PByVendor>
                           {/* <VendorPrice>

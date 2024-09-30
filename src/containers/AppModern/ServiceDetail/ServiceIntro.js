@@ -36,10 +36,8 @@ const ServiceIntro = (props) => {
         <p>
           created by{" "}
           <Link prefetch={false} href={character.url ?? "/"}>
-            <a>
-              {character?.users_permissions_user?.data?.attributes?.name ??
-                "Printcart"}
-            </a>
+            {character?.users_permissions_user?.data?.attributes?.name ??
+              "Printcart"}
           </Link>
           , a part of Corporate Printcart
         </p>

@@ -35,12 +35,12 @@ const TitlePath = (props) => {
   return (
     <Breadcrumb>
       <Box className="container-text">
-        <Link href="/">
-          <a className="text">Printcart</a>
+        <Link href="/" className="text">
+          Printcart
         </Link>
         {" - "}
-        <Link href="/services">
-          <a className="text">Services Listing</a>
+        <Link href="/services" className="text">
+          Services Listing
         </Link>
         {currentCat ? (
           <>
@@ -52,8 +52,9 @@ const TitlePath = (props) => {
                   ? `/services/${currentCat.alias_cat}`
                   : `/service/${currentCat.alias}`
               }
+              className="text"
             >
-              <a className="text">{currentCat.name_cat || currentCat.title}</a>
+              {currentCat.name_cat || currentCat.title}
             </Link>
           </>
         ) : (
@@ -65,8 +66,9 @@ const TitlePath = (props) => {
             <Link
               prefetch={false}
               href={`/services/${currentCat.alias_cat}/${currentCat.alias_subcat}`}
+              className="text"
             >
-              <a className="text">{currentCat.name_subcat}</a>
+              {currentCat.name_subcat}
             </Link>
           </>
         ) : (
@@ -78,8 +80,9 @@ const TitlePath = (props) => {
             <Link
               prefetch={false}
               href={`/services/${currentCat.alias_cat}/${currentCat.alias_subcat}/${currentCat.alias_sub}`}
+              className="text"
             >
-              <a className="text">{currentCat.name_sub}</a>
+              {currentCat.name_sub}
             </Link>
           </>
         ) : (

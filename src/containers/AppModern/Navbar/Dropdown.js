@@ -28,14 +28,13 @@ const Dropdown = ({ submenus }) => {
     <DropdownUL>
       {submenus.map((submenu, index) => (
         <DropdownLi key={index}>
-          <Link href={submenu.url}>
-            <a
-              style={{ color: "#444", lineHeight: "30px" }}
-              target={submenu.target ? "_blank" : null}
-              offset={84}
-            >
-              {submenu.title}
-            </a>
+          <Link
+            href={submenu.url}
+            style={{ color: "#444", lineHeight: "30px" }}
+            target={submenu.target ? "_blank" : null}
+            offset={84}
+          >
+            {submenu.title}
           </Link>
         </DropdownLi>
       ))}

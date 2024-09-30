@@ -27,6 +27,7 @@ import bannerImg from "common/assets/image/appModern/dashboard-printcart.png";
 import videoBanner1 from "common/assets/image/appModern/printcart-video-1.png";
 import videoBanner2 from "common/assets/image/appModern/printcart-video-2.png";
 import circleBorder from "common/assets/image/appModern/shape.svg";
+import Link from "next/link";
 // close button for modal
 const CloseModalButton = () => (
   <Button
@@ -105,18 +106,26 @@ const Banner = () => {
           </Fade>
           <Fade up delay={300}>
             <ButtonGroup>
-              <a href="https://dashboard.printcart.com/signup?get-started=true" target="_blank" rel="nofollow">
+              <Link
+                href="https://dashboard.printcart.com/signup?get-started=true"
+                target="_blank"
+                rel="nofollow"
+              >
                 <Button className="primary" title="Start Now" />
-              </a>
-              <a href="https://designer.printcart.com/" target="_blank" rel="nofollow">
-              <Button
-                className="text"
-                variant="textButton"
-                // icon={<Icon icon={playCircle} />}
-                iconPosition="left"
-                title="Design Tool Demo"
-              />
-              </a>
+              </Link>
+              <Link
+                href="https://designer.printcart.com/"
+                target="_blank"
+                rel="nofollow"
+              >
+                <Button
+                  className="text"
+                  variant="textButton"
+                  // icon={<Icon icon={playCircle} />}
+                  iconPosition="left"
+                  title="Design Tool Demo"
+                />
+              </Link>
             </ButtonGroup>
           </Fade>
           <VideoGroup>

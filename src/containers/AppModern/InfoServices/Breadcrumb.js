@@ -14,7 +14,7 @@ import {
   TwitterIcon,
   TwitterShareButton,
   VKIcon,
-  VKShareButton
+  VKShareButton,
 } from "react-share";
 
 const Breadcrumb = (props) => {
@@ -25,21 +25,23 @@ const Breadcrumb = (props) => {
   return (
     <Box className="mainbred">
       <Box className="breadcome">
-        <Link href="/">
-          <a className="text">
-            <Icon icon={ic_home_outline} />
-            Printcart
-          </a>
+        <Link href="/" className="text">
+          <Icon icon={ic_home_outline} />
+          Printcart
         </Link>
         -
-        <Link href="/services">
-          <a className="text">Services Listing</a>
+        <Link href="/services" className="text">
+          Services Listing
         </Link>
         {currentCat?.name_cat ? (
           <>
             -
-            <Link prefetch={false} href={`/services/${currentCat.alias_cat}`}>
-              <a className="text">{currentCat.name_cat}</a>
+            <Link
+              prefetch={false}
+              href={`/services/${currentCat.alias_cat}`}
+              className="text"
+            >
+              {currentCat.name_cat}
             </Link>
           </>
         ) : (
@@ -51,8 +53,9 @@ const Breadcrumb = (props) => {
             <Link
               prefetch={false}
               href={`/services/${currentCat.alias_cat}/${currentCat.alias_subcat}`}
+              className="text"
             >
-              <a className="text">{currentCat.name_subcat}</a>
+              {currentCat.name_subcat}
             </Link>
           </>
         ) : (
@@ -64,8 +67,9 @@ const Breadcrumb = (props) => {
             <Link
               prefetch={false}
               href={`/services/${currentCat.alias_cat}/${currentCat.alias_subcat}/${currentCat.alias_sub}`}
+              className="text"
             >
-              <a className="text">{currentCat.name_sub}</a>
+              {currentCat.name_sub}
             </Link>
           </>
         ) : (

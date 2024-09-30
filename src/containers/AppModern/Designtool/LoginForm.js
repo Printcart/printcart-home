@@ -6,6 +6,7 @@ import {
   StyleCreateAccount,
   StyleLoginForm,
 } from "./pc.style";
+import Link from "next/link";
 
 const LoginForm = (props) => {
   const { setAlert, setToken } = props;
@@ -92,12 +93,12 @@ const LoginForm = (props) => {
       </form>
       <StyleCreateAccount>
         Not registered?{" "}
-        <a
+        <Link
           href={`${process.env.NEXT_PUBLIC_PRINTCART_DASHBOARD}signup`}
           target="_blank"
         >
           Create account
-        </a>
+        </Link>
       </StyleCreateAccount>
     </StyleLoginForm>
   );

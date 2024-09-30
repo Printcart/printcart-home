@@ -73,12 +73,11 @@ const BlogPage = ({ resPosts, pages }) => {
                         <Link
                           prefetch={false}
                           href={`/tutorial/${items?.attributes?.alias}`}
+                          title={`View to ${items?.attributes?.title}`}
                         >
-                          <a title={`View to ${items?.attributes?.title}`}>
-                            <h3 style={{ lineHeight: "1.5", height: "64px" }}>
-                              {items?.attributes?.title}
-                            </h3>
-                          </a>
+                          <h3 style={{ lineHeight: "1.5", height: "64px" }}>
+                            {items?.attributes?.title}
+                          </h3>
                         </Link>
                       </Box>
                       {items?.attributes?.banner?.data?.attributes?.formats
@@ -94,14 +93,12 @@ const BlogPage = ({ resPosts, pages }) => {
                           }
                         />
                       )}
-                      <DesBox>
-                        {parser(items?.attributes?.short_intro)}
-                      </DesBox>
+                      <DesBox>{parser(items?.attributes?.short_intro)}</DesBox>
                       <Box>
                         <TagBox>
                           {items?.attributes?.tags?.data.map((tags, index) => (
                             <Link href="#" key={index}>
-                              <a>#{tags?.attributes?.alias}</a>
+                              #{tags?.attributes?.alias}
                             </Link>
                           ))}
                         </TagBox>
@@ -111,43 +108,37 @@ const BlogPage = ({ resPosts, pages }) => {
                           <LeftContent>
                             <LogoAuthor>
                               <Link href={"#"}>
-                                <a>
-                                  <AvatarAuthor>
-                                    <img
-                                      style={{
-                                        width: "100%",
-                                        height: "100%",
-                                        textAlign: "center",
-                                        objectFit: "cover",
-                                        textIndent: "10000px",
-                                      }}
-                                      alt="Avatar"
-                                      src={
-                                        items?.attributes?.user_profile?.data
-                                          ?.attributes?.avatar ?? "favicon.png"
-                                      }
-                                    />
-                                  </AvatarAuthor>
-                                </a>
+                                <AvatarAuthor>
+                                  <img
+                                    style={{
+                                      width: "100%",
+                                      height: "100%",
+                                      textAlign: "center",
+                                      objectFit: "cover",
+                                      textIndent: "10000px",
+                                    }}
+                                    alt="Avatar"
+                                    src={
+                                      items?.attributes?.user_profile?.data
+                                        ?.attributes?.avatar ?? "favicon.png"
+                                    }
+                                  />
+                                </AvatarAuthor>
                               </Link>
                             </LogoAuthor>
                             {items?.attributes?.user_profile && (
                               <Box>
                                 <TitleUser>
                                   <Link href={"#"}>
-                                    <a>
-                                      {items?.attributes?.user_profile?.data
-                                        ?.attributes?.name ?? "Printcart"}
-                                    </a>
+                                    {items?.attributes?.user_profile?.data
+                                      ?.attributes?.name ?? "Printcart"}
                                   </Link>
                                 </TitleUser>
                                 <TimeUser>
                                   <Link href={"#"}>
-                                    <a>
-                                      {new Date(
-                                        items?.attributes?.createdAt
-                                      ).toLocaleString()}
-                                    </a>
+                                    {new Date(
+                                      items?.attributes?.createdAt
+                                    ).toLocaleString()}
                                   </Link>
                                 </TimeUser>
                               </Box>
@@ -157,15 +148,13 @@ const BlogPage = ({ resPosts, pages }) => {
                             <Link
                               href={`/tutorial/${items?.attributes?.alias}`}
                             >
-                              <a>
-                                <ButtonRead>
-                                  <Icon
-                                    icon={ic_remove_red_eye}
-                                    style={{ marginRight: "10px" }}
-                                  />
-                                  Read Tutorial
-                                </ButtonRead>
-                              </a>
+                              <ButtonRead>
+                                <Icon
+                                  icon={ic_remove_red_eye}
+                                  style={{ marginRight: "10px" }}
+                                />
+                                Read Tutorial
+                              </ButtonRead>
                             </Link>
                           </Box>
                         </AuthorPost>
