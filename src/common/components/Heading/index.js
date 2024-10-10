@@ -20,9 +20,14 @@ const HeadingWrapper = styled('p')(
   themed('Heading')
 );
 
-const Heading = ({ content, ...props }) => (
-  <HeadingWrapper {...props}>{content}</HeadingWrapper>
-);
+const Heading = ({
+  content,
+  as = 'h2',
+  mt = 0,
+  mb = '1rem',
+  fontWeight = 'bold',
+  ...props
+}) => <HeadingWrapper as={as} mt={mt} mb={mb} fontWeight={fontWeight} {...props}>{content}</HeadingWrapper>;
 
 export default Heading;
 
@@ -79,11 +84,4 @@ Heading.propTypes = {
     ),
   ]),
   ...base.propTypes,
-};
-
-Heading.defaultProps = {
-  as: 'h2',
-  mt: 0,
-  mb: '1rem',
-  fontWeight: 'bold',
 };

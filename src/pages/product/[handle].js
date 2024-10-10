@@ -72,7 +72,6 @@ export async function getStaticProps({ params }) {
       product: result?.products || {},
       productsRelated: resultRelated.products || {},
     },
-    revalidate: 1,
   };
 }
 
@@ -102,7 +101,8 @@ export async function getStaticPaths() {
           params: { handle: product.handle },
         };
       }),
-      fallback: "blocking",
+      // Set fallback to false or true based on your needs
+      fallback: false, 
     };
   }
 }

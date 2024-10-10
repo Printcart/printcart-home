@@ -12,7 +12,41 @@ import DashboardWrapper, { DashboardObject } from './dashboard.style';
 
 import DashboardObject1 from 'common/assets/image/appModern/banner9.png';
 
-const DashboardSection = ({ row, col, title, btnStyle, description }) => {
+const DashboardSection = ({
+  row = {
+    flexBox: true,
+    flexWrap: 'wrap',
+    ml: '-15px',
+    mr: '-15px',
+    alignItems: 'center',
+  },
+  col = {
+    pr: '15px',
+    pl: '15px',
+    width: [1, '70%', '50%', '45%'],
+  },
+  title = {
+    fontSize: ['22px', '30px', '30px', '30px', '36px'],
+    fontWeight: '700',
+    color: '#0f2137',
+    letterSpacing: '-0.025em',
+    mb: ['20px', '15px', '15px', '20px', '25px'],
+    lineHeight: '1.3',
+    maxWidth: ['100%', '400px'],
+  },
+  description = {
+    fontSize: '16px',
+    color: '#343d48cc',
+    lineHeight: '1.85',
+    mb: '0',
+  },
+  btnStyle = {
+    minWidth: ['120px', '120px', '120px', '156px'],
+    fontSize: ['13px', '14px'],
+    fontWeight: '500',
+    colors: 'primaryWithBg',
+  },
+}) => {
   const ButtonGroup = () => (
     <Fragment>
       {/* <a href="https://dashboard.printcart.com"><Button title="Printcart Dashboard" {...btnStyle} /></a> */}
@@ -34,7 +68,7 @@ const DashboardSection = ({ row, col, title, btnStyle, description }) => {
               }
               description={
                 <Text
-                  content="With our Product Designer API and SDK, your client  can design and customize a product to fit their needs, which will drive customer satisfaction and additional revenue growth on your site."
+                  content="With our Product Designer API and SDK, your client can design and customize a product to fit their needs, which will drive customer satisfaction and additional revenue growth on your site."
                   {...description}
                 />
               }
@@ -56,43 +90,8 @@ DashboardSection.propTypes = {
   title: PropTypes.object,
   btnStyle: PropTypes.object,
   description: PropTypes.object,
-  contentStyle: PropTypes.object,
-};
-
-DashboardSection.defaultProps = {
-  row: {
-    flexBox: true,
-    flexWrap: 'wrap',
-    ml: '-15px',
-    mr: '-15px',
-    alignItems: 'center',
-  },
-  col: {
-    pr: '15px',
-    pl: '15px',
-    width: [1, '70%', '50%', '45%'],
-  },
-  title: {
-    fontSize: ['22px', '30px', '30px', '30px', '36px'],
-    fontWeight: '700',
-    color: '#0f2137',
-    letterSpacing: '-0.025em',
-    mb: ['20px', '15px', '15px', '20px', '25px'],
-    lineHeight: '1.3',
-    maxWidth: ['100%', '400px'],
-  },
-  description: {
-    fontSize: '16px',
-    color: '#343d48cc',
-    lineHeight: '1.85',
-    mb: '0',
-  },
-  btnStyle: {
-    minWidth: ['120px', '120px', '120px', '156px'],
-    fontSize: ['13px', '14px'],
-    fontWeight: '500',
-    colors: 'primaryWithBg',
-  },
+  row: PropTypes.object,
+  col: PropTypes.object,
 };
 
 export default DashboardSection;

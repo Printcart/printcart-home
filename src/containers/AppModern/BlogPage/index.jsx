@@ -32,10 +32,13 @@ const Image = styled.img`
   box-shadow: 0 0px 10px 1px rgb(0 0 50 / 10%);
 `;
 
-const BlogPage = ({ resPosts, pages }) => {
+const BlogPage = ({ resPosts = [], pages }) => {
   const router = useRouter();
   const query = router.query;
-  const page = pages.pagination.total / 20;
+
+  // Kiểm tra nếu pages hoặc pages.pagination là undefined
+  const page = pages && pages.pagination ? pages.pagination.total / 20 : 0;
+
   let start = -1;
   let end = 20;
   if (query.page) {
@@ -46,7 +49,6 @@ const BlogPage = ({ resPosts, pages }) => {
   return (
     <React.Fragment>
       <SectionWrapperServices>
-        {/* <BlogPath /> */}
         <SectionHeader>
           <Box className="containerSlogan">
             <Container>
@@ -63,10 +65,9 @@ const BlogPage = ({ resPosts, pages }) => {
         </SectionHeader>
         <Container>
           <GridPost>
-            {resPosts.map(
-              (items, index) =>
-                index > start &&
-                index < end && (
+            {resPosts.length > 0 ? (
+              resPosts.map((items, index) =>
+                index > start && index < end ? (
                   <GridItem key={items?.id || index}>
                     <ContainerPost>
                       <Box>
@@ -84,12 +85,12 @@ const BlogPage = ({ resPosts, pages }) => {
                         ?.small?.url && (
                         <Image
                           src={
-                            items?.attributes?.banner?.data?.attributes?.formats
-                              ?.small?.url
+                            items?.attributes?.banner?.data?.attributes
+                              ?.formats?.small?.url
                           }
                           alt={
-                            items?.attributes?.banner?.data?.attributes?.formats
-                              ?.small?.name
+                            items?.attributes?.banner?.data?.attributes
+                              ?.formats?.small?.name
                           }
                         />
                       )}
@@ -161,7 +162,10 @@ const BlogPage = ({ resPosts, pages }) => {
                       </Box>
                     </ContainerPost>
                   </GridItem>
-                )
+                ) : null
+              )
+            ) : (
+              <div>No posts available</div> // Thông báo nếu không có bài viết nào
             )}
             {resPosts.length > 20 && <Pagination page={page} />}
           </GridPost>

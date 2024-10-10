@@ -4,20 +4,20 @@ import ButtonStyle from './button.style';
 import Loader from '../Loader';
 
 const Button = ({
-  type,
+  type = 'button',
   title,
   icon,
-  disabled,
-  iconPosition,
+  disabled = false,
+  iconPosition = 'right',
   onClick,
   loader,
   loaderColor,
-  isMaterial,
-  isLoading,
+  isMaterial = false,
+  isLoading = false,
   className,
   ...props
 }) => {
-  // Add all classs to an array
+  // Add all classes to an array
   const addAllClasses = ['reusecore__button'];
 
   // isLoading prop checking
@@ -45,22 +45,19 @@ const Button = ({
       icon && <span className="btn-icon">{icon}</span>
     );
 
-  // set icon position
-  const position = iconPosition || 'right';
-
   return (
     <ButtonStyle
       type={type}
       className={addAllClasses.join(' ')}
       icon={icon}
       disabled={disabled}
-      icon-position={position}
+      icon-position={iconPosition}
       onClick={onClick}
       {...props}
     >
-      {position === 'left' && buttonIcon}
+      {iconPosition === 'left' && buttonIcon}
       {title && <span className="btn-text">{title}</span>}
-      {position === 'right' && buttonIcon}
+      {iconPosition === 'right' && buttonIcon}
     </ButtonStyle>
   );
 };
@@ -96,7 +93,7 @@ Button.propTypes = {
   /** Variant change button shape */
   variant: PropTypes.oneOf(['textButton', 'outlined', 'fab', 'extendedFab']),
 
-  /** primary || secondary || warning || error  change text and border color.
+  /** primary || secondary || warning || error change text and border color.
    *  And primaryWithBg || secondaryWithBg || warningWithBg || errorWithBg change text, border and background color */
   colors: PropTypes.oneOf([
     'primary',
@@ -113,13 +110,6 @@ Button.propTypes = {
    * Gets called when the user clicks on the button
    */
   onClick: PropTypes.func,
-};
-
-Button.defaultProps = {
-  disabled: false,
-  isMaterial: false,
-  isLoading: false,
-  type: 'button',
 };
 
 export default Button;

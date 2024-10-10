@@ -26,11 +26,16 @@ const BoxWrapper = styled('div')(
     )
 );
 
-const Box = ({ children, ...props }) => (
-  <BoxWrapper {...props}>{children}</BoxWrapper>
+const Box = ({
+  children,
+  flexBox = false,
+  as = 'div',
+  ...props
+}) => (
+  <BoxWrapper flexBox={flexBox} as={as} {...props}>
+    {children}
+  </BoxWrapper>
 );
-
-export default Box;
 
 Box.propTypes = {
   children: PropTypes.any.isRequired,
@@ -146,6 +151,4 @@ Box.propTypes = {
   ]),
 };
 
-Box.defaultProps = {
-  as: 'div',
-};
+export default Box;

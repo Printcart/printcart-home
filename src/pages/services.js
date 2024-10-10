@@ -45,53 +45,63 @@ const Services = (props) => {
     </ThemeProvider>
   );
 };
+
 export default Services;
 export async function getStaticProps() {
   const time = `&time=${Date.now()}`;
-  const uniqueValue = [];
   const limit = `&pagination[pageSize]=100`;
   const filProjectCat = `&fields[0]=project_cat`;
   const filAgency = `&filters[$and][0][service_agency][$contains]=568427`;
   const user = `&populate=users_permissions_user.avatar`;
 
+  // Fetch services to get project categories
   const res = await fetch(
-    `${process.env.STRAPI_2_API_URL}services?pagination[pageSize]=100` +
-      filProjectCat +
-      filAgency
+    `${process.env.STRAPI_2_API_URL}services?pagination[pageSize]=100${filProjectCat}${filAgency}`
   );
   const result = await res.json();
 
-  const mergeArray = uniqueValue.concat(
-    result.data.map((items) => items.attributes.project_cat.map((item) => item))
+  // Extract and merge project categories
+  const mergeArray = result.data.map((items) =>
+    items.attributes.project_cat.map((item) => item)
   );
   const delDuplicate = mergeArray.flat();
-  const data = delDuplicate.filter((element) => {
-    const isDuplicate = delDuplicate.includes(element.value);
-    if (!isDuplicate) {
-      delDuplicate.push(element.value);
-      return true;
+
+  const valueData = delDuplicate.map((item) => item.value);
+  const mergeValue = valueData.join("&filters[id]="); // Create mergeValue here
+
+  // Now you can use mergeValue for the fetchCategoryUrl
+  const fetchServicesUrl = `${process.env.STRAPI_2_API_URL}services?populate=image${user}${limit}${time}${filAgency}`;
+  const fetchCategoryUrl = `${process.env.STRAPI_API_URL}project-categories?pagination[pageSize]=100&filters[id]=${mergeValue}`;
+  const fetchFAQUrl = `${process.env.STRAPI_API_URL}faqs?filters[$and][0][project_cat][$contains]="20956"`;
+
+
+  try {
+    const [promiseServices, promiseCategory, promiseFAQ] = await Promise.all([
+      fetch(fetchServicesUrl),
+      fetch(fetchCategoryUrl),
+      fetch(fetchFAQUrl),
+    ]);
+
+    const [dataServices, dataCategory, dataFAQ] = await Promise.all([
+      promiseServices.json(),
+      promiseCategory.json(),
+      promiseFAQ.json(),
+    ]);
+
+    if (dataServices.data.length > 0) {
+      return {
+        props: {
+          serviceList: dataServices["data"],
+          total: dataServices["meta"],
+          dataCategory: dataCategory["data"],
+          dataFAQ: dataFAQ["data"],
+        },
+      };
     }
-    return false;
-  });
-  const valueData = data.map((item) => item.value);
-  const mergeValue = valueData.join("&filters[id]=");
-
-  const fetchCategory = fetch(`${process.env.STRAPI_API_URL}project-categories?pagination[pageSize]=100&filters[id]=${mergeValue}`);
-  const fetchServices = fetch(`${process.env.STRAPI_2_API_URL}services?populate=image` + user + limit + time + filAgency);
-  const fetchFAQ = fetch(`${process.env.STRAPI_API_URL}faqs?filters[$and][0][project_cat][$contains]="20956"`);
-
-  const [promiseCategory, promiseServices, promiseFAQ] = await Promise.all([fetchServices, fetchCategory, fetchFAQ]);
-  const [dataServices, dataCategory, dataFAQ] = await Promise.all([promiseCategory.json(), promiseServices.json(), promiseFAQ.json()]);
-
-  if (dataServices.data.length > 0) {
+  } catch (error) {
+    console.error("Error fetching data:", error);
     return {
-      props: {
-        serviceList: dataServices["data"],
-        total: dataServices["meta"],
-        dataCategory: dataCategory["data"],
-        dataFAQ: dataFAQ["data"]
-      },
-      revalidate: 1
+      notFound: true, // or return a fallback state
     };
   }
 }

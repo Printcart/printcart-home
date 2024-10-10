@@ -17,53 +17,55 @@ const ServicesList = (props) => {
   return (
     <Card className="cardItem">
       <Box>
-        <Link
-          prefetch={false}
-          href={`/service/${serviceList.attributes.alias}`}
-        >
-          <img
-            style={{
-              width: "100%",
-              height: "200px",
-              borderTopLeftRadius: "5px",
-              borderTopRightRadius: "5px",
-            }}
-            src={
-              serviceList.attributes?.image?.data?.length > 0
-                ? `${serviceList?.attributes?.image?.data[0]?.attributes?.url}`
-                : `${serviceList?.attributes?.image?.data?.map(
-                    (items) => items?.attributes?.url
-                  )}`
-            }
-          />
-        </Link>
-        <Box className="content">
+        {serviceList?.attributes?.alias && (
           <Link
-            title={`View to ${serviceList.attributes.title}`}
             prefetch={false}
             href={`/service/${serviceList.attributes.alias}`}
           >
-            <h3 className="title">{serviceList.attributes.title}</h3>
+            <img
+              style={{
+                width: "100%",
+                height: "200px",
+                borderTopLeftRadius: "5px",
+                borderTopRightRadius: "5px",
+              }}
+              src={
+                serviceList.attributes?.image?.data?.length > 0
+                  ? `${serviceList?.attributes?.image?.data[0]?.attributes?.url}`
+                  : `${serviceList?.attributes?.image?.data?.map(
+                    (items) => items?.attributes?.url
+                  )}`
+              }
+            />
           </Link>
+        )}
+        <Box className="content">
+          {serviceList?.attributes?.alias && (
+            <Link
+              title={`View to ${serviceList.attributes.title}`}
+              prefetch={false}
+              href={`/service/${serviceList.attributes.alias}`}
+            >
+              <h3 className="title">{serviceList.attributes.title}</h3>
+            </Link>
+          )}
           <Box className="text">
             <ReactMarkdown>{serviceList.attributes.description}</ReactMarkdown>
           </Box>
           <Box className="avataruser">
             <img
-              src={`${
-                serviceList?.attributes?.users_permissions_user?.data
-                  ?.attributes?.avatar?.data?.attributes.url ??
+              src={`${serviceList?.attributes?.users_permissions_user?.data
+                ?.attributes?.avatar?.data?.attributes.url ??
                 "/avatar-default.png"
-              }`}
+                }`}
               alt="Avatar User"
             />
             <Box>
               <Box className="info">
                 <strong>Project Assistant: </strong>
-                {`${
-                  serviceList.attributes.users_permissions_user?.data
-                    ?.attributes.name ?? "Printcart"
-                }`}
+                {`${serviceList.attributes.users_permissions_user?.data
+                  ?.attributes.name ?? "Printcart"
+                  }`}
               </Box>
               <Box className="infodate">
                 <strong>Updated: </strong>
@@ -72,13 +74,15 @@ const ServicesList = (props) => {
             </Box>
           </Box>
           <Box className="boxBtn">
-            <Link
-              prefetch={false}
-              href={`/service/${serviceList.attributes.alias}`}
-              title={`View to ${serviceList.attributes.title}`}
-            >
-              <Button style={{ borderRadius: "5px" }} title="Request Support" />
-            </Link>
+            {serviceList?.attributes?.alias && (
+              <Link
+                prefetch={false}
+                href={`/service/${serviceList.attributes.alias}`}
+                title={`View to ${serviceList.attributes.title}`}
+              >
+                <Button style={{ borderRadius: "5px" }} title="Request Support" />
+              </Link>
+            )}
           </Box>
         </Box>
       </Box>

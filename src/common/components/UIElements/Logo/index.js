@@ -5,9 +5,21 @@ import Link from "common/components/Link";
 import Image from "common/components/Image";
 
 const Logo = ({
-  logoWrapperStyle,
+  logoWrapperStyle = {
+    display: "inline-flex",
+    alignItems: "center",
+    mr: "1rem",
+    "a:hover,a:focus": {
+      textDecoration: "none",
+    },
+  },
   logoStyle,
-  titleStyle,
+  titleStyle = {
+    display: "inline-block",
+    fontSize: "2rem",
+    lineHeight: "inherit",
+    whiteSpace: "nowrap",
+  },
   withAnchor,
   anchorProps,
   logoSrc,
@@ -45,20 +57,4 @@ Logo.propTypes = {
   anchorProps: PropTypes.object,
 };
 
-Logo.defaultProps = {
-  logoWrapperStyle: {
-    display: "inline-flex",
-    alignItems: "center",
-    mr: "1rem",
-    "a:hover,a:focus": {
-      textDecoration: "none",
-    },
-  },
-  titleStyle: {
-    display: "inline-block",
-    fontSize: "2rem",
-    lineHeight: "inherit",
-    whiteSpace: "nowrap",
-  },
-};
 export default Logo;

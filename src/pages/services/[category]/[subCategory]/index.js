@@ -16,6 +16,7 @@ const ServicesCategory = (props) => {
     dataSubCat,
     dataFAQ,
   } = props;
+  console.log(currentCat);
   return (
     <ThemeProvider theme={theme}>
       <>

@@ -11,8 +11,8 @@ import Head from "next/head";
 import { ThemeProvider } from "styled-components";
 
 const Catalog = (props) => {
-  const { products, collections, ecoData, aopData, neckData, otherData } =
-    props;
+  const { products, collections, ecoData, aopData, neckData, otherData } = props;
+
   return (
     <ThemeProvider theme={theme}>
       <>
@@ -47,7 +47,6 @@ const Catalog = (props) => {
   );
 };
 export default Catalog;
-
 export async function getStaticProps() {
   const baseUrlAdmin = process.env.MEDUSA_API_ADMIN_URL;
   const token = process.env.TOKEN_AUTH;
@@ -143,6 +142,5 @@ export async function getStaticProps() {
       neckData: resultNeckFilter.products || {},
       otherData: resultOtherFilter.products || {},
     },
-    revalidate: 1,
   };
 }

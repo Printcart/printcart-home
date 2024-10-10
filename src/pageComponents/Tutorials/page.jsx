@@ -34,7 +34,6 @@ export async function getStaticProps() {
         pages: results["meta"],
         resPosts: results["data"],
       },
-      revalidate: 1,
     };
   }
 }

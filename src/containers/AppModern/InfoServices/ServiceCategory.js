@@ -3,7 +3,7 @@ import Box from "common/components/Box";
 import Link from "next/link";
 
 const ServiceCategory = (props) => {
-  const { dataNew, choice } = props;
+  const { dataNew, choice} = props;
   const [qty, setQty] = useState(18);
 
   const handleShowMore = () => {
@@ -12,7 +12,9 @@ const ServiceCategory = (props) => {
   const handleShowLess = () => {
     setQty(18);
   };
+  console.log(choice);
   return (
+    
     <Box className="containerServices">
       <Link href={`/services`} className="btncategory">
         All

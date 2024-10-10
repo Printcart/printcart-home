@@ -30,8 +30,10 @@ const CardWrapper = styled('div')(
   themed('Card')
 );
 
-const Card = ({ children, ...props }) => (
-  <CardWrapper {...props}>{children}</CardWrapper>
+const Card = ({ children, boxShadow = '0px 20px 35px rgba(0, 0, 0, 0.05)', ...props }) => (
+  <CardWrapper boxShadow={boxShadow} {...props}>
+    {children}
+  </CardWrapper>
 );
 
 Card.propTypes = {
@@ -48,7 +50,4 @@ Card.propTypes = {
   ...cards.propTypes,
 };
 
-Card.defaultProps = {
-  boxShadow: '0px 20px 35px rgba(0, 0, 0, 0.05)',
-};
 export default Card;
