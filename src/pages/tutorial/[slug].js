@@ -73,6 +73,7 @@ export async function getStaticProps({ params }) {
       postData: resultData?.data[0] || {},
       relatedData: resultRelated || {},
     },
+    revalidate: 1,
   };
 }
 
@@ -95,7 +96,7 @@ export async function getStaticPaths() {
           params: { slug: items.attributes.alias },
         };
       }),
-      fallback: "blocking",
+      fallback: false,
     };
   }
 }

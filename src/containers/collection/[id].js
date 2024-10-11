@@ -75,6 +75,7 @@ export async function getStaticProps({ params }) {
       collection: resultCollection?.collection || {},
       products: resultProducts?.products || {},
     },
+    revalidate: 1,
   };
 }
 

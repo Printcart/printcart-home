@@ -30,6 +30,7 @@ const InfoServices = (props) => {
     currentCat,
     dataFAQ
   } = props;
+
   const router = useRouter();
   const query = router.query;
   const title =
@@ -68,8 +69,8 @@ const InfoServices = (props) => {
       </SectionHeader>
       <Container>
         <ContainerServices>
-          {/* <Breadcrumb currentCat={currentCat} /> */}
-          <ServiceCategory dataNew={dataNew} choice={choice} />
+          <Breadcrumb currentCat={currentCat} />
+          <ServiceCategory dataNew={dataNew} />
           {serviceList.length === 0 && (
             <p className="notify">
               <Icon icon={ic_close} />

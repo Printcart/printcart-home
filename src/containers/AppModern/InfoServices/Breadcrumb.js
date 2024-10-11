@@ -21,6 +21,7 @@ const Breadcrumb = (props) => {
   const { currentCat } = props;
   const router = useRouter();
   const url = `${process.env.NEXT_PUBLIC_PRINTCART_URL}${router.asPath}`;
+  console.log(props)
 
   return (
     <Box className="mainbred">

@@ -7,23 +7,15 @@ import Navbar from "containers/AppModern/Navbar";
 import Head from "next/head";
 import { ThemeProvider } from "styled-components";
 
-const ServicesCategory = (props) => {
-  const {
-    total,
-    listServices,
-    choice,
-    servicesRealted,
-    currentCat,
-    dataSubCat,
-    dataFAQ,
-  } = props;
+const ServicesCategory = ({ total, listServices, servicesRealted, dataFAQ }) => {
+ 
+
   return (
     <ThemeProvider theme={theme}>
       <>
         <Head>
           <title>
-            {currentCat &&
-              `Services for the ${currentCat.name_sub} category on Printcart`}
+            {currentCat && `Services for the ${currentCat.name_subcat} category on Printcart`}
           </title>
           <meta name="theme-color" content="#2563FF" />
           <link
@@ -41,8 +33,6 @@ const ServicesCategory = (props) => {
             serviceList={listServices}
             total={total}
             dataNew={dataSubCat}
-            choice={choice}
-            currentCat={currentCat}
             serviceRealted={servicesRealted}
             dataFAQ={dataFAQ}
           />
@@ -69,16 +59,20 @@ export async function getServerSideProps({ query }) {
   const filSort = `&sort=createdAt:DESC`;
   const limit = `&pagination[pageSize]=10`;
 
+  // Fetching category data
   const res = await fetch(
     `${urlStrapi}project-categories?populate=parent.parent&filters[parent][parent][alias][$notNull]=true&filters[parent][alias][$notNull]=true&filters[alias][$eq]=${insub}`
   );
-  const results = await res.json();
 
-  const checkCategory =
-    results.data[0]?.attributes.parent.data?.attributes.parent.data?.attributes
-      .alias;
-  const checkSubcategory =
-    results.data[0]?.attributes.parent.data?.attributes.alias;
+  if (!res.ok) {
+    console.error("Failed to fetch categories:", res.statusText);
+    return { notFound: true };
+  }
+
+  const results = await res.json();
+  
+  const checkCategory = results.data[0]?.attributes.parent.data?.attributes.parent.data?.attributes.alias;
+  const checkSubcategory = results.data[0]?.attributes.parent.data?.attributes.alias;
 
   if (
     results.data.length > 0 &&
@@ -88,14 +82,10 @@ export async function getServerSideProps({ query }) {
     const name_sub = results.data[0].attributes.name;
     const alias_sub = results.data[0].attributes.alias;
     const name_subcat = results.data[0].attributes.parent.data.attributes.name;
-    const alias_subcat =
-      results.data[0].attributes.parent.data.attributes.alias;
-    const name_cat =
-      results.data[0].attributes.parent.data.attributes.parent.data.attributes
-        .name;
-    const alias_cat =
-      results.data[0].attributes.parent.data.attributes.parent.data.attributes
-        .alias;
+    const alias_subcat = results.data[0].attributes.parent.data.attributes.alias;
+    const name_cat = results.data[0].attributes.parent.data.attributes.parent.data.attributes.name;
+    const alias_cat = results.data[0].attributes.parent.data.attributes.parent.data.attributes.alias;
+
     const currentCat = {
       name_sub,
       alias_sub,
@@ -105,54 +95,60 @@ export async function getServerSideProps({ query }) {
       alias_cat,
     };
 
-    const fetchListService = fetch(
-      `${newUrl}&filters[project_cat][$containsi]=${name_subcat}` +
-        filAgency +
-        filSort
-    );
-    const fetchServiceRealted = fetch(
-      `${newUrl}&filters[project_cat][$notContainsi]=${name_sub}&filters[project_cat][$containsi]=${name_subcat}` +
-        filAgency +
-        filSort
-    );
-    const fetchSubCat = fetch(
-      `${urlStrapi}project-categories?populate=parent.parent&filters[parent][alias][$eq]=${insub}&sort=service_count:DESC` +
-        limit
-    );
-    const fetchFAQ = fetch(
-      `${urlStrapi}faqs?filters[$and][0][project_cat][$contains]="20956"`
-    );
+    // Fetching services data
+    try {
+      const fetchListService = fetch(
+        `${newUrl}&filters[project_cat][$containsi]=${name_subcat}` +
+          filAgency +
+          filSort
+      );
+      const fetchServiceRealted = fetch(
+        `${newUrl}&filters[project_cat][$notContainsi]=${name_sub}&filters[project_cat][$containsi]=${name_subcat}` +
+          filAgency +
+          filSort
+      );
+      const fetchSubCat = fetch(
+        `${urlStrapi}project-categories?populate=parent.parent&filters[parent][alias][$eq]=${insub}&sort=service_count:DESC` +
+          limit
+      );
+      const fetchFAQ = fetch(
+        `${urlStrapi}faqs?filters[$and][0][project_cat][$contains]="20956"`
+      );
 
-    const [
-      promiseListServices,
-      promiseServicesRealted,
-      promiseSubcat,
-      promiseFAQ,
-    ] = await Promise.all([
-      fetchListService,
-      fetchServiceRealted,
-      fetchSubCat,
-      fetchFAQ,
-    ]);
-    const [listServices, servicesRealted, dataSubCat, dataFAQ] =
-      await Promise.all([
-        promiseListServices.json(),
-        promiseServicesRealted.json(),
-        promiseSubcat.json(),
-        promiseFAQ.json(),
+      const [
+        promiseListServices,
+        promiseServicesRealted,
+        promiseSubcat,
+        promiseFAQ,
+      ] = await Promise.all([
+        fetchListService,
+        fetchServiceRealted,
+        fetchSubCat,
+        fetchFAQ,
       ]);
 
-    return {
-      props: {
-        listServices: listServices["data"],
-        total: listServices["meta"],
-        choice: insub,
-        currentCat,
-        servicesRealted: servicesRealted["data"],
-        dataSubCat: dataSubCat["data"],
-        dataFAQ: dataFAQ["data"],
-      },
-    };
+      const [listServices, servicesRealted, dataSubCat, dataFAQ] =
+        await Promise.all([
+          promiseListServices.json(),
+          promiseServicesRealted.json(),
+          promiseSubcat.json(),
+          promiseFAQ.json(),
+        ]);
+
+      return {
+        props: {
+          listServices: listServices.data,
+          total: listServices.meta,
+          currentCat,
+          servicesRealted: servicesRealted.data,
+          dataSubCat: dataSubCat.data,
+          dataFAQ: dataFAQ.data,
+        },
+      };
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      return { notFound: true };
+    }
   }
 
   return {

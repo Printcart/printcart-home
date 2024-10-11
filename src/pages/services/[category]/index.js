@@ -56,61 +56,52 @@ export async function getServerSideProps({ query }) {
   const alias = query.category;
   const urlStrapi = `${process.env.STRAPI_API_URL}`;
   const urlData2 = `${process.env.STRAPI_2_API_URL}services`;
+
+  // Create URL with necessary params
   const params = new URLSearchParams({
     populate: "image",
+    "filters[project_cat][$containsi]": query.category,
+    "filters[$and][0][service_agency][$contains]": "568427", // Adjust as necessary
+    "sort": "createdAt:DESC",
+    "pagination[pageSize]": "10", // Ensure this aligns with your pagination needs
   });
-  params.append("populate", "users_permissions_user.avatar");
-  const newUrl = `${urlData2}?${params.toString()}`;
-  const filAgency = `&filters[$and][0][service_agency][$contains]=568427`;
-  const filSort = `&sort=createdAt:DESC`;
-  const limit = `&pagination[pageSize]=10`;
 
-  const res = await fetch(
+  const categoryRes = await fetch(
     `${urlStrapi}project-categories?sort=updatedAt:DESC&filters[$and][0][alias][$eq]=${alias}`
   );
-  const results = await res.json();
 
-  if (results.data.length > 0) {
-    const name_cat = results.data[0].attributes.name;
-    const alias_cat = results.data[0].attributes.alias;
-    const currentCat = { name_cat, alias_cat };
+  const categoryData = await categoryRes.json();
 
-    const fetchListService = fetch(
-      `${newUrl}&filters[project_cat][$containsi]=${name_cat}` +
-        filAgency +
-        filSort
-    );
+  if (categoryData.data.length > 0) {
+    const currentCat = {
+      name_cat: categoryData.data[0].attributes.name,
+      alias_cat: categoryData.data[0].attributes.alias,
+    };
+
+    const fetchListService = fetch(`${urlData2}?${params.toString()}`);
     const fetchServiceRealted = fetch(
-      `${newUrl}&filters[project_cat][$notContainsi]=${name_cat}&pagination[limit]=9` +
-        filSort +
-        filAgency
+      `${urlData2}?filters[project_cat][$notContainsi]=${currentCat.name_cat}&pagination[limit]=9&sort=createdAt:DESC&filters[$and][0][service_agency][$contains]=568427`
     );
     const fetchSubCat = fetch(
-      `${urlStrapi}project-categories?populate=parent.parent&filters[parent][alias][$eq]=${alias}&sort=service_count:DESC` +
-        limit
+      `${urlStrapi}project-categories?populate=parent.parent&filters[parent][alias][$eq]=${alias}&sort=service_count:DESC&pagination[pageSize]=10`
     );
     const fetchFAQ = fetch(
       `${urlStrapi}faqs?filters[$and][0][project_cat][$contains]="20956"`
     );
 
-    const [
-      promiseListServices,
-      promiseServicesRealted,
-      promiseSubcat,
-      promiseFAQ,
-    ] = await Promise.all([
+    const [listServicesRes, servicesRealtedRes, dataSubCatRes, dataFAQRes] = await Promise.all([
       fetchListService,
       fetchServiceRealted,
       fetchSubCat,
       fetchFAQ,
     ]);
-    const [listServices, servicesRealted, dataSubCat, dataFAQ] =
-      await Promise.all([
-        promiseListServices.json(),
-        promiseServicesRealted.json(),
-        promiseSubcat.json(),
-        promiseFAQ.json(),
-      ]);
+
+    const [listServices, servicesRealted, dataSubCat, dataFAQ] = await Promise.all([
+      listServicesRes.json(),
+      servicesRealtedRes.json(),
+      dataSubCatRes.json(),
+      dataFAQRes.json(),
+    ]);
 
     return {
       props: {
@@ -128,3 +119,4 @@ export async function getServerSideProps({ query }) {
     notFound: true,
   };
 }
+

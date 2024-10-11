@@ -101,7 +101,7 @@ export async function getStaticProps() {
   } catch (error) {
     console.error("Error fetching data:", error);
     return {
-      notFound: true, // or return a fallback state
+      notFound: blocking, // or return a fallback state
     };
   }
 }
