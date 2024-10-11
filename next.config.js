@@ -63,7 +63,9 @@ const nextConfig = {
       },
     ];
   },
-  output: "export",
+  compiler: {
+    styledComponents: true, // Enable SWC support for styled-components
+  },
 };
 
 const withMDX = require("@next/mdx")({
@@ -82,5 +84,7 @@ const withMDX = require("@next/mdx")({
 
 module.exports = withPlugins(
   [[withMDX, { pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"] }]],
-  nextConfig
+  nextConfig,
+  
+  
 );

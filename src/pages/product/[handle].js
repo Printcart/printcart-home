@@ -72,7 +72,6 @@ export async function getStaticProps({ params }) {
       product: result?.products || {},
       productsRelated: resultRelated.products || {},
     },
-    revalidate: 1,
   };
 }
 

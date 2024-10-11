@@ -73,7 +73,7 @@ export async function getStaticProps({ params }) {
       postData: resultData?.data[0] || {},
       relatedData: resultRelated || {},
     },
-    revalidate: 1,
+    // revalidate: 1,
   };
 }
 
