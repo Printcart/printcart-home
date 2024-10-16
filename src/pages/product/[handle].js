@@ -102,7 +102,7 @@ export async function getStaticPaths() {
         };
       }),
       // Set fallback to false or true based on your needs
-      fallback: false, 
+      fallback: "blocking", 
     };
   }
 }

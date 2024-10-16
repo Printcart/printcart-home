@@ -32,23 +32,27 @@ const Image = styled.img`
   box-shadow: 0 0px 10px 1px rgb(0 0 50 / 10%);
 `;
 
-const BlogPage = ({ resPosts = [], pages }) => {
+const BlogPage = ({ resPosts, pages }) => {
   const router = useRouter();
   const query = router.query;
-
-  // Kiểm tra nếu pages hoặc pages.pagination là undefined
-  const page = pages && pages.pagination ? pages.pagination.total / 20 : 0;
-
-  let start = -1;
+  
+  
+  
+  // Add a safe check for pages and pagination
+  const page = pages?.pagination?.total ? Math.ceil(pages.pagination.total / 20) : 1;
+  
+  let start = 1;
   let end = 20;
   if (query.page) {
     start = (query.page - 1) * end - 1;
     end = query.page * end;
   }
+  console.log(query)
 
   return (
     <React.Fragment>
       <SectionWrapperServices>
+        {/* <BlogPath /> */}
         <SectionHeader>
           <Box className="containerSlogan">
             <Container>
@@ -65,9 +69,10 @@ const BlogPage = ({ resPosts = [], pages }) => {
         </SectionHeader>
         <Container>
           <GridPost>
-            {resPosts.length > 0 ? (
-              resPosts.map((items, index) =>
-                index > start && index < end ? (
+            {resPosts && resPosts.map(
+              (items, index) =>
+                index > start &&
+                index < end && (
                   <GridItem key={items?.id || index}>
                     <ContainerPost>
                       <Box>
@@ -85,15 +90,16 @@ const BlogPage = ({ resPosts = [], pages }) => {
                         ?.small?.url && (
                         <Image
                           src={
-                            items?.attributes?.banner?.data?.attributes
-                              ?.formats?.small?.url
+                            items?.attributes?.banner?.data?.attributes?.formats
+                              ?.small?.url
                           }
                           alt={
-                            items?.attributes?.banner?.data?.attributes
-                              ?.formats?.small?.name
+                            items?.attributes?.banner?.data?.attributes?.formats
+                              ?.small?.name
                           }
                         />
                       )}
+                     
                       <DesBox>{parser(items?.attributes?.short_intro)}</DesBox>
                       <Box>
                         <TagBox>
@@ -162,16 +168,19 @@ const BlogPage = ({ resPosts = [], pages }) => {
                       </Box>
                     </ContainerPost>
                   </GridItem>
-                ) : null
-              )
-            ) : (
-              <div>No posts available</div> // Thông báo nếu không có bài viết nào
+                )
             )}
-            {resPosts.length > 20 && <Pagination page={page} />}
+            {resPosts && resPosts.length > 20 && <Pagination page={page} />}
+            
           </GridPost>
+
         </Container>
       </SectionWrapperServices>
+      
     </React.Fragment>
+    
   );
 };
+
+
 export default BlogPage;

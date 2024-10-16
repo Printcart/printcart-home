@@ -41,34 +41,33 @@ const Service = (props) => {
 export default Service;
 
 export async function getStaticProps({ params }) {
-  const time = ``; 
+  // const time = `&time=${Date.now()}`
+  const time = ``;
 
   const res = await fetch(
-    `${process.env.STRAPI_2_API_URL}services?populate=image&populate=users_permissions_user.avatar&filters[alias][$eq]=${params.slug}` + time
+    `${process.env.STRAPI_2_API_URL}services?populate=image&populate=users_permissions_user.avatar&filters[alias][$eq]=${params.slug}` +
+      time
   );
   const result = await res.json();
 
+  const getValue = result?.data[0]?.attributes?.project_cat.map(
+    (items) => items.value
+  );
+  const filterValue = getValue && getValue.join("&filters[id]=");
+
+  const resAlias = await fetch(
+    `${process.env.STRAPI_API_URL}project-categories?pagination[pageSize]=100&filters[id]=${filterValue}`
+  );
+  const fetchAlias = await resAlias.json();
 
   if (result.data.length > 0) {
-    const getValue = result?.data[0]?.attributes?.project_cat.map(
-      (items) => items.value
-    );
-    const filterValue = getValue && getValue.join("&filters[id]=");
-
-    const resAlias = await fetch(
-      `${process.env.STRAPI_API_URL}project-categories?pagination[pageSize]=100&filters[id]=${filterValue}`
-    );
-    const fetchAlias = await resAlias.json();
-
-    // Lấy danh sách services liên quan
     const type = result?.data[0]?.attributes?.project_cat[0]?.label;
     const resRelated = await fetch(
       `${process.env.STRAPI_2_API_URL}services?populate=image&filters[project_cat][$containsi]=${type}&filters[alias][$notIn]=${params.slug}&pagination[limit]=10&sort=createdAt:DESC` +
-      time
+        time
     );
     const related = await resRelated.json();
 
-  
     return {
       props: {
         character: result.data[0],
@@ -76,6 +75,7 @@ export async function getStaticProps({ params }) {
         fetchAlias: fetchAlias["data"],
         result: result,
       },
+      revalidate: 1,
     };
   }
 
@@ -84,30 +84,20 @@ export async function getStaticProps({ params }) {
   };
 }
 
-
 export async function getStaticPaths() {
   const res = await fetch(
-    `${process.env.STRAPI_2_API_URL}services?pagination[limit]=100`
+    `${process.env.STRAPI_2_API_URL}services?pagination[limit]=1`
   );
   const result = await res.json();
 
-  // Kiểm tra xem có dữ liệu không
   if (result.data) {
     return {
-      paths: result.data.map((_service) => {
+      paths: result.data.slice(0, 1).map((_service) => {
         return {
           params: { slug: _service.attributes.alias },
         };
       }),
-      fallback: false, // hoặc true/blocking nếu bạn muốn xử lý fallback
+      fallback: "blocking",
     };
   }
-  
-  // Nếu không có dữ liệu
-  return {
-    paths: [],
-    fallback: false, // fallback có thể là false hoặc 'blocking' tùy yêu cầu
-  };
 }
-
-
