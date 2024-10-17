@@ -53,7 +53,7 @@ const AppModern = () => {
           <Sticky top={0} innerZ={9999} activeClass="sticky-active">
             <Navbar />
           </Sticky>
-          <ContentWrapper>
+          {/* <ContentWrapper> */}
             <Banner />
             <Features />
             <AppSlider />
@@ -68,7 +68,7 @@ const AppModern = () => {
             {/* <TeamPortfolio /> */}
             <Testimonial />
             <Newsletter />
-          </ContentWrapper>
+          {/* </ContentWrapper> */}
           <Footer />
         </AppWrapper>
         <Script
