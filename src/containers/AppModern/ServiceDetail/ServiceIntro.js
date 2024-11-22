@@ -17,6 +17,7 @@ const ServiceIntro = (props) => {
     setOpen(false);
     setSrc("");
   };
+  console.log("Data: ", character.alias)
   return (
     <Box className="boxLeft">
       <h1 className="title">{character.title}</h1>
@@ -47,16 +48,6 @@ const ServiceIntro = (props) => {
       {/* Image */}
       <Box className="container-image">
         <Box className="boxImage">
-          {/* <button
-            className="btnFull"
-            onClick={() => {
-              handleOpen(character);
-            }}
-          >
-            <Box>
-              <Icon icon={ic_zoom_out_map} /> Full Screen
-            </Box>
-          </button> */}
           <img
             width="100%"
             height={450}
@@ -72,8 +63,6 @@ const ServiceIntro = (props) => {
           />
         </Box>
       </Box>
-      {/* End iMAGE */}
-      {/* Description */}
       <Box className="ItemCard">
         <Box>
           <h2 className="titleDes">About This Service</h2>
@@ -82,7 +71,6 @@ const ServiceIntro = (props) => {
           </Box>
         </Box>
       </Box>
-      {/* End Description */}
     </Box>
   );
 };

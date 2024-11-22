@@ -17,7 +17,7 @@ const Catalog = (props) => {
     <ThemeProvider theme={theme}>
       <>
         <Head>
-          <title>Printcart | Categories</title>
+          <title>Print on Demand Product catalogs</title>
           <meta name="theme-color" content="#2563FF" />
           <link
             href="https://fonts.googleapis.com/css?family=Heebo:300,400,500,700&display=swap"

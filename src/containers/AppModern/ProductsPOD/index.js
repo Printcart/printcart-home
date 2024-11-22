@@ -9,6 +9,8 @@ import Container from "../../../common/components/UI/Container";
 import Banner from "./Banner";
 import TagsFilter from "./TagsFilter";
 import { ContainerPP } from "./productspod.style";
+import MaximumStep from "./MaximumStep";
+import FAQ from "./FAQ";
 
 const CardCus = styled(Card)`
   border-radius: 5px;
@@ -161,15 +163,31 @@ const ProductsPOD = (props) => {
             dataFilter={getProducts}
             status="New"
             title="New Products"
+            description="Includes the latest additions to the inventory, helping you stay updated with the most recent products."
           />
           <TagsFilter
             dataFilter={ecoData}
             status="Eco-friendly"
             title="Eco-friendly"
+            description="Focuses on products made with sustainable materials, perfect for environmentally conscious consumers."
           />
-          <TagsFilter dataFilter={aopData} title="AOP Products" />
-          <TagsFilter dataFilter={neckData} title="Neck Labels" />
-          <TagsFilter dataFilter={otherData} title="Orther Products" />
+          <TagsFilter
+            dataFilter={aopData}
+            title="AOP Products"
+            description="Highlights items featuring All Over Print designs, ideal for those seeking unique and comprehensive prints."
+          />
+          <TagsFilter
+            dataFilter={neckData}
+            title="Neck Labels"
+            description="Showcases items that include specific neck labels, useful for brand identification and customization."
+          />
+          <TagsFilter
+            dataFilter={otherData}
+            title="Other Products"
+            description="Covers a variety of miscellaneous products that don't fit into the main groups, ensuring you don't miss out on any items."
+          />
+          <MaximumStep />
+          <FAQ />
           <ContainerPP>
             <WrappProvider>
               <WrappBox>
