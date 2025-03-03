@@ -371,19 +371,20 @@ const VendorInfo = (props) => {
 
   return (
     <>
-      <ContainerBox>
-        <Box>
-          {/* TODO array of shipping options */}
-          {shippingOption?.id && (
+      {shippingOption?.id && (
+        <ContainerBox>
+          <Box>
+            {/* TODO array of shipping options */}
+
             <Provider
               data={data}
               shippingOption={shippingOption}
               currency={dataShipping?.currency}
               key={shippingOption?.id}
             />
-          )}
-        </Box>
-      </ContainerBox>
+          </Box>
+        </ContainerBox>
+      )}
     </>
   );
 };
